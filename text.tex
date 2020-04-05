@@ -1,0 +1,613 @@
+\chapter{Přesná formulace problému a cíle}
+\label{formulace}
+
+Na začátku bylo potřeba stanovit požadavky a koncept celého zařízení. Jelikož se jedná o projekt vyžadující znalosti z více oblastí techniky, byl sestaven seznam rozdělení úkolů mezi jednotlivé členy týmu takto: \newline
+
+\noindent Filip Špila
+
+\begin{itemize}
+\item Návrh a výroba celé konstrukce, včetně sférické základny
+\item Výběr pohonných jednotek
+\item Návrh řídícího algoritmu pomocí PID regulátoru
+\item Implementace programu do mikrokontroleru dsPIC, testování a ladění
+
+\end{itemize}
+
+\noindent Matěj Rajchl
+
+\begin{itemize}
+\item Návrh a výroba řídící a výkonové elektroniky
+\item Softwarové zprovoznění všech částí elektroniky a periferií
+\item Otestování různých metod získávání úhlu natočení s využitím vhodných senzorů
+
+\end{itemize}
+
+
+\newpage
+
+
+\chapter{Rešerše}
+\label{reserse}
+
+%Zobrazte si návrh (obr.~\ref{sing-layout}).
+
+\section{Vymezení pojmu ballbot}
+\label{ballbot}
+
+Ballbot je robotické zařízení, které udržuje nestabilní rovnovážnou polohu na sférické základně. Akční zásah provádí pouze robot, základna je pasivním prvkem a nijak se na regulaci nepodílí. Poloha robota na sférické základně je získávána vhodným přepočtem ze senzoru zrychlení (akcelerometr) a úhlové rychlosti (gyro).
+
+\subsection{Typické prvky konstrukce}
+\label{prvky_konstrukce}
+
+Typické provedení konstrukce těla ballbota se skládá ze základny, tří motorů umístěných rovnoměrně po 120 stupních a speciálních kol, tzv. omniwheels. \footnote{Prozatím neexistuje ekvivalentní pojmenování v češtině} Nevšední provedení těchto kol umožňuje jejich valení jedním směrem a zároveň pohyb ve směru laterárním s velmi malým odporem. To je dosaženo prostřednictvím valivého pohybu elementárních válečků rozmístěných po obvodu. Jejich konkrétních variant lze najít několik. Liší se velikostí, počtem řad a úhlem natočení pomocných válečků. Uplatňují se s výhodou v nejrůznějších robotických aplikacích, vyžadujících schopnost pohybovat se v malém prostoru.
+\vspace{5mm}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=15cm,height=4cm,keepaspectratio]{obr/double.jpg}
+\includegraphics*[width=15cm,height=4cm,keepaspectratio]{obr/mecanum.jpg}
+\end{center}
+\caption{Příklad provedení kol typu omniwheel \cite{omni} \cite{omni2}}
+\label{cocka}
+\end{figure}
+
+\subsection{Sférická základna}
+\label{zakladna}
+
+Jako základna pro balancování může být použit v podstatě jakýkoliv předmět kulového tvaru, který má ideální povrch a rovnoměrné rozložení hmoty kolem geometrického středu. Velikost koule a její hmotnost přitom ovlivňují celkovou dynamiku systému. Vetší hmotnost způsobí posunutí těžiště celého systému směrem ke středu Země a zvětšení osového momentu setrvačnosti. Soustava se tím stává přirozeně stabilnější, neboť narůstá moment potřebný pro uvedení koule do valivého pohybu. Zvětšením poloměru, a tedy oddálením robota od pólu pohybu, dochází ke zvýšení rozlišení rozpoznávání úhlu a prodloužení reakční doby pro zásah regulace. 
+
+Dynamika pohybu robota velmi závisí na součiniteli suchého tření mezi sférickou základnou a koly. Ten lze ovlivnit vhodnou povrchovou úpravou základny, případně materiálem kol. Zvýšením tuhosti koule dochází ke snížení valivého odporu a je tedy výhodné použít tuhý kulový podklad (kov, ABS) a nanést na něj vhodný povrchový materiál. Toto řešení bývá v praxi však technologicky těžko realizovatelné.
+
+\section{Teoretický rozbor 2D úlohy}
+\label{rozbor}
+ 
+Pro účely regulace úhlového natočení robota lze použít určitých zjednodušení, která převádějí prostorový pohyb sférické základny na tři 2D úlohy. \footnote{Úplný matematický popis 2D i 3D úlohy lze nalézt například v \cite{rezero} \cite{twente}} Ty vzniknou průmětem pohybu do třech ortogonálních rovin, přičemž pohyb ve dvou vertikálních rovinách má stejný charakter jako úloha s inverzním kyvadlem a pohyb v horizontální rovině popisuje rotaci robota kolem svislé osy \cite{rezero}. V každé z rovin je zavedeno virtuální kolo, provádějící regulační zásah změnou své úhlové rychlosti. Zásahy virtuálních kol jsou poté přepočítány na ekvivalentní zásah reálně umístěných omniwheels. V této konfiguraci má soustava v každé z rovin dva stupně volnosti – jedním je valení základny a druhým je valení virtuálního kola. Rozvahy jsou dále založeny na těchto předpokladech \cite{rezero}:
+
+%%Tento přístup lze dobře použít pro prostou regulaci rovnovážné polohy, avšak pro komplexnější řízení je tento popis soustavy nedostačující.
+
+\begin{itemize}
+
+\item Pohyby ve dvou vzájemně kolmých rovinách jsou na sobě nezávislé 
+\item Dochází pouze k horizontálnímu pohybu celé sestavy po rovné ploše
+\item Žádné deformace – předpokládají se dokonale tuhá tělesa, tedy sférická základna i robot se třemi dosedajícími omniwheels. Deformace země je v kontaktu se základnou rovněž zanedbána
+\item Omniwheels – konstrukce dvouřadých kol je zjednodušena na kolo jednořadé s jedním bodem dotyku
+\item Pasivní účinky – kromě suchého tření jsou všechny ostatní druhy tření zanedbány
+\item Žádný prokluz – mezi koulí a omniwheels ani mezi koulí a zemí nedochází k vzájemnému prokluzu
+\item Stálý kontakt – předchozí podmínka zaručuje neustály kontakt mezi všemi prvky soustavy
+\item Je zajištěna holonomnost vazby mezi kolem a povrchem koule \footnote{Holonomnost je zajištěna virtuálním spojovacím ramenem. V reálné soustavě se oproti 2D zjednodušení vyskytuje neholonomní vazba mezi kolem a sférickou základnou a mezi základnou a zemí.}
+\end{itemize}
+
+\newpage
+
+\iffalse
+
+\subsection{Holonomní vazba}
+\label{vazby}
+\begin{center}
+\begin{tabular}{|p{15cm}}
+\uv{\textit{Tvar geometrického útvaru, omezujícího volný pohyb bodového tělesa, určují podmínkové rovnice, zvané rovnice vazby. Pohybuje-li se těleso po ploše, musí souřadnice jeho polohy vyhovovat rovnici této plochy
+}
+\begin{equation}
+F(x,y,z)=0 
+\end{equation}
+
+\textit{Tuto rovnici nazýváme rovnicí vazby. Tím se ale snižuje počet stupňů volnosti pohybujícího se bodu. Pohybuje-li se těleso po prostorové křivce, kterou lze chápat jako průsečnici dvou ploch $ \mathit{f_{1}(x, y, z) = 0}$ a $ \mathit{f_{2}(x, y, z) = 0}$ ztrácí dva stupně volnosti a jeho polohu jednoznačně určuje jediná nezávislá souřadnice.
+}	
+\textit{Rovnice vazby (1) může být také zobecněna do tvaru, který vyjadřuje i závislost na čase}
+\begin{equation}
+F(x,y,z,t)=0
+\end{equation}
+
+\textit{Vazbu, kterou lze popsat vztahem (2) nazýváme holonomní (zcela zákonitou). Vazby, které tuto podmínku nesplňují, nazýváme obecně neholonomní.}}
+\end{tabular}
+\end{center}
+
+\fi  
+ 
+\subsection{Rovnice pro matematický model soustavy}
+\label{model}
+
+Za výše uvedených předpokladů je možné pomocí Lagrangeovy metody sestavit pohybové rovnice pro pohyb ve virtuální rovině, přičemž rovnice jsou v tomto případě pro dvě vertikální roviny $xz, yz$ shodné, viz obr. \ref{geom}. Podrobný postup při odvozování rovinného matematického modelu soustavy je popsán v \cite{rezero}.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=14cm,keepaspectratio]{obr/rezero_obr}
+\end{center}
+\caption{Schéma tří rovinných modelů (převzato z \cite{rezero})}
+\label{geom}
+\end{figure}
+
+Při znalosti všech potřebných parametrů soustavy dostaneme diferenciální rovnice popisující pohyb virtuálního kola a virtuální kulové základny robota.
+
+Jelikož v této práci není řízení robota založeno na znalosti matematického modelu soustavy, byly výsledné rovnice použity pouze pro odhad potřebných parametru virtuálních pohonných jednotek. Údaje pak byly porovnány s možnostmi reálných motorů, které jsou popsané v praktické části této práce.
+
+\subsection{Přepočet na reálný pohon soustavy}
+\label{prepocet}
+
+Cílem této části je pomocí inverzního postupu získat převod mezi regulačním zásahem virtuálních kol v rovinách $xz, yz, xy$ na zásah reálně rozmístěných pohonů. Označme úhly natočení virtuálních kol postupně jako $\Psi_{x}, \Psi_{y}, \Psi_{z}$ - ty budou vstupními parametry výpočtu. Pokud úhly natočení omniwheels robota označíme $\varphi_{1}, \varphi_{2}, \varphi_{3}$, pak hledané funkce budou mít obecný tvar
+
+\begin{equation}
+\varphi_{1}=f(\Psi_{x}, \Psi_{y}, \Psi_{z})
+\end{equation}
+\begin{equation}
+\varphi_{2}=f(\Psi_{x}, \Psi_{y}, \Psi_{z})
+\end{equation}
+\begin{equation}
+\varphi_{3}=f(\Psi_{x}, \Psi_{y}, \Psi_{z})
+\end{equation}
+
+Předpokládejme nyní obvykle používanou konfiguraci sestavy zkoumaných těles, tedy sférická základna bez pohonných jednotek, na kterou přímo dosedají tři kola s elektromotory a tyto spolu svírají úhel 120 stupňů. Výchozí rozložení sil pro sestavení pohybových rovnic je znázorněno na obr. \ref{nakres}. Jedná se o zjednodušené zobrazení, ve kterém je reálná geometrie zachována jen částečně -- osy motorů a svislá osa \textit z svírají přesně 90\textdegree \, a úloha je tedy promítnuta do roviny, ve které se odehrává pouze horizontální pohyb. Dále hmotnost spojovacích součástí mezi koly je zanedbána a veškerá hmotnost robota $M$ je tak rovnoměrně rozdělena do kol. 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=14cm,keepaspectratio]{obr/nakres}
+\end{center}
+\caption{Schéma rozestavení skutečných pohonů \cite{kuala}}
+\label{nakres}
+\end{figure}
+
+\noindent Nyní lze sestavit pohybové rovnice ve tvaru
+
+\begin{equation}
+Ma_{x}=-F_{1}\,sin(\beta)-F_{2}\,sin(\beta)+F_{3}\,sin(\beta)
+\end{equation}
+\begin{equation}
+Ma_{y}=F_{1}\,cos(\beta)-F_{2}\,cos(\beta)+F_{3}\,cos(\beta)
+\end{equation}\vspace{5mm}
+
+\noindent kde $M$ je celková hmotnost robota. Sestavením momentových rovnic v ose $z$ vztažených k souřadnému středu O získáme postupnou úpravou
+
+\begin{equation}
+I\alpha_{z}=R\,(F_{1}+F_{2}+F_{3})
+\end{equation}
+\begin{equation}
+MR^2\alpha_{z}=R\,(F_{1}+F_{2}+F_{3})
+\end{equation}
+\begin{equation}
+MR\alpha_{z}=F_{1}+F_{2}+F_{3}
+\end{equation}
+
+\newpage
+
+\noindent Po dosazení číselných hodnot funkcí $sin(\beta)$ a $cos(\beta)$ do rovnic (2.4, 2.5 a 2.8) dostaneme v maticové podobě
+
+\begin{figure}[htb]
+\begin{equation}
+\begin{bmatrix}
+  Ma_{x} \\[0.5em]  
+  Ma_{y} \\[0.5em]   
+  MR\alpha_{z}
+\end{bmatrix}
+=
+\begin{bmatrix}
+  -\frac{1}{2} &  -\frac{1}{2} & 1\\[0.5em]
+  \frac{\sqrt{3}}{2} & -\frac{\sqrt{3}}{2} &  0 \\[0.5em]  
+  1 & 1 &  1 
+\end{bmatrix}
+\begin{bmatrix}
+  F_{1} \\[0.5em]  
+  F_{2} \\[0.5em]     
+  F_{3} 
+\end{bmatrix}
+\end{equation}
+\end{figure}
+\vspace{3mm}
+\noindent Nechť je zrychlení těžistě kola vyjádřeno jako $a=r\frac{d\omega(t)}{dt}$. Pak řešením této soustavy rovnic \cite{kuala} pro neznámé $F_{1}, F_{2}, F_{3}$ a jejich následnou integrací podle času dostaneme pro úhlová natočení kol tyto funkce
+
+\begin{equation}
+\varphi_{1}=\frac{-0.33x + 0.58y + 0.33R\Psi_{z}}{r}
+\end{equation}
+
+\begin{equation}
+\varphi_{2}=\frac{-0.33x - 0.58y + 0.33R\Psi_{z}}{r}
+\end{equation}
+
+\begin{equation}
+\varphi_{3}=\frac{-0.67x + 0.33R\Psi_{z}}{r}
+\end{equation}\vspace{3mm}
+
+\noindent kde $r$ je poloměr kola. Po zavedení substituce a úpravě dostaneme finální tvar
+
+$$x=\Psi_{x}r$$
+$$y=\Psi_{y}r$$
+
+\begin{equation}
+\varphi_{1}=-0.33\Psi_{x} + 0.58\Psi_{y} + \frac{0.33R}{r}\Psi_{z}
+\end{equation}
+\begin{equation}
+\varphi_{2}=-0.33\Psi_{x} - 0.58\Psi_{y} + \frac{0.33R}{r}\Psi_{z}
+\end{equation}
+\begin{equation}
+\varphi_{3}=-0.67\Psi_{x} + \frac{0.33R}{r}\Psi_{z}
+\end{equation}
+   
+
+\section{Metody inteligentního řízení}
+\label{rizeni}
+
+Pro udržení robota s metastabilní rovnováze je obecně potřeba regulovat jeho úhlové natočení a polohu v prostoru. Logika návrhu regulátoru přitom může vycházet z různých předpokladů, od čehož se odvíjí výsledná rychlost, přesnost a celkové možnosti regulace. Jedním přístupem je řízení založené na kompletní znalosti vnitřní fyzikální podstaty systému a jeho následné linearizaci. Příkladem je metoda stavového zpětnovazebního řízení. 
+
+Druhý přístup nepracuje s přesným matematickým popisem systému, ale využívá znalost pouze vstupních a výstupních veličin. Jejich porovnáním vzniká tzv. chyba regulace, která po zesílení tvoří výsledný akční zásah. Předpokládá se přitom, že regulovaná soustava v daném pracovním bodě vykazuje lineární chování. Optimalizace řízení soustavy se v praxi často provádí experimentálním naladěním parametrů PID regulátoru.
+
+Zatímco PID regulátor řídí soustavu pouze se zpětnou vazbou od výstupní veličiny, stavový regulátor využívá zpětné vazby od všech proměnných reprezentujících jednotlivé stavy \cite{skalicky}. Má tedy většinou více informací o průběhu přechodných dějů a umožňuje tak kvalitnější řízení soustav vyšších řádů.
+
+\subsection{PID regulátor}
+\label{PID}
+
+PID regulátor se využívá ve zpětnovazební regulaci výstupních veličin nejrůznějších systémů. Jeho přenosová funkce je složena z proporcionální, integrační a derivační složky. Složka proporcionální se chová jako ideální zesilovač a její amplitudová a fázová charakteristika jsou frekvenčně nezávislé. Přenos integrační složky odpovídá čisté integraci vstupního signálu. Amplituda je zde však závislá na frekvenci, stejně jako u derivační složky. Obě tyto složky také posouvají fázi vstupního signálu o 90 stupňů. Celkový přenos regulátoru závisí na poměru zesílení těchto tří složek. Obr. \ref{idealpid} ukazuje obecné schéma PID regulační smyčky. 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=16cm,keepaspectratio]{obr/pid_ideal}
+\end{center}
+\caption{Obecné schéma zpětnovazební PID regulace}
+\label{idealpid}
+\end{figure}
+
+Řídící smyčku lze strukturovat několika způsoby, zejména v případě, kdy je potřeba regulovat více veličin najednou. Při řízení balancujícího robota, inverzního kyvadla a podobných systému jsou těmito veličinami úhlové natočení a absolutní poloha v prostoru. K tomu je možné využít kaskádní řazení regulátorů nebo jejich paralelní zapojení. Naladit však takovou smyčku experimentálně je již poměrně náročné. 
+
+\section{Softwarové nástroje}
+\label{software}
+
+Při vývoji lze s výhodou použít funkce nástrojů MATLAB a Simulink. Pomocí nich lze například provádět modelování celé soustavy a regulátoru. Matematický model může sloužit například pro výběr vhodných pohonů, případně k určení dalších parametrů soustavy potřebných k návrhu zařízení. Stejný software lze v kombinaci s vhodným hardwarem použít pro změnu parametrů řídícího kódu v reálném čase. K těmto účelům lze po nahrání kódu do mikrokontroleru spustit komunikaci s prostředím Simulink pomocí režimu External mode, který tak umožňuje výrazně urychlit vývoj a konečné ladění.
+
+\subsection{Popis funkce External mode}
+\label{external}
+
+Funkce External mode (dále jen EM) vytváří komunikační službu mezi hostitelským PC a cílovým hardwarem \cite{external}. Komunikace probíhá mezi jádrem Simulinku a vygenerovaným kódem na zařízení. Služba izoluje proces modelu na desce hardwaru od kódu a od transportní vrstvy, která zajišťuje formát, vysílání a přijímání datových paketů. Na hostitelském PC dochází k příjmu dat přes tuto vrstvu a k aktualizaci modelového prostoru v Simulinku. Obr. \ref{externall} ukazuje schéma spojení, které komunikační služba EM vytváří mezi oběma zařízeními. 
+ 
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=16cm,keepaspectratio]{obr/external}
+\end{center}
+\caption{Blokové schéma režimu External mode (převzato z \cite{external})}
+\label{externall}
+\end{figure}
+
+Komunikaci lze zajistit pomocí sběrnice UART. EM sice umožňuje oboustrannou komunikaci, avšak posílání dat do PC vyžaduje velkou šířku pásma a pro vysoké frekvence může být problematické. Pro změnu parametrů PID regulátoru postačí v praxi komunikace jednosměrná. Podrobné informace o fungováni EM lze nalézt na webu Mathworks \cite{external}.
+
+\subsection{Implementace}
+\label{implementacee}
+
+Jako platforma pro finální implementaci programu slouží mikrokontroler dsPIC. Obsahuje v sobě řadu periférií pro obsluhu speciálních vnějších zařízení, například rozhraní pro enkódování signálu z inkrementálního čítače (QEI) a mnoho dalších.
+
+Díky podpoře od firmy Microchip je umožněno poměrně snadno  mikrokontroleru nastavit nejrůznější vstupy a výstupy, komunikaci přes sběrnici UART v režimu EM apod. a to přímo z prostředí Simulinku. K tomu slouží speciální sada bloků zvaná Device Blocks for Simulink (dále jen DBS), která tato nastavení automaticky vloží do generovaného C kódu. Za využití dcPIC programátoru lze kód následně nahrát přímo do cílového hardwaru. 	
+Tato sada rapidně zrychluje vývoj celého softwaru. Má však i svá omezení, a proto je dobré vhodně kombinovat automaticky vygenerovaný kód s funkcemi přímo napsanými v jazyce~C. Jako podpora slouží web jednoho z vývojářů \cite{lubin}, kde lze nalézt detailní popis funkcí jednotlivých bloků.
+
+
+\newpage
+
+\section{Příklady provedení ballbotů}
+\label{priklady}
+
+\begin{enumerate}
+
+\item \textbf{CMU Ballbot} -- První z ballbotů, CMU \cite{cmu}, byl vyvinut v roce 2006 na Carnegie Mellon University v USA. Jeho velikost dosahovala vzrůstu průměrně vysokého člověka. Sférickou základnou byla hliníková koule o průměru 20\,cm. Mechanismus pro pohyb s koulí byl velmi podobný mechanismu v klasické kuličkové počítačové myši. Ve finální verzi byl implementován PID regulátor jak pro regulaci balancování, tak pro regulaci pozice robota v prostoru.
+
+\item \textbf{TGU Ballbot} -- Tento robot vyvinutý v roce 2008 na Tohoku Gakuin University \cite{tgu} se vyznačuje menšími rozměry než robot CMU. Konstrukce využívá omniwheels pro kontakt se sférickou základnou, jejíž velikost jako v případě CMU přibližně odpovídá hracímu míči. Tento robot se vyznačoval velkou zatížitelností (až 10 kg). Řízení se skládá ze dvou simultánních PD regulátorů pro balancování a udržování pozice v prostoru. Parametry regulátorů byly naladěny experimentálně.
+
+\item \textbf{BB-8 replika od xrobots.co.uk} -- Tento ballbot \cite{bb8} se oproti předchozím provedením liší svou konstrukcí, celkovou jednoduchostí provedení a počtem pohonných jednotek -- čtyři omniweels rozmístěné do kříže. Jako sférická základna je použita lehká polystyrenová koule o průměru 50\,cm. Takto velký průměr má vliv na řiditelnost robota, jelikož úhel mezi svislou osou a normálou k povrchu koule v bodě dotyku s kolem omezuje schopnost robota řídit směr pohybu celé sestavy. S použitým PD regulátorem úhlového natočení se pouhou změnou žádaného vstupu podařilo implementovat jednoduché ovládání pozice, které má však velmi omezené možnosti.
+
+\item \textbf{Ballbot ze Swinburne University of Technology Sarawak Campus} \cite{kuala} -- Robot konstrukčně podobný modelu TGU. Pro řízení využívá PID regulátor úhlového natočení s experimentálně naladěnými parametry. 
+\vspace{5mm}
+\begin{figure}[h]
+\begin{center}
+\begin{subfigure}{0.3\textwidth}
+\centering
+\includegraphics[height=6cm,keepaspectratio]{obr/tgu.jpg}
+\caption{TGU ballbot \cite{tgu}}
+\end{subfigure}
+\hspace{5mm}
+\begin{subfigure}{0.3\textwidth}
+\centering
+\includegraphics[height=6cm,keepaspectratio]{obr/bb8.jpg}
+\caption{Xrobots BB-8 \cite{bb8}}
+\end{subfigure}
+\hspace{5mm}
+\begin{subfigure}{0.3\textwidth}
+\centering
+\includegraphics[height=6cm,keepaspectratio]{obr/cmu.jpg}
+\caption{CMU ballbot \cite{obr_cmu}}
+\end{subfigure}
+\end{center}
+\caption{Příklad provedení robotů typu ballbot}
+\end{figure}    
+
+Všechny výše uvedené varianty (1-4) mají implementované řízení založené na 2D modelu soustavy (kap. \ref{rozbor}), kdy je akční zásah motorů přepočten na reálné pohony.
+
+\newpage
+
+\item \textbf{Rezero} -- Spolková vysoká technická škola v Curychu vyvinula tohoto robota \cite{rezero} v roce 2010. Finální řízení je provedeno použitím nelineárního regulátoru a je založeno na 3D modelu soustavy. Jedná se o velmi komplexní a precizně provedenou verzi, která má rozsáhlé možnosti nejen udržování stále polohy, ale také aktivního pohybu v prostoru s možností přímého kontaktu s uživateli. V práci je mj. také popsán 2D matematický model, pro který byl sestaven a simulačně ověřen polohový PID regulátor.
+\vspace{5mm}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[height=10cm,keepaspectratio]{obr/rezero.jpg}
+\end{center}
+\vspace{5mm}
+\caption{Robot Rezero (převzato z \cite{rezero})}
+\label{cocka}
+\end{figure}
+
+\end{enumerate}
+
+\chapter{Řešení a výsledky}
+\label{reseni}
+
+\section{Konstrukce robota}
+\label{construction}
+
+Navržený robot se svojí koncepcí nejvíce podoba robotu BB-8 \cite{bb8}. Jeho velikost je v poměru ke sférické základně menší, než bývá pro klasické ballboty obvyklé. To má sice za následek omezenou schopnost robota aktivně určovat směr pohybu\footnote{Možné budoucí rozšíření práce}, avšak výhodou se stává prodloužení reakční doby na provedení regulačního zásahu. Dynamika celé soustavy je však od robotů \cite{rezero} \cite{tgu} \cite{cmu} \cite{kuala} odlišná, jelikož hmotnost konstrukce a moment setrvačnosti námi navrhovaného provedení jsou poněkud menší. Tento fakt ubírá systému na stabilitě a nutnost rychlejších akčních zásahu pro vyrovnání úhlového natočení.
+Geometrie rozmístění kol má stejnou podobu jako u většiny ballbotů, tedy tři motorové jednotky rozmístěné po 120 stupních. Oproti modelu BB-8 se jedná o uložení, ve kterém je zajištěn stály kontakt všech kol s povrchem koule. 
+
+Konstrukce byla před zadáním do výroby kompletně vymodelována v 3D modeláři, což umožnilo nejen dobrou vizuální kontrolu vzájemného dosedání všech částí, ale umožnilo jednoduchý export pro účely 3D tisku. Výsledná hmotnost celé konstrukce včetně motorů je $1,43\,kg$. 
+\vspace{5mm}
+Přednostmi navrhovaného konstrukčního řešení jsou především:
+
+\begin{itemize}
+
+\item Možnost adaptovat robota na různé poloměry sférické základny 
+\item Přesnost rozměrů díky 3D tisku, pevnost a malá hmotnost hlavních částí konstrukce
+\item Celková robustnost
+\item Lákavý a moderní design
+\end{itemize}
+\begin{figure}[hb]
+\begin{center}
+\includegraphics*[width=11cm,keepaspectratio]{obr/lubin}
+\end{center}
+\vspace{3mm}
+\caption{Vizualizace navrhovaného konstrukčního řešení}
+\label{konstro}
+\end{figure}
+
+\subsection{Omniwheels}
+\label{omni}
+
+Přes vymezovací váleček je ke každé hřídeli připevněno dvouřadé kolo typu omniwheel. Výhodou těchto kol je nízká hmotnost, gumové provedení valivých elementů a přijatelná cena. Bohužel však dodávané vymezovací válečky neumožňují tvarově připevnit námi vybraný tvar hřídele DC motoru, proto jsou použitý spojovací komponent \footnote{Výrobní výkres je součástí přílohy} vyroben na zakázku. 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=10cm,keepaspectratio]{obr/sestava_kolo}
+\end{center}
+\caption{Sestava jedné z pohonných jednotek včetně motorové klece}
+\label{sestavicka}
+\end{figure}
+
+\subsection{Základna robota}
+\label{base}
+
+Hlavním prvkem nosné konstrukce je základna robota, vyhotovená 3D tiskem. \footnote{Všechny 3D části jsou vytisknuty z PLA} Ze spodní desky vybíhají profily na upevnění motorových klecí. Do prostřední části byly z technologických důvodů (tepelná dilatace) umístěny otvory lichoběžníkového tvaru. Ty zároveň slouží jako tvarové spojení s podstavcem pro vyrovnání horizontu. 
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics*[height=7cm,keepaspectratio]{obr/zakladna}
+\includegraphics*[height=7cm,keepaspectratio]{obr/zakladna_front}
+\end{center}
+\caption{Finální verze základny robota po 3D tisku}
+\label{cocka}
+\end{figure}
+
+\subsection{Motorové klece}
+\label{klece}
+
+Pro uchycení DC motorů byly navrženy speciální tvarově odpovídající kryty. Na bočních stěnách jsou umístěny díry pro zajišťovací šrouby M8. V předním panelu se nacházejí otvory pro přichycení k čelu převodovky motoru. Sestava s pohonnými jednotkami je znázorněna na obr. \ref{sestavicka}. Pro vyplnění mezery v dutině mezi motorem a klecí slouží vymezovací podložky, sloužící zároveň jako matice pro zajišťovací šrouby.
+
+\subsection{Pohonné jednotky}
+\label{motory}
+
+Na základě 2D modelu soustavy mohly být stanoveny přibližné parametry motorových jednotek. Klíčová byla volba maximální obvodové rychlosti a točivého momentu. Při výběru byl kladen důraz na kompaktní rozměry, tvarově vhodné pro uchycení v konstrukci a možnost pořízení verze s enkodérem.
+Na obrázku je 12-ti voltový DC motor Transmotec PG220 s planetovou převodovkou a enkodérem, který plně vyhovoval naším požadavkům. Jeho jmenovité parametry jsou uvedeny v tabulce.
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics*[height=6cm,keepaspectratio]{obr/mot}
+\end{center}
+\caption{Motor PG220 s planetovou převodovkou (bez enkodéru) \cite{dcmotor}}
+\label{cocka}
+\end{figure} 
+
+\renewcommand{\arraystretch}{2}
+\newcolumntype{C}{>{\centering\arraybackslash}p{5em}}
+\begin{center}
+\begin{tabular}{|C|C|C|C|C|C|}
+\hline
+\multicolumn{6}{|c|}{\textbf{Jmenovité parametry DC motoru PG220 s planetovým převodem 19:1}} \\
+\hline
+U\,[V] & I\,[mA] & M\,[$g\cdot cm$] & n\,[ot/min] & P\,[W] & m\,[g] \\
+\hline
+12 & 200 & 295 & 348 & 1,5 & 62 \\
+\hline
+\end{tabular}
+\end{center}
+\vspace{5mm}
+Součástí motorů jsou inkrementální čítače polohy s hallovými sondami. Rozlišení čítače jsou 3 pulzy/otáčka \footnote{Rozlišení je násobeno převodem 19:1, tedy 1 otáčka kola odpovídá ve výsledku 57 pulzům}. Později se toto rozlišení ukázalo pro regulaci otáček motorů nedostatečné a v budoucnu by bylo vhodné čítač vyměnit za optický.
+
+\newpage
+
+\subsection{Přípravek pro kalibraci senzorů}
+\label{pripravek}
+
+Pro kvalitní a přesnou regulaci je potřeba co nejpřesněji určit vodorovnou polohu všech používaných senzorů a vyrovnat jejich případný offset. K tomuto účelu byl navržen speciální přípravek, který svými výstupky přesně zapadá do spodní části základny robota. Případná odchylka od vodorovné polohy se upraví pomocí třech aretačních šroubů M6. Kritickým bodem této metody je přesnost měřidla použitého při vyrovnávání \footnote{Při experimentech byla prozatím použita klasická vodováha}, což dává prostor k případnému rozšíření práce. 
+\vspace{3mm}
+\begin{figure}[hb]
+\begin{center}
+\includegraphics*[height=6cm,keepaspectratio]{obr/kalibr}
+\end{center}
+\caption{Přípravek pro kalibraci senzorů}
+\label{pripravek}
+\end{figure} 
+
+\subsection{Ochranný kryt}
+\label{pripravek}
+
+Za účelem ochrany veškerých prvků elektroniky před nárazem a vnějšími vlivy byl z běžně dostupných prostředků vyhotoven ochranný kryt. Na jeho vrcholu se nachází rovná plocha, ze které vystupují konektory pro komunikaci přes rozhraní UART, programováni mikrokontroleru a hlavní vypínač. Kryt je na konstrukci robota připevněn přes plastový prstenec. Ten má po obvodu umístěny tvarové výčnělky, které přesně zapadnou do prostoru pro vymezení motorových klecí. Prstenec je z technologických důvodů 3D tisku tvořen ze čtyř částí slepených v jeden celek. 
+\vspace{3mm}
+\begin{figure}[hb]
+\begin{center}
+\includegraphics*[height=5.5cm,keepaspectratio]{obr/kryt}
+\includegraphics*[height=5.5cm,keepaspectratio]{obr/kryt_back}
+\end{center}
+\caption{Pohled na sestavení krytu s prstencem}
+\label{kryt}
+\end{figure} 
+
+\newpage
+
+\section{Sférická základna}
+\label{sphere}
+
+Během testování robota v provozu byly použity dva druhy sférické základny, přičemž v obou případech se jedná o kouli větších rozměrů, než je obvyklé pro většinu ballbotů zmíněných v kap. \ref{priklady}. 
+
+\subsection{Materiál a povrchová úprava}
+\label{povrch}
+
+První verzí byla koule vyrobená z komerčně dostupné polystyrenové sféry o vnějším průměru 50\,cm, která se prodává jako dvě samostatné duté polokoule. Zde největší problém spočíval ve zpracování povrchu. Pro dosažení maximálního součinitele tření v kontaktu s koly se jako optimální varianta jeví pogumovaný povrch. Z technologického hlediska je však problém najít takový materiál v tekuté podobě a s možností nanášení v běžných podmínkách, bez použití speciálního vybavení.
+\vspace{5mm}
+\begin{figure}[hb]
+\begin{center}
+\includegraphics*[height=6cm,keepaspectratio]{obr/sphere.jpg}
+\end{center}
+\vspace{5mm}
+\caption{Polystyrenová dvoudílná sféra, průměr 50\,cm \cite{polyy}}
+\label{cocka}
+\end{figure}
+
+Dalším velkým problémem je chemická struktura polystyrenu, jehož polymerové řetězce jsou naprostou většinou organických rozpouštědel degradovány. Z tohoto důvodu musela být nejdříve nanesena silná podkladová vrstva, která agresivní rozpouštědla spolehlivě oddělí od polystyrenu. K těmto účelům byla použita fasádní silikonová barva, odolná vůči vnějším vlivům a určená speciálně pro kontakt s podobnými zateplovacími materiály. 
+
+Pro finální úpravu byla první volbou tzv. tekutá gumová fólie\footnote{Plastidip}, kterou je možné zakoupit ve spreji. Bohužel při jejím nanášení na testovací vzorek došlo i přes značnou sílu ochranné vrstvy k naleptání podkladu a tato varianta musela být zamítnuta.
+
+Nejlepších výsledků bylo překvapivě dosaženo s běžně dostupným disperzním lepidlem Herkules, které po aplikaci v silné vrstvě vytvoří v kontaktu s gumovým kolem vysoký třecí součinitel. Tento nátěr mj. dobře řeší problém otlačením nerovností podkladu do povrchu koule a tím prodlužuje její životnost.
+
+\newpage
+
+Při finálním testování se i přes veškerou výše uvedenou snahu nejlépe osvědčil gymnastický míč o průměru 55\,cm. Díky jeho gumovému povrchu bylo dosaženo optimálního součinitele tření a během testování téměř nedocházelo k prokluzování kol robota.
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[height=6cm,keepaspectratio]{obr/balon.jpg}
+\end{center}
+\vspace{5mm}
+\caption{Gymnastický balón, průměr 55\,cm \cite{gymm}}
+\label{cocka}
+\end{figure}
+
+Veškeré pokusy o zvýšení hmotnosti obou testovaných základen skončily neúspěchem. Na materiál pro vyplnění dutiny polystyrenové koule jsou kladeny příliš specifické požadavky, a to zejména na hmotnost, strukturu a prodejní dostupnost. Při experimentu plnění dutiny gymnastického balónu pomocí polyuretanové montážní pěny došlo po několika dnech k popraskání a sražení polyuretanu. Tato metoda je nepoužitelná i z důvodu nerovnoměrnosti rozložení hmotnosti uvnitř balónu.
+
+\newpage
+
+\section{Řídící software a implementace}
+\label{rizeni}
+
+Tato část práce pojednává o vývoji a finální implementaci řídícího PID algoritmu. Během vývoje prošla řídící smyčka několika změnami, které byly mimo jiné závislé na aktuální verzi použité elektroniky \footnote{Druhá verze elektroniky poskytovala možnost získávání dat z pohonných jednotek}. Použitým softwarem byl MATLAB a Simulink verze 2015b s nainstalovanou sadou bloků Microchip DBS (\ref{implementacee}). 
+
+Veškeré regulační struktury popisované v této části jsou založeny na předpokladech v kap.\,\,\ref{rozbor}, tedy že regulace úhlového natočení probíhá ve třech nezávislých rovinách a zásah je následně přepočítán na pohony reálné soustavy. Ve smyčce jsou vždy přítomny současně pracující PID regulátory se shodně nastavenými parametry pro pohyb ve dvou vertikálních rovinách. Třetí regulátor natočení kolem svislé osy má pouze proporcionální složku a je v kaskádě zapojen pouze v poslední podřazené smyčce. Osy IMU jednotek jsou na zařízení orientovány tak, že spolu tvoří souřadný systém totožný s osami $x, y, z$ popsanými v rozboru (obr. \ref{nakres}). 
+
+\subsection{PID regulace bez zpětné vazby z pohonu}
+\label{PID}
+
+\subsubsection*{Ideální PID struktura}
+\label{nazdar}
+
+Nejjednodušší ideální podoba řídící smyčky je znázorněna blokovým schématem na obr.\,\ref{simplee}. Tato varianta umožňuje regulovat pouze polohu robota na sférické základně, nikoliv jeho polohu v prostoru. \footnote{Tento přístup je implementován například v \cite{bb8}} Vstupní žádanou hodnotou je nulové úhlové natočení ve virtuální rovině, které je porovnáváno se skutečným natočením v osách IMU jednotky. Zásah regulátorů a je veden do přepočtu na tři reálná omniwheels. Odtud pak žádaný zásah přímo reprezentuje střídu pulzní šířkové modulace (PWM) a je přiveden na motory. 
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=16.5cm,keepaspectratio]{obr/PID_uhel}
+\end{center}
+\caption{Blokové schéma ideální řídící smyčky}
+\label{simplee}
+\end{figure}
+
+Tato metoda nepracuje s žádnými veličinami měřenými přímo na motorech. Při testování se ukázalo, že implementace této metody i po dlouhém experimentálním ladění PID parametrů nepřináší uspokojivé výsledky. Další nedostatek této metody je identický jako při regulaci inverzního kyvadla, kde může během regulace svislé polohy rameno vyjet z oblasti pojezdu a je proto potřeba ho zároveň udržovat v těchto mezích. Stejná logika může být aplikována na ballbota, který se ve snaze vyregulovat nulové natočení značně pohybuje v prostoru, který v praxi bývá omezený.
+
+\subsubsection*{Regulátor úhlové rychlosti}
+
+Schéma řídící smyčky, popsané např. v \cite{induction} využívá kaskádního řazení regulátoru úhlového natočení jako vnořené smyčky a regulátoru úhlové rychlosti jako smyčky nadřazené. Všechny hodnoty úhlu jsou získávány z IMU jednotek vhodným přepočtem, přičemž údaj o úhlové rychlosti lze po filtraci vést přímo z gyro senzoru. Naladěním PID parametrů bylo dosaženo lepších výsledků než v případě 1. Pohyb robota je plynulejší a reakce na změnu polohy probíhá rychleji. Regulátor natočení kolem svislé osy je v kaskádě zapojen pouze v podřazené smyčce.
+
+\subsubsection*{Udržování polohy v prostoru}
+
+Kaskádním zařazením regulátoru polohy vznikne nové regulační schéma (obr. \ref{kaskad}). Vstupním parametrem regulátoru je časový integrál úhlového natočení. Fyzikálně tato veličina není popsána, avšak nese v sobě informaci o tom, jak dochází k vychylování robota z rovnovážné polohy v prostoru. Příslušný PI regulátor se tak snaží velikostí zpětného zásahu tento integrál udržovat na nulové hodnotě. Regulace zajišťuje stále směřování os senzorů počátečním směrem a odpadá tedy potřeba kompenzovat případné zmatení regulátoru odchýlením z původního směru. V praxi se tato kaskádní struktura ukázala být nejvíce účinnou a byla tedy použita ve finální implementaci. Parametry PID jsou laděny experimentálně.
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=17cm,keepaspectratio]{obr/velocity}
+\end{center}
+\caption{Blokové schéma výsledné kaskádní regulační smyčky}
+\label{kaskad}
+\end{figure}
+\newpage
+
+\subsection{PID regulace se zpětnou vazbou z pohonu}
+\label{PID2}
+
+Při regulaci může nastat problém s různými nelinearitami chování systému. Významný podíl na nich má tření v planetové převodovce motoru a tření mezi povrchem kola a sférické základny. V případě, že se tento vliv nepodaří vykompenzovat polohovým PID regulátorem, je možné do řídící smyčky za výstup polohové regulace přepočtené na reálný pohon zařadit regulátor otáček motoru. 
+
+Během testování se ukázalo, že použité motory mají příliš malé rozlišení inkrementálního snímače a v nízkých rychlostech je signál derivace úhlového natočení pilovitý a skokový. Tento problém lze do budoucna odstranit vylepšením/výměnou stávajících hallových sond za optozávory, popřípadě implementováním jiného algoritmu pro enkódování signálu.	
+	
+U řady aplikací s použitím DC motorů bývá obvyklé použít regulátor proudu. Za podmínky stálého kontaktu kola s povrchem koule by tato regulace měla podobný účinek, jako v případě otáčkové regulace. \footnote{Motor je zde vždy řízen napětím} Tato metoda však v momentě ztráty kontaktu naprosto selhává, což ji pro tuto aplikaci činí nepoužitelnou. \footnote{Do řídící elektroniky je z důvodu možného rozšíření práce implementováno i měření proudu}
+
+\subsection{Zpracování vstupního signálu}
+\label{signal}
+
+Při regulaci nastává častý problém se špatnou kvalitou signálu z numerické derivace. Z tohoto důvodu je nutné zařadit do smyčky vhodnou filtraci za, případně i před bloček s derivací. V tomto případě bylo dosaženo uspokojivých výsledků při použití klouzavého průměru, který vyfiltruje vstupní signál ještě před derivací. Za tento filtr je dále zařazena dolní propust s experimentálně naladěnou časovou konstantou.
+
+Důležitým krokem algoritmu je počáteční kalibrace senzorů polohy. K tomuto účelu byl navržen speciální přípravek (kap. \ref{pripravek}), který lze pomocí trojice šroubů nastavit do vodorovné polohy a zjistit tak počáteční offset senzorů. Tento problém se však v praxi ukázal být o něco komplexnější, jelikož nastavení ideálního horizontu vyžaduje využití přesnější měřící techniky \footnote{Dosavadní varianta využívá klasickou vodováhu a vyvažovaní probíhá ručně} a jakékoliv vychýlení senzoru na desce elektroniky znamená ztrátu naměřených údajů. Tento problém je tedy vhodným předmětem k dalšímu rozšíření práce.
+
+\subsection{Finální implementace}
+\label{implement}
+
+Pomocí blokové sady DBS bylo možné snadno vygenerovat výsledný kód a nahrát jej do mikrokontroleru dsPIC. Nastavení režimu EM souvisí s nastavením komunikace UART, které musí být na dsPIC shodné s nastavením přímo v menu EM v rámci modelového prostoru Simulinku. Jedná se především o shodnou rychlost komunikace baud rate, velikost staticky alokované paměti a priority kanálu Tx a Rx sběrnice UART. V příloze je uvedeno několik dalších důležitých nastavení prostředí kompilátoru a Simulinku, bez kterých komunikaci nebylo možné zprovoznit. Použití EM výrazně zefektivnilo ladění PID parametrů. Potřebné nastavení EM bylo získáno z \cite{kerhuel}.
+
+Velmi důležitá byla volba časového kroku běhu programu na dsPIC. Ten záleží především na výpočtové náročnosti celé řídící smyčky a sběru dat ze senzorů. Jak se ukázalo, má pracovní frekvence zásadní vliv na hladký průběh regulace. Při nastavení časového kroku 0,01\,s bylo téměř nemožné uspokojivě naladit PID parametry a dosáhnout rychlého zásahu regulátoru. Při zjemnění kroku na 0,002\,s byly výsledky diametrálně odlišné a naladění probíhalo o poznání rychleji. Celková vytíženost procesoru je zprostředkována před busy flag port indikační diodu, která je umístěna přímo na desce řídící elektroniky -- ta ovšem slouží jen pro přibližné vyhodnocení vytíženosti.
+
+Jelikož všechny modely mikrokontroleru dsPIC obsahují pouze dvě periferie pro vstup enkodéru (QEI), je nutné pro jeden z použitých enkodéru vytvořit C funkci, která s využitím input capture vyhodnocuje informace o směru a počtu pulzů z inkrementálního čítače. Použitá funkce je k dispozici v příloze.
+
+\subsection{Výsledky regulace}
+\label{vysledky}
+
+Přestože výsledky regulace jsou nejlépe zřetelné na balancujícím zařízení vizuálně, jsou v této části umístěny grafy znázorňující průběh některých regulovaných veličin. Data jsou získána z jedné z virtuálních rovin a nejsou tedy přepočítána na pohony reálné soustavy -- přesto však dávají přibližnou představu o průběhu řízení. Při získávání dat byla v robotovi implementována kaskádní řídící smyčka (\ref{kaskad}).
+
+\vspace{7mm}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=18cm,keepaspectratio]{obr/uheel}
+\end{center}
+\vspace{5mm}
+\caption{Regulace úhlového natočení robota}
+\label{real}
+\end{figure}
+\vspace{5mm}
+
+\noindent Z grafu je vidět, že odchylka robota se pohybuje v rozmezí přibližně -2 až 2 stupně a robot tak dobře setrvává v rovnovážné poloze. Šum vstupních dat je patrně způsoben rušením senzorů vibracemi konstrukce.
+
+Druhý graf zobrazuje průběh veličin regulace polohy v prostoru, která je v kaskádě zařazena na nejvyšší úrovni. Pokud má skutečná hodnota velkou amplitudu a harmonický průběh, může během regulace dojít k postupnému rozkývání poměrně lehké sférické základny. Tomuto jevu se dá do budoucna předejít zvýšením její hmotnosti. Dalším možným vylepšením může být implementace algoritmu pro saturování přítomných integrátorů, aby se zabránilo případnému nárustu jejich hodnoty daleko nad možnosti regulačního zásahu a selhání regulace.
+
+\vspace{7mm}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=16cm,keepaspectratio]{obr/polohaa}
+\end{center}
+\vspace{5mm}
+\caption{Regulace polohy robota}
+\label{real}
+\end{figure}
+\vspace{5mm}
+
+\newpage
+
+\chapter{Závěr}
+\label{zaver}
+
+V této práci byla shrnuta řada poznatků důležitých pro vývoj konstrukce a implementaci inteligentního řízení balancujícího robota. V praktické části bylo poté navrženo vlastní konstrukční řešení a metoda regulace nestabilní rovnovážné polohy pomocí PID řídící smyčky. Na závěr se úlohu podařilo převést do praxe a uvést do provozu hlavní funkce robota. Tím byly splněny všechny body zadání této práce.
+
+Hlavní prvky konstrukce ballbota byly navrženy s ohledem na možnosti 3D tisku a návrh tedy drží krok s aktuálními trendy co se týče použitých technologií. Během celého procesu návrhu byl kladen důraz na důvtipné využití co největšího množství snadno dostupných prostředků pro výrobu sférické základny, úpravy jejího povrchu a ostatní důležité díly tvořící konstrukci celého zařízení.
+
+Regulace polohy robota na sférické základně byla navržena na základě rovinného virtuálního modelu soustavy s následným převodem na reálnou geometrii pohonných jednotek. Robot je schopen udržet rovnovážnou polohu a zachovává relativně malou odchylku od původní pozice v prostoru. Parametry všech použitých PID regulátorů byly laděny experimentálně.
+
+Celkově je technická koncepce tohoto zařízení vhodným základem pro další rozšíření práce. Zde je prostor zejména pro implementaci komplexnějších řídících metod, založených na znalosti stavů soustavy, implementace pokročilého plánování trajektorie pohybu robota v prostoru, další optimalizace řídícího softwaru a zpracování dat ze senzorů, kalibrace nulové polohy senzorů, návrh vhodného uživatelského rozhraní pro ladění parametrů za chodu a jiné.
+\vspace{7mm}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics*[width=14cm,keepaspectratio]{obr/real.jpg}
+\end{center}
+\vspace{5mm}
+\caption{Fyzická realizace ballbota}
+\label{real}
+\end{figure}

@@ -1,0 +1,64 @@
+%%%
+%%%
+%%% Vytvoří náležitosti dle směrnice rektora
+%%%    Soubor VSKP.tex
+%%%
+%% Do preambule hlavního souboru vložte následující příkazy:
+%%    \usepackage{VSKP}  % Načte styl šablony dle směrnice rektora
+%%    \input{VSKP}       % Načte data pro vyplnění šablony
+%%    \usepackage{fontspec}  % Pro vkládání OTF fontů (vyžaduje titulní list) - nefunguje v pdfLaTeXu
+%%
+%% Na začátek hlavního souboru (za \begin{document} ) vložte příkazy pro vysázení desek
+%%   \titul% vytiskne titul práce
+%%   \abstrakty% vytiskne stránku s abstrakty
+%%
+%% Použité kódování UTF-8
+%%
+%%% Generování údajů
+
+\fakulta{Fakulta strojního inženýrství}
+\enfakulta{Faculty of Mechanical Engineering}
+\adresafakulta{Technická 2896/2, 61669 Brno}
+
+\ustav{Ústav mechaniky těles, mechatroniky a biomechaniky}
+\enustav{Institute of Solid Mechanics, Mechatronics and Biomechanics}
+
+% udaje o autorovi
+
+\autor{}{Filip Špila}{}  % Jméno autora, 
+    % Tituly vložte samostatně, např. \autor{Ing.}{Petra Smékalová}{}
+\autorzkr{Špila, F.}
+  % bibliografické jméno
+
+\typstudia{B}
+  % M, N, B, D
+  % M - Magisterské, N - Navazující magisterské, B - Bakalářské, D-Doktorské
+  % U typu studia M a N se liší anglický název
+
+\nazev{Návrh konstrukce a řízení nestabilního robota se sférickou základnou} 
+  % Ručně můžete dlouhý text zalomit pomocí " \break "
+\ennazev{Design of the construction and control algorithm for an unstable robot \break with spherical base} 
+  % Ručně můžete dlouhý text zalomit pomocí " \break "
+
+%vedouci prace
+\vedouci{Ing.}{Tomáš Spáčil}{}
+\citacevedouci{Vedoucí  Ing. Tomáš Spáčil.} % Označení vedoucího práce pro citaci záv. práce. Musí být ukončeno tečkou.
+
+\datumobhajoby{neuvedeno}
+\abstrakt{\noindent Tato bakalářská práce se zabývá návrhem, výrobou a realizací řízení nestabilního robota, balancujícího na sférické základně, známého také pod názvem ballbot. Předpokládá se kompletní návrh konstrukce, výběr pohonných jednotek, návrh, implementace a testování inteligentního řídícího algoritmu, který udrží robota v metastabilní rovnovážné poloze. Při vývoji budou využity softwarové nástroje MATLAB/Simulink. Práce také počítá s využitím mikrokontroleru dsPIC jako platformy pro finální řízení celého systému. Zadání projektu má interdisciplinární charakter a je realizováno jako týmová práce s jasně vymezenými úkoly pro jednotlivé členy.} 
+  % Před "\n" vložit další "\n"
+\enabstrakt{\noindent This bachelor's thesis deals with the complete design, manufacture, and control of an unstable robot, balancing on a spherical base, also known as ballbot. The complete design of the construction, motor unit selection, design, implementation testing of an intelligent control algorithm to keep the robot in a meta-stable equilibrium is assumed. Multiple tools such as Matlab/Simulink are used for this approach. It also includes the final implementation of the code in the PIC microcontroller. The project has an interdisciplinary character and is meant to be done as teamwork whereby each team member has a strictly defined role.} 
+  % Před "\n" vložit další "\n"
+\klicovaslova{\noindent Ballbot, konstrukce, inteligentní řízení, PID, MATLAB, Simulink} % Před "\n" vložit další "\n"
+\enklicovaslova{\noindent Ballbot, construction, intelligent control, PID, MATLAB, Simulink} % Před "\n" vložit další "\n"
+  
+%%
+%%   Konec generování údajů
+%%
+
+
+%%
+%%   Vlastní vysázení desek umístnit na začátek práce
+%%
+%\titul% vytiskne titul práce
+%\abstrakty% vytiskne stránku s abstrakty
