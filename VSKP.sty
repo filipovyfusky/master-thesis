@@ -1,4 +1,4 @@
-﻿%%
+%%
 %% Styl pro psani Vysokoskolskych kvalifikacnich praci
 %% VUT v Brně
 %%
@@ -79,8 +79,8 @@
     \def\tstudia{#1}
     \def\vzortypu{N}
     \ifx\tstudia\vzortypu
-        \edef\typpracetxt{diplomová práce}
-        \edef\entyppracetxt{master's thesis}
+        \edef\typpracetxt{master's thesis}
+        \edef\entyppracetxt{diplomová práce}
     \else
         \edef\typpracetxt{neznámý typ studia: \tstudia}
         \edef\entyppracetxt{unknown studium type: \tstudia}
@@ -132,9 +132,9 @@
 % práce a dvouřádkovém názvu ústavu vysázel poslední řádek na správnou stranu
 \Vutska
 \vafle
-\noindent{\Vutbig VYSOKÉ UČENÍ TECHNICKÉ V BRNĚ\hfil}\par
+\noindent{\Vutbig BRNO UNIVERSITY OF TECHNOLOGY\hfil}\par
 \smallskip
-\noindent{\Vutsub{BRNO UNIVERSITY OF TECHNOLOGY}}
+\noindent{\Vutsub{VYSOKÉ UČENÍ TECHNICKÉ V BRNĚ}}
 \bgroup
 \Vutskc
    \noindent{\Vutmid\Fakultatxt}\par
@@ -173,23 +173,23 @@
 \fi
 \ifdim\dimen0<\dimen1
    % nevejde se mi tam jmeno autora nebo vedouciho protoze je moc dlouhe
-   \noindent\Vutsmall{AUTOR PRÁCE\hfill\hbox to \dimen1{\Autortxt\hss}}
+   \noindent\Vutsmall{AUTHOR\hfill\hbox to \dimen1{\Autortxt\hss}}
 
-\noindent\Vutsubs{AUTHOR}
+\noindent\Vutsubs{AUTOR PRÁCE}
 
 \Vutske
-\noindent\Vutsmall{VEDOUCÍ PRÁCE\hfill\hbox to \dimen1{\Vedoucitxt\hss}}
+\noindent\Vutsmall{SUPERVISOR\hfill\hbox to \dimen1{\Vedoucitxt\hss}}
 
-\noindent{\Vutsubs{SUPERVISOR}}
+\noindent{\Vutsubs{VEDOUCÍ PRÁCE}}
 \else
-   \noindent{\hbox to 5cm{AUTOR PRÁCE\hss}\hskip2cm\Autortxt}
+   \noindent{\hbox to 5cm{AUTHOR\hss}\hskip2cm\Autortxt}
 
-   \noindent{\Vutsubs{AUTHOR}}
+   \noindent{\Vutsubs{AUTOR PRÁCE}}
 
    \Vutske
-   \noindent{\hbox to 5cm{VEDOUCÍ PRÁCE\hss}\hskip2cm\Vedoucitxt}
+   \noindent{\hbox to 5cm{SUPERVISOR\hss}\hskip2cm\Vedoucitxt}
 
-   \noindent{\Vutsubs{SUPERVISOR}}
+   \noindent{\Vutsubs{VEDOUCÍ PRÁCE}}
 \fi
 
 \Vutskf
