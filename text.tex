@@ -1,5 +1,32 @@
 \chapter{Research and theory}
 \label{research}
-The first part of this section gives a thorough introduction to neural networks (NN) in general. It begins by definition of fundamental terms needed to fully understand the core principles of NNs. Due to the fact that the research in this area is still heavily ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent relevant for the particular chosen network architecture. Still, it will give a solid foundation needed to understand other similar approaches. 
+First part of this section gives a thorough introduction to neural networks (NN) in general. It begins by definition of fundamental terms needed to fully understand the core principles of NNs. Due to the fact that the research in this area is still heavily ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent relevant for the particular chosen network architecture. Still, it will give a solid foundation needed to understand other similar approaches. 
+
+Second part presents some of the main approaches based on machine learning researches have recently used to tackle the semantic segmentation problem. However, not all of them use CNNs as the core algorithm. This part summarizes the main key points from the corresponding papers that contributed to this topic by presenting novel architectures and principles. It finishes by more detailed description of a method that is eventually found the most promising and thus selected for the final implementation.
+
+\section{Supervised learning}
+Artificial neural network algorithms are inspired by the architecture and the dynamics
+of networks of neurons in human brain. They can learn to recognize structures in a given set of training data and generalize what they have learnt to other data sets (supervised learning). In supervised learning one uses a training data set of correct input/output pairs. One feeds an input from the training data into the input terminals of the network and compares the states of the output neurons to the target values. The network trainable parameters are changed as the training continues to minimise the differences between network outputs and targets for all input patterns in the training set. In this way the network learns to associate input patterns in the training set with the correct target values. A crucial question is whether the trained network can generalise: does it find the correct targets for input patterns that were not in the training set? 
+
+\subsection{Feedforward neural networks}
+The goal of a feedforward neural network is to find a non-linear function that maps the space of the inputs x to the space of the outputs y. In other words, to learn the function [zdroj SANTIAGO]
+
+$$ f^*: \mathbb{R}^m \rightarrow \mathbb{R}^n, f^*(x;\phi) $$
+
+where $ \phi $ are trainable parameters of the network. The goal is to learn the value of the parameteres that result in the best function approximation, by solving the equation
+
+$$ \phi \leftarrow \, arg \, min \, L(y, f^*(x;\phi)) $$
+
+where $ L $ is a loss function chosen for the particular task. One can understand the term 'loss function' simply as a metric of 'how happy we are about the output that the network gives us for a given input'. The structure is usually composed of many nested functions. For instance, there might be three functions f(1), f(2) and f(3) connected in a chain that forms into
+
+f(x) = f(3)(f(2)(f(1)(x))) (2.4)
+
+These models are called feedforward because information flows through the function being evaluated from x, through the intermediate computations used to define f and finally to the output y. In this case, f(1) is called the first layer of the network, f(2) is called the second layer, and so on. The final layer of a feedforward network is called the output layer. During neural network training, f(x) is driven to match f(x). Each training example x is accompanied by a label y  f(x). The training examples specify
+directly what the output layer must do at each point x; it must produce a value that is close to y. The behavior of the other layers is not specified by the training data, but the learning algorithm must decide how to use those layers in order to produce
+the desired output. It is for this reason that these layers are called hidden layers.[12] In Figure 2.3 , an image of a four-layer feedforward neural network with two hidden layers can be seen
+
+The neurons are modelled as linear threshold units (McCulloch-Pitts neurons) and are commonly organized in structures called layers. Layer in the network is defined as a set of computational units. 
+
+
 
         
