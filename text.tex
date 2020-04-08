@@ -9,7 +9,7 @@ Artificial neural network algorithms are inspired by the architecture and the dy
 of networks of neurons in human brain. They can learn to recognize structures in a given set of training data and generalize what they have learnt to other data sets (supervised learning). In supervised learning one uses a training data set of correct input/output pairs. One feeds an input from the training data into the input terminals of the network and compares the states of the output neurons to the target values. The network trainable parameters are changed as the training continues to minimise the differences between network outputs and targets for all input patterns in the training set. In this way the network learns to associate input patterns in the training set with the correct target values. A crucial question is whether the trained network can generalise: does it find the correct targets for input patterns that were not in the training set? 
 
 \subsection{Feedforward neural networks}
-The goal of a feedforward neural network is to find a non-linear function that maps the space of the inputs x to the space of the outputs y. In other words, to learn the function [zdroj SANTIAGO]
+The goal of a feedforward neural network is to find a non-linear, generally n-dimensional function that maps the space of the inputs x to the space of the outputs y. In other words, to learn the function [zdroj SANTIAGO]
 
 $$ f^*: \mathbb{R}^m \rightarrow \mathbb{R}^n, f^*(x;\phi) $$
 
@@ -17,16 +17,59 @@ where $ \phi $ are trainable parameters of the network. The goal is to learn the
 
 $$ \phi \leftarrow \, arg \, min \, L(y, f^*(x;\phi)) $$
 
-where $ L $ is a loss function chosen for the particular task. One can understand the term 'loss function' simply as a metric of 'how happy we are about the output that the network gives us for a given input'. The structure is usually composed of many nested functions. For instance, there might be three functions f(1), f(2) and f(3) connected in a chain that forms into
+where $ L $ is a loss function chosen for the particular task. One can understand the term 'loss function' simply as a metric of 'how happy we are about the output that the network gives us for a given input' and therefore $f^*(x;\phi)$ is driven to match the ideal function $f(x;\phi)$ druing network training. 
 
-f(x) = f(3)(f(2)(f(1)(x))) (2.4)
+The structure of a feedforward network is usually composed of many nested functions. For instance, there might be three functions $f^{(1)}$, $f^{(2)}$ and $f^{(3)}$ connected in a chain to the form
 
-These models are called feedforward because information flows through the function being evaluated from x, through the intermediate computations used to define f and finally to the output y. In this case, f(1) is called the first layer of the network, f(2) is called the second layer, and so on. The final layer of a feedforward network is called the output layer. During neural network training, f(x) is driven to match f(x). Each training example x is accompanied by a label y  f(x). The training examples specify
-directly what the output layer must do at each point x; it must produce a value that is close to y. The behavior of the other layers is not specified by the training data, but the learning algorithm must decide how to use those layers in order to produce
-the desired output. It is for this reason that these layers are called hidden layers.[12] In Figure 2.3 , an image of a four-layer feedforward neural network with two hidden layers can be seen
+$$ f(x) = f^{(3)}(f^{(2)}(f^{(1)}(x))) $$
 
-The neurons are modelled as linear threshold units (McCulloch-Pitts neurons) and are commonly organized in structures called layers. Layer in the network is defined as a set of computational units. 
+These models are reffered to as feedforward because information flows from the deepest nested function $f^{(1)}$ taking $ x $ as its direct input to other functions in the chain and finally to the output $ y $. One can name the functions starting by $f^{(1)}$ as the first layer (input layer) of the network, $f^{(2)}$ is called the second layer, and so on. The final layer of the network is called output layer. 
 
+Recall that in supervised learning one needs a set of training data, in this case a set of matching x, y (footnote: y are often called LABELS) pairs. The training examples specify directly what the output layer must do at each point x; it must produce a value that is as close as possible to y. The behaviour of the other layers is not specified by the training data which is why we call these layers 'hidden layers'. In Figure XY , an image of a four-layer feedforward neural network with two hidden layers can be seen.
 
+\subsection{McCulloch-Pitts neurons}
 
-        
+Layers in Figure XY can be further divided into distinct computational units (again, just another nested functions) called neurons. This is where the resemblance with/to biological neurons comes into play. The neurons are mathematically modelled as linear threshold units (McCulloch-Pitts neurons), they process all input signals coming to them from other neurons and compute an output. In its simplest form, the model for the artificial neuron has only two states, active or inactive. Let's stick with this simple model for a while. If the output exceeds a given threshold then the state of the neuron is said to be active, otherwise inactive. The model is illustrated in Figure 1.4. Neurons usually perform repeated computations, and one divides up time into discrete time steps $ t = 0,1,2,3,.... $ The state of neuron number $ j $ at time step $ t $ is denoted by
+
+$$ 
+n_j(t) = 
+	\begin{cases}	
+		0 & inactive,\\
+		1 & active.
+	\end{cases} 
+$$
+
+Given the signals $ n_j(t+1) $, neuron number i computes
+
+$$  
+n_j(t+1)=\theta_H \left(\sum\limits_{j}w_{ij}n_j(t) - \mu_i \right)
+$$
+
+As written, this computation is performed for all $ i $ neurons in parallel, and the outputs $ n_i $ are the inputs to all neurons at the next time step, therefore the outputs have the time argument $ t+1 $.
+
+The weights wi j are called synaptic weights. Here the first index, i,
+refers to the neuron that does the computation, and j labels all neurons that connect
+to neuron i. The connection strengths between different pairs of neurons are in
+general different, reflecting different strengths of the synaptic couplings.
+
+The argument of $ \theta_H $ is often referred to as the local field
+
+$$ b_i = \sum\limits_{j}w_{ij}n_j(t) - \mu_i $$
+
+Equation (1.2) basically shows that the neuron performs a weighted linear average of the inputs nj and applies an offset (threshold) which is denoted by µi. Finally, the function $ \theta_H $ is reffered to as the activation function.
+
+\subsection{Activation function}
+
+In the simplest case, the neurons can only have the states 0/1, which in terms of the activation function corresponds to the Heaviside function
+
+$$ 
+\theta_H(b) = 
+\begin{cases}	
+1 & for b > 0,\\
+0 & for b < 0.
+\end{cases} 
+$$
+
+In practice however, the simplest model must be generalised to achieve certain tasks. The most important
+generalisations are the following. Sometimes it is necessary to allow the neuron to respond continuously to its inputs. To this end one replaces Eq. (1.2) by a general continuous activation function $ g(b) $. An example is shown in Figure 1.6. This dictates that the states assume continuous values too, not just the discrete
+values 0 and 1 as given in Equation (1.1).
