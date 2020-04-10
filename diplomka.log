@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.4.7)  8 APR 2020 18:00
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.4.5)  10 APR 2020 16:00
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -6,11 +6,9 @@ LaTeX2e <2017-04-15>
 Lua module: luaotfload-main 2017/01/29 2.80001 OpenType layout system.
 Lua module: lualibs 2017-02-01 2.5 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2017-02-01 2.5 ConTeXt Lua libraries -- extended co
-llection.(using write cache: /home/phil/.texlive2017/texmf-var/luatex-cache/gene
-ric)(using read cache: /var/lib/texmf/luatex-cache/generic /home/phil/.texlive20
-17/texmf-var/luatex-cache/generic)
-luaotfload | conf : Root cache directory is /home/phil/.texlive2017/texmf-var/lu
-atex-cache/generic/names.
+llection.(using cache: /var/lib/texmf/luatex-cache/generic)
+luaotfload | conf : Root cache directory is /var/lib/texmf/luatex-cache/generic/
+names.
 luaotfload | init : Loading fontloader “fontloader-2017-02-11.lua” from kpse
 -resolved path “/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/fontloader
 -2017-02-11.lua”.
@@ -22,8 +20,8 @@ Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 4
-luaotfload | conf : Root cache directory is /home/phil/.texlive2017/texmf-var/lu
-atex-cache/generic/names.
+luaotfload | conf : Root cache directory is /var/lib/texmf/luatex-cache/generic/
+names.
 Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
 font'.
 Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
@@ -34,15 +32,15 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.262 seconds
+luaotfload | main : initialization completed in 0.079 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
-luaotfload | db : Font names database loaded from /home/phil/.texlive2017/texmf-
-var/luatex-cache/generic/names/luaotfload-names.luc(load luc: /home/phil/.texliv
-e2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-regular.luc))
+luaotfload | db : Font names database loaded from /var/lib/texmf/luatex-cache/ge
+neric/names/luaotfload-names.luc(load luc: /var/lib/texmf/luatex-cache/generic/f
+onts/otl/lmroman12-regular.luc))
 \c@part=\count79
 \c@chapter=\count80
 \c@section=\count81
@@ -77,12 +75,14 @@ File: switch.def 2018/02/14 3.18 Babel switching mechanism
 \l@dumylang=\language2
 Package babel Info: Non-standard hyphenation setup on input line 113.
 \l@nohyphenation=\language3
-\l@ancientgreek=\language4
-\l@slovak=\language5
-\l@ibycus=\language6
-\l@monogreek=\language7
-\l@czech=\language8
+\l@monogreek=\language4
+\l@ancientgreek=\language5
+\l@slovak=\language6
+\l@usenglishmax=\language7
+\l@ibycus=\language8
 \l@greek=\language9
+\l@czech=\language10
+\l@ukenglish=\language11
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel-czech/czech.ldf
 Language: czech 2008/07/06 v3.1a Czech support from the babel system
@@ -102,8 +102,6 @@ UTF-8 Czech hyphenation patterns (Pavel Sevecek, v3, 1995)
 (/usr/share/texlive/texmf-dist/tex/generic/hyph-utf8/patterns/tex/hyph-cs.tex)))
  (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
-\l@british = a dialect from \language\l@english 
-\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -700,9 +698,8 @@ LaTeX Info: Redefining \scshape on input line 3635.
 LaTeX Info: Redefining \upshape on input line 3640.
 LaTeX Info: Redefining \em on input line 3670.
 LaTeX Info: Redefining \emph on input line 3695.
-(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmro
-man12-bold.luc)(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic
-/fonts/otl/lmroman12-italic.luc)
+(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman12-bold.luc)(loa
+d luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman12-italic.luc)
 LaTeX Info: Redefining \- on input line 3749.
 .................................................
 . LaTeX info: "xparse/redefine-command"
@@ -1028,18 +1025,17 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-<logo/VUT.pdf, id=40, 99.58253pt x 99.58376pt>
+<logo/VUT.pdf, id=44, 99.58253pt x 99.58376pt>
 File: logo/VUT.pdf Graphic file (type pdf)
 <use logo/VUT.pdf>
 Package luatex.def Info: logo/VUT.pdf  used on input line 50.
 (luatex.def)             Requested size: 116.65999pt x 116.6614pt.
-(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/vafl
-e-vut-regular.luc)
+(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/vafle-vut-regular.luc)
 \g__fontspec_family_Vafle_VUT_Regular.otf_int=\count297
 luaotfload | aux : font no 27 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : no font with id 27(load luc: /home/phil/.texlive2017/texmf-va
-r/luatex-cache/generic/fonts/otl/vafle-vut-bold.luc)
+luaotfload | aux : no font with id 27(load luc: /var/lib/texmf/luatex-cache/gene
+ric/fonts/otl/vafle-vut-bold.luc)
 luaotfload | aux : font no 28 (nil) does not define feature smcp for script latn
  with language dflt
 luaotfload | aux : no font with id 28
@@ -1070,18 +1066,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--57
 
 ] [4
 
-] [5](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl
-/lmroman17-regular.luc)
+] [5](load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman17-regular.
+luc)
 
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
 (Font)              using `TU/lmr/bx/n' instead on input line 64.
 
-(./diplomka.toc(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic
-/fonts/otl/lmroman8-regular.luc)(load luc: /home/phil/.texlive2017/texmf-var/lua
-tex-cache/generic/fonts/otl/lmroman6-regular.luc)
+(./diplomka.toc(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman8
+-regular.luc)(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman6-r
+egular.luc)
 LaTeX Font Info:    Try loading font information for U+msa on input line 5.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 5.
@@ -1092,11 +1087,11 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 
 \openout4 = diplomka.toc
-(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmro
-manslant12-regular.luc)
+(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmromanslant12-regular.
+luc)
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1] (./Introduction.tex
-<obr/semseg.jpg, id=88, 903.375pt x 471.7625pt>
+<obr/semseg.jpg, id=93, 903.375pt x 471.7625pt>
 File: obr/semseg.jpg Graphic file (type jpg)
 <use obr/semseg.jpg>
 Package luatex.def Info: obr/semseg.jpg  used on input line 13.
@@ -1109,38 +1104,33 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.3'
 warning  (pdf backend): ignoring duplicate destination with the name 'page.4'
 [4]
 warning  (pdf backend): ignoring duplicate destination with the name 'page.5'
-[5]) (./Literatura.tex [6]) (./SeznamZkratek.tex [7]) (./SeznamPriloh.tex
-[8])
+[5](load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman5-regular.luc
+) [6] [7]) (./Literatura.tex [8]) (./SeznamZkratek.tex [9])
+(./SeznamPriloh.tex [10])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
- [9]
+ [11]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (./diplomka.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
+Package rerunfilecheck Info: File `diplomka.out' has not changed.
+(rerunfilecheck)             Checksum: 8D333B4D272D82193F1629B47912619F;1530.
 
-
-Package rerunfilecheck Warning: File `diplomka.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `diplomka.out':
-(rerunfilecheck)             Before: E25D1789AB83D65673DC60C9C2129FBD;1370
-(rerunfilecheck)             After:  8D333B4D272D82193F1629B47912619F;1530.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 24522 strings out of 494480
+ 24543 strings out of 494480
  100000,662416 words of node,token memory allocated
- 560 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 5 glue, 1 kern, 14 attribute, 60 glue_spec, 14 attr
+ 576 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 5 glue, 1 kern, 18 attribute, 60 glue_spec, 18 attr
 ibute_list, 1 write nodes
-   avail lists: 2:206,3:62,4:32,5:179,6:2811,7:657,8:29,9:129,10:22,11:243
- 27910 multiletter control sequences out of 65536+600000
- 71 fonts using 9178471 bytes
- 46i,7n,56p,1160b,453s stack positions out of 5000i,500n,10000p,200000b,100000s
+   avail lists: 2:218,3:67,4:36,5:204,6:3294,7:818,8:29,9:126,10:22,11:314
+ 27919 multiletter control sequences out of 65536+600000
+ 81 fonts using 9868807 bytes
+ 46i,13n,56p,1182b,520s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmromanslant12-regular.otf></usr/shar
 e/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/op
 entype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/l
@@ -1152,10 +1142,10 @@ amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomka.pdf (14 pages, 168365 bytes).
+Output written on diplomka.pdf (16 pages, 174961 bytes).
 
-PDF statistics: 192 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 131072)
- 91 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 204 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 131072)
+ 99 words of extra memory for PDF output out of 10000 (max. 100000000)
 

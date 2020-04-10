@@ -6,7 +6,7 @@ Second part presents some of the main approaches based on machine learning resea
 
 \section{Supervised learning}
 Artificial neural network algorithms are inspired by the architecture and the dynamics
-of networks of neurons in human brain. They can learn to recognize structures in a given set of training data and generalize what they have learnt to other data sets (supervised learning). In supervised learning one uses a training data set of correct input/output pairs. One feeds an input from the training data into the input terminals of the network and compares the states of the output neurons to the target values. The network trainable parameters are changed as the training continues to minimise the differences between network outputs and targets for all input patterns in the training set. In this way the network learns to associate input patterns in the training set with the correct target values. A crucial question is whether the trained network can generalise: does it find the correct targets for input patterns that were not in the training set? 
+of networks of neurons in human brain. They can learn to recognize structures in a given set of training data and generalize what they have learnt to other data sets (supervised learning). In supervised learning one uses a training data set of correct input/output pairs. One feeds an input from the training data into the input terminals of the network and compares the states of the output neurons to the target values. The network trainable parameters are changed as the training continues to minimize the differences between network outputs and targets for all input patterns in the training set. In this way the network learns to associate input patterns in the training set with the correct target values. A crucial question is whether the trained network can generalize: does it find the correct targets for input patterns that were not in the training set? 
 
 \subsection{Feedforward neural networks}
 The goal of a feedforward neural network is to find a non-linear, generally n-dimensional function that maps the space of the inputs x to the space of the outputs y. In other words, to learn the function [zdroj SANTIAGO]
@@ -26,6 +26,8 @@ $$ f(x) = f^{(3)}(f^{(2)}(f^{(1)}(x))) $$
 These models are reffered to as feedforward because information flows from the deepest nested function $f^{(1)}$ taking $ x $ as its direct input to other functions in the chain and finally to the output $ y $. One can name the functions starting by $f^{(1)}$ as the first layer (input layer) of the network, $f^{(2)}$ is called the second layer, and so on. The final layer of the network is called output layer. 
 
 Recall that in supervised learning one needs a set of training data, in this case a set of matching x, y (footnote: y are often called LABELS) pairs. The training examples specify directly what the output layer must do at each point x; it must produce a value that is as close as possible to y. The behaviour of the other layers is not specified by the training data which is why we call these layers 'hidden layers'. In Figure XY , an image of a four-layer feedforward neural network with two hidden layers can be seen.
+
+It is now very important to highlight that the neural network must be seen as something that is capable of modeling practically any function we can think of [general approximation theorem]. The power of this brings us to the definition of a classification task. In this task, the function the network approximates has discrete states, true/false. To give the most typical example, let's consider we have a large set of black and white images containing hand-written digits from 0 to 9. Now we want the network to basically associate the information encoded in the pixel values of the input image with the information of what digit that particular image shows. In this case, the vector space of inputs (flattened image array in the simplest case of size m = width*height) is projected to the space of size n = 10 categories (digits 0 to 9). 
 
 \subsection{McCulloch-Pitts neurons}
 
@@ -60,16 +62,68 @@ Equation (1.2) basically shows that the neuron performs a weighted linear averag
 
 \subsection{Activation function}
 
-In the simplest case, the neurons can only have the states 0/1, which in terms of the activation function corresponds to the Heaviside function
+The general motivation for using activation functions is to bring non-linearity to the model. In the simplest case that has been discussed so far, the neurons can only have the states 0/1, which in terms of the activation function corresponds to the Heaviside function
 
 $$ 
 \theta_H(b) = 
 \begin{cases}	
-1 & for b > 0,\\
-0 & for b < 0.
+1 & \text{for $b > 0$,}\\
+0 & \text{for $b < 0$.}
 \end{cases} 
 $$
 
-In practice however, the simplest model must be generalised to achieve certain tasks. The most important
-generalisations are the following. Sometimes it is necessary to allow the neuron to respond continuously to its inputs. To this end one replaces Eq. (1.2) by a general continuous activation function $ g(b) $. An example is shown in Figure 1.6. This dictates that the states assume continuous values too, not just the discrete
-values 0 and 1 as given in Equation (1.1).
+In practice however, the simplest model must be generalized by allowing the neuron to respond continuously to its inputs, which is necessary for the optimization algorithms used in the training phase to perform well. To this end one replaces Eq. (1.2) by a general continuous activation function $ g(b) $. An example is shown in Figure 1.6. This dictates that the states assume continuous values too, not just the discrete values 0 and 1 as given in Equation (1.1).
+
+There are several choices for the activation function which all come with their 'pros and cons' for a particular application the network is used for. However, there's a few requirements all of these functions should meet:
+
+\begin{itemize}
+	
+\item Nonlinearity. As discussed above, the non-linearity is a general ability of a neural network allowing it to model very complex functions
+\item Monotocity and nondecreasibility. This allows certain optimization algorithms to perform more stable as we'll see further.
+\item Differenciability (or at least piecewise differencialbility). This is useful not only in terms of stability of the optimization algorithms, but also for the analytical derivation of the update rule for the network parameters during optimization. 
+		
+\end{itemize}
+
+One also needs to distinguish between activation functions used in neurons in the input/hidden layers and neurons in the output layer. The reason for that comes from the definition of a classification task, where we would like to interpret the outputs of the network as 'probabilities' of the input belonging to a certain class. For this one can usually choose between commonly used Softmax classifier (function) and Sigmoid function. In the example with hand-written digits, when we feed the network with an image showing digit 7, we want the network to spit out the 100 percent probability for the image belonging to the class 'digit 7' and 0 percent probability of it belonging to the classes 'digit 0', 'digit 1'... In such case, the output of the last layer of the network not only needs to be within 0 and 1, but in case of using Softmax the sum of all outputs must give unity as they are intepreted as (relative!) probabilities. We say 'relative' because the network's decision is only based on the features of this particular image differing in comparison with other data we fed in during training and does not reflect 'outer' probability at all. 
+
+\begin{itemize}
+
+\item Sigmoid
+
+$$  
+g(x)=\frac{1}{1 + e^{-x}}
+$$
+
+This function used to be broadly used mainly thank to the clear interpretation of the state of the neuron - active/inactive is represented by values 0/1. Sigmoid is currently obsolete for large networks. In short, it does not have optimal properties for the learning algorithm called 'backpropagation', which is to be discussed in next chapters. Also, the fact that its mean value in non-zero doesn't have a positive impact on the learning process either. [Groman]
+
+\item Hyperbolic tangent 
+
+$$  
+g(x)=\tanh (x)
+$$
+
+Unlike Sigmoid, the range of its output is in the interval <-1,1>. However, it still has the same limitations as the previous function and therefore is not a suitable candidate for learning via backpropagation. 
+
+\item Rectified Linear unit (ReLu)
+
+$$
+g(x)=\max (0,x)
+$$
+
+The authors of this concept found the inspiration in real biological neurons. The idea comes from a model for the relation between the electrical current through the cell membrane into the neuron cell, and the membrane potential. The main message is that there is a threshold below which the response of the neuron is strictly zero, as shown in Figure XY. The derivative of the ReLU function is discontinuous at $ x=0 $. A common convention is to set the derivative to zero at $ x=0 $.  
+
+\item Parametric (leaky) ReLu
+
+$$
+g(x)=\max(x,\alpha x)
+$$
+
+By modifying the previously introduced function one gets a version of ReLu intended to address the biggest drawback of ReLu, which is the fact that some neurons may become dead (their output will be always zero) and thus not contribute to the network's output. Unfortunately there's generally no guarantee that using Leaky ReLu instead of ReLu will always mean better results. 
+
+\end{itemize}
+
+ 
+
+
+
+
