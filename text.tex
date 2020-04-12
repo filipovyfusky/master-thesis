@@ -4,12 +4,13 @@ First part of this section gives a thorough introduction to neural networks (NN)
 
 Second part presents some of the main approaches based on machine learning researches have recently used to tackle the semantic segmentation problem. However, not all of them use CNNs as the core algorithm. This part summarizes the main key points from the corresponding papers that contributed to this topic by presenting novel architectures and principles. It finishes by more detailed description of a method that is eventually found the most promising and thus selected for the final implementation.
 
-\section{Supervised learning}
+\section{Architecture of artificial neural networks}
 Artificial neural network algorithms are inspired by the architecture and the dynamics
 of networks of neurons in human brain. They can learn to recognize structures in a given set of training data and generalize what they have learnt to other data sets (supervised learning). In supervised learning one uses a training data set of correct input/output pairs. One feeds an input from the training data into the input terminals of the network and compares the states of the output neurons to the target values. The network trainable parameters are changed as the training continues to minimize the differences between network outputs and targets for all input patterns in the training set. In this way the network learns to associate input patterns in the training set with the correct target values. A crucial question is whether the trained network can generalize: does it find the correct targets for input patterns that were not in the training set? 
 
-\subsection{Feedforward neural networks}
-The goal of a feedforward neural network is to find a non-linear, generally n-dimensional function that maps the space of the inputs x to the space of the outputs y. In other words, to learn the function [zdroj SANTIAGO]
+\subsection{Feed-forward networks}
+
+The goal of a feed-forward neural network is to find a non-linear, generally n-dimensional function that maps the space of the inputs x to the space of the outputs y. In other words, to learn the function [zdroj SANTIAGO]
 
 $$ f^*: \mathbb{R}^m \rightarrow \mathbb{R}^n, f^*(x;\phi) $$
 
@@ -17,15 +18,15 @@ where $ \phi $ are trainable parameters of the network. The goal is to learn the
 
 $$ \phi \leftarrow \, arg \, min \, L(y, f^*(x;\phi)) $$
 
-where $ L $ is a loss function chosen for the particular task. One can understand the term 'loss function' simply as a metric of 'how happy we are about the output that the network gives us for a given input' and therefore $f^*(x;\phi)$ is driven to match the ideal function $f(x;\phi)$ druing network training. 
+where $ L $ is a loss function chosen for the particular task. One can understand the term 'loss function' simply as a metric of 'how happy we are about the output that the network gives us for a given input' and therefore $f^*(x;\phi)$ is driven to match the ideal function $f(x;\phi)$ during network training. 
 
-The structure of a feedforward network is usually composed of many nested functions. For instance, there might be three functions $f^{(1)}$, $f^{(2)}$ and $f^{(3)}$ connected in a chain to the form
+The structure of a feed-forward network is usually composed of many nested functions. For instance, there might be three functions $f^{(1)}$, $f^{(2)}$ and $f^{(3)}$ connected in a chain to the form
 
 $$ f(x) = f^{(3)}(f^{(2)}(f^{(1)}(x))) $$
 
-These models are reffered to as feedforward because information flows from the deepest nested function $f^{(1)}$ taking $ x $ as its direct input to other functions in the chain and finally to the output $ y $. One can name the functions starting by $f^{(1)}$ as the first layer (input layer) of the network, $f^{(2)}$ is called the second layer, and so on. The final layer of the network is called output layer. 
+These models are reffered to as feed-forward because information flows from the deepest nested function $f^{(1)}$ taking $ x $ as its direct input to other functions in the chain and finally to the output $ y $. One can name the functions starting by $f^{(1)}$ as the first layer (input layer) of the network, $f^{(2)}$ is called the second layer, and so on. The final layer of the network is called output layer. 
 
-Recall that in supervised learning one needs a set of training data, in this case a set of matching x, y (footnote: y are often called LABELS) pairs. The training examples specify directly what the output layer must do at each point x; it must produce a value that is as close as possible to y. The behaviour of the other layers is not specified by the training data which is why we call these layers 'hidden layers'. In Figure XY , an image of a four-layer feedforward neural network with two hidden layers can be seen.
+Recall that in supervised learning one needs a set of training data, in this case a set of matching x, y (footnote: y are often called LABELS) pairs. The training examples specify directly what the output layer must do at each point x; it must produce a value that is as close as possible to y. The behaviour of the other layers is not specified by the training data which is why we call these layers 'hidden layers'. In Figure XY , an image of a four-layer feed-forward neural network with two hidden layers can be seen.
 
 It is now very important to highlight that the neural network must be seen as something that is capable of modeling practically any function we can think of [general approximation theorem]. The power of this brings us to the definition of a classification task. In this task, the function the network approximates has discrete states, true/false. To give the most typical example, let's consider we have a large set of black and white images containing hand-written digits from 0 to 9. Now we want the network to basically associate the information encoded in the pixel values of the input image with the information of what digit that particular image shows. In this case, the vector space of inputs (flattened image array in the simplest case of size m = width*height) is projected to the space of size n = 10 categories (digits 0 to 9). 
 
@@ -60,7 +61,7 @@ $$ b_i = \sum\limits_{j}w_{ij}n_j(t) - \mu_i $$
 
 Equation (1.2) basically shows that the neuron performs a weighted linear average of the inputs nj and applies an offset (threshold) which is denoted by µi. Finally, the function $ \theta_H $ is reffered to as the activation function.
 
-\subsection{Activation function}
+\subsection{Activation functions}
 
 The general motivation for using activation functions is to bring non-linearity to the model. In the simplest case that has been discussed so far, the neurons can only have the states 0/1, which in terms of the activation function corresponds to the Heaviside function
 
@@ -78,17 +79,20 @@ There are several choices for the activation function which all come with their 
 
 \begin{itemize}
 	
-\item Nonlinearity. As discussed above, the non-linearity is a general ability of a neural network allowing it to model very complex functions
-\item Monotocity and nondecreasibility. This allows certain optimization algorithms to perform more stable as we'll see further.
-\item Differenciability (or at least piecewise differencialbility). This is useful not only in terms of stability of the optimization algorithms, but also for the analytical derivation of the update rule for the network parameters during optimization. 
+\item \textbf{Nonlinearity}. As discussed above, the non-linearity is a general ability of a neural network allowing it to model very complex functions
+\item \textbf{Monotocity and nondecreasibility}. This allows certain optimization algorithms to perform more stable as we'll see further.
+\item \textbf{Differentiability (or at least piecewise differentiability)}. This is useful not only in terms of stability of the optimization algorithms, but also for the analytical derivation of the update rule for the network parameters during optimization. 
 		
 \end{itemize}
 
-One also needs to distinguish between activation functions used in neurons in the input/hidden layers and neurons in the output layer. The reason for that comes from the definition of a classification task, where we would like to interpret the outputs of the network as 'probabilities' of the input belonging to a certain class. For this one can usually choose between commonly used Softmax classifier (function) and Sigmoid function. In the example with hand-written digits, when we feed the network with an image showing digit 7, we want the network to spit out the 100 percent probability for the image belonging to the class 'digit 7' and 0 percent probability of it belonging to the classes 'digit 0', 'digit 1'... In such case, the output of the last layer of the network not only needs to be within 0 and 1, but in case of using Softmax the sum of all outputs must give unity as they are intepreted as (relative!) probabilities. We say 'relative' because the network's decision is only based on the features of this particular image differing in comparison with other data we fed in during training and does not reflect 'outer' probability at all. 
+One also needs to distinguish between activation functions used in neurons in the input/hidden layers and neurons in the output layer. The reason for that comes from the definition of a classification task, where we would like to interpret the outputs of the network as 'probabilities' of the input belonging to a certain class. For this one can use commonly used Softmax classifier (function). In the example with hand-written digits, when we feed the network with an image showing digit 7, we want the network to spit out the 100 percent probability for the image belonging to the class 'digit 7' and 0 percent probability of it belonging to the classes 'digit 0', 'digit 1'... In such case, the output of the last layer of the network not only needs to be within 0 and 1, but in case of using Softmax the sum of all outputs must give unity as they are intepreted as (relative!) probabilities. We say 'relative' because the network's decision is only based on the features of this particular image differing in comparison with other data we fed in during training and does not reflect 'outer' probability at all. 
+
+Another possibility for the output activation function is the sigmoid function. 
+
 
 \begin{itemize}
 
-\item Sigmoid
+\item \textbf{Sigmoid}
 
 $$  
 g(x)=\frac{1}{1 + e^{-x}}
@@ -96,7 +100,7 @@ $$
 
 This function used to be broadly used mainly thank to the clear interpretation of the state of the neuron - active/inactive is represented by values 0/1. Sigmoid is currently obsolete for large networks. In short, it does not have optimal properties for the learning algorithm called 'backpropagation', which is to be discussed in next chapters. Also, the fact that its mean value in non-zero doesn't have a positive impact on the learning process either. [Groman]
 
-\item Hyperbolic tangent 
+\item \textbf{Hyperbolic tangent }
 
 $$  
 g(x)=\tanh (x)
@@ -104,7 +108,7 @@ $$
 
 Unlike Sigmoid, the range of its output is in the interval <-1,1>. However, it still has the same limitations as the previous function and therefore is not a suitable candidate for learning via backpropagation. 
 
-\item Rectified Linear unit (ReLu)
+\item \textbf{Rectified Linear unit (ReLu)}
 
 $$
 g(x)=\max (0,x)
@@ -112,7 +116,7 @@ $$
 
 The authors of this concept found the inspiration in real biological neurons. The idea comes from a model for the relation between the electrical current through the cell membrane into the neuron cell, and the membrane potential. The main message is that there is a threshold below which the response of the neuron is strictly zero, as shown in Figure XY. The derivative of the ReLU function is discontinuous at $ x=0 $. A common convention is to set the derivative to zero at $ x=0 $.  
 
-\item Parametric (leaky) ReLu
+\item \textbf{Parametric (leaky) ReLu}
 
 $$
 g(x)=\max(x,\alpha x)
@@ -120,10 +124,49 @@ $$
 
 By modifying the previously introduced function one gets a version of ReLu intended to address the biggest drawback of ReLu, which is the fact that some neurons may become dead (their output will be always zero) and thus not contribute to the network's output. Unfortunately there's generally no guarantee that using Leaky ReLu instead of ReLu will always mean better results. 
 
+\item \textbf{Output activation function - Softmax}
+
+The Softmax function is only used in output layer. This classifier differs from other activation functions by its dependency on other neurons in the layer
+
+$$  
+O_{i} = \frac{e^{\alpha b_i^{(L)}}}{\sum_{k=1}^{M} e^{\alpha b_k^{(L)}}}
+$$
+
+Here $ b_{i}^{(L)} = \sum_{j}w_{ij}^{(L)} V_{j}^{(L-1)} - \theta _{j}^{(L)} $  are the local fields of the neurons in the output layer. The constant $\alpha$ is usually taken to be unity. Let's repeat three important properties of softmax outputs: first that 
+$ 0 \geq O_i \geq 1 $. Second, the values of the outputs sum to one $ \sum_{i=1} O_i = 1 $. This means that the outputs of softmax units can be interpreted as probabilities. Third, the outputs are monotonous: when $ b_i^{(L)} $ increases then $ O_i $ increases but the values $ O_k $ of the other output neurons $ k \neq i $ decrease.
+
 \end{itemize}
 
- 
+\subsection{Multilayer perceptrons}
 
+A perceptron is a layered feed-forward network. The left-most is the input layer. To the right follows a number of layers consisting of McCulloch-Pitts neurons. The right-most layer of neurons is the output layer where the output of the network is read out, usually as softmax probabilities. The other neuron layers are called hidden layers, their states are not read out directly. 
+
+In perceptrons, all connections (weights) $ w_{ij} $ are one-way; every neuron (or input terminal) feeds only to neurons in the layer immediately to the right. There are no connections within layers, or back connections, or connections that jump over a layer. There are $ N $ input terminals. We denote the inputs coming to the input layer by
+
+$$ x(\mu)= 
+\begin{bmatrix}
+x_{1}^{(\mu)} \\
+x_{2}^{(\mu)} \\
+\vdots \\
+x_{N}^{(\mu)} 
+\end{bmatrix}
+$$
+
+The index $ \mu $ labels different input patterns in the training set. The network shown in Figure XY would perform these computations
+
+%$$
+\begin{gather}
+V_j = g(b_j) \quad \text{where} \quad b_j = \sum_{k} w_{jk} x_{k} - \theta_{j} \\
+O_i = g(B_i) \quad \text{where} \quad B_i = \sum_{j} W_{ij} V_{j} - \Theta_{i} 
+\end{gather}
+%$$
+
+TO BE CONTINUED?
+
+
+\section{Training of artificial neural networks}
+
+SGD, MOMENTUM atd....
 
 
 
