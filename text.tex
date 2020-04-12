@@ -1,6 +1,6 @@
 \chapter{Research and theory}
 \label{research}
-First part of this section gives a thorough introduction to neural networks (NN) in general. It begins by definition of fundamental terms needed to fully understand the core principles of NNs. Due to the fact that the research in this area is still heavily ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent relevant for the particular chosen network architecture. Still, it will give a solid foundation needed to understand other similar approaches. 
+First part of this section gives an introduction to neural networks (NN). It begins by definition of fundamental terms needed to understand the core principles of NNs. Due to the fact that the research in this area is still heavily ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent relevant for the particular chosen network architecture. 
 
 Second part presents some of the main approaches based on machine learning researches have recently used to tackle the semantic segmentation problem. However, not all of them use CNNs as the core algorithm. This part summarizes the main key points from the corresponding papers that contributed to this topic by presenting novel architectures and principles. It finishes by more detailed description of a method that is eventually found the most promising and thus selected for the final implementation.
 
@@ -89,7 +89,6 @@ One also needs to distinguish between activation functions used in neurons in th
 
 Another possibility for the output activation function is the sigmoid function. 
 
-
 \begin{itemize}
 
 \item \textbf{Sigmoid}
@@ -100,13 +99,13 @@ $$
 
 This function used to be broadly used mainly thank to the clear interpretation of the state of the neuron - active/inactive is represented by values 0/1. Sigmoid is currently obsolete for large networks. In short, it does not have optimal properties for the learning algorithm called 'backpropagation', which is to be discussed in next chapters. Also, the fact that its mean value in non-zero doesn't have a positive impact on the learning process either. [Groman]
 
-\item \textbf{Hyperbolic tangent }
+%\item \textbf{Hyperbolic tangent }
 
-$$  
-g(x)=\tanh (x)
-$$
+%$$  
+%g(x)=\tanh (x)
+%$$
 
-Unlike Sigmoid, the range of its output is in the interval <-1,1>. However, it still has the same limitations as the previous function and therefore is not a suitable candidate for learning via backpropagation. 
+%Unlike Sigmoid, the range of its output is in the interval <-1,1>. However, it still has the same limitations as the previous function and therefore is not a suitable candidate for learning via backpropagation. 
 
 \item \textbf{Rectified Linear unit (ReLu)}
 
@@ -161,12 +160,57 @@ O_i = g(B_i) \quad \text{where} \quad B_i = \sum_{j} W_{ij} V_{j} - \Theta_{i}
 \end{gather}
 %$$
 
-TO BE CONTINUED?
+Multilayer perceptron has generally N hidden layers. If it has more than two hidden layers, we usually start to talk about 'deep network'. 
 
+The reason we use hidden layers is to tackle not linearly separable classification problems. Linear separability is shown in figure XY, where the input to the network is two-dimensional and we classify the input data into two classes (marked as black and white points in the graph). Classification problem is linearly separable if one is able to draw a single line (single plane in case of three inputs, etc.) to divide the input space into two distinct areas and hence solve the classification task. In general, the curve that separates the space into sub areas each representing a class is called the decision boundary. In the case shown in Figure XY, the line dividing the 2D space of inputs corresponds to the simplest possible case: a single neuron in the network.
+
+An example of a not linearly separable task is shown in Figure XY. We need to divide the input space to more than two regions to solve the classification. The network corresponding to the case in Figure XY has one hidden layer with three neurons. By doing this we map the input space of size n = 2 to the hidden space of size m = 3 and use it as an input to other layers.
+
+One can ask how many hidden layers and number of neurons should we use for a particular task? In short, the answer depends on how complicated the distribution of input patterns is.
+
+The position of the decision boundary is determined by the values of weights and thresholds in the neurons (W and THR). These parameters are found by training the network. 
 
 \section{Training of artificial neural networks}
 
-SGD, MOMENTUM atd....
+Artificial neural networks are trained using iterative optimization algorithms. During training, one needs to choose the right loss function whose value goes to zero when the network produces the expected output. In each step of optimization, the trainable parameters are changed in order to achieve this. The effect each parameter has on the value of the loss function is determined by calculating the gradient of the loss function with respect to the particular parameter in the network. The way this information is used is then subject to the chosen algorithm. 
+
+The principle explained above is in the neural networks theory known as backpropagation.
+
+\subsection{Backpropagation}
+
+Backpropagation is a way in which information about the correctness of the output flows through the network in order for the parameters to be adjusted. The scheme is shown in the network in Figure XY, where backpropagation is applied to a multilayer perceptron. 
+
+The goal is to give the optimization algorithm values of gradients for all network parameters in each iteration. One needs to find partial derivatives of the loss funtion with respect to these parameters. In deep networks, one achieves this by applying the chain rule to the formula for calculating the loss.
+
+\subsection{Loss function}
+
+Loss function is a metric of our happiness with the network's output. The choice depends on the nature of the task the network is used for and on the activation function used in the output layer. Here are the most commonly used ones:
+
+\begin{itemize}
+\item \textbf{Mean Squared Error}
+	
+$$ 	
+H =  \frac{1}{2} \sum\limits_{\mu i} \left( t_{i}^{(\mu)} - O_{i}^{(\mu)} \right)^2
+$$
+
+MSE is used when the output layer of a network uses Sigmoid functions.
+
+\item \textbf{Negative Log Likelihood} 
+
+$$ 	
+H = - \sum\limits_{\mu i}  t_{i}^{(\mu)} \ln (O_{i}^{(\mu)})
+$$
+
+Extensively used for classification tasks in the combination with Softmax classifier. 
+\end{itemize}   
+
+\subsection{Optimization algorithms}
+\subsubsection{Gradient descent}
+\subsubsection{AdaDelta}
+\subsubsection{AdaGrad}
+\subsubsection{RMSprop}
+\subsubsection{Adam}
+
 
 
 
