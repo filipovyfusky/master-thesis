@@ -155,8 +155,8 @@ The index $ \mu $ labels different input patterns in the training set. The netwo
 
 %$$
 \begin{gather}
-V_j = g(b_j) \quad \text{where} \quad b_j = \sum_{k} w_{jk} x_{k} - \theta_{j} \\
-O_i = g(B_i) \quad \text{where} \quad B_i = \sum_{j} W_{ij} V_{j} - \Theta_{i} 
+V_j^{(\mu)} = g(b_j^{(\mu)}) \quad \text{where} \quad b_j^{(\mu)} = \sum_{k} w_{jk} x_{k}^{(\mu)} - \theta_{j} \\
+O_i^{(\mu)} = g(B_i^{(\mu)}) \quad \text{where} \quad B_i^{(\mu)} = \sum_{j} W_{ij} V_{j}^{(\mu)} - \Theta_{i} 
 \end{gather}
 %$$
 
@@ -176,21 +176,15 @@ Artificial neural networks are trained using iterative optimization algorithms. 
 
 The principle explained above is in the neural networks theory known as backpropagation.
 
-\subsection{Backpropagation}
-
-Backpropagation is a way in which information about the correctness of the output flows through the network in order for the parameters to be adjusted. The scheme is shown in the network in Figure XY, where backpropagation is applied to a multilayer perceptron. 
-
-The goal is to give the optimization algorithm values of gradients for all network parameters in each iteration. One needs to find partial derivatives of the loss funtion with respect to these parameters. In deep networks, one achieves this by applying the chain rule to the formula for calculating the loss.
-
 \subsection{Loss function}
 
 Loss function is a metric of our happiness with the network's output. The choice depends on the nature of the task the network is used for and on the activation function used in the output layer. Here are the most commonly used ones:
 
 \begin{itemize}
 \item \textbf{Mean Squared Error}
-	
+
 $$ 	
-H =  \frac{1}{2} \sum\limits_{\mu i} \left( t_{i}^{(\mu)} - O_{i}^{(\mu)} \right)^2
+L =  \frac{1}{2} \sum\limits_{\mu i} \left( t_{i}^{(\mu)} - O_{i}^{(\mu)} \right)^2
 $$
 
 MSE is used when the output layer of a network uses Sigmoid functions.
@@ -198,11 +192,46 @@ MSE is used when the output layer of a network uses Sigmoid functions.
 \item \textbf{Negative Log Likelihood} 
 
 $$ 	
-H = - \sum\limits_{\mu i}  t_{i}^{(\mu)} \ln (O_{i}^{(\mu)})
+L = - \sum\limits_{\mu i}  t_{i}^{(\mu)} \ln (O_{i}^{(\mu)})
 $$
 
 Extensively used for classification tasks in the combination with Softmax classifier. 
 \end{itemize}   
+
+During training, the loss function is the one whose value is being optimized.
+
+\subsection{Gradient descent and backpropagation}
+
+Backpropagation is a way in which information about the correctness of the output flows through the network in order for the parameters to be adjusted. The scheme is shown in the network in Figure XY, where backpropagation is applied to a multilayer perceptron. 
+
+The goal is to give the optimization algorithm values of gradients for all network parameters in each iteration. One needs to find partial derivatives of the loss funtion with respect to these parameters. In deep networks, one achieves this by applying the chain rule to the formula for calculating the loss function.
+
+\subsubsection{Gradient descent}
+
+The general formula for the gradient descent algorithm goes as follows:
+
+$$ 
+\delta \phi = - \eta \frac{\partial H}{\partial \phi}
+$$
+
+where $ \phi $ is the parameter we care about (weights, thresholds). In each iteration, we compute the derivative of the loss function with respect to all network parameters and thus get the increments $ \delta \phi $. Parameter $ \eta $ is called the learning rate and is always a small number greater than zero. This parameter determines the size of the step we take in the way of the steepest descent in the landscape (in case of two parameters) of the loss function. This is shown in Figure XY. We see that the behaviour and convergence of the algorithm is strongly dependent on choosing the learning rate value: if the steps are too small, the learning will be slow and we are more likely to end up in a local minimum. On the other hand, if the value of it is too big, the algorithm may even start to 'climb up the hill' and cause the loss function to grow. 
+
+Given a multilayer perceptron with hidden layers and the Negative log likelihood loss function, the gradient descent (GD) algorithm for weight and threshold updates is defined as follows:
+
+\begin{gather}
+	\delta w_{mn} = - \eta \frac{\partial L}{\partial w_{mn}} = \eta \sum\limits_{\mu}
+	(t_{m}^{(\mu)} - O_{m}^{(\mu)})V_{n}^{(\mu)}	
+\end{gather}
+
+
+
+
+
+
+One of the general issues one encounters when using gradient methods is the risk of getting stuck in a local minimum instead of the global minimum.
+
+
+
 
 \subsection{Optimization algorithms}
 \subsubsection{Gradient descent}
