@@ -162,13 +162,11 @@ O_i^{(\mu)} = g(B_i^{(\mu)}) \quad \text{where} \quad B_i^{(\mu)} = \sum_{j} W_{
 
 Multilayer perceptron has generally N hidden layers. If it has more than two hidden layers, we usually start to talk about 'deep network'. 
 
-The reason we use hidden layers is to tackle not linearly separable classification problems. Linear separability is shown in figure XY, where the input to the network is two-dimensional and we classify the input data into two classes (marked as black and white points in the graph). Classification problem is linearly separable if one is able to draw a single line (single plane in case of three inputs, etc.) to divide the input space into two distinct areas and hence solve the classification task. In general, the curve that separates the space into sub areas each representing a class is called the decision boundary. In the case shown in Figure XY, the line dividing the 2D space of inputs corresponds to the simplest possible case: a single neuron in the network.
+The reason we use hidden layers is to tackle linearly inseparable classification problems. Linear separability is shown in figure XY, where the input to the network is two-dimensional and we classify the input data into two classes (marked as black and white points in the graph). Classification problem is linearly separable if one is able to draw a single line (single plane in case of three inputs, etc.) to divide the input space into two distinct areas and hence solve the classification task. In general, the curve that separates the space into sub areas each representing a class is called the decision boundary. The position of the decision boundary is determined by the values of weights and thresholds in the neurons (W and THR). These parameters are found by training the network. In the case shown in Figure XY, the line dividing the 2D space of inputs corresponds to the simplest possible case: a single neuron in the network.
 
-An example of a not linearly separable task is shown in Figure XY. We need to divide the input space to more than two regions to solve the classification. The network corresponding to the case in Figure XY has one hidden layer with three neurons. By doing this we map the input space of size n = 2 to the hidden space of size m = 3 and use it as an input to other layers.
+An example of a linearly inseparable task is shown in Figure XY. We need to divide the input space to more than two regions to solve the classification. The network corresponding to the case in Figure XY has one hidden layer with three neurons. By doing this we map the input space of size n = 2 to the hidden space of size m = 3 and use it as an input to other layers.
 
 One can ask how many hidden layers and number of neurons should we use for a particular task? In short, the answer depends on how complicated the distribution of input patterns is.
-
-The position of the decision boundary is determined by the values of weights and thresholds in the neurons (W and THR). These parameters are found by training the network. 
 
 \section{Training of artificial neural networks}
 
@@ -178,16 +176,16 @@ The principle explained above is in the neural networks theory known as backprop
 
 \subsection{Loss function}
 
-Loss function is a metric of our happiness with the network's output. The choice depends on the nature of the task the network is used for and on the activation function used in the output layer. Here are the most commonly used ones:
+Loss function is a metric of our happiness with the network's output. The choice depends on the nature of the task the network is used for and on the activation function used in the output layer. During training, the loss function is the one whose value is being optimized. Here are the most commonly used ones:
 
 \begin{itemize}
-\item \textbf{Mean Squared Error}
+\item \textbf{Mean Squared Error (MSE)}
 
 $$ 	
 L =  \frac{1}{2} \sum\limits_{\mu i} \left( t_{i}^{(\mu)} - O_{i}^{(\mu)} \right)^2
 $$
 
-MSE is used when the output layer of a network uses Sigmoid functions.
+MSE is used for regression tasks, when the output layer of the network uses Sigmoid functions. When used, the training suffers from the vanishing gradient problem, which will be discussed later. 
 
 \item \textbf{Negative Log Likelihood} 
 
@@ -195,16 +193,22 @@ $$
 L = - \sum\limits_{\mu i}  t_{i}^{(\mu)} \ln (O_{i}^{(\mu)})
 $$
 
-Extensively used for classification tasks in the combination with Softmax classifier. 
-\end{itemize}   
+Commonly used for classification tasks in the combination with Softmax classifier. The vanishing gradient problem is less of an issue here (see []).
 
-During training, the loss function is the one whose value is being optimized.
+\item \textbf{Cross Entropy Loss} 
+
+$$ 	
+L = - \sum\limits_{\mu i}  t_{i}^{(\mu)} \ln (O_{i}^{(\mu)}) + (1 - t_{i}^{(\mu)}) \ln (1 - (O_{i}^{(\mu)}))
+$$
+
+Very similar to the negative log likelihood loss. The difference is that it works with Sigmoid activation function.
+\end{itemize}  
 
 \subsection{Gradient descent and backpropagation}
 
-Backpropagation is a way in which information about the correctness of the output flows through the network in order for the parameters to be adjusted. The scheme is shown in the network in Figure XY, where backpropagation is applied to a multilayer perceptron. 
+Backpropagation is a way in which information about the correctness of the output flows through the network in order for the parameters in all layers to be adjusted. The scheme is shown in the network in Figure XY, where backpropagation is applied to a multilayer perceptron. Everytime we feed the network with an input pattern $ \mu $, we get the values of outputs of the neurons in all layers. This is called the forward pass (inference, left-to-right pass). Then we want to evaluate the correctness of the output and pass that information back to the network. The second phase is called the backpropagation because the error propagates from the output layer to the layers on the left.   
 
-The goal is to give the optimization algorithm values of gradients for all network parameters in each iteration. One needs to find partial derivatives of the loss funtion with respect to these parameters. In deep networks, one achieves this by applying the chain rule to the formula for calculating the loss function.
+The goal is to give the optimization algorithm values of gradients for all network parameters in each its iteration. One needs to find partial derivatives of the loss funtion with respect to these parameters. In deep networks, one achieves this by applying the chain rule to the formula for calculating the loss function.
 
 \subsubsection{Gradient descent}
 
@@ -216,25 +220,88 @@ $$
 
 where $ \phi $ is the parameter we care about (weights, thresholds). In each iteration, we compute the derivative of the loss function with respect to all network parameters and thus get the increments $ \delta \phi $. Parameter $ \eta $ is called the learning rate and is always a small number greater than zero. This parameter determines the size of the step we take in the way of the steepest descent in the landscape (in case of two parameters) of the loss function. This is shown in Figure XY. We see that the behaviour and convergence of the algorithm is strongly dependent on choosing the learning rate value: if the steps are too small, the learning will be slow and we are more likely to end up in a local minimum. On the other hand, if the value of it is too big, the algorithm may even start to 'climb up the hill' and cause the loss function to grow. 
 
-Given a multilayer perceptron with hidden layers and the Negative log likelihood loss function, the gradient descent (GD) algorithm for weight and threshold updates is defined as follows:
+Given a multilayer perceptron with hidden layers and their parameters $ w_{mn}, \theta_m $, output layer with weights $ W_{mn}, \Theta_m $ and the MSE loss function, the gradient descent algorithm gives the weight updates in the form
+
+%\begin{gather}
+%	\delta w_{mn} = - \eta \frac{\partial L}{\partial w_{mn}} = \eta \sum\limits_{\mu=1}^{N}
+%	(t_{m}^{(\mu)} - O_{m}^{(\mu)})V_{n}^{(\mu)}\\	
+%	\delta \theta_{m} = - \eta \frac{\partial L}{\partial \theta_{m}} = \eta \sum\limits_{\mu=1}^{N}
+%	(t_{m}^{(\mu)} - O_{m}^{(\mu)})
+%\end{gather}
 
 \begin{gather}
-	\delta w_{mn} = - \eta \frac{\partial L}{\partial w_{mn}} = \eta \sum\limits_{\mu}
-	(t_{m}^{(\mu)} - O_{m}^{(\mu)})V_{n}^{(\mu)}	
+	\delta W_{mn} = - \eta \frac{\partial L}{\partial W_{mn}} = \eta \sum\limits_{\mu=1}^{p}
+	(t_{m}^{(\mu)} - O_{m}^{(\mu)})   g'(B_{m}^{(\mu)})     V_{n}^{(\mu)}	
+%	\delta \Theta_{m} = - \eta \frac{\partial L}{\partial \Theta_{m}} = \eta \sum\limits_{\mu=1}^{p}
+%	(t_{m}^{(\mu)} - O_{m}^{(\mu)})   g'(B_{m}^{(\mu)})
 \end{gather}
 
+\noindent where $ p $ is the total number of training samples, $ V_{n}^{(\mu)} $ is the vector of outputs of neurons in the previous layer $ n $ for the sample $ \mu $. For clarity, one usually defines the 'weighted error' as
+
+\begin{gather}
+	\Delta_{m}^{(\mu)} = (t_{m}^{(\mu)} - O_{m}^{(\mu)})   g'(B_{m}^{(\mu)})
+\end{gather}
+
+\noindent The update rules for hidden layers are also obtained by using chain rule, which gives
+
+\begin{gather}
+\delta w_{mn} = - \eta \frac{\partial L}{\partial w_{mn}} = \eta \sum\limits_{\mu}^{p} \sum\limits_{i}^{N}
+\Delta_{i}^{(\mu)} W_{im} \, g'(b_{m}^{(\mu)}) x_{n}^{(\mu)}
+%\delta \theta_{m} = - \eta \frac{\partial L}{\partial \theta_{m}} = \eta \sum\limits_{\mu}^{p} \sum\limits_{i}^{N}
+%\Delta_{i}^{(\mu)} W_{im} \, g'(b_{m}^{(\mu)})
+\end{gather}
+
+\noindent while putting
+
+\begin{gather}
+\delta_{m}^{(\mu)} = \sum\limits_{i}^{N} \Delta_{i}^{(\mu)} W_{im} \, g'(b_{m}^{(\mu)})
+\end{gather}
+
+%\begin{gather}
+%	O_{m}^{(\mu)} = \frac{e^{b_m}}{\sum_{k=1}^{M} e^{b_k}}	
+%\end{gather}
+
+\noindent Putting all the above together gives
+
+\begin{gather}
+\delta w_{mn} = \eta \sum\limits_{\mu}^{p} \delta_{m}^{(\mu)} x_{n}^{(\mu)}
+\quad \text{and} \quad 
+\delta W_{mn} = \eta \sum\limits_{\mu=1}^{p} \Delta_{m}^{(\mu)} V_{n}^{(\mu)}	
+\end{gather}
+
+\noindent Similarly, we get the update rule for thresholds (see []). In summary, the steps of backpropagation + gradient descent are following:
+\begin{algorithm}
+	\caption{Stochastic gradient descent}
+	\begin{algorithmic}[1]
+		\item Pick input pattern $ \mu $ from the training set and perform forward pass
+		\item Compute errors $ \Delta_{m}^{(\mu)} $ for output layer
+		\item Compute errors $ \delta_{m}^{(\mu)} $ for hidden layers
+		\item Perform updates $w_{mn} = w_{mn} + \delta w_{mn} \quad \text{and} \quad \theta_{mn} = \theta_{mn} + \delta \theta_{mn}$, the same for the output layer
+	\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Vanishing gradient problem}
+
+The reason for using the Negative log likelihood is the fact that during the derivation of the update rule for weights and thresholds, the resulting formula does not contain the term $ g'(b) $. This is the biggest drawback of using MSE loss function. When we compute the weight increments using MSE, it turns out that as we go further from the output layer, the term $ g'(b) $ accumulates with each next layer. The point is that MSE is often used with Sigmoid activation functions, whose value of derivative drops to a small number in its area of saturation. In a result, we get very small weight increments as we go to the left in the network layers and the training of these layers slows down rapidly. This phenomenon is known as the vanishing gradient problem. One of the ways to address this issue is using activation functions that don't saturate, like ReLUs.
+
+\subsubsection{Stochastic gradient descent}
+
+One of the general issues one encounters when using gradient methods is the risk of getting stuck in a local minimum. To fight this, the idea is to add a little bit of noise to the optimization process. This can be achieved by introducing the concept of mini-batches (small groups of samples from the training data). In Equation XY we see that in each iteration one needs to sum over all training patterns in the set in order to obtain the value of the gradient to follow. In stochastic gradient descent, one only sums over randomly chosen $ mb $ patterns from the training set and then immediately performs the weight update. The process is repeated until all training data have been used (this we call a Training epoch). In mini-batches, samples appear only once per Epoch and the entire training set is usually shuffled after each Epoch.
+
+Applying the above, the equation XY slightly changes to
+
+\begin{gather}
+\delta w_{mn} = \eta \sum\limits_{\mu=1}^{mb} \delta_{m}^{(\mu)} x_{n}^{(\mu)}
+\quad \text{and} \quad 
+\delta W_{mn} = \eta \sum\limits_{\mu=1}^{mb} \Delta_{m}^{(\mu)} V_{n}^{(\mu)}	
+\end{gather}
+
+\subsection{Improving performance of optimization}
 
 
 
 
-
-One of the general issues one encounters when using gradient methods is the risk of getting stuck in a local minimum instead of the global minimum.
-
-
-
-
-\subsection{Optimization algorithms}
-\subsubsection{Gradient descent}
+\subsection{Other optimization algorithms}
 \subsubsection{AdaDelta}
 \subsubsection{AdaGrad}
 \subsubsection{RMSprop}
