@@ -204,7 +204,7 @@ $$
 Very similar to the negative log likelihood loss. The difference is that it works with Sigmoid activation function.
 \end{itemize}  
 
-\subsection{Gradient descent and backpropagation}
+\subsection{Gradient optimization and backpropagation}
 
 Backpropagation is a way in which information about the correctness of the output flows through the network in order for the parameters in all layers to be adjusted. The scheme is shown in the network in Figure XY, where backpropagation is applied to a multilayer perceptron. Everytime we feed the network with an input pattern $ \mu $, we get the values of outputs of the neurons in all layers. This is called the forward pass (inference, left-to-right pass). Then we want to evaluate the correctness of the output and pass that information back to the network. The second phase is called the backpropagation because the error propagates from the output layer to the layers on the left.   
 
@@ -280,11 +280,12 @@ Given a multilayer perceptron with hidden layers and their parameters $ w_{mn}, 
 	\end{algorithmic}
 \end{algorithm}
 
-\subsubsection{Vanishing gradient problem}
+\subsubsection{Vanishing and exploding gradient problem}
 
 The reason for using the Negative log likelihood is the fact that during the derivation of the update rule for weights and thresholds, the resulting formula does not contain the term $ g'(b) $. This is the biggest drawback of using MSE loss function. When we compute the weight increments using MSE, it turns out that as we go further from the output layer, the term $ g'(b) $ accumulates with each next layer. The point is that MSE is often used with Sigmoid activation functions, whose value of derivative drops to a small number in its area of saturation. In a result, we get very small weight increments as we go to the left in the network layers and the training of these layers slows down rapidly. This phenomenon is known as the vanishing gradient problem. One of the ways to address this issue is using activation functions that don't saturate, like ReLUs.
 
-\subsubsection{Stochastic gradient descent}
+Similarly, one can run into trouble when the values of the derivative of activation function are larger than one. Then the value of the gradients may start to grow exponentially: this is called the exploding gradient problem [https://medium.com/learn-love-ai/the-curious-case-of-the-vanishing-exploding-gradient-bf58ec6822eb]
+\subsubsection{Stochastic gradient descent - SGD}
 
 One of the general issues one encounters when using gradient methods is the risk of getting stuck in a local minimum. To fight this, the idea is to add a little bit of noise to the optimization process. This can be achieved by introducing the concept of mini-batches (small groups of samples from the training data). In Equation XY we see that in each iteration one needs to sum over all training patterns in the set in order to obtain the value of the gradient to follow. In stochastic gradient descent, one only sums over randomly chosen $ mb $ patterns from the training set and then immediately performs the weight update. The process is repeated until all training data have been used (this we call a Training epoch). In mini-batches, samples appear only once per Epoch and the entire training set is usually shuffled after each Epoch.
 
@@ -296,16 +297,112 @@ Applying the above, the equation XY slightly changes to
 \delta W_{mn} = \eta \sum\limits_{\mu=1}^{mb} \Delta_{m}^{(\mu)} V_{n}^{(\mu)}	
 \end{gather}
 
-\subsection{Improving performance of optimization}
+\subsubsection{Adaptation of the learning rate}
 
+There are several ways to make the stochastic gradient descent algorithm perform better. The key achievement is to prevent it from getting stuck in local minima. Secondly, gradient methods also tend to slow down in the areas of minima that are very shallow. The obvious solution to this is to take bigger steps by using larger value of the learning rate, but this makes the algorithm oscillate in the minimum we'd consider to be optimal. [mehlig] One way to tackle this is to implement the mechanism called momentum, which is a good name because it tells a lot about the principle it's introducing. 
 
+When using momentum, we can imagine the SGD algorithm behave like a ball that rolls downhill and develops speed over time. [stanford L7] The resulting move made by the algorithm in the landspace of the loss function is therefore a combination of the gradient vector and the velocity vector. 
 
+\noindent The update rule for weights gets modified to
 
-\subsection{Other optimization algorithms}
-\subsubsection{AdaDelta}
-\subsubsection{AdaGrad}
-\subsubsection{RMSprop}
-\subsubsection{Adam}
+\begin{gather}
+\delta w_{ij}^{(t)} = - \eta \frac{\partial H}{\partial w_{ij}^{(t)}} + \alpha \delta w_{ij}^{(t-1)} 
+\end{gather}
+
+\noindent where $ t=0,1,2,..,n $ is the iteration number, while $ \delta w_{ij}^{(0)} = \partial H / \partial w_{ij}^{(0)} $ is the increment in the zeroth time step. The parameter $ \alpha > 0$ is the momentum constant. 
+
+There are other ways of implementing momentum, such as the nowadays most commonly used Nesterov's accelerated gradient method (see [mehlig] for details). This algorithm differs from the simple momentum by altering the steps the algorithm takes to do the final update: it first moves in the direction of the velocity, then evaluates the gradient at that point and make a correction to the previous step. It turns out that this scheme perform better in practice. [stanford L7]
+
+%https://www.deeplearningbook.org/ Googfellow
+
+\subsubsection{Other optimization algorithms}
+\begin{itemize}
+	\item \textbf{AdaGrad}
+	
+	AdaGrad [] is another gradient based algorithm. In previously discussed gradient descent, the parameters were updated with the same learning rate in every step of the algorithm. AdaGrad adapts the learning rate based on the accumulated square of gradients. [see stanford L7]. The problem is that it might get stuck in the saddle points beacause the size of the steps it takes gets very small as the training goes on. [L7]
+	
+	\item \textbf{RMSprop}
+	
+	Another adaptive algorithm introduced in [], which addresses the issue discussed in AdaGrad. It prevents the steps to get infinitely small by introducing a decay parameter to surpress the effect of the accumulated square of gradients.	
+	%[http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf]
+	
+	\item \textbf{Adam}
+	
+	Adam can be looked at as a combination of RMSprop and Stochastic Gradient Descent with momentum. It uses the squared gradients to scale the learning rate like RMSprop and it takes advantage of momentum by using moving average of the gradient instead of gradient itself like SGD with momentum. %[https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c] It works very well in practice and is recommended to start with when optimizing deeper neural networks [L7].
+	
+	%[https://ruder.io/optimizing-gradient-descent/]
+	%[http://jmlr.org/papers/volume12/duchi11a/duchi11a.pdf]
+	\item \textbf{AdaDelta}
+	
+	This algorithm is an extension of AdaGrad and tackles its tendency to drop some of the learning rates to almost infinitely small values. []
+	
+	\item Second order optimization?
+	
+	OVERLOOK
+	%https://arxiv.org/pdf/1609.04747.pdf
+\end{itemize}
+
+\subsection{Improving training performance}
+\subsubsection{Initialization of weights and thresholds}
+
+The standard choice is to initialise the weights to independent Gaussian random numbers with mean zero and unit
+variance and the thresholds to zero. But in networks that have large hidden layers with many neurons, this scheme may fail. [mehlig] This is because the variance of weights is not taken care of, which leads to very large or small activation values, resulting in exploding or vanishing gradient problem during backpropagation. [https://medium.com/@shoray.goel/kaiming-he-initialization-a8d9ed0b5899] Here are some of the more advanced initialization methods:
+
+\begin{itemize}
+	\item Xavier initialization
+		
+	Xavier initialization sets the layer’s weights to values from Gaussian distribution. The mean and standard deviation are determined by the number of incoming and outcoming network connections to and from the layer. These random numbers are then divided by the square root of the number of incoming connections. This method works well with tangent and sigmoid activation functions, but fails when using ReLUs. see [stanford L6]	
+	
+	\item MSRA initialization
+
+	This method differs from Xavier only by using different factor to scale the Gaussian distributed numbers. It turns out that this small change works much better when using ReLU activation function. see [stanford L6]
+	
+\end{itemize}
+
+\subsubsection{Overfitting and regularization}
+A network with more neurons may classify the training data better, because it accurately represents all specific features of the data. But those specific properties could look quite different in new data and the network may fit too fine details that have no general meaning. As a consequence, we must look for a compromise between accurate classification of the training set and the ability of the network to generalise. 
+
+The problem is illustrated in Figure XY and is called overfitting. 
+
+During training, one can run into trouble when the weights start to grow causing the local fields to become too large. When that happens, the activation function like Sigmoid reaches its plateau very soon which slows down the training (vanishing gradient). One way to solve this problem is to reduce weights by some factor every $ n $ iterations. This is done by adding another term to the loss function, like
+
+\begin{gather}
+	R_{L2}(w) = \frac{\gamma}{2} \sum\limits_{ij} w_{ij}^{2} \quad \text{or} \quad R_{L1}(w) = \frac{\gamma}{2} \sum\limits_{ij} |w_{ij}|
+\end{gather}
+
+\noindent which are refferred to as the L2 and L1 regularization. [mehlig]
+
+These two regularization schemes tend to help against overfitting. They add a constraint to the problem of minimising the energy function. The result is a compromise between a small value of H and small weight values. The idea is that a network with smaller weights is more robust to the effect of noise. When the weights are small, then small changes in some of the
+patterns do not give a substantially different training result. When the network has large weights, by contrast, it may happen that small changes in the input give significant differences in the training result that are difficult to generalise (Figure 6.9).
+
+\subsubsection{Dropout}
+
+Dropout is a very simple scheme that helps against overfitting. During training, some random portion of the neurons in the network are ignored for each input pattern/mini-batch with the probability of $ p $. This can be thought of as making the network adapt to the sparsity of the remaining neurons and making their effect on the output spread equally over the network. Another way to interpret this is that we are basically training different net architectures at the same time. When the training is done, the output of each neuron is multiplied by the probability $ p $ of a neuron being dropped out during training. [mehlig][L7]
+
+\subsubsection{Pruning}
+
+Prunning is another regularization technique. The idea is to first train a deep network with many hidden layers and when the training is done, remove some portion of the hidden neurons completely. This turns out to be more efficient in terms of generalization properties than using small networks that were not trained with prunning. [mehlig]
+
+\subsubsection{Data augmentation}
+
+The general rule is that the bigger the training dataset is the better the network generalises. However, expanding dataset manually may be very time expensive which leads to the idea of expanding it artificially. In image classification tasks, this can be done by randomly cropping, scaling, shifting and mirroring the data. [mehlig]
+[MEHHLIG 90]
+
+\subsubsection{Early stopping}
+One way of avoiding overfitting is to use cross validation and early stopping. The training data are split into two sets: a training set and a validation set. Although training and validation data are drawn from the same distribution and share the same global features, they differ in details that are not of interest. The network is trained on the training set. During training one monitors not only the energy function for the training set, but also the energy function evaluated on the validation data. As long as the network learns general features of the input distribution, both training and validation energies decrease. But when the network starts to learn specific features of the training set, then the validation energy saturates, or may start to increase. At this point the training should be stopped. [citace mehlig]
+
+The training is stopped when the validation energy begins to
+increase. In Section a precise criterion for this early stopping is introduced, one that works for fluctuating data.
+
+\subsubsection{Data preprocessing}
+
+For most cases, it is advisable to shift the data so it has zero mean before the training begins. When classifying images for example, one can choose between two ways of doing this: first, by subtracting the mean image (for RGB, we have the image of size $ MxNx3 $) from the entire dataset or, to subtract so called per-channel mean from every image (it means we have three numbers in total). The reason for doing this is illustrated in Figure XY. Thinking of adjusting the weights in the network as of moving along the decision boundary, it is intuitive that data which are not distributed around the origin will cause the classification success to be very sensitive to weight changes.
+
+Sometimes it also appropriate to scale the data so it has the same variance in all directions. See [mehlig chapter 6.3.1.] for more details and another techniques.
+
+\subsubsection{Choosing hyperparameters}
+
+transfer learning
 
 
 

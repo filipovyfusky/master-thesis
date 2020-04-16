@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.4.14)  14 APR 2020 22:03
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.4.14)  16 APR 2020 22:15
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -1055,7 +1055,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-<logo/VUT.pdf, id=68, 99.58253pt x 99.58376pt>
+<logo/VUT.pdf, id=64, 99.58253pt x 99.58376pt>
 File: logo/VUT.pdf Graphic file (type pdf)
 <use logo/VUT.pdf>
 Package luatex.def Info: logo/VUT.pdf  used on input line 53.
@@ -1121,7 +1121,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 luc)
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1] (./Introduction.tex
-<obr/semseg.jpg, id=123, 903.375pt x 471.7625pt>
+<obr/semseg.jpg, id=118, 903.375pt x 471.7625pt>
 File: obr/semseg.jpg Graphic file (type jpg)
 <use obr/semseg.jpg>
 Package luatex.def Info: obr/semseg.jpg  used on input line 13.
@@ -1138,16 +1138,16 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.5'
 ) [6] [7] [8] [9] [10]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 ut line 274.
-(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman10-regular.luc) [11]) (./Literatura.tex [12]) (./SeznamZkratek.tex
-[13]) (./SeznamPriloh.tex [14])
+(load luc: /var/lib/texmf/luatex-cache/generic/fonts/otl/lmroman10-regular.luc) [11] [12] [13] [14]) (./Literatura.tex [15])
+(./SeznamZkratek.tex [16]) (./SeznamPriloh.tex [17])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
- [15]
+ [18]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 82.
  (./diplomka.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 82.
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: 358E15E4E924C5A0BE24C0C3191003DB;2908.
+(rerunfilecheck)             Checksum: 3BF3C61849BC50ADBF9CF06B35B5393B;2682.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1155,15 +1155,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 )
 
 Here is how much of LuaTeX's memory you used:
- 24946 strings out of 494480
+ 24955 strings out of 494480
  100000,662416 words of node,token memory allocated
  596 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 5 glue, 1 kern, 23 attribute, 60 glue_spec, 23 attr
 ibute_list, 1 write nodes
-   avail lists: 2:470,3:97,4:60,5:276,6:3280,7:800,8:50,9:266,10:22,11:315
- 28274 multiletter control sequences out of 65536+600000
+   avail lists: 2:470,3:95,4:56,5:299,6:3280,7:800,8:50,9:271,10:22,11:315
+ 28273 multiletter control sequences out of 65536+600000
  82 fonts using 10000495 bytes
- 46i,13n,56p,1160b,524s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 46i,13n,56p,1160b,526s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/tex
 mf/fonts/opentype/public/lm/lmromanslant12-regular.otf></usr/share/texmf/fonts/o
 pentype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/l
@@ -1178,10 +1178,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomka.pdf (20 pages, 218064 bytes).
+Output written on diplomka.pdf (23 pages, 231801 bytes).
 
-PDF statistics: 284 PDF objects out of 1000 (max. 8388607)
- 226 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 131072)
- 147 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 300 PDF objects out of 1000 (max. 8388607)
+ 239 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 131072)
+ 139 words of extra memory for PDF output out of 10000 (max. 100000000)
 
