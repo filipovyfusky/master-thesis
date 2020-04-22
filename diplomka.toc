@@ -7,23 +7,23 @@
 \contentsline {subsection}{\numberline {3.1.2}McCulloch-Pitts neurons}{5}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}Activation functions}{6}{subsection.3.1.3}
 \contentsline {subsection}{\numberline {3.1.4}Multilayer perceptrons}{8}{subsection.3.1.4}
+\contentsline {subsubsection}{Linear separability}{9}{section*.3}
 \contentsline {section}{\numberline {3.2}Training of artificial neural networks}{9}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Loss function}{9}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Gradient optimization and backpropagation}{10}{subsection.3.2.2}
-\contentsline {subsubsection}{Gradient descent}{10}{section*.3}
-\contentsline {subsubsection}{Vanishing and exploding gradient problem}{11}{section*.4}
-\contentsline {subsubsection}{Stochastic gradient descent - SGD}{12}{section*.5}
-\contentsline {subsubsection}{Adaptation of the learning rate}{12}{section*.6}
-\contentsline {subsubsection}{Other optimization algorithms}{12}{section*.7}
+\contentsline {subsubsection}{Gradient descent}{10}{section*.4}
+\contentsline {subsubsection}{Stochastic gradient descent}{12}{section*.5}
+\contentsline {subsubsection}{Vanishing and exploding gradient problem}{12}{section*.6}
+\contentsline {subsubsection}{Adaptation of the learning rate}{12}{section*.7}
+\contentsline {subsubsection}{Other optimization algorithms}{13}{section*.8}
 \contentsline {subsection}{\numberline {3.2.3}Improving training performance}{13}{subsection.3.2.3}
-\contentsline {subsubsection}{Initialization of weights and thresholds}{13}{section*.8}
-\contentsline {subsubsection}{Overfitting and regularization}{14}{section*.9}
-\contentsline {subsubsection}{Dropout}{14}{section*.10}
-\contentsline {subsubsection}{Pruning}{14}{section*.11}
-\contentsline {subsubsection}{Data augmentation}{14}{section*.12}
-\contentsline {subsubsection}{Early stopping}{15}{section*.13}
-\contentsline {subsubsection}{Data preprocessing}{15}{section*.14}
-\contentsline {subsubsection}{HYPERPARAMETR CHOICE}{15}{section*.15}
+\contentsline {subsubsection}{Initialization of weights and thresholds}{13}{section*.9}
+\contentsline {subsubsection}{Overfitting and regularization}{14}{section*.10}
+\contentsline {subsubsection}{Dropout}{15}{section*.11}
+\contentsline {subsubsection}{Pruning}{15}{section*.12}
+\contentsline {subsubsection}{Data augmentation}{15}{section*.13}
+\contentsline {subsubsection}{Early stopping}{15}{section*.14}
+\contentsline {subsubsection}{Data pre-processing}{15}{section*.15}
 \contentsline {chapter}{\numberline {4}Bibliography}{16}{chapter.4}
 \contentsline {chapter}{\numberline {5}Seznam použitých zkratek a symbolů}{17}{chapter.5}
 \contentsline {chapter}{\numberline {6}Seznam příloh}{18}{chapter.6}
