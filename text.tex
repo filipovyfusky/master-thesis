@@ -92,7 +92,7 @@ One can choose from several activation functions which all come with their 'pros
 		
 \end{itemize}
 
-There are activation functions designed specifically for the output layer. The reason for that comes from the definition of a classification task, where we would like to interpret the outputs of the network as relative probabilities of the input belonging to a certain class. For this one can use the commonly-used softmax activation function. We say 'relative' because the network's decision is only based on the features of one particular pattern in comparison with other data we fed in during training and does not reflect 'outer' probability at all. 
+There are activation functions designed specifically for the output layer. The reason for that comes from the definition of a classification task, where we would like to interpret the outputs of the network as relative probabilities of the input belonging to a certain class. For this one can use the commonly-used softmax activation function. We say 'relative' because the network's decision is only based on the features of one particular pattern in comparison with other data we used during training. Hence, the probabilities computed by the softmax classifier are better thought of as confidences where the ordering of the scores is interpretable, but the absolute numbers (or their differences) technically are not. [https://cs231n.github.io/linear-classify/]
 
 Another possibility for the output activation function is the sigmoid function, which is used for both input/hidden and output layers. Here are the most frequently used activation functions:
 
@@ -104,7 +104,7 @@ Another possibility for the output activation function is the sigmoid function, 
 	g(x)=\frac{1}{1 + e^{-x}}
 \end{gather}
 
-This function's output ranges continuously from <0,1>. It finds its use in multilayer perceptrons, especially when approximating a real, continuous function. In deep networks, however, it does not have optimal properties for the learning algorithm called 'backpropagation', which will discussed in the next chapters. Also, the fact that its mean value is non-zero doesn't have a positive impact on the learning process either. [Groman]
+This function has a clear interpretation of neuron states - active/inactive is represented by values 0/1. The sigmoid function is currently out of favour for large networks. In short, it does not have optimal properties for the learning algorithm because it saturates very quickly. Also, the fact that its mean value is non-zero doesn't have a positive impact on the learning process either. [https://cs231n.github.io/neural-networks-1/] [Groman]
 
 \item \textbf{Hyperbolic tangent}
 
@@ -112,7 +112,7 @@ This function's output ranges continuously from <0,1>. It finds its use in multi
 	g(x)=\tanh (x)
 \end{gather}
 
-Unlike the sigmoid, the range of its output is in the interval <-1,1>. It still has the same limitations as the previous function and therefore is not a suitable candidate for learning very deep networks via backpropagation. 
+Unlike the sigmoid, the range of its output is in the interval <-1,1> and the output is therefore zero-centered. In practice, the tanh non-linearity is always preferred to the sigmoid non-linearity. [https://cs231n.github.io/neural-networks-1/]
 
 \item \textbf{Rectified Linear unit (ReLu)}
 
@@ -410,11 +410,14 @@ FIGURE
 
 \subsubsection{Data pre-processing}
 
-For most cases, it is advisable to shift the data so it has zero mean before the training begins. When classifying images, for example, one can choose between two ways of doing this: first, by subtracting the mean image (image of size $ M*N*3 $) from the entire dataset or, to subtract the so-called per-channel mean (three numbers in total). The motivation behind this is illustrated in Figure XY. If we think of adjusting the weights in the network as moving the decision boundary, it is intuitive that the data not distributed around the origin will cause the classification success to get very sensitive to weight changes.
+For most cases, it is advisable to shift the data so it has zero mean before the training begins. When classifying images, for example, one can choose between two ways of doing this: first, by subtracting the mean image (image of size MxNx3) from the entire dataset or, to subtract the so-called per-channel mean (three numbers in total). The motivation behind this is illustrated in Figure XY. If we think of adjusting the weights in the network as moving the decision boundary, it is intuitive that the data not distributed around the origin will cause the classification success to get very sensitive to weight changes.
 
 Sometimes it's also appropriate to scale the data so it has the same variance in all directions. See [mehlig chapter 6.3.1.] for more details and other techniques.
 
 %\subsubsection{Choosing hyperparameters}
+%https://cs231n.github.io/neural-networks-3/
+%\subsubsection{Batch normalisation}
+%TRANFER LEASRNING
 
 %transfer learning
 

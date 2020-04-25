@@ -1,0 +1,14 @@
+\section{Semantic Segmentation}
+
+In semantic segmentation, one assigns a class to each pixel of an input image, unlike in the classification task, where one classifies the entire image. This section presents the most successful methods involving neural networks and supervised learning. 
+
+Segmentation has always been one of the most fundamental areas of computer vision. The classical approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to idealistic/ideal and where robustness of the algorithm is not crucial. To give an example of classical methods, one can refer to thresholding, region growing and mean shift segmentation [coufal, vut].
+
+In the previous chapter, the CNN architectures designed for image classification were presented. The size of the output layer of these networks is determined by the number of categories of classification because the CNN transfers to a FCN in the end. In semantic segmentation however, one needs to get an image of the same resolution as the input image containing the information about a class of every pixel. To do this, the common scheme is introduced: the first part of the network is left unchanged but now, instead of the transition to FCN, various methods are implemented to upsample the encoded image features from deepest layer of the CNN.
+
+\subsection{Encoder-Decoder Architecture}
+
+
+
+
+

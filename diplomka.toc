@@ -24,6 +24,13 @@
 \contentsline {subsubsection}{Data augmentation}{15}{section*.13}
 \contentsline {subsubsection}{Early stopping}{15}{section*.14}
 \contentsline {subsubsection}{Data pre-processing}{15}{section*.15}
-\contentsline {chapter}{\numberline {4}Bibliography}{16}{chapter.4}
-\contentsline {chapter}{\numberline {5}Seznam použitých zkratek a symbolů}{17}{chapter.5}
-\contentsline {chapter}{\numberline {6}Seznam příloh}{18}{chapter.6}
+\contentsline {section}{\numberline {3.3}Convolutional Neural Networks}{16}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}CNN Layer Types}{16}{subsection.3.3.1}
+\contentsline {subsubsection}{Convolution Layers}{16}{section*.16}
+\contentsline {subsubsection}{Pooling Layers}{16}{section*.17}
+\contentsline {subsection}{\numberline {3.3.2}Examples of CNN Architectures}{16}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Semantic Segmentation}{17}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Encoder-Decoder Architecture}{18}{subsection.3.4.1}
+\contentsline {chapter}{\numberline {4}Bibliography}{19}{chapter.4}
+\contentsline {chapter}{\numberline {5}Seznam použitých zkratek a symbolů}{20}{chapter.5}
+\contentsline {chapter}{\numberline {6}Seznam příloh}{21}{chapter.6}
