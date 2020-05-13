@@ -9,6 +9,8 @@ The fundamental blocks we developed for learning regular Neural Networks still a
 
 In CNN, layer’s parameters consist of a set of learnable filters. Every filter is small spatially, but extends through the full depth of the input volume. For example, a typical filter on a first layer of a CNN with RGB inputs might have size 5x5x3. During the forward pass, we convolve each filter across the width and height of the input volume and compute dot products between the entries of the filter and the input at any position. Intuitively, the network will learn filters that activate when they see some type of visual feature such as an edge of some orientation or a blotch of some color on the first layer. Now, we will have an entire set of filters in each CONV layer, and each of them will produce a separate 2-dimensional activation map (sometimes called feature map). We will stack these activation maps along the depth dimension and produce the output volume that becomes an input for other layers. [https://cs231n.github.io/convolutional-networks/]
 
+FIGURE AND MATHEMATICS
+
 \subsubsection{Pooling Layers}
 
 The function of pooling layers is to progressively reduce the spatial size of the layers in the network and thus reduce the amount of parameters. [https://cs231n.github.io/convolutional-networks/] A neuron in a pooling layer takes the outputs of several neighbouring feature maps and summarises their outputs into a single number. Max-pooling units, for example, summarise the outputs of nearby feature maps (in a 2×2 square for instance) by taking the maximum over the feature-map outputs. There are no trainable parameters associated with the pooling layers, they compute the output from the inputs using a pre-defined prescription. [mehlig]

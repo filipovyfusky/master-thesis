@@ -2,13 +2,121 @@
 
 In semantic segmentation, one assigns a class to each pixel of an input image, unlike in the classification task, where one classifies the entire image. This section presents the most successful methods involving neural networks and supervised learning. 
 
-Segmentation has always been one of the most fundamental areas of computer vision. The classical approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to idealistic/ideal and where robustness of the algorithm is not crucial. To give an example of classical methods, one can refer to thresholding, region growing and mean shift segmentation [coufal, vut].
-
-In the previous chapter, the CNN architectures designed for image classification were presented. The size of the output layer of these networks is determined by the number of categories of classification because the CNN transfers to a FCN in the end. In semantic segmentation however, one needs to get an image of the same resolution as the input image containing the information about a class of every pixel. To do this, the common scheme is introduced: the first part of the network is left unchanged but now, instead of the transition to FCN, various methods are implemented to upsample the encoded image features from deepest layer of the CNN.
+Segmentation has always been one of the most fundamental areas of computer vision. The classical approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to idealistic/ideal and where robustness of the algorithm is not crucial. To give an example of classical methods, one can refer to thresholding, region growing and mean shift segmentation [coufal, vut]. There have also been introduced more advanced methods using machine learning classification, such as TextonBoost [], TextonForest [] and Random Forest []. These algorithms have fallen out of favour due to the massive success of neural networks.
 
 \subsection{Encoder-Decoder Architecture}
 
+In the previous chapter, the CNN architectures designed for image classification were presented. The size of the output layer of these networks is determined by the number of categories of classification because the CNN transfers to a FCN in the end. In semantic segmentation however, one needs to get an image of the same resolution as the input image containing the information about a class of every pixel. To do this, the common scheme is introduced: the first part of the network is left unchanged but now, instead of the transition to FCN, various methods are implemented to upsample the encoded image features from deepest layer of the CNN. This scheme is reffered to as the encoder-decoder architecture. 
 
+The puprose of the encoder is to downsample the input images while still representing the significant features. The decoder part of the algorithm then upsamples the output of the encoder to the original input image size. This is usually done by performing reverse operations to max-pooling and convolution [DECONVOLUTION, stanford]. The last part of the decoder typically gives the final segmented image. 
+
+
+Shortly after the success of CNN in image classification challenges, there have been introduced several segmentation architectures using CNN as the encoder. Some of the state of-the-art were for instance FCN [], DeconvNet [] and U-Net []. These networks share the idea of having CNN incorporated as the encoder but differ in the form
+of the decoder part. [] However, the problem of training such networks due to the large number of trainable parameters, the design of the decoder and hence the need of introducing the cumbersome multi-stage training made them very difficult to use in practice [segnet]. SegNet [] introduced in 2015 differs from these architectures as it has significantly lower number of parameters and the design od the encoder-decoder network allows it to be trained via standard end-to-end method using backpropagation and SGD. 
+
+\subsection{SegNet and Bayesian SegNet}
+
+
+
+
+
+\newpage
+\newpage
+
+
+
+SIDE NOTES:
+
+
+Most recent deep architectures for segmentation have
+identical encoder networks, i.e VGG16, , training and inference. Another common
+feature is they have trainable parameters in the order of hundreds
+of millions and thus encounter difficulties in performing end-toend training [4]. The difficulty of training these networks has led
+to multi-stage training [2], appending networks to a pre-trained
+architecture such as FCN [10], use of supporting aids such as
+region proposals for inference [4], disjoint training of classification
+and segmentation networks [18] and use of additional training data
+for pre-training [11] [20] or for full training [10]. In addition,
+performance boosting post-processing techniques [3] have also
+been popular. Although all these factors improve performance on
+challenging benchmarks [21], it is unfortunately difficult from
+their quantitative results to disentangle the key design factors
+necessary to achieve good performance. We therefore analysed
+the decoding process used in some
+
+A decoder upsamples its
+input using the transferred pool indices from its encoder to produce a sparse feature map(s). It then performs convolution with a trainable filter bank
+to densify the feature map. The final decoder output feature maps are fed to a soft-max classifier for pixel-wise classification.
+
+An encoder consists of
+convolution with a filter bank, element-wise tanh non-linearity,
+max-pooling and sub-sampling to obtain the feature maps. For
+each sample, the indices of the max locations computed during
+pooling are stored and passed to the decoder. The decoder upsamples the feature maps by using the stored pooled indices. It
+convolves this upsampled map using a trainable decoder filter
+bank to reconstruct the input image. This architecture was used for
+unsupervised pre-training for classification. A somewhat similar
+decoding technique is used for visualizing trained convolutional
+networks [47] for classification.
+
+Here, SegNet differs from
+these architectures as the deep encoder-decoder network is trained
+jointly for a supervised learning task and hence the decoders are
+an integral part of the network in test time.
+
+We add here that two other architectures, DeconvNet [53] and
+U-Net [16] share a similar architecture to SegNet but with some
+differences. DeconvNet has a much larger parameterization, needs
+more computational resources and is harder to train end-to-end
+(Table 6), primarily due to the use of fully connected layers (albeit
+in a convolutional manner) We report several comparisons with
+DeconvNet later in the paper Sec. 4.
+As compared to SegNet, U-Net [16] (proposed for the medical
+imaging community) does not reuse pooling indices but instead
+transfers the entire feature map (at the cost of more memory) to
+the corresponding decoders and concatenates them to upsampled
+(via deconvolution) decoder feature maps. There is no conv5 and
+max-pool 5 block in U-Net as in the VGG net architecture. SegNet,
+on the other hand, uses all of the pre-trained convolutional layer
+weights from VGG net as pre-trained weights.
+
+We also use this benchmark to first compare SegNet with several non deep-learning methods including Random Forests [27],
+Boosting [27], [29] in combination with CRF based methods [30].
+This was done to give the user a perspective of the improvements
+in accuracy that has been achieved using deep networks compared
+to classical feature engineering based techniques.
+
+We remark here
+that we used median frequency class balancing [50] in training
+SegNet-Basic and SegNet. DeconvNet which have fully connected layers (turned into convolutional layers) train much more slowly and have comparable
+or higher forward-backward pass time with reference to SegNet.
+
+Deep learning models have often achieved increasing success due
+to the availability of massive datasets and expanding model depth
+and parameterisation. However, in practice factors like memory
+and computational time during training and testing are important
+factors to consider when choosing a model from a large bank
+of models. Training time becomes an important consideration
+particularly when the performance gain is not commensurate with
+increased training time as shown in our experiments. Test time
+memory and computational load are important to deploy models
+on specialised embedded devices, for example, in AR applications.
+From an overall efficiency viewpoint, we feel less attention has
+been paid to smaller and more memory, time efficient models for
+real-time applications such as road scene understanding and AR.
+This was the primary motivation behind the proposal of SegNet,
+which is significantly smaller and faster than other competing
+architectures, but which we have shown to be efficient for tasks
+such as road scene understanding.
+
+SegNet on the
+other hand is more efficient since it only stores the max-pooling
+indices of the feature maps and uses them in its decoder network
+to achieve good performance. On large and well known datasets
+SegNet performs competitively, achieving high scores for road
+scene understanding. End-to-end learning of deep segmentation
+architectures is a harder challenge and we hope to see more
+attention paid to this important problem.
 
 
 
