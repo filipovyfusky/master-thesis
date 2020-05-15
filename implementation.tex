@@ -1,0 +1,21 @@
+\chapter{Implementation and method}
+
+--------------TRAINING CAFFE NOTES---------------
+
+The typical challenge is to segment classes such as road, building, cars etc. The encoder and decoder weights are all initialized using MSRA. To train all the variants we use stochastic gradient descent (SGD) with a fixed learning rate of 0.1 and momentum of 0.9 [17] using our Caffe implementation of SegNet-Basic [56]. We train the variants until the training loss
+2. See http://mi.eng.cam.ac.uk/projects/segnet/ for our SegNet code and web demo.
+converges. Before each epoch, the training set is shuffled and each mini-batch (12 images) is then picked in order thus ensuring that each image is used only once in an epoch. We select the model
+which performs highest on a validation dataset. We use the cross-entropy loss [2] as the objective function for training the network. The loss is summed up over all the pixels in a mini-batch. When there is large variation in the number of pixels in each class in the training set (e.g road, sky and building
+pixels dominate the CamVid dataset) then there is a need to weight the loss differently based on the true class. This is termed class balancing. We use median frequency balancing [13] where the
+weight assigned to a class in the loss function is the ratio of the median of class frequencies computed on the entire training set divided by the class frequency. This implies that larger classes in
+the training set have a weight smaller than 1 and the weights of the smallest classes are the highest. We also experimented with training the different variants without class balancing or
+equivalently using natural frequency balancing.
+We perform local contrast normalization [54] to the RGB input. 
+We train the model with dropout and sample the posterior distribution over the weights at test time using dropout
+to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model
+uncertainty for each class. We take the mean of the per class
+variance measurements as an overall measure of model uncertainty. We also explored using the variation ratio as
+a measure of uncertainty (i.e. the percentage of samples
+which agree with the class prediction) however we found
+this to qualitatively produce a more binary measure of
+model uncertainty. Fig. 2 shows a schematic of the segmentation prediction and model uncertainty estimate process.
