@@ -38,6 +38,20 @@
 \contentsline {subsection}{\numberline {3.4.3}Bayesian SegNet}{19}{subsection.3.4.3}
 \contentsline {subsubsection}{Monte Carlo Dropout}{19}{section*.21}
 \contentsline {chapter}{\numberline {4}Implementation and method}{20}{chapter.4}
-\contentsline {chapter}{\numberline {5}Bibliography}{21}{chapter.5}
-\contentsline {chapter}{\numberline {6}Seznam použitých zkratek a symbolů}{22}{chapter.6}
-\contentsline {chapter}{\numberline {7}Seznam příloh}{23}{chapter.7}
+\contentsline {section}{\numberline {4.1}CPU vs. GPU for Training ANN}{20}{section.4.1}
+\contentsline {subsubsection}{Tensor Cores}{20}{section*.22}
+\contentsline {section}{\numberline {4.2}ANN frameworks}{20}{section.4.2}
+\contentsline {section}{\numberline {4.3}Setting up Environment for Caffe}{21}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Hardware configuration}{21}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Software configuration}{21}{subsection.4.3.2}
+\contentsline {subsubsection}{Operating System}{21}{section*.23}
+\contentsline {subsubsection}{Caffe Dependencies}{21}{section*.24}
+\contentsline {subsubsection}{Enabling NVIDIA driver}{22}{section*.25}
+\contentsline {subsubsection}{CUDA installation}{22}{section*.26}
+\contentsline {subsubsection}{Installing C++ libraries}{22}{section*.27}
+\contentsline {subsubsection}{Installing and Setting Python environment????}{22}{section*.28}
+\contentsline {subsubsection}{Building Caffe}{22}{section*.29}
+\contentsline {subsubsection}{Building PyCaffe}{22}{section*.30}
+\contentsline {chapter}{\numberline {5}Bibliography}{24}{chapter.5}
+\contentsline {chapter}{\numberline {6}Seznam použitých zkratek a symbolů}{25}{chapter.6}
+\contentsline {chapter}{\numberline {7}Seznam příloh}{26}{chapter.7}

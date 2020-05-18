@@ -1,5 +1,82 @@
 \chapter{Implementation and method}
 
+In this chapter, the original Caffe [] implementation of SegNet and Bayesian SegNet together with their simplified version SegNet Basic and Bayesian SegNet Basic will be tested on a custom dataset. Part of this will be evaluating the effect of various training hyperparameters, solvers, data augmentation techniques etc. This will also give the instructions on how to set up the software/hardware environment to run Caffe framework.
+
+\section{CPU vs. GPU for Training ANN}
+
+CPU is the main processing unit of a computer. Current CPU's usually have 4 to 8 separate cores, which allows them to run several tasks in parallel. Graphics processing unit (GPU) was originally designed for performing only rendering computer graphics. Table XY gives and idea of how these two computational units differ in terms of the kind of task they're designed for. Note that CPU has much lower number of cores, but these run at high frequency and are very capable in terms of the instructions they perform. Therefore, CPU's are great for sequential tasks. On the other hand, GPU comprises of a large number of 'simple' cores, which makes it better for computing parallel tasks. 
+
+In terms of the available memory, CPU doesn't have its own resources (apart from the very small memory sections called caches) and has access to the system's RAM, whose size is very often between 8 and 32 GB for powerful PC's. GPU's, on the other hand, have their own block of RAM on the chip because the access top the main system's RAM has usually many bottlenecks. The size of the RAM for the top-end GPU's ranges from 8 to 12 GB.
+
+The main part of the computations in Neural Networks in general is matrix multiplication. For this, GPU has the power of performing these operations by parts in parallel which speeds up the training significantly. 
+
+There have been created abstraction frameworks such as CUDA and OpenCL, that allow programmers do write their code in an usual manner and run it directly on GPU. For the purposes of Neral Networks, NVIDIA has developed a library of the most commonly used CUDA primitives named cuDNN. 
+
+\subsubsection{Tensor Cores}
+
+Tensor Core is a special GPU feature offered by NVIDIA cards. It enables mixed-precision computing, dynamically adapting calculations to accelerate throughput while preserving accuracy. The latest generation expands these speedups to a full range of workloads. From 10x speedups in AI training with Tensor Float 32 data type, to 2.5x boosts for high-performance computing with floating point 64 (double precision). [nvidia site]
+
+\section{ANN frameworks}
+
+As the architecture and training of Neural Networks are getting more complicated, there is a room for programmers to make ANN frameworks such as Caffe, TensorFlow, and PyTorch as user friendly as possible. The idea of these software tools is to make a higher abstraction of the architecture of the network called computational graph. The user can therefore think of designing and training the network separately by applying an optimizer to the computational graph that represents the layers of the network. 
+
+Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by Berkeley AI Research (BAIR) and by community contributors. [berkeley caffe] The main difference from the other mentioned frameworks is that the user often doesn't need to write any code at all. The architecture of the network (the computational graph) is created in a .prototxt file, which is a standard text file in which one fills in the subsequent layers of the network in the desired order. Also, rather than having a optimizer object, one creates another .prototxt file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of this files are created, the user runs Caffe computation from the command line. The core of the framework is written in C++. Pre-built binaries are called When the computation is started.
+
+Caffe also has bindings for Python and Matlab, which if very useful for evaluating the training statistics. 
+
+\section{Setting up Environment for Caffe}
+
+\subsection{Hardware configuration}
+
+The GPU used for the computations has been picked according to the most up-to-date benchmarks and recommendations found online [source]. When choosing GPUs in general, one needs to decide between ATI/AMD and NVIDIA chips. For this case however, NVIDIA is the choice because it's way more 'ANN-friendly' as it's offering more features specifically designed for ANN computations. 
+
+It is also advisable to use SSD in the PC configuration, because the data flow begins from reading the training data (images) from a storage, in this case from the computer's hard drive. Another way is moving the training data into RAM before the training is initiated [source, dalasi info]. 
+
+Table XY shows the complete PC specifications used for training SegNet for the purposes of this thesis.  
+
+\subsection{Software configuration} 
+
+\subsubsection{Operating System} 
+
+The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used in this thesis for the SegNet and Caffe implementation is Ubuntu 18.04 LTS 64 bit. As Caffe is capable of running on GPU, the main prerequisite is a CUDA-compatible GPU from NVIDIA. 
+
+\subsubsection{Caffe Dependencies} 
+
+The Caffe code is an open-source software and is available at []. The authors of the SegNet created a slightly modified version of Caffe (caffe-segnet) that supports some special SegNet features (a few custom layer types). In addition, since the original caffe-segnet supports just cuDNN v2, which is not supported for new pascal based GPUs, there's another version of caffe-segnet that supports cuDNN 5.1 and decreases the inference time by 25 \% to 35 \% [timoo saeman]. This version was therefore selected for the SegNet implementation.
+
+Caffe-segnet is available as a source code and one therefore needs to compile it on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build.
+
+\subsubsection{Enabling NVIDIA driver}
+
+Ubuntu 18.04 enables the default Nouveau graphics driver after installation. Before taking other steps, it is vital to disable the Nouveau driver in Sofware->Software\&Updates->Additional drivers->NVIDIA proprietary XY. The driver version used for the thesis is XY.
+
+\subsubsection{CUDA installation}
+
+CUDA version is determined by the version of cuDNN compatible with caffe-segnet, which is cuDNN 5.1 in this case. The corresponding CUDA version is CUDA 8.0. Both are available on the NVIDIA website [Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0]. 
+
+NVIDIA has very detailed installation instructions for Linux available at []. After installing it, the CUDA files are usually located at: path/to/cuda.
+
+\subsubsection{Installing C++ libraries}
+
+Hodit linky na navod s postupem? Asi jo.
+
+\subsubsection{Installing and Setting Python environment????}
+
+Neni to uz moc podrobny? Zas na druhou stranu, jednoduchy to neni a je to potreba mit nastaveny spravne aby se v tom dobre delalo a vsechno fungovalo...
+
+\subsubsection{Building Caffe}
+
+Caffe source comes with a configuration file taht specifies the build options, Makefile.config. Please see the Attachment XY for the configuration used. The most important step is to select GPU version of Caffe to be built. To initiate the build, one needs to navigate to the parent caffe-segnet folder and run 'make all -j4'.
+
+\subsubsection{Building PyCaffe}
+
+After the main build and test are finished, the next step is to build the Caffe bindings for Python by running 'make python-libs'.
+
+%\begin{itemize}
+	
+%\end{itemize}
+
+\newpage
 --------------TRAINING CAFFE NOTES---------------
 
 The typical challenge is to segment classes such as road, building, cars etc. The encoder and decoder weights are all initialized using MSRA. To train all the variants we use stochastic gradient descent (SGD) with a fixed learning rate of 0.1 and momentum of 0.9 [17] using our Caffe implementation of SegNet-Basic [56]. We train the variants until the training loss
