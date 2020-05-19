@@ -9,6 +9,7 @@
 %\usepackage[T1]{fontenc}% EC fonty - háčky a čárky jsou k písmenkům připojovány - nehezké
 
 
+\usepackage{listings}
 \usepackage{algorithmicx}
 \usepackage{algorithm}
 \usepackage{amssymb}
@@ -26,6 +27,27 @@
 
 \usepackage[]{diplomka}
 \usepackage[]{VSKP} % Sablona dle smernice rektora
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=C++,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breakatwhitespace=true
+	tabsize=3
+}
+
 \input{VSKP} % Uvodni desky atd dle smernice rektora
 \splithyphens% při rozdělování slov se spojovníkem opakuj spojovník
 \usepackage[pdftitle={\typpracetxt},

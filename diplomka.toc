@@ -52,6 +52,11 @@
 \contentsline {subsubsection}{Installing and Setting Python environment????}{22}{section*.28}
 \contentsline {subsubsection}{Building Caffe}{22}{section*.29}
 \contentsline {subsubsection}{Building PyCaffe}{22}{section*.30}
-\contentsline {chapter}{\numberline {5}Bibliography}{24}{chapter.5}
-\contentsline {chapter}{\numberline {6}Seznam použitých zkratek a symbolů}{25}{chapter.6}
-\contentsline {chapter}{\numberline {7}Seznam příloh}{26}{chapter.7}
+\contentsline {section}{\numberline {4.4}Data Preparation}{22}{section.4.4}
+\contentsline {subsubsection}{Labelbox}{23}{section*.31}
+\contentsline {section}{\numberline {4.5}Setting up SegNet}{23}{section.4.5}
+\contentsline {subsubsection}{Training file}{23}{section*.32}
+\contentsline {subsubsection}{Solver file}{25}{section*.33}
+\contentsline {chapter}{\numberline {5}Bibliography}{28}{chapter.5}
+\contentsline {chapter}{\numberline {6}Seznam použitých zkratek a symbolů}{29}{chapter.6}
+\contentsline {chapter}{\numberline {7}Seznam příloh}{30}{chapter.7}
