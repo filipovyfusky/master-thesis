@@ -22,7 +22,7 @@ As the architecture and training of Neural Networks are getting more complicated
 
 Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by Berkeley AI Research (BAIR) and by community contributors. [berkeley caffe] The main difference from the other mentioned frameworks is that the user often doesn't need to write any code at all. The architecture of the network (the computational graph) is created in a .prototxt file, which is a standard text file in which one fills in the subsequent layers of the network in the desired order. Also, rather than having a optimizer object, one creates another .prototxt file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of this files are created, the user runs Caffe computation from the command line. The core of the framework is written in C++. Pre-built binaries are called When the computation is started.
 
-Caffe also has bindings for Python and Matlab, which if very useful for evaluating the training statistics. 
+Caffe also has bindings for Python (CPW - Caffe Python Wrapper) and Matlab, which if very useful for evaluating the training statistics. 
 
 \section{Setting up Environment for Caffe}
 
@@ -38,23 +38,38 @@ Table XY shows the complete PC specifications used for training SegNet for the p
 
 \subsubsection{Operating System} 
 
-The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used in this thesis for the SegNet and Caffe implementation is Ubuntu 18.04 LTS 64 bit. As Caffe is capable of running on GPU, the main prerequisite is a CUDA-compatible GPU from NVIDIA. 
-
-\subsubsection{Caffe Dependencies} 
-
-The Caffe code is an open-source software and is available at []. The authors of the SegNet created a slightly modified version of Caffe (caffe-segnet) that supports some special SegNet features (a few custom layer types). In addition, since the original caffe-segnet supports just cuDNN v2, which is not supported for new pascal based GPUs, there's another version of caffe-segnet that supports cuDNN 5.1 and decreases the inference time by 25 \% to 35 \% [timoo saeman]. This version was therefore selected for the SegNet implementation. From this point on, the term 'Caffe' will be equivalent to 'caffe-segnet' in this thesis.
-
-Caffe is available as a source code and one therefore needs to compile it on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build.
+The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used in this thesis for the SegNet and Caffe implementation is Ubuntu 18.04 LTS 64 bit.
 
 \subsubsection{Enabling NVIDIA driver}
 
-Ubuntu 18.04 enables the default Nouveau graphics driver after installation. Before taking other steps, it is vital to disable the Nouveau driver in Sofware->Software\&Updates->Additional drivers->NVIDIA proprietary XY. The driver version used for the thesis is XY.
+Ubuntu 18.04 enables the default Nouveau graphics driver after installation. Before taking other steps, it is vital to disable the Nouveau driver in \textit{Application menu -> Software \& Updates -> Additional drivers
+	-> Using NVIDIA driver metapackage from nvidia-driver-XYZ (proprietary, tested) -> Apply changes.} The driver version used for the thesis is XY.
+
+[https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04]
+
+\subsubsection{Caffe and Dependencies} 
+
+The Caffe code is an open-source software. The authors of the SegNet created a slightly modified version of Caffe (caffe-segnet) that supports some special SegNet features, such as custom layer types. In addition, since the original caffe-segnet supports just cuDNN v2, which is not supported for new pascal based GPUs, there's another version of caffe-segnet from [TimmoSaemannGithub] that supports cuDNN 5.1 and decreases the inference time by 25 \% to 35 \%. This version has therefore been selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to 'caffe-segnet' in the text.
+
+Caffe is available as a source code and therefore needs to be compiled on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build.
+
+Caffe source comes with a configuration file taht specifies the build options, Makefile.config. Please see the Attachment XY for the configuration used. The most important step is to select GPU version of Caffe to be built. To initiate the build, one needs to navigate to the parent caffe-segnet folder and run 'make all -j4'.
+
+After the main build and test are finished, the next step is to build the CPW by running 'make python-libs'.
+
+Other dependencies can be installed under superuser via 'apt' command in the following way
+
+
+
+protobuf, glog, gflags, hdf5, Boost >= 1.55, BLAS via ATLAS, OpenCV >= 2.4 including 3.0, lmdb, leveldb
 
 \subsubsection{CUDA installation}
 
 CUDA version is determined by the version of cuDNN compatible with caffe-segnet, which is cuDNN 5.1 in this case. The corresponding CUDA version is CUDA 8.0. Both are available on the NVIDIA website [Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0]. 
 
 NVIDIA has very detailed installation instructions for Linux available at []. After installing it, the CUDA files are usually located at: path/to/cuda.
+
+\subsubsection{cuDNN installation}
 
 \subsubsection{Installing C++ libraries}
 
@@ -64,13 +79,7 @@ Hodit linky na navod s postupem? Asi jo.
 
 Neni to uz moc podrobny? Zas na druhou stranu, jednoduchy to neni a je to potreba mit nastaveny spravne aby se v tom dobre delalo a vsechno fungovalo...
 
-\subsubsection{Building Caffe}
 
-Caffe source comes with a configuration file taht specifies the build options, Makefile.config. Please see the Attachment XY for the configuration used. The most important step is to select GPU version of Caffe to be built. To initiate the build, one needs to navigate to the parent caffe-segnet folder and run 'make all -j4'.
-
-\subsubsection{Building PyCaffe}
-
-After the main build and test are finished, the next step is to build the Caffe bindings for Python by running 'make python-libs'.
 
 \section{Data Preparation}
 
@@ -90,6 +99,43 @@ In 'utils.py', this corresponds to the function 'make\_ txt()'. The script will 
 
 \section{Setting up SegNet}
 
+\subsubsection{Optimization file}
+
+The file 'solver.prototxt' contains the optimization parameters. The detailed description of the parameters can be found on the original Caffe website. The basic description can be found in the snippet below. 
+
+\begin{lstlisting}
+
+// Training file
+net: "/path/to/train.prototxt"	
+// Caffe GPU version
+solver_mode: GPU
+// Solver type		
+type: "AdaDelta"
+// Initial learning rate, changes according to lr_policy		
+base_lr: 0.061		
+// Drops the learning rate as 'gamma*base_lr' every 'stepsize' iterations
+lr_policy: "step"		 	
+gamma: 1.0
+stepsize: 10000000
+
+// Show loss and accuracy every 'display' iterations
+display: 130
+// Max number of iteration. One iteration = a pass of one mini-batch			
+max_iter: 3000	
+// Regularization technique called Weight decay		
+weight_decay: 0.00053	
+// Saves the weights after 'snapshot' iterations
+snapshot: 1000000		
+snapshot_prefix: "/path/to/snap" 
+// Optional, for accumulating gradients due to low GPU memory 
+#iter_size: 4			
+
+test_initialization: false	
+test_iter: 1
+test_interval: 100000000
+
+\end{lstlisting}
+
 \subsubsection{Training file}
 
 SegNet implenetation comes as three files. 'segnet\_train.prototxt' is a file for the training phase. It begins with the data import layer. In this case, images and labels are loaded as .jpg and .png files directly from the hard drive. The path to the 'image\_paths.txt' file containg the image/label paths is entered as the 'source' parameter of the 'DenseImageData' layer in Caffe.
@@ -98,7 +144,9 @@ This layer also specifies the size of the mini-batch. This value is limited by t
 
 The 'shuffle' parameter in the Data layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by bringing another stochasticity into the computation. 
 
-The last important parameter is the 'mirror' parameter, which applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the Data layer with already processed images.  
+The last important parameter is the 'mirror' parameter, which applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the Data layer with already processed images.
+
+The encoder and decoder weights are all initialized using MSRA method.  
 
 \begin{lstlisting}
 
@@ -182,60 +230,105 @@ layer {
 
 \end{lstlisting}
 
+To initiate the training from the command line, it is neccesary to first navigate to the folder with Caffe binaries, for example
+
+\begin{lstlisting}[language=bash]
+$ cd /SegNet/caffe-segnet/build/tools/
+\end{lstlisting}
+
+Then the training is initiated by executing
+
+\begin{lstlisting}[language=bash]
+$ ./caffe train -solver /SegNet/Models/segnet_solver.prototxt
+\end{lstlisting}
+
+Caffe allows the user to resume the training from a solver checkpoint (snapshot). To do that, one needs to call
+
+\begin{lstlisting}[language=bash]
+$ ./caffe train -solver /path/to/solver.prototxt -snapshot /path/to/snapshot_iter_XY.solverstate
+\end{lstlisting}
+
+Another scenario is when it's desired to use transfer learning. In this case, Caffe needs a path to the weight file of the pre-trained network. The corresponding command would be
+
+\begin{lstlisting}[language=bash]
+$ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_weights.caffemodel
+\end{lstlisting}
+
+
  [https://arxiv.org/pdf/1411.4734.pdf]
 
-\subsubsection{Solver file}
+\subsubsection{Inference file}
 
-The file 'solver.prototxt' contains the optimization parameters. The detailed description of the parameters can be found on the original Caffe website. The basic description can be found in the snippet below. 
+Once the weights are obtained from the training phase, the Inference file comes into play. The structure of the network remains the same, apart from the input and output layers. The snippet below shows how the output changes: the loss function is no longer computed, the only output we care about are the Softmax probabilities. 
+
+The Batch Normalisation layers [3] in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At inference time we must use the statistics for the entire dataset. 
+We first use the 'compute\_bn\_statistics.py' script that comes together with SegNet. These scripts are meant to be run from the command line and need to get command line parameters. 
+
+The script computes the final model weights for the inference. The location of the 'weights.caffemodel' file is an input to the script 'segnet\_inference'. This script uses the CPW to read data from the layers of deployed Caffe SegNet. 
+
+\subsubsection{Evaluating Segmentation Performance}
+
+The performance of semantic segmentation is often described by so called IoU (intercestion over union) metrics. IoU is the area of overlap between the predicted segmentation and the ground truth divided by the area of union between the predicted segmentation and the ground truth, as shown in Figure XY. This metric ranges from 0–1 (0–100\%) with 0 signifying no overlap and 1 signifying perfectly overlapping segmentation.
+
+[https://towardsdatascience.com/metrics-to-evaluate-your-semantic-segmentation-model-6bcb99639aa2]
+
+[https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/]
+
+
+
+
+http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html
+
+\subsubsection{Setting up Virtualenv in Pycharm}
+
+
 
 \begin{lstlisting}
 
-// Training file
-net: "/path/to/train.prototxt"	
-// Caffe GPU version
-solver_mode: GPU
-// Solver type		
-type: "AdaDelta"
-// Initial learning rate, changes according to lr_policy		
-base_lr: 0.061		
-// Drops the learning rate as 'gamma*base_lr' every 'stepsize' iterations
-lr_policy: "step"		 	
-gamma: 1.0
-stepsize: 10000000
-
-// Show loss and accuracy every 'display' iterations
-display: 130
-// Max number of iteration. One iteration = a pass of one mini-batch			
-max_iter: 3000	
-// Regularization technique called Weight decay		
-weight_decay: 0.00053	
-// Saves the weights after 'snapshot' iterations
-snapshot: 1000000		
-snapshot_prefix: "/path/to/snap" 
-// Optional, for accumulating gradients due to low GPU memory 
-#iter_size: 4			
-  		
-test_initialization: false	
-test_iter: 1
-test_interval: 100000000
+layer {
+	bottom: "conv1_2_D"
+	top: "conv1_1_D"
+	name: "conv1_1_D"
+	type: "Convolution"
+	param {
+		lr_mult: 1
+		decay_mult: 1
+	}
+	param {
+		lr_mult: 2
+		decay_mult: 0
+	}
+	convolution_param {
+		weight_filler {
+			type: "msra"
+		}
+		bias_filler {
+			type: "constant"
+			value: 0
+		}
+		num_output: 2
+		pad: 1
+		kernel_size: 3
+	}
+}
+layer {
+	name: "prob"
+	type: "Softmax"
+	bottom: "conv1_1_D"
+	top: "prob"
+	softmax_param {engine: CAFFE}
+}
 
 \end{lstlisting}
 
-%\begin{itemize}
-	
-%\end{itemize}
+\chapter{Results}
+
+TRANSFER LEARNING + BATCH NORMALIZATION
+
 
 \newpage
 --------------TRAINING CAFFE NOTES---------------
 
-The typical challenge is to segment classes such as road, building, cars etc. The encoder and decoder weights are all initialized using MSRA. To train all the variants we use stochastic gradient descent (SGD) with a fixed learning rate of 0.1 and momentum of 0.9 [17] using our Caffe implementation of SegNet-Basic [56]. We train the variants until the training loss
-2. See http://mi.eng.cam.ac.uk/projects/segnet/ for our SegNet code and web demo.
-converges. Before each epoch, the training set is shuffled and each mini-batch (12 images) is then picked in order thus ensuring that each image is used only once in an epoch. We select the model
-which performs highest on a validation dataset. We use the cross-entropy loss [2] as the objective function for training the network. The loss is summed up over all the pixels in a mini-batch. When there is large variation in the number of pixels in each class in the training set (e.g road, sky and building
-pixels dominate the CamVid dataset) then there is a need to weight the loss differently based on the true class. This is termed class balancing. We use median frequency balancing [13] where the
-weight assigned to a class in the loss function is the ratio of the median of class frequencies computed on the entire training set divided by the class frequency. This implies that larger classes in
-the training set have a weight smaller than 1 and the weights of the smallest classes are the highest. We also experimented with training the different variants without class balancing or
-equivalently using natural frequency balancing.
 We perform local contrast normalization [54] to the RGB input. 
 We train the model with dropout and sample the posterior distribution over the weights at test time using dropout
 to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model
