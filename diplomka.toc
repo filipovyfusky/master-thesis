@@ -45,20 +45,20 @@
 \contentsline {subsection}{\numberline {4.3.1}Hardware configuration}{21}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Software configuration}{21}{subsection.4.3.2}
 \contentsline {subsubsection}{Operating System}{21}{section*.23}
-\contentsline {subsubsection}{Enabling NVIDIA driver}{21}{section*.24}
-\contentsline {subsubsection}{Caffe and Dependencies}{22}{section*.25}
-\contentsline {subsubsection}{CUDA installation}{22}{section*.26}
-\contentsline {subsubsection}{Installing C++ libraries}{22}{section*.27}
-\contentsline {subsubsection}{Installing and Setting Python environment????}{22}{section*.28}
-\contentsline {section}{\numberline {4.4}Data Preparation}{22}{section.4.4}
-\contentsline {subsubsection}{Labelbox}{22}{section*.29}
-\contentsline {section}{\numberline {4.5}Setting up SegNet}{23}{section.4.5}
-\contentsline {subsubsection}{Optimization file}{23}{section*.30}
-\contentsline {subsubsection}{Training file}{24}{section*.31}
-\contentsline {subsubsection}{Inference file}{26}{section*.32}
-\contentsline {subsubsection}{Evaluating Segmentation Performance}{26}{section*.33}
-\contentsline {subsubsection}{Setting up Virtualenv in Pycharm}{27}{section*.34}
-\contentsline {chapter}{\numberline {5}Results}{28}{chapter.5}
-\contentsline {chapter}{\numberline {6}Bibliography}{30}{chapter.6}
-\contentsline {chapter}{\numberline {7}Seznam použitých zkratek a symbolů}{31}{chapter.7}
-\contentsline {chapter}{\numberline {8}Seznam příloh}{32}{chapter.8}
+\contentsline {subsubsection}{Enabling NVIDIA driver}{22}{section*.24}
+\contentsline {subsubsection}{CUDA installation}{22}{section*.25}
+\contentsline {subsubsection}{cuDNN installation}{23}{section*.26}
+\contentsline {subsubsection}{Building Caffe for SegNet}{23}{section*.27}
+\contentsline {subsubsection}{Installing and Setting Python environment????}{24}{section*.28}
+\contentsline {section}{\numberline {4.4}Data Preparation}{25}{section.4.4}
+\contentsline {subsubsection}{Labelbox}{25}{section*.29}
+\contentsline {section}{\numberline {4.5}Setting up SegNet}{25}{section.4.5}
+\contentsline {subsubsection}{Optimization file}{25}{section*.30}
+\contentsline {subsubsection}{Training file}{26}{section*.31}
+\contentsline {subsubsection}{Inference file}{28}{section*.32}
+\contentsline {subsubsection}{Evaluating Segmentation Performance}{29}{section*.33}
+\contentsline {subsubsection}{Setting up Virtualenv in Pycharm}{29}{section*.34}
+\contentsline {chapter}{\numberline {5}Results}{31}{chapter.5}
+\contentsline {chapter}{\numberline {6}Bibliography}{33}{chapter.6}
+\contentsline {chapter}{\numberline {7}Seznam použitých zkratek a symbolů}{34}{chapter.7}
+\contentsline {chapter}{\numberline {8}Seznam příloh}{35}{chapter.8}

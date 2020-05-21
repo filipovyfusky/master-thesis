@@ -38,48 +38,136 @@ Table XY shows the complete PC specifications used for training SegNet for the p
 
 \subsubsection{Operating System} 
 
-The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used in this thesis for the SegNet and Caffe implementation is Ubuntu 18.04 LTS 64 bit.
+The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used is Ubuntu 18.04 LTS 64 bit. Is is important to let the Ubuntu installer download the latest updates, or, after the installation, invoke the update command to ensure that the most up-to-date packages will be installed. For this, one can call
+
+\begin{lstlisting}[language=bash]
+$ sudo apt update
+$ sudo apt upgrade
+\end{lstlisting}
 
 \subsubsection{Enabling NVIDIA driver}
 
-Ubuntu 18.04 enables the default Nouveau graphics driver after installation. Before taking other steps, it is vital to disable the Nouveau driver in \textit{Application menu -> Software \& Updates -> Additional drivers
-	-> Using NVIDIA driver metapackage from nvidia-driver-XYZ (proprietary, tested) -> Apply changes.} The driver version used for the thesis is XY.
+Ubuntu 18.04 enables the default Nouveau graphics driver after installation. Before taking other steps, it is vital to disable the Nouveau driver and use NVIDIA instead in \textit{Application menu -> Software \& Updates -> Additional drivers
+	-> Using NVIDIA driver metapackage from nvidia-driver-XYZ (proprietary, tested) -> Apply changes.} The driver version used is nvidia-driver-440.
 
 [https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04]
 
-\subsubsection{Caffe and Dependencies} 
-
-The Caffe code is an open-source software. The authors of the SegNet created a slightly modified version of Caffe (caffe-segnet) that supports some special SegNet features, such as custom layer types. In addition, since the original caffe-segnet supports just cuDNN v2, which is not supported for new pascal based GPUs, there's another version of caffe-segnet from [TimmoSaemannGithub] that supports cuDNN 5.1 and decreases the inference time by 25 \% to 35 \%. This version has therefore been selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to 'caffe-segnet' in the text.
-
-Caffe is available as a source code and therefore needs to be compiled on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build.
-
-Caffe source comes with a configuration file taht specifies the build options, Makefile.config. Please see the Attachment XY for the configuration used. The most important step is to select GPU version of Caffe to be built. To initiate the build, one needs to navigate to the parent caffe-segnet folder and run 'make all -j4'.
-
-After the main build and test are finished, the next step is to build the CPW by running 'make python-libs'.
-
-Other dependencies can be installed under superuser via 'apt' command in the following way
-
-
-
-protobuf, glog, gflags, hdf5, Boost >= 1.55, BLAS via ATLAS, OpenCV >= 2.4 including 3.0, lmdb, leveldb
-
 \subsubsection{CUDA installation}
 
-CUDA version is determined by the version of cuDNN compatible with caffe-segnet, which is cuDNN 5.1 in this case. The corresponding CUDA version is CUDA 8.0. Both are available on the NVIDIA website [Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0]. 
+CUDA version is determined by the version of cuDNN compatible with the used Caffe version, which is cuDNN 5.1 in this case. The corresponding CUDA version is CUDA 8.0. On Ubuntu 18.04, the procedure is the following:
 
-NVIDIA has very detailed installation instructions for Linux available at []. After installing it, the CUDA files are usually located at: path/to/cuda.
+\begin{itemize}
+	\item \textbf{Download CUDA 8.0 runfile.} Go to \href{https://developer.nvidia.com/cuda-80-ga2-download-archive}{CUDA Legacy Releases} and look for 'CUDA Toolkit 8.0 GA2 (Feb 2017)'. The standard .deb installer support only Ubuntu 16.04 LTS and therefore the installation must be performed via the runfile method. Navigate to Linux -> x86\_64 -> Ubuntu -> 16.04 -> runfile (local) -> Base installer. Also, download the Patch file. 
+	
+	\item \textbf{Perform the runfile installation of CUDA.} Open the Ubuntu Terminal (Ctrl+Alt+T) and run
+	
+	\begin{lstlisting}[language=bash]
+	$ cd /path/to/cuda_8.0.61_375.26_linux.run # Navigates to folder with CUDA
+	$ sudo chmod a+x cuda*		# Makes the cuda*.run executable
+	$ ./cuda*.run --tar mxvf 	# Unpacks the .runfile content
+	$ sudo cp InstallUtils.pm /usr/lib/x86_64-linux-gnu/perl-base  # Copy one of the extracted files to perl-base
+	$ sudo sh cuda_8.0.61_375.26_linux.run --override # Start the installation 
+		# The licence agreement
+		$ accept 
+		# You are attempting to install on an unsupported configuration. Do you wish to continue?
+		$ yes 
+		# Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 375.26?
+		$ no
+		# Install the CUDA 8.0 Toolkit?
+		$ yes 
+		$ <press enter> (leave deafult location)
+		# Do you want to install a symbolic link at /usr/local/cuda?
+		$ yes
+		# Install the CUDA 8.0 Samples?
+		$ no
+	\end{lstlisting}
+	
+	After the installation is done, ignore the '***WARNING: Incomplete installation!' statement, because the NVIDIA driver is already installed. 
+	
+	After the installation of the CUDA 8.0 Base package is done, run the Patch installation is a similar fashion:
+	
+	\begin{lstlisting}[language=bash]
+	$ sudo sh cuda_8.0.61.2_linux.run
+	\end{lstlisting}
+	
+	\item \textbf{Perform the post-installation actions.} The system needs to know the location of CUDA executables. The common way is to set these "PATH" variables in the current session of the Terminal. However, it's useful to add these permanently to '\textasciitilde{}/.bashrc' :
+		
+	\begin{lstlisting}[language=bash]
+	$ sudo gedit ~/.bashrc # Opens the .bashrc file in text editor
+	\end{lstlisting}
+	
+	In the text editor, append the following two statements to the end of the file:
+	
+	\begin{lstlisting}[language=bash]
+	export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+	export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\
+			${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+	\end{lstlisting}	
+	
+	From this point, all newly opened Terminal sessions should have the paths set correctly. 
+	
+\end{itemize}
 
 \subsubsection{cuDNN installation}
 
-\subsubsection{Installing C++ libraries}
+The NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. It provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers. [https://developer.nvidia.com/cudnn] 
 
-Hodit linky na navod s postupem? Asi jo.
+\begin{itemize}
+	\item \textbf{Download cuDNN 5.1 for CUDA 8.0.} To get the appropriate cuDNN version for Caffe and CUDA 8.0, go to \href{https://developer.nvidia.com/rdp/cudnn-archive}{cuDNN Archive} (requires login) and look for \textit{Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0 -> cuDNN v5.1 Library for Linux}. Extract the archive, navigate to the extracted folder and copy the files to the CUDA 8.0 installation folder:
+	
+	\begin{lstlisting}[language=bash]
+	$ tar -xf cudnn-8.0-linux-x64-v5.1.tgz 
+	$ cd cuda
+	$ sudo cp -a include/cudnn.h /usr/local/cuda/include/
+	$ sudo cp -a lib64/libcudnn* /usr/local/cuda/lib64/
+	\end{lstlisting}	
+\end{itemize}
+
+\subsubsection{Building Caffe for SegNet} 
+
+The Caffe code is an open-source software. The authors of the SegNet created a slightly modified version of Caffe (caffe-segnet) that supports some special SegNet features, such as custom layer types. In addition, since the original caffe-segnet supports just cuDNN v2, which is not supported for new pascal based GPUs, there's another version of caffe-segnet from [TimmoSaemannGithub] that supports cuDNN 5.1 and decreases the inference time by 25 \% to 35 \%. This version has therefore been selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to 'caffe-segnet' in the text.
+
+\begin{itemize}
+		
+	\item \textbf{Install Caffe dependencies.} Caffe is available as a source code and therefore needs to be compiled on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build. 
+	
+	\begin{lstlisting}[language=bash]
+	$ sudo apt install python3-opencv 			# OpenCV, version 3
+	$ sudo apt-get install libatlas-base-dev 	# Atlas BLAS library
+	$ sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+	$ sudo apt-get install libboost-all-dev		# Boost
+	$ sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
+	$ sudo apt-get install python3-pip
+	$ sudo pip3 install protobuf
+	$ sudo apt-get install the python3-dev
+	\end{lstlisting}
+	
+	\item \textbf{Download Caffe (caffe-segnet-cudnn5) source code.} Go to \href{https://github.com/TimoSaemann/caffe-segnet-cudnn5}{Timmoe Saemann's Github repository} and clone/download it. 
+	\item \textbf{Set the build configuration file.} The build is done via the 'make' command, which needs the 'Makefile.config' file to be present in the parent directory ('caffe-segnet-cudnn5-master'). This file contains the build options and needs to be configured properly. Fortunately, the correct form of 'Makefile.config' is part of this thesis and can be found in the Attachment XY. 
+	
+	\item \textbf{Install gcc/g++ compliers.} The CUDA/cuDNN libraries used during the build are compatible only with gcc/g++ compilers of version 5. To install these, run:
+	
+	\begin{lstlisting}[language=bash]
+	$ sudo apt install gcc-5 g++-5
+	# Create symbolic links so CUDA can see the proper compiler binaries
+	$ sudo ln -s /usr/bin/gcc-5 /usr/local/cuda/bin/gcc
+	$ sudo ln -s /usr/bin/g++-5 /usr/local/cuda/bin/g++
+	\end{lstlisting}
+	
+	\item \textbf{Start the build.} Once the 'Makefile.config' file is located in the 'caffe-segnet-cudnn5-master', everything should be ready for the final step. Type these commands to initiate and test the Caffe build (don't forget to build pycaffe (Caffe Python Wrapper)):
+	
+	\begin{lstlisting}[language=bash]
+	make all -j4	# start build
+	make test -j4	# test build
+	make runtest	# run Caffe and test it
+	make pycaffe	# build pycaffe 
+	\end{lstlisting} 	
+\end{itemize}
+[https://mc.ai/installing-caffe-on-ubuntu-18-04-with-cuda-and-cudnn/]
 
 \subsubsection{Installing and Setting Python environment????}
 
 Neni to uz moc podrobny? Zas na druhou stranu, jednoduchy to neni a je to potreba mit nastaveny spravne aby se v tom dobre delalo a vsechno fungovalo...
-
-
 
 \section{Data Preparation}
 
