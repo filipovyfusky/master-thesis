@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  21 MAY 2020 13:25
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  22 MAY 2020 19:47
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.080 seconds
+luaotfload | main : initialization completed in 0.079 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1094,7 +1094,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-<logo/VUT.pdf, id=128, 99.58253pt x 99.58376pt>
+<logo/VUT.pdf, id=144, 99.58253pt x 99.58376pt>
 File: logo/VUT.pdf Graphic file (type pdf)
 <use logo/VUT.pdf>
 Package luatex.def Info: logo/VUT.pdf  used on input line 76.
@@ -1162,7 +1162,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 manslant12-regular.luc)
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1] (./Introduction.tex
-<obr/semseg.jpg, id=199, 903.375pt x 471.7625pt>
+<obr/semseg.jpg, id=219, 903.375pt x 471.7625pt>
 File: obr/semseg.jpg Graphic file (type jpg)
 <use obr/semseg.jpg>
 Package luatex.def Info: obr/semseg.jpg  used on input line 14.
@@ -1207,31 +1207,31 @@ Overfull \hbox (31.232pt too wide) in paragraph at lines 62--63
  Open the Ubuntu Ter-mi-nal (Ctrl+Alt+T)
  []
 
-[22] [23] [24] [25] [26] [27] [28]
-Overfull \hbox (19.17621pt too wide) in paragraph at lines 361--362
+[22] [23] [24]) (./setting_up_segnet.tex [25] [26] [27] [28]
+Overfull \hbox (19.17621pt too wide) in paragraph at lines 190--191
 []\TU/lmr/m/n/12 [https://-to-wards-data-science.com/metrics-to-evaluate-your-s
 emantic-segmentation-model-
  []
 
 
-Overfull \hbox (54.9242pt too wide) in paragraph at lines 363--364
+Overfull \hbox (54.9242pt too wide) in paragraph at lines 192--193
 []\TU/lmr/m/n/12 [https://www.py-im-age-search.com/2016/11/07/intersection-over
 -union-iou-for-object-detection/] 
  []
 
-[29] [30] [31]) (./Literatura.tex [32]
+[29]) (./results.tex [30] [31]) (./Literatura.tex [32]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 6.
 
 ) (./SeznamZkratek.tex [33]) (./SeznamPriloh.tex [34])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
  [35]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: 22E4DE997C143FF87A6DC38A2A49ED80;5300.
+(rerunfilecheck)             Checksum: 44AD13F4C4C7EBFB7F4F877228CDC751;5911.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1239,14 +1239,14 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 )
 
 Here is how much of LuaTeX's memory you used:
- 27107 strings out of 494480
+ 27123 strings out of 494480
  100000,662416 words of node,token memory allocated
  579 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 12 attribute, 60 glue_spec, 12 attr
 ibute_list, 1 write, 1 pdf_action nodes
-   avail lists: 2:2355,3:174,4:360,5:1244,6:3228,7:1682,8:651,9:2131,10:17,11:33
+   avail lists: 2:2346,3:194,4:360,5:1244,6:3228,7:1673,8:651,9:2100,10:17,11:33
 2
- 30058 multiletter control sequences out of 65536+600000
+ 30062 multiletter control sequences out of 65536+600000
  103 fonts using 11507127 bytes
  46i,20n,58p,1185b,978s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texm
@@ -1266,10 +1266,10 @@ ts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomka.pdf (40 pages, 307749 bytes).
+Output written on diplomka.pdf (40 pages, 309574 bytes).
 
-PDF statistics: 721 PDF objects out of 1000 (max. 8388607)
- 629 compressed objects within 7 object streams
+PDF statistics: 737 PDF objects out of 1000 (max. 8388607)
+ 645 compressed objects within 7 object streams
  317 named destinations out of 1000 (max. 131072)
- 267 words of extra memory for PDF output out of 10000 (max. 100000000)
+ 299 words of extra memory for PDF output out of 10000 (max. 100000000)
 

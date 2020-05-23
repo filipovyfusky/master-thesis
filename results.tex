@@ -1,0 +1,17 @@
+\chapter{Results}
+
+TRANSFER LEARNING + BATCH NORMALIZATION
+
+
+\newpage
+--------------TRAINING CAFFE NOTES---------------
+
+We perform local contrast normalization [54] to the RGB input. 
+We train the model with dropout and sample the posterior distribution over the weights at test time using dropout
+to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model
+uncertainty for each class. We take the mean of the per class
+variance measurements as an overall measure of model uncertainty. We also explored using the variation ratio as
+a measure of uncertainty (i.e. the percentage of samples
+which agree with the class prediction) however we found
+this to qualitatively produce a more binary measure of
+model uncertainty. Fig. 2 shows a schematic of the segmentation prediction and model uncertainty estimate process.
