@@ -7,30 +7,30 @@ The fundamental blocks we developed for learning regular Neural Networks still a
 
 \subsubsection{Convolution Layers}
 
-In CNN, layer’s parameters consist of a set of learnable filters. Every filter is small spatially, but extends through the full depth of the input volume. For example, a typical filter on a first layer of a CNN with RGB inputs might have size 5x5x3. During the forward pass, we convolve each filter across the width and height of the input volume and compute dot products between the entries of the filter and the input at any position. Intuitively, the network will learn filters that activate when they see some type of visual feature such as an edge of some orientation or a blotch of some color on the first layer. Now, we will have an entire set of filters in each CONV layer, and each of them will produce a separate 2-dimensional activation map (sometimes called feature map). We will stack these activation maps along the depth dimension and produce the output volume that becomes an input for other layers. [https://cs231n.github.io/convolutional-networks/]
+In CNN, layer parameters consist of a set of learnable filters. Each filter is small spatially but extends through the full depth of the input volume. For example, a typical filter in the first layer of a CNN with RGB inputs has size 5x5x3. During the forward pass, we convolve each filter across the width and height of the input volume and compute dot products between the entries of the filter and the input at any position. Intuitively, the network learns filters that activate when they see some type of visual features such as edges of certain orientation or a blotch of some colour in the first layer. Now, we have an entire set of filters in each CONV layer, and each of them will produce a separate 2-dimensional activation map (sometimes called feature map). Finally, we stack these activation maps along the depth dimension and produce the output volume that becomes an input for other layers. [https://cs231n.github.io/convolutional-networks/]
 
 FIGURE AND MATHEMATICS
 
 \subsubsection{Pooling Layers}
 
-The function of pooling layers is to progressively reduce the spatial size of the layers in the network and thus reduce the amount of parameters. [https://cs231n.github.io/convolutional-networks/] A neuron in a pooling layer takes the outputs of several neighbouring feature maps and summarises their outputs into a single number. Max-pooling units, for example, summarise the outputs of nearby feature maps (in a 2×2 square for instance) by taking the maximum over the feature-map outputs. There are no trainable parameters associated with the pooling layers, they compute the output from the inputs using a pre-defined prescription. [mehlig]
+The function of pooling layers is to progressively reduce the spatial size of the layers in the network and thus reduce the number of parameters. [https://cs231n.github.io/convolutional-networks/] A neuron in a pooling layer takes the outputs of several neighbouring feature maps and summarises their outputs into a single number. Max-pooling units, for example, summarise the outputs of nearby feature maps (in a 2×2 square for instance) by taking the maximum over the feature-map outputs. There are no trainable parameters associated with the pooling layers, they compute the output from the inputs using a pre-defined prescription. [mehlig]
 
 \subsection{Examples of CNN Architectures}
 
 Most CNN architectures were developed for image classification. This is achieved by combining the properties of CNN and FCN (perceptrons). We see that in the deepest stage, the output of the network is followed by a standard multilayer perceptron with softmax output. The role of CNN here is only to encode the significant features of a particular image into a lower-level representation. The FCN then takes this output, literarly flattens the output tensor and learns to classify it.
 
-There have been introduced various architectures, each of them having different number of convolution layers, size of the filters, stride taken by the filters during convolution, etc. In practice, one rarely designs a CNN from scratch; instead, it is advisable to choose the currently best-performing network, usually one that performs best on the ImageNet challenge.
+There have been introduced various architectures, each of them having a different number of convolution layers, size of the filters, stride taken by the filters during convolution, etc. In practice, one rarely designs a CNN from scratch; instead, it is advisable to choose the currently best-performing network, usually one that performs best on the ImageNet challenge.
 
-Here is a short summary of the milestone architectures presented in recent years:
+Here is a summary of the milestone architectures presented in recent years:
 
 \begin{itemize}
 	\item \textbf{AlexNet}
 	
-	The first work that popularized Convolutional Networks in Computer Vision was the AlexNet []. The Network had a very similar architecture to LeNet [], but was deeper, bigger, and featured Convolutional Layers stacked on top of each other (previously it was common to only have a single CONV layer always immediately followed by a POOL layer).
+	The first work that popularized Convolutional Networks in Computer Vision was the AlexNet []. The Network had very similar architecture to LeNet [], but was deeper, bigger, and featured Convolutional Layers stacked on top of each other (previously it was common to only have a single CONV layer always immediately followed by a POOL layer).
 	
 	\item \textbf{GoogLeNet}
 	
-	The ILSVRC 2014 winner was a Convolutional Network from Szegedy et al. from Google. Its main contribution was the development of an Inception Module that dramatically reduced the number of parameters in the network (4M, compared to AlexNet with 60M). Additionally, this paper uses Average Pooling instead of Fully Connected layers at the top of the ConvNet, eliminating a large amount of parameters that do not seem to matter much.
+	The ILSVRC 2014 winner was a Convolutional Network from Szegedy et al. from Google. Its main contribution was the development of an Inception Module that dramatically reduced the number of parameters in the network (4M, compared to AlexNet with 60M). Additionally, this paper uses Average Pooling instead of Fully Connected layers at the top of the ConvNet, eliminating a large number of parameters that do not seem to matter much.
 	
 	\item \textbf{VGGNet}
 	
@@ -38,7 +38,8 @@ Here is a short summary of the milestone architectures presented in recent years
 	
 	\item \textbf{ResNet}
 	
-	Residual Network developed by Kaiming He et al. was the winner of ILSVRC 2015. It features special skip connections and a heavy use of batch normalization. The architecture is also missing fully connected layers at the end of the network.	 
+  	Residual Network developed by Kaiming He et al. was the winner of ILSVRC 2015. It features special skip connections and heavy use of batch normalization. The architecture is also missing fully connected layers at the end of the network.
+		 
 \end{itemize}
 
 

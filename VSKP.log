@@ -1,17 +1,19 @@
-This is LuaTeX, Version 0.95.0 (TeX Live 2016/W32TeX)  (format=lualatex 2017.4.29)  17 MAY 2017 23:58
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  25 MAY 2020 12:46
  restricted system commands enabled.
 **VSKP.tex
 (./VSKP.tex
-LaTeX2e <2017/01/01> patch level 3
+LaTeX2e <2017-04-15>
 Lua module: luaotfload-main 2017/01/29 2.80001 OpenType layout system.
 Lua module: lualibs 2017-02-01 2.5 ConTeXt Lua standard libraries.
 Lua module: lualibs-extended 2017-02-01 2.5 ConTeXt Lua libraries -- extended co
-llection.(using cache: C:/texlive/2016/texmf-var/luatex-cache/generic)
-luaotfload | conf : Root cache directory is C:/texlive/2016/texmf-var/luatex-cac
-he/generic/names.
+llection.(using write cache: /home/phil/.texlive2017/texmf-var/luatex-cache/gene
+ric)(using read cache: /var/lib/texmf/luatex-cache/generic /home/phil/.texlive20
+17/texmf-var/luatex-cache/generic)
+luaotfload | conf : Root cache directory is /home/phil/.texlive2017/texmf-var/lu
+atex-cache/generic/names.
 luaotfload | init : Loading fontloader “fontloader-2017-02-11.lua” from kpse
--resolved path “c:/texlive/2016/texmf-dist/tex/luatex/luaotfload/fontloader-20
-17-02-11.lua”.
+-resolved path “/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/fontloader
+-2017-02-11.lua”.
 Lua-only attribute luaotfload@state = 1
 Lua-only attribute luaotfload@noligature = 2
 Lua-only attribute luaotfload@syllabe = 3
@@ -20,8 +22,8 @@ Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.define_font' at position 1 in `define_font'.
 Lua-only attribute luaotfload_color_attribute = 4
-luaotfload | conf : Root cache directory is C:/texlive/2016/texmf-var/luatex-cac
-he/generic/names.
+luaotfload | conf : Root cache directory is /home/phil/.texlive2017/texmf-var/lu
+atex-cache/generic/names.
 Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
 font'.
 Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
@@ -32,11 +34,11 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.156 seconds
-Babel <3.9r> and hyphenation patterns for 1 language(s) loaded.
+luaotfload | main : initialization completed in 0.080 seconds
+Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 ! Undefined control sequence.
-l.19 \fakulta
-           {Fakulta strojního inženýrství}
+l.1 \fakulta
+          {Faculty of Mechanical Engineering}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -50,14 +52,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.19 \fakulta{F
-             akulta strojního inženýrství}
+l.1 \fakulta{F
+            aculty of Mechanical Engineering}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.20 \enfakulta
-             {Faculty of Mechanical Engineering}
+l.2 \enfakulta
+            {Fakulta strojního inženýrství}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -65,8 +67,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.21 \adresafakulta
-                 {Technická 2896/2, 61669 Brno}
+l.3 \adresafakulta
+                {Technická 2896/2, 61669 Brno}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -74,13 +76,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 19--22
-[]Fakulta
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--4
+[]Faculty
  []
 
 ! Undefined control sequence.
-l.23 \ustav
-         {Ústav mechaniky těles, mechatroniky a biomechaniky}
+l.5 \ustav
+        {Institute of Solid Mechanics, Mechatronics and Biomechanics}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -94,14 +96,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.23 \ustav{Ú
-            stav mechaniky těles, mechatroniky a biomechaniky}
+l.5 \ustav{I
+          nstitute of Solid Mechanics, Mechatronics and Biomechanics}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.24 \enustav
-           {Institute of Solid Mechanics, Mechatronics and Biomechanics}
+l.6 \enustav
+          {Ústav mechaniky těles, mechatroniky a biomechaniky}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -109,13 +111,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 23--25
-[]Ústav
+Overfull \hbox (20.0pt too wide) in paragraph at lines 5--7
+[]Institute
  []
 
 ! Undefined control sequence.
-l.28 \autor
-         {}{Filip Špila}{}  % Jméno autora,
+l.10 \autor
+         {Bc.}{Filip Špila}{}  % Jméno autora,
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -129,13 +131,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.28 \autor{}{F
-             ilip Špila}{}  % Jméno autora,
+l.10 \autor{B
+           c.}{Filip Špila}{}  % Jméno autora,
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.30 \autorzkr
+l.12 \autorzkr
             {Špila, F.}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -144,13 +146,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 28--32
-[]Filip
+Overfull \hbox (20.0pt too wide) in paragraph at lines 10--14
+[]Bc.Filip
  []
 
 ! Undefined control sequence.
-l.33 \typstudia
-             {B}
+l.15 \typstudia
+             {N}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -164,19 +166,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.33 \typstudia{B
+l.15 \typstudia{N
                }
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 33--37
-[]B 
+Overfull \hbox (20.0pt too wide) in paragraph at lines 15--19
+[]N 
  []
 
 ! Undefined control sequence.
-l.38 \nazev
-         {Návrh konstrukce a řízení nestabilního robota se sférickou z...
+l.20 \nazev
+         {Semantic segmentation of images using convolutional neural networks}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -190,14 +192,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.38 \nazev{N
-           ávrh konstrukce a řízení nestabilního robota se sférickou z...
+l.20 \nazev{S
+           emantic segmentation of images using convolutional neural networks}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.40 \ennazev
-           {Design of the construction and control algorithm for an unstable...
+l.22 \ennazev
+           {Sémantická segmentace obrazu pomocí konvolučních neuronový...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -205,13 +207,13 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 38--42
-[]Návrh
+Overfull \hbox (20.0pt too wide) in paragraph at lines 20--24
+[]Semantic
  []
 
 ! Undefined control sequence.
-l.44 \vedouci
-           {Ing.}{Tomáš Spáčil}{}
+l.26 \vedouci
+           {doc. Ing.}{Jiří Krejsa}{, Ph.D.}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -225,14 +227,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.44 \vedouci{I
-             ng.}{Tomáš Spáčil}{}
+l.26 \vedouci{d
+             oc. Ing.}{Jiří Krejsa}{, Ph.D.}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.45 \citacevedouci
-                 {Vedoucí  Ing. Tomáš Spáčil.} % Označení vedoucího ...
+l.27 \citacevedouci
+                 {Vedoucí  doc. Ing. Jiří Krejsa, Ph.D.} % Označení ved...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -240,12 +242,12 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 44--46
-[]Ing.Tomáš
+Overfull \hbox (20.0pt too wide) in paragraph at lines 26--28
+[]doc.
  []
 
 ! Undefined control sequence.
-l.47 \datumobhajoby
+l.29 \datumobhajoby
                  {neuvedeno}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -260,14 +262,14 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.47 \datumobhajoby{n
+l.29 \datumobhajoby{n
                    euvedeno}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 ! Undefined control sequence.
-l.48 \abstrakt
-            {\noindent Tato bakalářská práce se zabývá návrhem, výro...
+l.30 \abstrakt
+            {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -275,8 +277,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.50 \enabstrakt
-              {\noindent This bachelor's thesis deals with the complete desi...
+l.32 \enabstrakt
+              {}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -284,8 +286,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.52 \klicovaslova
-                {\noindent Ballbot, konstrukce, inteligentní řízení, PID...
+l.34 \klicovaslova
+                {} % Před "\n" vložit další "\n"
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -293,8 +295,8 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.53 \enklicovaslova
-                  {\noindent Ballbot, construction, intelligent control, PID...
+l.35 \enklicovaslova
+                  {} % Před "\n" vložit další "\n"
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -302,7 +304,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 47--54
+Overfull \hbox (20.0pt too wide) in paragraph at lines 29--36
 []neuvedeno
  []
 
@@ -315,12 +317,12 @@ Overfull \hbox (20.0pt too wide) in paragraph at lines 47--54
 
 
 Here is how much of LuaTeX's memory you used:
- 8 strings out of 494577
- 100000,89155 words of node,token memory allocated 12109 words of node memory still in use:
-   20 hlist, 7 local_par, 1 dir, 280 glue, 13 penalty, 1591 glyph, 27 attribute,
- 33 glue_spec, 27 attribute_list nodes
-   avail lists: 2:2,4:193,5:1,7:195,10:192
- 4187 multiletter control sequences out of 65536+600000
- 14 fonts using 418143 bytes
- 5i,0n,4p,751b,16s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 8 strings out of 494480
+ 100000,89155 words of node,token memory allocated 3479 words of node memory still in use:
+   20 hlist, 7 local_par, 1 dir, 81 glue, 12 penalty, 385 glyph, 25 attribute, 3
+5 glue_spec, 25 attribute_list nodes
+   avail lists: 1:1,2:8,3:1,4:14,5:1,7:6,10:13
+ 4256 multiletter control sequences out of 65536+600000
+ 14 fonts using 591679 bytes
+ 5i,0n,4p,152b,16s stack positions out of 5000i,500n,10000p,200000b,100000s
 !  ==> Fatal error occurred, no output PDF file produced!

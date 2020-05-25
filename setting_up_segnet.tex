@@ -14,6 +14,8 @@ Labelbox in a paid online annotation tool. The best feature of Labelbox is that 
 
 Caffe implementation of a neural network typically consists of four \textit{.prototxt} files: \textit{train.prototxt}, \textit{solver.prototxt}, \textit{test.prototxt} and \textit{inference.prototxt}. The train, test and inference files are almost identical except for a few differences in the very first/last layers. The train file is used together with the solver file to train the network: the network architecture is determined by the train file and the parameters for optimization reside in the solver file. The test file is used by Caffe when one needs to test the network periodically during training on a validation dataset.  
 
+The network files used in this section are available at [filip github].
+
 \subsection{Solver Settings}
 
 The solver file contains the optimization parameters. The detailed description of the parameters can be found in the original Caffe documentation on GitHub [odkaz na dokumentaci]. The description of the parameters used can be found in the snippet below. 
@@ -129,7 +131,18 @@ layer {
 		weight_by_label_freqs: false	     
 	}
 }
+// The last layer of the network
+layer {
+	name: "accuracy"
+	type: "Accuracy"
+	bottom: "conv1_1_D"
+	bottom: "label"
+	top: "accuracy"
+	top: "per_class_accuracy"
+}
 \end{lstlisting}
+
+%% Snippet XY, the last two layers of the train network
 
 SegNet uses the cross-entropy loss as the loss function for training the network. In Caffe, median frequency balancing is available via the 'weight\_by\_label\_freqs' parameter in the \textit{SoftmaxWithLoss} layer. Since the dataset used has only two classes whose occurence can be considered as balanced, this option is set to \textit{false}. 
 
@@ -153,15 +166,41 @@ $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_w
 \end{lstlisting}
 
  [https://arxiv.org/pdf/1411.4734.pdf]
+ 
+\subsection{Testing}
 
-\subsection{Inference file}
+\subsection{Inference}
 
-Once the weights are obtained from the training phase, the Inference file comes into play. The structure of the network remains the same, apart from the input and output layers. The snippet below shows how the output changes: the loss function is no longer computed, the only output we care about are the Softmax probabilities. 
+In this phase, the network is ready to be deployed. From this point, it's very convenient to use the CPW for running the network, feeding it with input data and calculating the segmentation accuracy. To run the final segmentation, some preparation steps must be taken first.
 
-The Batch Normalisation layers [3] in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At inference time we must use the statistics for the entire dataset. 
-We first use the 'compute\_bn\_statistics.py' script that comes together with SegNet. These scripts are meant to be run from the command line and need to get command line parameters. 
+\subsubsection{Calculating Batch Statistics}
+The Batch Normalisation layers [3] in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At inference time we must use the statistics for the entire dataset and obtain the final weights for the inference phase. We do this by calling the \textit{compute\_bn\_statistics.py} which is meant to be run from the command line and needs to get command-line parameters. In PyCharm, we need to switch to Virtual Environment (venv) by opening Terminal and call:
 
-The script computes the final model weights for the inference. The location of the 'weights.caffemodel' file is an input to the script 'segnet\_inference'. This script uses the CPW to read data from the layers of deployed Caffe SegNet. 
+\begin{lstlisting}[language=bash]
+(venv) user@user:/path/to/Scripts$ python3 original_compute_bn_statistics.py /path/to/train.prototxt /path/to/snap_iter_XY.caffemodel /path/to/inference_folder
+\end{lstlisting}
+
+The script automatically edits the TRAIN file and turns it into a new INFERENCE file by removing the layers that are no longer needed. It also takes the weights specified in \textit{snap\_iter\_XY.caffemodel}, calculates the final weights and saves them to \textit{final\_weights.caffemodel}. Both the INFERENCE and weigh files are stored in the specified \textit{inference\_folder}.
+
+The network architecture is now in the INFERENCE file and is the same as in the TRAIN file, apart from the input and output layers. The snippet below shows how the output changes: the loss function is no longer computed, the only output we care about are the Softmax probabilities. The DenseImageData layer is also skipped, because the data will be provided via CPW. 
+
+\begin{lstlisting}
+// Inference, input layer
+name: "segnet_inference"
+input: "data"
+input_dim: 1	# Always 1 for SegNet
+input_dim: 3
+input_dim: 360
+input_dim: 480
+\end{lstlisting}
+
+\subsubsection{Running the Segmentation}
+
+For running the segmentation, we use the script \textit{segnet\_inference.py}. We must provide the network with images either by specifying a path to a video file, or by specifying a sequence of image names to follow in a folder (this is a standard OpenCV [odkaz na to jakej to ma mit format] convention). Once we have an appropriate test set of images, we run the segmentation by calling:
+
+\begin{lstlisting}[language=bash]
+(venv) user@user:/path/to/Scripts$ python3 segnet_inference.py /path/to/inference.prototxt /path/to/final_weights.caffemodel /path/to/videofile.avi 
+\end{lstlisting}
 
 \subsubsection{Evaluating Segmentation Performance}
 
@@ -174,41 +213,3 @@ The performance of semantic segmentation is often described by so called IoU (in
 http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html
 
 https://github.com/alexgkendall/caffe-segnet/issues/21
-
-\begin{lstlisting}
-
-layer {
-	bottom: "conv1_2_D"
-	top: "conv1_1_D"
-	name: "conv1_1_D"
-	type: "Convolution"
-	param {
-		lr_mult: 1
-		decay_mult: 1
-	}
-	param {
-		lr_mult: 2
-		decay_mult: 0
-	}
-	convolution_param {
-		weight_filler {
-			type: "msra"
-		}
-		bias_filler {
-			type: "constant"
-			value: 0
-		}
-		num_output: 2
-		pad: 1
-		kernel_size: 3
-	}
-}
-layer {
-	name: "prob"
-	type: "Softmax"
-	bottom: "conv1_1_D"
-	top: "prob"
-	softmax_param {engine: CAFFE}
-}
-
-\end{lstlisting}

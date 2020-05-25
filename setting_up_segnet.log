@@ -1,0 +1,1906 @@
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  25 MAY 2020 12:33
+ restricted system commands enabled.
+**setting_up_segnet.tex
+(./setting_up_segnet.tex
+LaTeX2e <2017-04-15>
+Lua module: luaotfload-main 2017/01/29 2.80001 OpenType layout system.
+Lua module: lualibs 2017-02-01 2.5 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2017-02-01 2.5 ConTeXt Lua libraries -- extended co
+llection.(using write cache: /home/phil/.texlive2017/texmf-var/luatex-cache/gene
+ric)(using read cache: /var/lib/texmf/luatex-cache/generic /home/phil/.texlive20
+17/texmf-var/luatex-cache/generic)
+luaotfload | conf : Root cache directory is /home/phil/.texlive2017/texmf-var/lu
+atex-cache/generic/names.
+luaotfload | init : Loading fontloader “fontloader-2017-02-11.lua” from kpse
+-resolved path “/usr/share/texlive/texmf-dist/tex/luatex/luaotfload/fontloader
+-2017-02-11.lua”.
+Lua-only attribute luaotfload@state = 1
+Lua-only attribute luaotfload@noligature = 2
+Lua-only attribute luaotfload@syllabe = 3
+luaotfload | init : Context OpenType loader version “3.027”
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 4
+luaotfload | conf : Root cache directory is /home/phil/.texlive2017/texmf-var/lu
+atex-cache/generic/names.
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 2 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
+.
+luaotfload | main : initialization completed in 0.082 seconds
+Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
+! Undefined control sequence.
+l.1 \section
+          {Image Annotation}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \section{I
+            mage Annotation}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--2
+[]Image
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 I
+   n supervised learning, one needs to manually create the training data con...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 3--4
+[]In
+ []
+
+! Undefined control sequence.
+l.5 \subsubsection
+                {Labelbox}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 \subsubsection{L
+                  abelbox}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 5--6
+[]Labelbox 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 L
+   abelbox in a paid online annotation tool. The best feature of Labelbox is...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+luaotfload | db : Font names database loaded from /home/phil/.texlive2017/texmf-
+var/luatex-cache/generic/names/luaotfload-names.luc(load luc: /home/phil/.texliv
+e2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc)
+Overfull \hbox (20.0pt too wide) in paragraph at lines 7--8
+[]Labelbox
+ []
+
+
+Overfull \hbox (26.06pt too wide) in paragraph at lines 7--8
+\TU/lmr/m/it/10 down-
+ []
+
+
+Overfull \hbox (25.56pt too wide) in paragraph at lines 7--8
+\TU/lmr/m/it/10 load()
+ []
+
+
+Overfull \hbox (17.90001pt too wide) in paragraph at lines 7--8
+\TU/lmr/m/it/10 util-
+ []
+
+
+Overfull \hbox (6.65001pt too wide) in paragraph at lines 7--8
+\TU/lmr/m/it/10 i-
+ []
+
+
+Overfull \hbox (28.12003pt too wide) in paragraph at lines 7--8
+\TU/lmr/m/it/10 ties.py
+ []
+
+! Undefined control sequence.
+l.13 \section
+           {Setting up SegNet}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 \section{S
+             etting up SegNet}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 13--14
+[]Setting
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 C
+    affe implementation of a neural network typically consists of four \text...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 15--16
+[]Caffe
+ []
+
+
+Overfull \hbox (20.58002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 .pro-
+ []
+
+
+Overfull \hbox (19.71002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 totxt
+ []
+
+
+Overfull \hbox (41.41003pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 train.pro-
+ []
+
+
+Overfull \hbox (19.71002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 totxt\nullfont ,
+ []
+
+
+Overfull \hbox (45.76003pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 solver.pro-
+ []
+
+
+Overfull \hbox (19.71002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 totxt\nullfont ,
+ []
+
+
+Overfull \hbox (35.91003pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 test.pro-
+ []
+
+
+Overfull \hbox (19.71002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 totxt
+ []
+
+
+Overfull \hbox (12.27pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 in-
+ []
+
+
+Overfull \hbox (15.47002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 fer-
+ []
+
+
+Overfull \hbox (39.49004pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 ence.pro-
+ []
+
+
+Overfull \hbox (19.71002pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/it/10 totxt\nullfont .
+ []
+
+! Undefined control sequence.
+l.17 \subsection
+              {Solver Settings}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 \subsection{S
+                olver Settings}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 17--18
+[]Solver
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 T
+    he solver file contains the optimization parameters. The detailed descri...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 19--20
+[]The
+ []
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \begin{lstlisting}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 /
+    / Training file
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.25 solver_
+          mode: GPU
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 25.
+! Missing $ inserted.
+<inserted text> 
+$
+l.41 
+   
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 22--41
+[]//
+ []
+
+
+Overfull \hbox (27.85997pt too wide) in paragraph at lines 22--41
+solver$[][]\OML/cmm/m/it/10 ode \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (105.09773pt too wide) in paragraph at lines 22--41
+\OML/cmm/m/it/10 GPU==Solvertypetype \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (308.08836pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 AdaDelta\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 ==I
+nitiallearningrate; changesaccordingtolr[]olicybase[]r \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (318.3045pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 061\OML/cmm/m/it/10 ==Determ
+ineshowthelearningratechangesduringtraininglr[]olicy \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (287.27594pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 fixed\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 ==Show
+lossandaccuracyevery[]display[]iterationsdisplay \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (202.58582pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 130\OML/cmm/m/it/10 ==Maxnumberofiteration:Oneiteration \OT1/cm
+r/m/n/10 =
+ []
+
+
+Overfull \hbox (80.7539pt too wide) in paragraph at lines 22--41
+\OML/cmm/m/it/10 apassofonemini \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (65.00063pt too wide) in paragraph at lines 22--41
+\OML/cmm/m/it/10 batchmax[]ter \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (284.95856pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 3000\OML/cmm/m/it/10 ==RegularizationtechniquecalledWeightdecay
+weight[]ecay \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (272.76056pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0005\OML/cmm/m/it/10 ==Saves
+theweightsafter[]snapshot[]iterationssnapshot \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (109.67065pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 1000000\OML/cmm/m/it/10 snapshot[]refix \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (74.15524pt too wide) in paragraph at lines 22--41
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 =path=to=snap\OT1/cmr/m/n/10 "$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.42 /
+    / Testing parameters
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.43 test_
+        initialization: false
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \end{lstlisting}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.46 \end{lstlisting}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 42--47
+[]//
+ []
+
+
+Overfull \hbox (65.5821pt too wide) in paragraph at lines 42--47
+test$[][]\OML/cmm/m/it/10 nitialization \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (62.29001pt too wide) in paragraph at lines 42--47
+\OML/cmm/m/it/10 falsetest[]ter \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (63.18236pt too wide) in paragraph at lines 42--47
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 test[]nterval \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (45.00014pt too wide) in paragraph at lines 42--47
+\OT1/cmr/m/n/10 100000000$ 
+ []
+
+! Undefined control sequence.
+l.48 \subsection
+              {Training}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48 \subsection{T
+                raining}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 48--49
+[]Training 
+ []
+
+! Undefined control sequence.
+l.50 \subsubsection
+                 {Input Layer and Input pre-processing}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 \subsubsection{I
+                   nput Layer and Input pre-processing}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 50--51
+[]Input
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.52 T
+    he train file begins with the DenseImageData. Images and labels are load...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 52--53
+[]The
+ []
+
+
+Overfull \hbox (15.34003pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 .jpg
+ []
+
+
+Overfull \hbox (18.40001pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 .png
+ []
+
+
+Overfull \hbox (14.83pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 im-
+ []
+
+
+Overfull \hbox (58.32004pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 age_paths.txt
+ []
+
+
+Overfull \hbox (26.97002pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 source
+ []
+
+
+Overfull \hbox (21.35pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 Den-
+ []
+
+
+Overfull \hbox (24.31pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 seIm-
+ []
+
+
+Overfull \hbox (17.89001pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 age-
+ []
+
+
+Overfull \hbox (21.09001pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 Data\nullfont .
+ []
+
+
+Overfull \hbox (38.49002pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 iter_size
+ []
+
+
+Overfull \hbox (37.15886pt too wide) in paragraph at lines 52--53
+\OML/cmm/m/it/10 iter[]size \OMS/cmsy/m/n/10 
+ []
+
+
+Overfull \hbox (41.157pt too wide) in paragraph at lines 52--53
+\OML/cmm/m/it/10 batch[]size$\nullfont .
+ []
+
+
+Overfull \hbox (38.49002pt too wide) in paragraph at lines 52--53
+\TU/lmr/m/it/10 iter_size
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.54 T
+    he \textit{shuffle} parameter in the DenseImageData layer determines whe...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 54--55
+[]The
+ []
+
+
+Overfull \hbox (21.22pt too wide) in paragraph at lines 54--55
+\TU/lmr/m/it/10 shuf-
+ []
+
+
+Overfull \hbox (10.48001pt too wide) in paragraph at lines 54--55
+\TU/lmr/m/it/10 fle
+ []
+
+
+Overfull \hbox (19.05pt too wide) in paragraph at lines 54--55
+\TU/lmr/m/it/10 mir-
+ []
+
+
+Overfull \hbox (13.04001pt too wide) in paragraph at lines 54--55
+\TU/lmr/m/it/10 ror
+ []
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.56 \begin{lstlisting}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.57 /
+    / The first layer in the network
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.58 name: "bayesian_
+                   segnet_train"
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! You can't use `macro parameter character #' in math mode.
+l.70 #
+     Per-channel mean
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in math mode.
+l.72 	mean_value: 129		#
+                      B component
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in math mode.
+l.73 	mean_value: 126		#
+                      G
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in math mode.
+l.74 	mean_value: 126		#
+                      R
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 \end{lstlisting}
+                   
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.77 \end{lstlisting}
+                   
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 57--78
+[]//
+ []
+
+
+Overfull \hbox (1347.0145pt too wide) in paragraph at lines 57--78
+"bayesian$[][]\OML/cmm/m/it/10 egnet[]rain\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 lay
+er[]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.79 T
+    he training images and their ground truths are stored as \textit{.jpg} a...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 79--80
+[]The
+ []
+
+
+Overfull \hbox (15.34003pt too wide) in paragraph at lines 79--80
+\TU/lmr/m/it/10 .jpg
+ []
+
+
+Overfull \hbox (18.40001pt too wide) in paragraph at lines 79--80
+\TU/lmr/m/it/10 .png
+ []
+
+
+Overfull \hbox (14.83pt too wide) in paragraph at lines 79--80
+\TU/lmr/m/it/10 im-
+ []
+
+
+Overfull \hbox (58.32004pt too wide) in paragraph at lines 79--80
+\TU/lmr/m/it/10 age_paths.txt
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.81 $
+    $
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 81--81
+[] 
+ []
+
+! Undefined control sequence.
+l.82 \text
+        {\textit{/path/to/image.jpg /path/to/label.png}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (165.60011pt too wide) detected at line 83
+[]
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.85 T
+    his file is generated using the function \textit{make\_txt()} from \text...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 85--86
+[]This
+ []
+
+
+Overfull \hbox (49.38pt too wide) in paragraph at lines 85--86
+\TU/lmr/m/it/10 make_txt()
+ []
+
+
+Overfull \hbox (17.90001pt too wide) in paragraph at lines 85--86
+\TU/lmr/m/it/10 util-
+ []
+
+
+Overfull \hbox (6.65001pt too wide) in paragraph at lines 85--86
+\TU/lmr/m/it/10 i-
+ []
+
+
+Overfull \hbox (28.12003pt too wide) in paragraph at lines 85--86
+\TU/lmr/m/it/10 ties.py\nullfont .
+ []
+
+
+Overfull \hbox (54.59pt too wide) in paragraph at lines 85--86
+\TU/lmr/m/it/10 make_dirs()\nullfont . 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.87 T
+    he method used for mean subtraction was the per-channel mean method. The...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 87--88
+[]The
+ []
+
+! Undefined control sequence.
+l.89 \subsubsection
+                 {Output Dimensions}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.89 \subsubsection{O
+                   utput Dimensions}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 89--90
+[]Output
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.91 I
+    n the original version, SegNet segments 11 classes. This corresponds to ...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 91--92
+[]In
+ []
+
+
+Overfull \hbox (21.21002pt too wide) in paragraph at lines 91--92
+\TU/lmr/m/it/10 path,
+ []
+
+
+Overfull \hbox (21.98003pt too wide) in paragraph at lines 91--92
+\TU/lmr/m/it/10 back-
+ []
+
+
+Overfull \hbox (29.52pt too wide) in paragraph at lines 91--92
+\TU/lmr/m/it/10 ground\nullfont .
+ []
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.93 \begin{lstlisting}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.95 /
+    / The last conv layer in the network
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.97 	bottom: "conv1_
+                   2_D"
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Double subscript.
+l.97 	bottom: "conv1_2_
+                     D"
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.98 	top: "conv1_1_
+                  D"
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.99 	name: "conv1_1_
+                   D"
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Extra }, or forgotten $.
+l.112 }
+     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.113 \end{lstlisting}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.113 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.113 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 95--114
+[]//
+ []
+
+
+Overfull \hbox (35.785pt too wide) in paragraph at lines 95--114
+"conv1$[][][][]\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 top \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (77.40323pt too wide) in paragraph at lines 95--114
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 conv\OT1/cmr/m/n/10 1[][][]"\OML/cmm/m/it/10 
+name \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (71.23882pt too wide) in paragraph at lines 95--114
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 conv\OT1/cmr/m/n/10 1[][][]"\OML/cmm/m/it/10 
+type \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (454.84648pt too wide) in paragraph at lines 95--114
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 Convolution\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 
+:::convolution[]aram[]$ 
+ []
+
+! Undefined control sequence.
+l.115 \subsubsection
+                  {Softmax Classifier}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.115 \subsubsection{S
+                    oftmax Classifier}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 115--116
+[]Softmax
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.117 W
+     hen there is large variation in the number of pixels in each class in t...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 117--118
+[]When
+ []
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.119 \begin{lstlisting}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.120 /
+     / The Softmax classifier with cross-entropy loss
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.124 	bottom: "conv1_
+                    1_D"
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Double subscript.
+l.124 	bottom: "conv1_1_
+                      D"
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Extra }, or forgotten $.
+l.131 }
+     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Double subscript.
+l.136 	bottom: "conv1_1_
+                      D"
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.141 \end{lstlisting}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.141 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+}
+l.141 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 120--142
+[]//
+ []
+
+
+Overfull \hbox (52.28389pt too wide) in paragraph at lines 120--142
+"conv1$[][][][]\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 bottom \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (49.64008pt too wide) in paragraph at lines 120--142
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 label\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 top \O
+T1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (223.97154pt too wide) in paragraph at lines 120--142
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 loss\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 softmax
+[]aram[]loss[]aram \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (761.11867pt too wide) in paragraph at lines 120--142
+[]\OML/cmm/m/it/10 ==Thelastlayerofthenetworklayer[]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.145 S
+     egNet uses the cross-entropy loss as the loss function for training the...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 145--146
+[]SegNet
+ []
+
+
+Overfull \hbox (20.70001pt too wide) in paragraph at lines 145--146
+\TU/lmr/m/it/10 Soft-
+ []
+
+
+Overfull \hbox (43.00002pt too wide) in paragraph at lines 145--146
+\TU/lmr/m/it/10 maxWith-
+ []
+
+
+Overfull \hbox (19.05pt too wide) in paragraph at lines 145--146
+\TU/lmr/m/it/10 Loss
+ []
+
+
+Overfull \hbox (19.43001pt too wide) in paragraph at lines 145--146
+\TU/lmr/m/it/10 false\nullfont . 
+ []
+
+! Undefined control sequence.
+l.147 \subsubsection
+                  {Training Initialization}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.147 \subsubsection{T
+                    raining Initialization}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 147--148
+[]Training
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.149 \noindent
+              The tarining is initiated by entering these commands:
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.151 \begin{lstlisting}
+                      [language=bash]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.151 \begin{lstlisting}[
+                       language=bash]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! You can't use `macro parameter character #' in horizontal mode.
+l.152 #
+      Navigate to the caffe-segnet folder
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! You can't use `macro parameter character #' in math mode.
+l.154 #
+      Initiate training from scratch
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.155 $ ./caffe train -solver /SegNet/Models/segnet_
+                                                  solver.prototxt
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! You can't use `macro parameter character #' in math mode.
+l.156 #
+      Resume training from a solver checkpoint (snapshot)
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn''t ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.157 ...olver.prototxt -snapshot /path/to/snapshot_
+                                                  iter_XY.solverstate
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.158 \end{lstlisting}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.158 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 151--159
+[][language=bash]
+ []
+
+
+Overfull \hbox (87.40988pt too wide) in paragraph at lines 151--159
+\OML/cmm/m/it/10 cd=SegNet=caffe \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (216.88934pt too wide) in paragraph at lines 151--159
+\OML/cmm/m/it/10 segnet=build=tools=Initiatetrainingfromscratch$
+ []
+
+
+Overfull \hbox (291.3893pt too wide) in paragraph at lines 151--159
+/SegNet/Models/segnet$[][]\OML/cmm/m/it/10 olver:prototxtResumetrainingfromasol
+vercheckpoint\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 snapshot\OT1/cmr/m/n/10 )$
+ []
+
+
+Overfull \hbox (82.06808pt too wide) in paragraph at lines 151--159
+/path/to/snapshot$[][]\OML/cmm/m/it/10 ter[]Y:solverstate$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.160 T
+     he encoder and decoder weights are all initialized using MSRA method by...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 160--161
+[]The
+ []
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.162 \begin{lstlisting}
+                      [language=bash]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.162 \begin{lstlisting}[
+                       language=bash]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.164 \end{lstlisting}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.164 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 162--165
+[][language=bash]
+ []
+
+
+Overfull \hbox (64.90369pt too wide) in paragraph at lines 162--165
+\OML/cmm/m/it/10 :=caffetrain \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (143.94583pt too wide) in paragraph at lines 162--165
+\OML/cmm/m/it/10 solver=path=to=solver:prototxt \OMS/cmsy/m/n/10  
+ []
+
+
+Overfull \hbox (214.67267pt too wide) in paragraph at lines 162--165
+\OML/cmm/m/it/10 weights=path=to=pre[]rained[]eights:caffemodel$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.166  [
+      https://arxiv.org/pdf/1411.4734.pdf]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 166--167
+[][https://arxiv.org/pdf/1411.4734.pdf] 
+ []
+
+! Undefined control sequence.
+l.168 \subsection
+               {Testing}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.168 \subsection{T
+                 esting}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 168--169
+[]Testing 
+ []
+
+! Undefined control sequence.
+l.170 \subsection
+               {Inference}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.170 \subsection{I
+                 nference}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 170--171
+[]Inference 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.172 I
+     n this phase, the network is ready to be deployed. From this point, it'...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 172--173
+[]In
+ []
+
+! Undefined control sequence.
+l.174 \subsubsection
+                  {Calculating Batch Statistics}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.174 \subsubsection{C
+                    alculating Batch Statistics}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 174--176
+[]Calculating
+ []
+
+
+Overfull \hbox (20.96pt too wide) in paragraph at lines 174--176
+\TU/lmr/m/it/10 com-
+ []
+
+
+Overfull \hbox (70.06001pt too wide) in paragraph at lines 174--176
+\TU/lmr/m/it/10 pute_bn_statis-
+ []
+
+
+Overfull \hbox (28.12003pt too wide) in paragraph at lines 174--176
+\TU/lmr/m/it/10 tics.py
+ []
+
+
+! LaTeX Error: Environment lstlisting undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.177 \begin{lstlisting}
+                      [language=bash]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.177 \begin{lstlisting}[
+                       language=bash]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{lstlisting}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.179 \end{lstlisting}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+$
+l.179 \end{lstlisting}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 177--180
+[][language=bash]
+ []
+
+
+Overfull \hbox (542.77257pt too wide) in paragraph at lines 177--180
+user@user:/path/to/Scripts$\OML/cmm/m/it/10 python\OT1/cmr/m/n/10 3\OML/cmm/m/i
+t/10 original[]ompute[]n[]tatistics:py=path=to=train:prototxt=path=to=snap[]ter
+[]Y:caffemodel=path=to=inference[]older$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.181 T
+     he script automatically edits the TRAIN file and turns it into a new IN...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 181--182
+[]The
+ []
+
+
+Overfull \hbox (83.78001pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 snap_iter_XY.caf-
+ []
+
+
+Overfull \hbox (32.72002pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 femodel\nullfont ,
+ []
+
+
+Overfull \hbox (9.2pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 fi-
+ []
+
+
+Overfull \hbox (71.07004pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 nal_weights.caf-
+ []
+
+
+Overfull \hbox (32.72002pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 femodel\nullfont .
+ []
+
+
+Overfull \hbox (12.27pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 in-
+ []
+
+
+Overfull \hbox (15.47002pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 fer-
+ []
+
+
+Overfull \hbox (51.01003pt too wide) in paragraph at lines 181--182
+\TU/lmr/m/it/10 ence_folder\nullfont . 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.183 T
+     he network architecture is now in the INFERENCE file and is the same as...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 183--184
+[]The
+ []
+
+! Undefined control sequence.
+l.185 \subsubsection
+                  {Running the Segmentation}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.185 \subsubsection{R
+                    unning the Segmentation}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 185--186
+[]Running
+ []
+
+! Undefined control sequence.
+l.189 \subsubsection
+                  {Evaluating Segmentation Performance}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.189 \subsubsection{E
+                    valuating Segmentation Performance}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 189--190
+[]Evaluating
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.191 T
+     he performance of semantic segmentation is often described by so called...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 191--192
+[]The
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.193 [
+     https://towardsdatascience.com/metrics-to-evaluate-your-semantic-segmen...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 193--194
+[][https://towardsdatascience.com/metrics-to-evaluate-your-semantic-segmentatio
+n-model-6bcb99639aa2] 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.195 [
+     https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-fo...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 195--196
+[][https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-obj
+ect-detection/] 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.197 h
+     ttp://mi.eng.cam.ac.uk/projects/segnet/tutorial.html
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 197--198
+[]http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.199 h
+     ttps://github.com/alexgkendall/caffe-segnet/issues/21
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+)
+! Emergency stop.
+<*> setting_up_segnet.tex
+                      
+*** (job aborted, no legal \end found)
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 27 strings out of 494480
+ 100000,89155 words of node,token memory allocated 70732 words of node memory still in use:
+   324 hlist, 7 vlist, 7 rule, 31 disc, 46 local_par, 1 dir, 19 math, 1705 glue,
+ 318 kern, 152 penalty, 8678 glyph, 163 attribute, 35 glue_spec, 163 attribute_l
+ist, 1 temp nodes
+   avail lists: 1:1,3:310,4:125,5:2,7:52,8:418,10:124
+ 4263 multiletter control sequences out of 65536+600000
+ 25 fonts using 1345103 bytes
+ 18i,4n,12p,761b,71s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!

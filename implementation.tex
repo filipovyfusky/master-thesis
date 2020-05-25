@@ -2,6 +2,8 @@
 
 In this chapter, the original Caffe [] implementation of SegNet and Bayesian SegNet together with their simplified version SegNet Basic and Bayesian SegNet Basic will be tested on a custom dataset. Part of this will be evaluating the effect of various training hyperparameters, solvers, data augmentation techniques etc. This will also give the instructions on how to set up the software/hardware environment to run Caffe framework.
 
+The Caffe code used in this section is available at [filip github].
+
 \section{CPU vs. GPU for Training ANN}
 
 CPU is the main processing unit of a computer. Current CPU's usually have 4 to 8 separate cores, which allows them to run several tasks in parallel. Graphics processing unit (GPU) was originally designed for performing only rendering computer graphics. Table XY gives and idea of how these two computational units differ in terms of the kind of task they're designed for. Note that CPU has much lower number of cores, but these run at high frequency and are very capable in terms of the instructions they perform. Therefore, CPU's are great for sequential tasks. On the other hand, GPU comprises of a large number of 'simple' cores, which makes it better for computing parallel tasks. 

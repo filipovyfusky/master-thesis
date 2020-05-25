@@ -1,0 +1,17 @@
+\section{Setting up Bayesian SegNet}
+
+Since Bayesian SegNet differs from SegNet only in terms of added dropout layers and slightly different method of performing network inference, the above-mentioned procedures for setting the solver and training are applicable in the same way. One can therefore start the training by using the commands from the previous section and only replace the file paths of the TRAIN and SOLVER files. The TEST and INFERENCE files have only one major difference in the input layers. 
+
+Unlike in SegNet, the \textit{batch\_size} parameter in the DenseImageData layer of the TEST file now represents the number of Monte Carlo Dropout samples used for output averaging, as described in Section XY. The same corresponds to the first dimension of the input layer in the INFERENCE file.
+
+After calling the script \textit{compute\_bn\_statistics.py} on a trained Bayesian SegNet, we can start the inference by executing:
+
+\begin{lstlisting}[language=bash]
+(venv) user@user:/path/to/Scripts$ python3 bayesian_segnet_inference.py /path/to/inference.prototxt /path/to/final_weights.caffemodel /path/to/videofile.avi 
+\end{lstlisting}
+
+Here the scripts also visualizes the statistics of Monte Carlo sampling: the uncertainty and variance of the output segmentation.
+
+\section{SegNet Basic and Bayesian SegNet Basic}
+
+These shallow versions of SegNet and BayesianSegNet are used in the same way as their full versions above. The same procedures apply to SegNet/SegNet Basic and Bayesian SegNet/Bayesian SegNet Basic.
