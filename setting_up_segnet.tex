@@ -1,27 +1,24 @@
-\section{Data Preparation}
+\section{Image Annotation}
 
 In supervised learning, one needs to manually create the training data consisting of inputs and corresponding targets (in segmentation, ground truths). There's a variety of annotation tools available on the internet, both under commercial and free licenses. 
 
 \subsubsection{Labelbox}
 
-Labelbox in a paid online annotation tool capable of creating labels for semantic segmentation. The best feature of Labelbox is that it allows to share the datasets with other users which can speed up the labeling significantly. Labelbox offers free access to the full version to students. When the labeling is done, one needs to export the paths to the image/label pairs to s .JSON file. This file contains URLs to the images that are stored online and it is neccessary to download them separately (Labelbox is still in development, this is valid by the time of publishing the thesis). To automate this process, one can call the function 'download()' from the 'utils.py' file. 
+Labelbox in a paid online annotation tool. The best feature of Labelbox is that it allows sharing the datasets with other users and therefore speed up the labeling significantly. Labelbox offers free access to the full version to students. When the labeling is finished, one needs to export the image/label pairs to a .JSON file. This file contains links to the annotated images that are stored online and it's necessary to download them separately (Labelbox is still in development, this is valid by the time of publishing the thesis). To automate this process, one can call the function \textit{download()} from the \textit{utilities.py} file (Attachment XY). 
 
-The training images and their ground truths are stored as .jpg and .png files. The corresponding pairs are denoted as rows in the 'image\_paths.txt' file in the format 
+%\section{Caffe Commands}
 
-$$
-\text{'/path/to/image.jpg /path/to/label.png'}
-$$
-
-In 'utils.py', this corresponds to the function 'make\_ txt()'. The script will also make separate directories for training, testing and validation datasets by calling 'make\_dirs.py'.
+%The documentation for Caffe is not one of the best and sometimes it might be quite %tricky to find reasonable answers. Therefore, this section will give a brief %summary of the most important terms and parameters in Caffe library.
 
 \section{Setting up SegNet}
 
-\subsection{Optimization file}
+Caffe implementation of a neural network typically consists of four \textit{.prototxt} files: \textit{train.prototxt}, \textit{solver.prototxt}, \textit{test.prototxt} and \textit{inference.prototxt}. The train, test and inference files are almost identical except for a few differences in the very first/last layers. The train file is used together with the solver file to train the network: the network architecture is determined by the train file and the parameters for optimization reside in the solver file. The test file is used by Caffe when one needs to test the network periodically during training on a validation dataset.  
 
-The file 'solver.prototxt' contains the optimization parameters. The detailed description of the parameters can be found on the original Caffe website. The basic description can be found in the snippet below. 
+\subsection{Solver Settings}
+
+The solver file contains the optimization parameters. The detailed description of the parameters can be found in the original Caffe documentation on GitHub [odkaz na dokumentaci]. The description of the parameters used can be found in the snippet below. 
 
 \begin{lstlisting}
-
 // Training file
 net: "/path/to/train.prototxt"	
 // Caffe GPU version
@@ -30,109 +27,97 @@ solver_mode: GPU
 type: "AdaDelta"
 // Initial learning rate, changes according to lr_policy		
 base_lr: 0.061		
-// Drops the learning rate as 'gamma*base_lr' every 'stepsize' iterations
-lr_policy: "step"		 	
-gamma: 1.0
-stepsize: 10000000
-
+// Determines how the learning rate changes during training
+lr_policy: "fixed"	
 // Show loss and accuracy every 'display' iterations
 display: 130
 // Max number of iteration. One iteration = a pass of one mini-batch			
 max_iter: 3000	
 // Regularization technique called Weight decay		
-weight_decay: 0.00053	
+weight_decay: 0.0005
 // Saves the weights after 'snapshot' iterations
 snapshot: 1000000		
 snapshot_prefix: "/path/to/snap" 
-// Optional, for accumulating gradients due to low GPU memory 
-#iter_size: 4			
 
+// Testing parameters
 test_initialization: false	
 test_iter: 1
 test_interval: 100000000
-
 \end{lstlisting}
 
-\subsection{Training file}
+\subsection{Training}
 
-SegNet implenetation comes as three files. 'segnet\_train.prototxt' is a file for the training phase. It begins with the data import layer. In this case, images and labels are loaded as .jpg and .png files directly from the hard drive. The path to the 'image\_paths.txt' file containg the image/label paths is entered as the 'source' parameter of the 'DenseImageData' layer in Caffe.
+\subsubsection{Input Layer and Input pre-processing}
 
-This layer also specifies the size of the mini-batch. This value is limited by the amount of memory the GPU offers. When a larger size of the mini-batch is needed, one solution Caffe offers is to specify the 'iter\_size' parameter in the Solver file. The total mini-batch size in Caffe is always a result of $iter\_size \cdot batch\_size$. By default, the value of 'iter\_size' is set to 1.
+The train file begins with the DenseImageData. Images and labels are loaded as \textit{.jpg} and \textit{.png} files directly from the hard drive (there are more methods Caffe offers). The path to the \textit{image\_paths.txt} file containg the image/label paths is entered as the \textit{source} parameter of the \textit{DenseImageData}. This layer also specifies the size of the mini batch. The value is limited by the amount of memory GPU offers. When a larger size of the mini batch is needed, one solution Caffe offers is to specify the \textit{iter\_size} parameter in the Solver file. The total mini batch size in Caffe is always a result of $iter\_size \cdot batch\_size$. By default, the value of \textit{iter\_size} is set to 1.
 
-The 'shuffle' parameter in the Data layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by bringing another stochasticity into the computation. 
-
-The last important parameter is the 'mirror' parameter, which applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the Data layer with already processed images.
-
-The encoder and decoder weights are all initialized using MSRA method.  
+The \textit{shuffle} parameter in the DenseImageData layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by bringing another stochasticity into the computation. The \textit{mirror} parameter applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the DenseImageData layer with already processed images.
 
 \begin{lstlisting}
-
 // The first layer in the network
-
 name: "bayesian_segnet_train"
 layer {
-	name: "data"
-	type: "DenseImageData"
-	top: "data"
-	top: "label"
-	dense_image_data_param {
-		source: "/SegNet_navganti/data/custom/train_linux.txt"
-		batch_size: 4   			    			
-		shuffle: true
-		mirror: true	
+name: "data"
+type: "DenseImageData"
+top: "data"
+top: "label"
+dense_image_data_param {
+	source: "/SegNet_navganti/data/custom/train_linux.txt"
+	batch_size: 4   			    			
+	shuffle: true
+	mirror: true	
 	}
-	
-\end{lstlisting}	 
+# Per-channel mean
+transform_param {
+	mean_value: 129		#B component
+	mean_value: 126		#G
+	mean_value: 126		#R
+	}
+}
+\end{lstlisting} 
 
-In the original version, SegNet segments 11 classes. This corresponds to the pixel values in the PNG label files starting from zero, for instance, segmentation mask for class number 1 has a pixel value 0 in the label file, etc. However, the goal of this thesis is to set the network to segment only two classes - \textbf{PATH, BACKGROUND}. To change the size of the output classifier, it is necessary to change the output dimension of the last layer:
+The training images and their ground truths are stored as \textit{.jpg} and \textit{.png} files. The corresponding pairs are denoted as rows in the \textit{image\_paths.txt} file in the format 
+
+$$
+\text{\textit{/path/to/image.jpg /path/to/label.png}}
+$$
+
+This file is generated using the function \textit{make\_txt()} from \textit{utilities.py}. The script will also make separate directories for training, testing and validation datasets by calling \textit{make\_dirs()}.
+
+The method used for mean subtraction was the per-channel mean method. The function per\_channel\_mean in utilities.py calculates the mean values for R, G and B components from the training set. These three numbers are then placed into the DenseImageData layer in BGR order (see Snippet XY).
+
+\subsubsection{Output Dimensions}
+
+In the original version, SegNet segments 11 classes. This corresponds to the pixel values in the .png label files starting from zero: for instance, segmentation mask for class number 1 has a pixel value 0 in the label file, etc. However, the goal of this thesis is to set the network to segment only two classes - \textit{path, background}. To change the size of the output classifier, it is necessary to change the output dimension of the last layer:
 
 \begin{lstlisting}
 
 // The last conv layer in the network
-
 layer {
 	bottom: "conv1_2_D"
 	top: "conv1_1_D"
 	name: "conv1_1_D"
 	type: "Convolution"
-	param {
-		lr_mult: 1
-		decay_mult: 1
-	}
-	param {
-		lr_mult: 2
-		decay_mult: 0
-	}
+	.
+	.
+	.
 	convolution_param {
-		weight_filler {
-			type: "msra"
-		}
-		bias_filler {
-			type: "constant"
-		}
+		.
+		.
+		.
 		num_output: 2		// Set this to the number of classes
 		pad: 1
 		kernel_size: 3
 	}
 }
-
 \end{lstlisting}
 
-When there is large variation in the number of
-pixels in each class in the training set (e.g road, sky and building
-pixels dominate the dataset) then there is a need to weight
-the loss differently based on the true class. This is called class
-balancing. The authors of SegNet use median frequency balancing [odkaz] where the weight assigned to a class in the loss function is the ratio of the
-median of class frequencies computed on the entire training set
-divided by the class frequency. This implies that larger classes in
-the training set have a weight smaller than 1 and the weights
-of the smallest classes are the highest. When no re-weighting is applied, we talk about natural frequency balancing. [doslovna citace??? segnet paper]
+\subsubsection{Softmax Classifier}
 
-SegNet uses the cross-entropy loss as the loss function for
-training the network. In Caffe, median frequency balancing is available via the 'weight\_by\_label\_freqs' parameter in the Softmax layer. Since the dataset used in the thesis has only 2 classes whose occurence can be considered as balanced, this option is set to 'false'. 
+When there is large variation in the number of pixels in each class in the training set (e.g road, sky and building pixels dominate the dataset) then there is a need to weight the loss differently based on the true class. This is called class balancing. The authors of SegNet use median frequency balancing [odkaz] where the weight assigned to a class in the loss function is the ratio of the median of class frequencies computed on the entire training set divided by the class frequency. This implies that larger classes in the training set have a weight smaller than 1 and the weights of the smallest classes are the highest. When no re-weighting is applied, we talk about natural frequency balancing. [doslovna citace??? segnet paper]
 
 \begin{lstlisting}
-
+// The Softmax classifier with cross-entropy loss
 layer {
 	name: "loss"
 	type: "SoftmaxWithLoss"
@@ -144,33 +129,28 @@ layer {
 		weight_by_label_freqs: false	     
 	}
 }
-
 \end{lstlisting}
 
-To initiate the training from the command line, it is neccesary to first navigate to the folder with Caffe binaries, for example
+SegNet uses the cross-entropy loss as the loss function for training the network. In Caffe, median frequency balancing is available via the 'weight\_by\_label\_freqs' parameter in the \textit{SoftmaxWithLoss} layer. Since the dataset used has only two classes whose occurence can be considered as balanced, this option is set to \textit{false}. 
+
+\subsubsection{Training Initialization}
+
+\noindent The tarining is initiated by entering these commands:
 
 \begin{lstlisting}[language=bash]
+# Navigate to the caffe-segnet folder
 $ cd /SegNet/caffe-segnet/build/tools/
-\end{lstlisting}
-
-Then the training is initiated by executing
-
-\begin{lstlisting}[language=bash]
+# Initiate training from scratch
 $ ./caffe train -solver /SegNet/Models/segnet_solver.prototxt
-\end{lstlisting}
-
-Caffe allows the user to resume the training from a solver checkpoint (snapshot). To do that, one needs to call
-
-\begin{lstlisting}[language=bash]
+# Resume training from a solver checkpoint (snapshot)
 $ ./caffe train -solver /path/to/solver.prototxt -snapshot /path/to/snapshot_iter_XY.solverstate
 \end{lstlisting}
 
-Another scenario is when it's desired to use transfer learning. In this case, Caffe needs a path to the weight file of the pre-trained network. The corresponding command would be
+The encoder and decoder weights are all initialized using MSRA method by default. Another scenario is when it's desired to use transfer learning. In this case, Caffe needs a path to the weight file of the pre-trained network. The corresponding command would be
 
 \begin{lstlisting}[language=bash]
 $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_weights.caffemodel
 \end{lstlisting}
-
 
  [https://arxiv.org/pdf/1411.4734.pdf]
 
