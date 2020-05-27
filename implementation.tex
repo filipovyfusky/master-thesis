@@ -24,7 +24,7 @@ As the architecture and training of Neural Networks are getting more complicated
 
 Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by Berkeley AI Research (BAIR) and by community contributors. [berkeley caffe] The main difference from the other mentioned frameworks is that the user often doesn't need to write any code at all. The architecture of the network (the computational graph) is created in a .prototxt file, which is a standard text file in which one fills in the subsequent layers of the network in the desired order. Also, rather than having a optimizer object, one creates another .prototxt file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of this files are created, the user runs Caffe computation from the command line. The core of the framework is written in C++. Pre-built binaries are called When the computation is started.
 
-Caffe also has bindings for Python (CPW - Caffe Python Wrapper) and Matlab, which if very useful for evaluating the training statistics. 
+Caffe also has bindings for Python (CPW - Caffe Python Wrapper) and Matlab, which if very useful for evaluating the training statistics. The biggest downside of Caffe and CPW is that they are very poorly documented.
 
 \section{Setting up Environment for Caffe}
 

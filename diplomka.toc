@@ -19,12 +19,12 @@
 \contentsline {subsection}{\numberline {3.2.3}Improving training performance}{14}{subsection.3.2.3}
 \contentsline {subsubsection}{Initialization of weights and thresholds}{14}{section*.9}
 \contentsline {subsubsection}{Overfitting and regularization}{15}{section*.10}
-\contentsline {subsubsection}{Dropout}{16}{section*.11}
+\contentsline {subsubsection}{Dropout}{15}{section*.11}
 \contentsline {subsubsection}{Pruning}{16}{section*.12}
 \contentsline {subsubsection}{Data augmentation}{16}{section*.13}
 \contentsline {subsubsection}{Early stopping}{16}{section*.14}
 \contentsline {subsubsection}{Data pre-processing}{16}{section*.15}
-\contentsline {section}{\numberline {3.3}Convolutional Neural Networks}{17}{section.3.3}
+\contentsline {section}{\numberline {3.3}Convolutional Neural Networks}{16}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}CNN Layer Types}{17}{subsection.3.3.1}
 \contentsline {subsubsection}{Convolution Layers}{17}{section*.16}
 \contentsline {subsubsection}{Pooling Layers}{17}{section*.17}
@@ -33,7 +33,7 @@
 \contentsline {subsection}{\numberline {3.4.1}Encoder-Decoder Architecture}{19}{subsection.3.4.1}
 \contentsline {subsubsection}{[DECONVOLUTION, stanford]}{19}{section*.18}
 \contentsline {subsection}{\numberline {3.4.2}SegNet}{19}{subsection.3.4.2}
-\contentsline {subsubsection}{SegNet - Encoder}{20}{section*.19}
+\contentsline {subsubsection}{SegNet - Encoder}{19}{section*.19}
 \contentsline {subsubsection}{SegNet - Decoder}{20}{section*.20}
 \contentsline {subsection}{\numberline {3.4.3}Bayesian SegNet}{20}{subsection.3.4.3}
 \contentsline {subsubsection}{Monte Carlo Dropout}{20}{section*.21}
