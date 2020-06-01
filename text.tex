@@ -389,6 +389,16 @@ One can run into trouble during training when the weights start to grow, causing
 These two regularization schemes tend to help against overfitting. They add a constraint to the problem of minimising the energy function. The result is a compromise between a small value of H and small weight values. The idea is that a network with smaller weights is more robust in regards to the effect of noise. When the weights are small, then small changes in some of the
 patterns do not give a substantially different training result. In contrast, when the network has large weights, small changes in the input may give significant differences in the training result that are difficult to generalise (Figure 6.9).
 
+\subsubsection{Batch Normalisation}
+
+The idea of batch normalisation is to shift and normalise the input data for each
+hidden layer so the distribution of its inputs becomes Gaussian. This is done separately for
+each mini batch: the values of mean and variance are computed during each forward pass and then applied to each neuron in the layer. The mean and variance are multiplied by trainable factors, usually called $ \beta, \gamma $. [L6, mehlig]
+
+When the training is done, the values of $ \beta, \gamma $ for each layer are re-computed using the mean and variance of the entire training dataset and no longer change. [https://github.com/alexgkendall/caffe-segnet/issues/109] CONTINUE
+
+Batch normalisation helps to combat the vanishing-gradient problem because it prevents local fields of hidden neurons to grow. This makes it possible to use sigmoid functions in deep networks, because the distribution of inputs remains normalised. It is an empirical fact that batch normalisation often speeds up the training. [mehlig]
+
 \subsubsection{Dropout}
 
 Dropout is a very simple scheme that helps against overfitting. During training, a random portion of neurons in the network is ignored for each input pattern/mini-batch with the probability of $ p $. This can be thought of as making the network adapt to the sparsity of the remaining neurons and making their effect on the output spread equally over the network. Another interpretation is that we are training different net architectures at the same time. When the training is done, the output of each neuron is multiplied by the probability $ p $ of a neuron being dropped out during training (weight averaging [segnet bayesian source]).  [mehlig][L7]

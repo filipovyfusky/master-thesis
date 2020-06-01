@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  27 MAY 2020 16:41
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  1 JUN 2020 18:21
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.089 seconds
+luaotfload | main : initialization completed in 0.077 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1094,7 +1094,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-<logo/VUT.pdf, id=160, 99.58253pt x 99.58376pt>
+<logo/VUT.pdf, id=168, 99.58253pt x 99.58376pt>
 File: logo/VUT.pdf Graphic file (type pdf)
 <use logo/VUT.pdf>
 Package luatex.def Info: logo/VUT.pdf  used on input line 76.
@@ -1159,7 +1159,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
 [3] (./Introduction.tex
-<obr/semseg.jpg, id=243, 903.375pt x 471.7625pt>
+<obr/semseg.jpg, id=253, 903.375pt x 471.7625pt>
 File: obr/semseg.jpg Graphic file (type jpg)
 <use obr/semseg.jpg>
 Package luatex.def Info: obr/semseg.jpg  used on input line 14.
@@ -1183,65 +1183,77 @@ tps://cs231n.github.io/neural-
 [9] [10] [11] [12]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 ut line 290.
- [13] [14] [15] [16]) (./convolution.tex [17]
+ [13] [14] [15]
+Overfull \hbox (103.98158pt too wide) in paragraph at lines 398--399
+\TU/lmr/m/n/12 mean and vari-ance of the en-tire train-ing dataset and no longe
+r change. [https://github.com/alexgkendall/caffe-
+ []
+
+[16] [17]) (./convolution.tex
 Overfull \hbox (13.0295pt too wide) in paragraph at lines 16--17
 \TU/lmr/m/n/12 net-work and thus re-duce the num-ber of pa-ram-e-ters. [https:/
 /cs231n.github.io/convolutional-
  []
 
-[18]) (./segmentation.tex [19] [20]) (./implementation.tex [21] [22]
+[18]) (./segmentation.tex [19] [20]) (./implementation.tex [21] [22] [23]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmm
-ono10-regular.luc) [23]
-Overfull \hbox (31.232pt too wide) in paragraph at lines 64--65
+ono10-regular.luc) [24]
+Overfull \hbox (31.232pt too wide) in paragraph at lines 66--67
 []\TU/lmr/bx/n/12 Per-form the run-file in-stal-la-tion of CUDA. \TU/lmr/m/n/12
  Open the Ubuntu Ter-mi-nal (Ctrl+Alt+T)
  []
 
-[24] [25] [26]) (./setting_up_segnet.tex
+[25] [26] [27]
+Overfull \hbox (14.25327pt too wide) in paragraph at lines 175--176
+[]\TU/lmr/bx/n/12 Start the build. \TU/lmr/m/n/12 Once the \TU/lmr/m/it/12 Make
+-file.con-fig \TU/lmr/m/n/12 is lo-cated in the \TU/lmr/m/it/12 caffe-segnet-cu
+dnn5-master
+ []
+
+) (./setting_up_segnet.tex
 Overfull \hbox (1.35606pt too wide) in paragraph at lines 15--16
 \TU/lmr/m/n/12 Caffe im-ple-men-ta-tion of a neu-ral net-work typ-i-cally con-s
 ists of four \TU/lmr/m/it/12 .pro-totxt \TU/lmr/m/n/12 files: \TU/lmr/m/it/12 t
 rain.pro-
  []
 
-[27] [28](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts
+[28] [29](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts
 /otl/lmroman8-italic.luc)(load luc: /home/phil/.texlive2017/texmf-var/luatex-cac
-he/generic/fonts/otl/lmroman7-italic.luc) [29] [30] [31]
-Overfull \hbox (19.17621pt too wide) in paragraph at lines 209--210
+he/generic/fonts/otl/lmroman7-italic.luc) [30] [31] [32] [33]
+Overfull \hbox (19.17621pt too wide) in paragraph at lines 220--221
 []\TU/lmr/m/n/12 [https://-to-wards-data-science.com/metrics-to-evaluate-your-s
 emantic-segmentation-model-
  []
 
 
-Overfull \hbox (54.9242pt too wide) in paragraph at lines 211--212
+Overfull \hbox (54.9242pt too wide) in paragraph at lines 222--223
 []\TU/lmr/m/n/12 [https://www.py-im-age-search.com/2016/11/07/intersection-over
 -union-iou-for-object-detection/] 
  []
 
-) (./setting_up_bayesian.tex [32]) (./results.tex [33]
-Overfull \hbox (2.96413pt too wide) in paragraph at lines 3--4
-[]\TU/lmr/m/n/12 https://s-tack-over-flow.com/ques-tions/50853538/caffe-why-dro
-pout-layer-exists-also-in-
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 262--264
+
  []
 
-) (./discussion.tex [34]) (./Literatura.tex [35]
+) (./results.tex [35]) (./discussion.tex [36]) (./Literatura.tex [37]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 6.
 
-) (./SeznamZkratek.tex [36]) (./SeznamPriloh.tex [37])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
- [38]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+) (./SeznamZkratek.tex [38]) (./SeznamPriloh.tex [39])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
+ [40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: CACC889668613F28B423320CE6618E53;6579.
+(rerunfilecheck)             Checksum: 6C6C32B72EF6B0B42D1925CFA0F824FE;6815.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1249,16 +1261,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 )
 
 Here is how much of LuaTeX's memory you used:
- 27167 strings out of 494480
+ 27187 strings out of 494480
  100000,662416 words of node,token memory allocated
  579 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 12 attribute, 60 glue_spec, 12 attr
 ibute_list, 1 write, 1 pdf_action nodes
-   avail lists: 2:2346,3:214,4:360,5:1244,6:3305,7:1684,8:651,9:2100,10:15,11:33
-4
- 30101 multiletter control sequences out of 65536+600000
+   avail lists: 2:2383,3:218,4:362,5:1256,6:3202,7:1720,8:654,9:2114,10:15,11:33
+8
+ 30111 multiletter control sequences out of 65536+600000
  105 fonts using 11770567 bytes
- 46i,20n,58p,1146b,978s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 46i,20n,58p,1146b,1054s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmroman10-regular.otf></usr/share/texmf/fonts/opentyp
 e/public/lm/lmroman7-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmro
@@ -1276,10 +1288,10 @@ ts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomka.pdf (42 pages, 315941 bytes).
+Output written on diplomka.pdf (44 pages, 325580 bytes).
 
-PDF statistics: 752 PDF objects out of 1000 (max. 8388607)
- 658 compressed objects within 7 object streams
- 308 named destinations out of 1000 (max. 131072)
- 331 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 783 PDF objects out of 1000 (max. 8388607)
+ 687 compressed objects within 7 object streams
+ 324 named destinations out of 1000 (max. 131072)
+ 347 words of extra memory for PDF output out of 10000 (max. 100000000)
 

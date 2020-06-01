@@ -1,67 +1,69 @@
 \chapter{Implementation and method}
 
-In this chapter, the original Caffe [] implementation of SegNet and Bayesian SegNet together with their simplified version SegNet Basic and Bayesian SegNet Basic will be tested on a custom dataset. Part of this will be evaluating the effect of various training hyperparameters, solvers, data augmentation techniques etc. This will also give the instructions on how to set up the software/hardware environment to run Caffe framework.
+In this chapter, the original Caffe [] implementation of SegNet and Bayesian SegNet with their simplified versions SegNet Basic and Bayesian SegNet Basic will be tested on a custom dataset. Part of this will be evaluating the effect of various hyperparameters on training. It will also give the instructions on how to set up the software and hardware environments to run Caffe library for ANN.
 
-The Caffe code used in this section is available at [filip github].
+The entire network architecture and other code used in this section are available at [filip github].
 
 \section{CPU vs. GPU for Training ANN}
 
-CPU is the main processing unit of a computer. Current CPU's usually have 4 to 8 separate cores, which allows them to run several tasks in parallel. Graphics processing unit (GPU) was originally designed for performing only rendering computer graphics. Table XY gives and idea of how these two computational units differ in terms of the kind of task they're designed for. Note that CPU has much lower number of cores, but these run at high frequency and are very capable in terms of the instructions they perform. Therefore, CPU's are great for sequential tasks. On the other hand, GPU comprises of a large number of 'simple' cores, which makes it better for computing parallel tasks. 
+Central Processing Unit (CPU) is the main computational unit of a computer and is designed to perform a wide variety of complex instructions. Current CPUs usually have 4 to 8 separate cores, which allow them to run several tasks in parallel. Graphics processing unit (GPU), on the other hand, was originally designed only for rendering computer graphics. Table XY gives an idea of how these two computational units differ in terms of the tasks they are designed for. Note that CPU has much lower number of cores, but these run at high frequency and are very capable in terms of the instructions they perform. Therefore, CPU's are great for sequential tasks. GPU comprises of a large number of 'simple' cores, which makes it more suitable for computing parallel tasks. 
 
-In terms of the available memory, CPU doesn't have its own resources (apart from the very small memory sections called caches) and has access to the system's RAM, whose size is very often between 8 and 32 GB for powerful PC's. GPU's, on the other hand, have their own block of RAM on the chip because the access top the main system's RAM has usually many bottlenecks. The size of the RAM for the top-end GPU's ranges from 8 to 12 GB.
+The main part of the computations in ANN in general is matrix multiplication where GPU has the power of performing these operations by parts in parallel and speeds up the training significantly.
 
-The main part of the computations in Neural Networks in general is matrix multiplication. For this, GPU has the power of performing these operations by parts in parallel which speeds up the training significantly. 
-
-There have been created abstraction frameworks such as CUDA and OpenCL, that allow programmers do write their code in an usual manner and run it directly on GPU. For the purposes of Neral Networks, NVIDIA has developed a library of the most commonly used CUDA primitives named cuDNN. 
+There have been created libraries such as CUDA and OpenCL that allow programmers to write their code in an usual manner and run it directly on a GPU. For the purposes of ANN, NVIDIA has also developed a library of the most commonly used CUDA primitives named cuDNN. 
+ 
+CPU does not have its own memory resources (apart from very small memory sections called caches) and only has access to the system's RAM. External GPUs always come with their own block of RAM on the chip. The size of the RAM for the top-end GPUs ranges from 8 to 12 GB. When using GPUs to train ANN, the size of the RAM is crucial because the model with all its parameters resides in this memory. 
 
 \subsubsection{Tensor Cores}
 
 Tensor Core is a special GPU feature offered by NVIDIA cards. It enables mixed-precision computing, dynamically adapting calculations to accelerate throughput while preserving accuracy. The latest generation expands these speedups to a full range of workloads. From 10x speedups in AI training with Tensor Float 32 data type, to 2.5x boosts for high-performance computing with floating point 64 (double precision). [nvidia site]
 
-\section{ANN frameworks}
+\section{Libraries for ANN}
 
-As the architecture and training of Neural Networks are getting more complicated, there is a room for programmers to make ANN frameworks such as Caffe, TensorFlow, and PyTorch as user friendly as possible. The idea of these software tools is to make a higher abstraction of the architecture of the network called computational graph. The user can therefore think of designing and training the network separately by applying an optimizer to the computational graph that represents the layers of the network. 
+As the architecture and training of ANN are getting more complex, it is very helpful to use programming tools with higher abstraction when designing them. For this there are libraries such as Caffe, TensorFlow, and PyTorch. The common idea of these libraries is to make an abstraction of the network's architecture called computational graph. Therefore, the user can think of designing and training the network separately by applying an optimizer to the computational graph that represents the network's layers. 
 
-Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by Berkeley AI Research (BAIR) and by community contributors. [berkeley caffe] The main difference from the other mentioned frameworks is that the user often doesn't need to write any code at all. The architecture of the network (the computational graph) is created in a .prototxt file, which is a standard text file in which one fills in the subsequent layers of the network in the desired order. Also, rather than having a optimizer object, one creates another .prototxt file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of this files are created, the user runs Caffe computation from the command line. The core of the framework is written in C++. Pre-built binaries are called When the computation is started.
+\subsection{Caffe}
 
-Caffe also has bindings for Python (CPW - Caffe Python Wrapper) and Matlab, which if very useful for evaluating the training statistics. The biggest downside of Caffe and CPW is that they are very poorly documented.
+Caffe is a deep learning library made with expression, speed, and modularity in mind. It is developed by Berkeley AI Research (BAIR) and by community contributors. [berkeley caffe] The main difference from other libraries is that the user often doesn't need to write any code at all. The architecture of the network (the computational graph) is described in a \textit{.prototxt} file where one creates the layers of the network in the desired order. Also, rather than having an optimizer object (in Tensorflow for example), one creates another \textit{.prototxt} file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of these files are created, the user runs Caffe computation from the command line. The library is written in C++ and the pre-built binaries are called when the computation is executed.
+
+Caffe comes with bindings for Python (CPW - Caffe Python Wrapper, or pycaffe) and Matlab, which if very useful for the inference phase. The biggest downside of Caffe and CPW is that they are very poorly documented.
 
 \section{Setting up Environment for Caffe}
 
-\subsection{Hardware configuration}
+\subsection{Hardware Configuration}
 
-The GPU used for the computations has been picked according to the most up-to-date benchmarks and recommendations found online [source]. When choosing GPUs in general, one needs to decide between ATI/AMD and NVIDIA chips. For this case however, NVIDIA is the choice because it's way more 'ANN-friendly' as it's offering more features specifically designed for ANN computations. 
+The GPU used for the computations has been selected according to the most up-to-date benchmarks and recommendations found online [source]. When choosing a GPU in general, one needs to decide between AMD and NVIDIA chips. For ANN however, NVIDIA is the default choice because it's way more 'ANN-friendly' as it offers more features specifically designed for ANN computations. 
 
-It is also advisable to use SSD in the PC configuration, because the data flow begins from reading the training data (images) from a storage, in this case from the computer's hard drive. Another way is moving the training data into RAM before the training is initiated [source, dalasi info]. 
+It's advisable to use a SSD in the training PC, because the data flow begins with reading the training data (images) from a storage, in this case from the computer's hard drive. Another possibility some libraries offer is moving the training data into RAM before the training is initiated [source, dalasi info]. 
 
-Table XY shows the complete PC specifications used for training SegNet for the purposes of this thesis.  
+Table XY shows the complete PC specifications used for training SegNet. 
 
-\subsection{Software configuration} 
+\subsection{Software Configuration} 
 
 \subsubsection{Operating System} 
 
-The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used is Ubuntu 18.04 LTS 64 bit. Is is important to let the Ubuntu installer download the latest updates, or, after the installation, invoke the update command to ensure that the most up-to-date packages will be installed. For this, one can call
+The standard platform for running Caffe is Ubuntu, which is a Linux distribution from Cannonical based on Debian. The environment used was Ubuntu 18.04 LTS 64 bit. It is important to let the Ubuntu installer download the latest updates, or, after the installation, invoke the update command to ensure that the most up-to-date packages will be installed. For this, one can call:
 
 \begin{lstlisting}[language=bash]
 $ sudo apt update
 $ sudo apt upgrade
 \end{lstlisting}
 
-\subsubsection{Enabling NVIDIA driver}
+\subsubsection{Enabling NVIDIA Driver}
 
-Ubuntu 18.04 enables the default Nouveau graphics driver after installation. Before taking other steps, it is vital to disable the Nouveau driver and use NVIDIA instead in \textit{Application menu -> Software \& Updates -> Additional drivers
-	-> Using NVIDIA driver metapackage from nvidia-driver-XYZ (proprietary, tested) -> Apply changes.} The driver version used is nvidia-driver-440.
+Ubuntu 18.04 enables the default Nouveau graphics driver after the installation. Before taking other steps, it is \textbf{vital} to disable the Nouveau driver and use the NVIDIA instead. This is done by navigating to \textit{Application menu -> Software \& Updates -> Additional drivers
+	-> Using NVIDIA driver metapackage from nvidia-driver-XYZ (proprietary, tested) -> Apply changes.} The driver version used was \textbf{nvidia-driver-440}.
 
 [https://www.linuxbabe.com/ubuntu/install-nvidia-driver-ubuntu-18-04]
 
-\subsubsection{CUDA installation}
+\subsubsection{CUDA Installation}
 
-CUDA version is determined by the version of cuDNN compatible with the used Caffe version, which is cuDNN 5.1 in this case. The corresponding CUDA version is CUDA 8.0. On Ubuntu 18.04, the procedure is the following:
+CUDA version is determined by the version of cuDNN compatible with the used Caffe version, which is cuDNN 5.1 in our case. The corresponding CUDA version is CUDA 8.0. On Ubuntu 18.04, the procedure is the following:
 
 \begin{itemize}
-	\item \textbf{Download CUDA 8.0 runfile.} Go to \href{https://developer.nvidia.com/cuda-80-ga2-download-archive}{CUDA Legacy Releases} and look for 'CUDA Toolkit 8.0 GA2 (Feb 2017)'. The standard .deb installer support only Ubuntu 16.04 LTS and therefore the installation must be performed via the runfile method. Navigate to Linux -> x86\_64 -> Ubuntu -> 16.04 -> runfile (local) -> Base installer. Also, download the Patch file. 
+	\item \textbf{Download CUDA 8.0 runfile.} Go to \href{https://developer.nvidia.com/cuda-80-ga2-download-archive}{CUDA Legacy Releases} and look for \textit{CUDA Toolkit 8.0 GA2 (Feb 2017}). The standard \textit{.deb} installer support only Ubuntu 16.04 LTS. Therefore, the installation must be performed via the runfile method. Navigate to \textit{Linux -> x86\_64 -> Ubuntu -> 16.04 -> runfile (local) -> Base installer}. Also, download the Patch file. 
 	
-	\item \textbf{Perform the runfile installation of CUDA.} Open the Ubuntu Terminal (Ctrl+Alt+T) and run
+	\item \textbf{Perform the runfile installation of CUDA.} Open the Ubuntu Terminal (Ctrl+Alt+T) and run:
 	
 	\begin{lstlisting}[language=bash]
 	$ cd /path/to/cuda_8.0.61_375.26_linux.run # Navigates to folder with CUDA
@@ -84,15 +86,15 @@ CUDA version is determined by the version of cuDNN compatible with the used Caff
 		$ no
 	\end{lstlisting}
 	
-	After the installation is done, ignore the '***WARNING: Incomplete installation!' statement, because the NVIDIA driver is already installed. 
+	After the installation is done, ignore the \textit{***WARNING: Incomplete installation!} statement, because the NVIDIA driver is already installed. 
 	
-	Now run the CUDA 8.0 Patch 2 installation is a similar fashion:
+	Now run the CUDA 8.0 Patch 2 installation in a similar fashion:
 	
 	\begin{lstlisting}[language=bash]
 	$ sudo sh cuda_8.0.61.2_linux.run
 	\end{lstlisting}
 	
-	\item \textbf{Perform the post-installation actions.} The system needs to know the location of CUDA executables. The common way is to set these "PATH" variables in the current session of the Terminal. However, it's useful to add these permanently to '\textasciitilde{}/.bashrc' :
+	\item \textbf{Perform the post-installation actions.} The system needs to know the location of CUDA executables. The common way is to set these "PATH" variables in the current session of the Ubuntu Terminal. However, it's useful to add these permanently to system's \textit{\textasciitilde{}/.bashrc} file:
 		
 	\begin{lstlisting}[language=bash]
 	$ sudo gedit ~/.bashrc # Opens the .bashrc file in text editor
@@ -106,16 +108,16 @@ CUDA version is determined by the version of cuDNN compatible with the used Caff
 			${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 	\end{lstlisting}	
 	
-	From this point, all newly opened Terminal sessions should have the paths set correctly. 
+	From this point, all newly opened Terminal sessions should have the paths set correctly.
 	
 \end{itemize}
 
-\subsubsection{cuDNN installation}
+\subsubsection{Installation of cuDNN}
 
 The NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library of primitives for deep neural networks. It provides highly tuned implementations for standard routines such as forward and backward convolution, pooling, normalization, and activation layers. [https://developer.nvidia.com/cudnn] 
 
 \begin{itemize}
-	\item \textbf{Download cuDNN 5.1 for CUDA 8.0.} To get the appropriate cuDNN version for Caffe and CUDA 8.0, go to \href{https://developer.nvidia.com/rdp/cudnn-archive}{cuDNN Archive} (requires login) and look for \textit{Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0 -> cuDNN v5.1 Library for Linux}. Extract the archive, navigate to the extracted folder and copy the files to the CUDA 8.0 installation folder:
+	\item \textbf{Download cuDNN 5.1 for CUDA 8.0.} To get the corresponding cuDNN version for Caffe and CUDA 8.0, go to \href{https://developer.nvidia.com/rdp/cudnn-archive}{cuDNN Archive} (requires login) and look for \textit{Download cuDNN v5.1 (Jan 20, 2017), for CUDA 8.0 -> cuDNN v5.1 Library for Linux}. Extract the archive, navigate to the extracted folder and copy the files to the CUDA 8.0 installation folder:
 	
 	\begin{lstlisting}[language=bash]
 	$ tar -xf cudnn-8.0-linux-x64-v5.1.tgz 
@@ -127,21 +129,25 @@ The NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library
 
 \subsubsection{Setting up Python Editor}
 
-The scripts for evaluating SegNet performace are written in Python. It's advisable to use Pycharm Community Edition for an editor, because it offers a very convenient combination of GUI and the standard command line environment.
+The scripts for evaluating SegNet performace are written in Python. It is advisable to use Pycharm Community Edition for an editor, because it offers a very convenient combination of GUI and the standard command line environment.
 
-A good practice is to use Python virtual environment to easily maintain the required packages and to make the project transferable to another Linux PC. In Pycharm, we can do this in an active Pycharm project by going to \textit{File -> Settings -> Project -> Project Interpreter -> <wheel icon on the right> -> Add}. The standard choice is the Virtualenv Environment. The Base interpreter location on a fresh Ubuntu installation is '/usr/bin/python3.6'. When we click OK, Pycharm creates a 'venv' folder at the specified location including all package files we install.
+A good practice is using Python Virtual Environment to easily maintain the required packages and to make the project transferable to another Linux PC. In Pycharm, one can do this in an active Pycharm project by navigating to \textit{File -> Settings -> Project -> Project Interpreter -> <wheel icon on the right> -> Add}. The standard choice is the \textit{Virtualenv Environment}. The Base interpreter location on a fresh Ubuntu installation is \textit{/usr/bin/python3.6}. When we click OK, Pycharm creates a \textit{venv} folder at the specified location that includes all package files we install.
 
-When the virtualenv is configured properly, is will automatically be activated when we enter the Linux Terminal session by clicking on 'Terminal' located at the bottom bar of Pycharm. From this Terminal, we'll be launching all SegNet scripts and use it to install the required packages by calling 'pip3 install <package-name>'.
+When the \textit{virtualenv} is configured properly, it will automatically be activated when we enter the Ubuntu Terminal session by clicking on the \textit{Terminal} button located at the bottom bar of Pycharm window. From this Terminal, we will be launching all SegNet scripts and use it to install the required packages by calling:
+
+\begin{lstlisting}[language=bash]
+(venv) user@user:/current/path$ pip3 install <package-name>
+\end{lstlisting}
 
 \subsection{Building Caffe for SegNet} 
 
-The Caffe code is an open-source software. The authors of the SegNet created a slightly modified version of Caffe (caffe-segnet) that supports special SegNet layer types (upsample, bn, dense\_image\_data and softmax\_with\_loss (with class weighting)).
+Caffe is an open-source library. The authors of the SegNet created a slightly modified version of Caffe called \textit{caffe-segnet} that supports special SegNet layer types (upsample, bn, dense\_image\_data and softmax\_with\_loss (with class weighting)).
 
-In addition, since the original caffe-segnet supports just cuDNN v2, which is not supported for new pascal based GPUs, there's another version of caffe-segnet from [TimmoSaemannGithub] that supports cuDNN 5.1 and decreases the inference time by 25 \% to 35 \%. This version has therefore been selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to 'caffe-segnet' in the text.
+In addition, since the original \textit{caffe-segnet} supports just cuDNN v2, which is not supported by newer GPUs, there's another version of \textit{caffe-segnet} from [TimmoSaemannGithub] that supports cuDNN 5.1. The author claims that it decreases the inference time by 25 \% to 35 \%. Therefore, this version was selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to '\textit{caffe-segnet}' in the text.
 
 \begin{itemize}
 		
-	\item \textbf{Install Caffe dependencies.} Caffe is available as a source code and therefore needs to be compiled on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build. 
+	\item \textbf{Install Caffe dependencies.} Caffe is available as a source code and needs to be compiled on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build: 
 	
 	\begin{lstlisting}[language=bash]
 	$ sudo apt install python3-opencv 			# OpenCV, version 3
@@ -155,7 +161,7 @@ In addition, since the original caffe-segnet supports just cuDNN v2, which is no
 	\end{lstlisting}
 	
 	\item \textbf{Download Caffe (caffe-segnet-cudnn5) source code.} Go to \href{https://github.com/TimoSaemann/caffe-segnet-cudnn5}{Timmoe Saemann's Github repository} and clone/download it. 
-	\item \textbf{Set the build configuration file.} The build is done via the 'make' command, which needs the 'Makefile.config' file to be present in the parent directory ('caffe-segnet-cudnn5-master'). This file contains the build options and needs to be configured properly. Fortunately, the correct form of 'Makefile.config' is part of this thesis and can be found in the Attachment XY. 
+	\item \textbf{Set the build configuration file.} The build is done via the \textit{make} command, which needs the \textit{Makefile.config} file to be present in the parent directory (\textit{caffe-segnet-cudnn5-master}). This file contains the build options and needs to be configured properly. Fortunately, the correct form of \textit{Makefile.config} is part of this thesis and can be found in Attachment XY. 
 	
 	\item \textbf{Install gcc/g++ compliers.} The CUDA/cuDNN libraries used during the build are compatible only with gcc/g++ compilers of version 5. To install these, run:
 	
@@ -166,7 +172,7 @@ In addition, since the original caffe-segnet supports just cuDNN v2, which is no
 	$ sudo ln -s /usr/bin/g++-5 /usr/local/cuda/bin/g++
 	\end{lstlisting}
 	
-	\item \textbf{Start the build.} Once the 'Makefile.config' file is located in the 'caffe-segnet-cudnn5-master', everything should be ready for the final step. Type these commands to initiate and test the Caffe build (don't forget to build pycaffe (Caffe Python Wrapper)):
+	\item \textbf{Initiate the build.} Once the \textit{Makefile.config} is located in the \textit{caffe-segnet-cudnn5-master} directory, everything should be ready for the final step. Execute these commands to initiate and test the Caffe build (don't forget to build pycaffe (Caffe Python Wrapper)):
 	
 	\begin{lstlisting}[language=bash]
 	make all -j4	# start build
@@ -176,3 +182,8 @@ In addition, since the original caffe-segnet supports just cuDNN v2, which is no
 	\end{lstlisting} 	
 \end{itemize}
 [https://mc.ai/installing-caffe-on-ubuntu-18-04-with-cuda-and-cudnn/]
+
+
+
+
+

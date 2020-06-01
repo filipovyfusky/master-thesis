@@ -148,15 +148,15 @@ SegNet uses the cross-entropy loss as the loss function for training the network
 
 \subsubsection{Training Initialization}
 
-\noindent The tarining is initiated by entering these commands:
+\noindent The training is initiated by entering these commands:
 
 \begin{lstlisting}[language=bash]
 # Navigate to the caffe-segnet folder
-$ cd /SegNet/caffe-segnet/build/tools/
-# Initiate training from scratch
-$ ./caffe train -solver /SegNet/Models/segnet_solver.prototxt
-# Resume training from a solver checkpoint (snapshot)
-$ ./caffe train -solver /path/to/solver.prototxt -snapshot /path/to/snapshot_iter_XY.solverstate
+$ cd /path/to/caffe-segnet/build/tools/
+# Initiate training from scratch or
+$ ./caffe train -solver /path/to/segnet_solver.prototxt
+# or resume training from a solver checkpoint (snapshot)
+$ ./caffe train -solver /path/to/segnet_solver.prototxt -snapshot /path/to/snapshot_iter_XY.solverstate
 \end{lstlisting}
 
 The encoder and decoder weights are all initialized using MSRA method by default. Another scenario is when it's desired to use transfer learning. In this case, Caffe needs a path to the weight file of the pre-trained network. The corresponding command would be
@@ -166,23 +166,21 @@ $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_w
 \end{lstlisting}
 
  [https://arxiv.org/pdf/1411.4734.pdf]
- 
-\subsection{Testing}
 
 \subsection{Inference}
 
 In this phase, the network is ready to be deployed. From this point, it's very convenient to use the CPW for running the network, feeding it with input data and calculating the segmentation accuracy. To run the final segmentation, some preparation steps must be taken first.
 
-\subsubsection{Calculating Batch Statistics}
+\subsubsection{Calculating Statistics for Batch Normalisation}
 The Batch Normalisation layers [3] in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At inference time we must use the statistics for the entire dataset and obtain the final weights for the inference phase. We do this by calling the \textit{compute\_bn\_statistics.py} which is meant to be run from the command line and needs to get command-line parameters. In PyCharm, we need to switch to Virtual Environment (venv) by opening Terminal and call:
 
 \begin{lstlisting}[language=bash]
 (venv) user@user:/path/to/Scripts$ python3 original_compute_bn_statistics.py /path/to/train.prototxt /path/to/snap_iter_XY.caffemodel /path/to/inference_folder
 \end{lstlisting}
 
-The script automatically edits the TRAIN file and turns it into a new INFERENCE file by removing the layers that are no longer needed. It also takes the weights specified in \textit{snap\_iter\_XY.caffemodel}, calculates the final weights and saves them to \textit{final\_weights.caffemodel}. Both the INFERENCE and weigh files are stored in the specified \textit{inference\_folder}.
+The script automatically edits the TRAIN file and turns it into a new INFERENCE file by removing the layers that are no longer needed. The network architecture is now in the INFERENCE file and is the same as in the TRAIN file, apart from the input and output layers. The snippet below shows how the output changes: the loss function is no longer computed, the only output we care about are the Softmax probabilities. The DenseImageData layer is also skipped, because the data will be provided via CPW. part of this is switching all batch normalisation layers to the INFERENCE mode.
 
-The network architecture is now in the INFERENCE file and is the same as in the TRAIN file, apart from the input and output layers. The snippet below shows how the output changes: the loss function is no longer computed, the only output we care about are the Softmax probabilities. The DenseImageData layer is also skipped, because the data will be provided via CPW. 
+The script takes the desired .caffemodel file specified in \textit{snap\_iter\_XY.caffemodel}, calculates new $ /gamma, /beta $ parameters for the batch normalisation layers and saves everything to \textit{final\_weights.caffemodel}. Both the INFERENCE and weigh files are stored in the specified \textit{inference\_folder}.
 
 \begin{lstlisting}
 // Inference, input layer
@@ -202,6 +200,19 @@ For running the segmentation, we use the script \textit{segnet\_inference.py}. W
 (venv) user@user:/path/to/Scripts$ python3 segnet_inference.py /path/to/inference.prototxt /path/to/final_weights.caffemodel /path/to/videofile.avi 
 \end{lstlisting}
 
+\subsection{Testing}
+
+The TEST file is used only for calculating the loss on the validation dataset. It needs to be created from the INFERENCE file by manually putting back the input and output layers from the TRAIN file: DenseImageData layer with specified path to the validation dataset as the input and SoftmaxWithLoss followed by Accuracy layers as the output. However, there's still need to use the new net parameters computed by \textit{compute\_bn\_statistics.py} to ensure proper function of the batch normalisation layers, which still remain in the INFERENCE mode and hence differ from the TRAIN file.
+
+Testing is executed similarly as training using the command line:
+
+\begin{lstlisting}[language=bash]
+# Navigate to the caffe-segnet folder
+$ cd /path/to/caffe-segnet/build/tools/
+# Initiate testing
+$ ./caffe train -model /path/to/segnet_test.prototxt -weights /path/to/final_weights.caffemodel
+\end{lstlisting}
+
 \subsubsection{Evaluating Segmentation Performance}
 
 The performance of semantic segmentation is often described by so called IoU (intercestion over union) metrics. IoU is the area of overlap between the predicted segmentation and the ground truth divided by the area of union between the predicted segmentation and the ground truth, as shown in Figure XY. This metric ranges from 0–1 (0–100\%) with 0 signifying no overlap and 1 signifying perfectly overlapping segmentation.
@@ -213,3 +224,45 @@ The performance of semantic segmentation is often described by so called IoU (in
 http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html
 
 https://github.com/alexgkendall/caffe-segnet/issues/21
+
+\subsection{Bayesian SegNet}
+
+Since Bayesian SegNet differs from SegNet only in terms of added dropout layers and slightly different method of performing network inference, the above-mentioned procedures for setting the solver and training are applicable in the same way. One can therefore start the training by using the commands from the previous section and only replace the file paths of the TRAIN and SOLVER files. The TEST and INFERENCE files have only one major difference in the input layers. 
+
+Unlike in SegNet, the \textit{batch\_size} parameter in the DenseImageData layer of the TEST file now represents the number of Monte Carlo Dropout samples used for output averaging, as described in Section XY. The same corresponds to the first dimension of the input layer in the INFERENCE file.
+
+After calling the script \textit{compute\_bn\_statistics.py} on a trained Bayesian SegNet, we can start the inference by executing:
+
+\begin{lstlisting}[language=bash]
+(venv) user@user:/path/to/Scripts$ python3 bayesian_segnet_inference.py /path/to/inference.prototxt /path/to/final_weights.caffemodel /path/to/videofile.avi 
+\end{lstlisting}
+
+Here the scripts also visualizes the statistics of Monte Carlo sampling: the uncertainty and variance of the output segmentation.
+
+\subsection{SegNet Basic and Bayesian SegNet Basic}
+
+These shallow versions of SegNet and BayesianSegNet are used in the same way as their full versions above. The same procedures apply to SegNet/SegNet Basic and Bayesian SegNet/Bayesian SegNet Basic.
+
+\section{Training Hyperparameters}
+
+The choice of hyperparameters is a task for itself and requires a sufficient amount of tries and errors. There are some general recipes (all of them are empirical) for finding the right parameters one can follow. 
+
+\subsubsection{Optimizer}
+
+Every training of a neural network starts with the choice of optimizer. As the most recent research suggest, Adam is the default choice for training CNN. [zdroj] 
+
+\subsubsection{Learning Rate}
+
+The parameter that has the biggest effect on training is the learning rate. This is the first parameter to begin with. It's recommended to start a coarse search first, observe the training loss for both training and validation datasets for a few initial epochs and then choose the optimal learning rate value and perform finer search. 
+
+As the learning rate has a multiplicative effect on the gradient accumulation during mini-batch training, it's logical to pick the values from logarithmic space. 
+
+\subsubsection{Regularisation}
+
+When building a network from scratch, one starts with a simple SGD algorithm with no reguilarisation involved to ensure that the loss values are reasonable. Once it is ensured that there are no errors in the code and the network trains with SGD, regularisation is turned on. [STANFORD L6] Then it's usually set to a very small value, typically of the order $ 10^{-4} $ [zdroj].
+\\
+\subsubsection{Cross-validation Strategy}
+
+This strategy is also referred to as early stopping. The idea is that one observes both training and validation loss during training. When these losses go apart, the network tends to overfit to the training data. This is a crucial step when finding optimal hyperparameters and always needs to be checked.
+
+
