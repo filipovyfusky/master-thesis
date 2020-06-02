@@ -39,6 +39,18 @@ Monte Carlo dropout sampling allows to understand the model uncertainty of the r
 
 It is important to highlight that the probability distribution from Monte Carlo sampling is significantly different from the ‘probabilities’ obtained from a softmax classifier. The softmax function approximates relative probabilities between the class labels, but not an overall measure of the model’s uncertainty. [ bayesian [13]].
 
+\subsubsection{Evaluating Segmentation Performance}
+
+The performance of semantic segmentation is often described by so called IoU (intercestion over union) metrics. IoU is the area of overlap between the predicted segmentation and the ground truth divided by the area of union between the predicted segmentation and the ground truth, as shown in Figure XY. This metric ranges from 0–1 (0–100\%) with 0 signifying no overlap and 1 signifying perfectly overlapping segmentation.
+
+[https://towardsdatascience.com/metrics-to-evaluate-your-semantic-segmentation-model-6bcb99639aa2]
+
+[https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/]
+
+http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html
+
+https://github.com/alexgkendall/caffe-segnet/issues/21
+
 
 
 

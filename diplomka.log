@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  1 JUN 2020 18:21
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  2 JUN 2020 15:46
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -1195,7 +1195,19 @@ Overfull \hbox (13.0295pt too wide) in paragraph at lines 16--17
 /cs231n.github.io/convolutional-
  []
 
-[18]) (./segmentation.tex [19] [20]) (./implementation.tex [21] [22] [23]
+[18]) (./segmentation.tex [19] [20] [21]
+Overfull \hbox (19.17621pt too wide) in paragraph at lines 46--47
+[]\TU/lmr/m/n/12 [https://-to-wards-data-science.com/metrics-to-evaluate-your-s
+emantic-segmentation-model-
+ []
+
+
+Overfull \hbox (54.9242pt too wide) in paragraph at lines 48--49
+[]\TU/lmr/m/n/12 [https://www.py-im-age-search.com/2016/11/07/intersection-over
+-union-iou-for-object-detection/] 
+ []
+
+) (./implementation.tex [22] [23]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -1209,39 +1221,17 @@ Overfull \hbox (31.232pt too wide) in paragraph at lines 66--67
  []
 
 [25] [26] [27]
-Overfull \hbox (14.25327pt too wide) in paragraph at lines 175--176
-[]\TU/lmr/bx/n/12 Start the build. \TU/lmr/m/n/12 Once the \TU/lmr/m/it/12 Make
--file.con-fig \TU/lmr/m/n/12 is lo-cated in the \TU/lmr/m/it/12 caffe-segnet-cu
-dnn5-master
+Overfull \hbox (27.42926pt too wide) in paragraph at lines 175--176
+[]\TU/lmr/bx/n/12 Ini-ti-ate the build. \TU/lmr/m/n/12 Once the \TU/lmr/m/it/12
+ Make-file.con-fig \TU/lmr/m/n/12 is lo-cated in the \TU/lmr/m/it/12 caffe-segn
+et-cudnn5-master
  []
 
-) (./setting_up_segnet.tex
-Overfull \hbox (1.35606pt too wide) in paragraph at lines 15--16
-\TU/lmr/m/n/12 Caffe im-ple-men-ta-tion of a neu-ral net-work typ-i-cally con-s
-ists of four \TU/lmr/m/it/12 .pro-totxt \TU/lmr/m/n/12 files: \TU/lmr/m/it/12 t
-rain.pro-
- []
-
-[28] [29](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts
-/otl/lmroman8-italic.luc)(load luc: /home/phil/.texlive2017/texmf-var/luatex-cac
-he/generic/fonts/otl/lmroman7-italic.luc) [30] [31] [32] [33]
-Overfull \hbox (19.17621pt too wide) in paragraph at lines 220--221
-[]\TU/lmr/m/n/12 [https://-to-wards-data-science.com/metrics-to-evaluate-your-s
-emantic-segmentation-model-
- []
-
-
-Overfull \hbox (54.9242pt too wide) in paragraph at lines 222--223
-[]\TU/lmr/m/n/12 [https://www.py-im-age-search.com/2016/11/07/intersection-over
--union-iou-for-object-detection/] 
- []
-
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 262--264
-
- []
-
-) (./results.tex [35]) (./discussion.tex [36]) (./Literatura.tex [37]
+) (./setting_up_segnet.tex [28] [29](load luc: /home/phil/.texlive2017/texmf-var
+/luatex-cache/generic/fonts/otl/lmroman8-italic.luc)(load luc: /home/phil/.texli
+ve2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-italic.luc) [30]
+[31] [32] [33] [34]) (./results.tex [35]) (./discussion.tex [36])
+(./Literatura.tex [37]
 
 LaTeX Warning: Empty `thebibliography' environment on input line 6.
 
@@ -1252,23 +1242,29 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
  (./diplomka.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
-Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: 6C6C32B72EF6B0B42D1925CFA0F824FE;6815.
 
+
+Package rerunfilecheck Warning: File `diplomka.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `diplomka.out':
+(rerunfilecheck)             Before: C1AE7FCF43BE845336FC94E79C98BF01;6835
+(rerunfilecheck)             After:  F3AF85D6161FACD17445C6DA4726D4AD;6853.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 27187 strings out of 494480
+ 27176 strings out of 494480
  100000,662416 words of node,token memory allocated
  579 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 12 attribute, 60 glue_spec, 12 attr
 ibute_list, 1 write, 1 pdf_action nodes
-   avail lists: 2:2383,3:218,4:362,5:1256,6:3202,7:1720,8:654,9:2114,10:15,11:33
+   avail lists: 2:2383,3:218,4:362,5:1256,6:3202,7:1709,8:654,9:2114,10:15,11:33
 8
- 30111 multiletter control sequences out of 65536+600000
+ 30105 multiletter control sequences out of 65536+600000
  105 fonts using 11770567 bytes
  46i,20n,58p,1146b,1054s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texm
@@ -1288,10 +1284,10 @@ ts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomka.pdf (44 pages, 325580 bytes).
+Output written on diplomka.pdf (44 pages, 326707 bytes).
 
-PDF statistics: 783 PDF objects out of 1000 (max. 8388607)
- 687 compressed objects within 7 object streams
- 324 named destinations out of 1000 (max. 131072)
+PDF statistics: 777 PDF objects out of 1000 (max. 8388607)
+ 681 compressed objects within 7 object streams
+ 319 named destinations out of 1000 (max. 131072)
  347 words of extra memory for PDF output out of 10000 (max. 100000000)
 
