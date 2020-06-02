@@ -417,6 +417,16 @@ One way to avoid overfitting is by using cross-validation and early stopping. Th
 
 FIGURE
 
+\subsubsection{Transfer Learning}
+
+To create a well-generalising neural network, one need to have access to a dataset of a sufficient size. Therefore in practice, it is unusual to train an entire CNN from scratch (with random initialization). Instead, it is common to pretrain a CNN on a very large dataset (e.g. ImageNet), and then use the CNN either as an initialization or a fixed feature extractor for the task of interest. 
+
+One strategy here is to fine-tune the weights of the pretrained network by continuing the backpropagation. It’s possible to keep some of the earlier layers fixed and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a CNN contain more generic features (e.g. edge detectors) and the later layers become progressively more specific to the details.
+
+It’s common to use a smaller learning rate for CNN weights that are being fine-tuned, in comparison to the randomly-initialized weights. This is because we expect that the CNN weights already perform well and so we don’t want to distort them very much.
+
+%[https://cs231n.github.io/transfer-learning/#tf] a L7 stanford
+
 \subsubsection{Data pre-processing}
 
 For most cases, it is advisable to shift the data so it has a zero mean before the training begins. When classifying images, for example, there are two ways of doing this: first, by subtracting the mean image (image of size MxNx3) from the entire dataset or, to subtract the so-called per-channel mean (three numbers in total). The motivation behind this is illustrated in Figure XY. If we think of adjusting the weights in the network as moving the decision boundary, it is intuitive that the data which is not distributed around the origin will cause the classification success to get very sensitive to weight changes.

@@ -9,21 +9,15 @@ When a reasonable learning rate value range was found, the random search was lim
 
 In the original paper, authors use L2 regularization. This values stayed unchanged and remained the same as the SegNet authors suggest.  
 
-This scheme was applied to all SegNet variants. The difference observed is the time it takes to achieve low loss values. This is influenced by the size of the network (Basic versions train faster) and the dropout settings (dropout slows down the training).  
-
+This scheme was applied to all SegNet variants. The difference observed is the time it takes to achieve low loss values. This is influenced by the size of the network (Basic versions train faster) and the dropout settings (dropout slows down the training). 
 
 %https://stackoverflow.com/questions/50853538/caffe-why-dropout-layer-exists-also-in-deploy-testing
-
-ODECISTP PER CHANNEL MEAN PRO INFERENCI, a taky pro test file, nezapomenout oddelat shuffle a mirror!!!
 
 bayesian takes longer to train
 
 TRAINING STRATEGIES
 
-TRANSFER LEARNING + BATCH NORMALIZATION
-
 --------------TRAINING CAFFE NOTES---------------
-
 
 We train the model with dropout and sample the posterior distribution over the weights at test time using dropout
 to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model
