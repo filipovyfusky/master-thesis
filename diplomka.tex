@@ -1,5 +1,5 @@
-\documentclass[a4paper,twoside,12pt]{report}% dvoustranný tisk
-%\documentclass[12pt]{report}% jednostranný tisk
+%\documentclass[a4paper,twoside, 12pt]{report}% dvoustranný tisk
+\documentclass[12pt]{report}% jednostranný tisk
 % všechny soubory jsou v utf-8
 	\usepackage{ucs}% pro kódování UTF-8
 	\PrerenderUnicode{ěščřžýáíéĚŠČŘŽÝÁÍÉďťňĎŤŇůúÚóÓ} % předkreslení diakritiky, možno přidat/ubrat znaky podle potřeby							                  
@@ -8,7 +8,7 @@
 \usepackage[IL2]{fontenc}% csr fonty (pokud jsou nainstalovány česká postscriptová mísma)
 %\usepackage[T1]{fontenc}% EC fonty - háčky a čárky jsou k písmenkům připojovány - nehezké
 
-
+\usepackage[labelfont=bf]{caption}
 \usepackage{listings}
 \usepackage{algorithmicx}
 \usepackage{algorithm}
@@ -22,6 +22,19 @@
 \usepackage{url}
 \usepackage{color}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{pgfplots}
+
+\pgfkeys{/pgfplots/scale/.style={
+		x post scale=#1,
+		y post scale=#1,
+		z post scale=#1}
+}
+
+\makeatletter
+\pretocmd\start@align{%
+	\if@minipage\kern-\topskip\kern-\abovedisplayskip\fi
+}{}{}
+\makeatother
 
 \usepackage[nottoc,notlot,notlof, numbib]{tocbibind}
 

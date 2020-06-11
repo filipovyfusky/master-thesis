@@ -1,29 +1,40 @@
-\section{Semantic Segmentation}
+\newpage
+\section{Semantic segmentation}
 
 In semantic segmentation, one assigns a class to each pixel of an input image, unlike in the classification task, where one classifies the entire image. This section presents the most successful methods involving neural networks and supervised learning. 
 
-Segmentation has always been one of the most fundamental areas of computer vision. The classical approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to idealistic/ideal and where the robustness of the algorithm is not crucial. To give an example of classical methods, one can refer to thresholding, region growing and mean-shift segmentation [coufal, vut]. More advanced methods using machine learning classification have also been introduced, such as TextonBoost [], TextonForest [] and Random Forest []. These algorithms have fallen out of favour due to the massive success of neural networks.
+Segmentation has always been one of the most fundamental areas of computer vision. The classical approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to ideal and where the robustness of the algorithm is not crucial. To give an example of classical methods, one can refer to thresholding, region growing and mean-shift segmentation \cite{coufal}. More advanced methods using machine learning classification have also been introduced, such as TextonBoost, TextonForest and Random Forest \cite{segnet} \cite{bayesian}. These algorithms have fallen out of favour due to the massive success of ANN.
 
-\subsection{Encoder-Decoder Architecture}
+\subsection{Encoder-decoder architecture}
 
 In the previous chapter, the CNN architectures designed for image classification were presented. The size of the output layer of these networks is determined by the number of categories of classification because the CNN transfers to a FCN in the end. In semantic segmentation, however, one needs to get an image of the same resolution as the input image containing the information about a class of every pixel. To do this, the common scheme is introduced: the first part of the network is left unchanged but now, instead of the transition to FCN, various methods are implemented to upsample the encoded image features from the deepest layer of the CNN. This scheme is referred to as the encoder-decoder architecture. 
 
-The purpose of the encoder is to downsample the input images while still representing the significant features. The decoder part of the algorithm then upsamples the output of the encoder to the original input image size. This is usually done by performing reverse operations to max-pooling and convolution. The last part of the decoder typically gives the final segmented image. 
+\vspace{4mm}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics*[width=13cm, keepaspectratio]{obr/encoder.png}
+	\end{center}
+	\vspace{4mm}
+	\caption{Example of encoder-decoder CNN architecture. \cite{zeltner}} 
+	\label{encoder}
+\end{figure}
 
-\subsubsection{[DECONVOLUTION, stanford]}
+The purpose of the encoder is to downsample the input images while still representing the significant features. The decoder part of the algorithm then upsamples the output of the encoder to the original input image size. This is usually done by performing reverse operations to max-pooling and convolution. The last part of the decoder typically gives the final segmented image. \\
 
-Shortly after the success of CNN in image classification challenges, there have been introduced several segmentation architectures using CNN as the encoder. Some of the state-of-the-art were, for instance, FCN [], DeconvNet [] and U-Net []. These networks share the idea of having CNN incorporated as the encoder but differ in the form
-of the decoder part. [] However, the problem of training such networks due to a large number of trainable parameters, the design of the decoder and hence the need of introducing the cumbersome multi-stage training made them very difficult to use in practice [segnet]. SegNet [] introduced in 2015 differs from these architectures as it has a significantly lower number of parameters and the design od the encoder-decoder network allows it to be trained via standard end-to-end method using backpropagation and SGD. 
+Shortly after the success of CNN in image classification challenges, there have been introduced several segmentation architectures using CNN as the encoder. Some of the state-of-the-art were, for instance, FCN, DeconvNet and U-Net \cite{segnet}. These networks share the idea of having CNN incorporated as the encoder but differ in the form
+of the decoder part. However, the problem of training such networks due to a large number of trainable parameters, the design of the decoder and hence the need of introducing the cumbersome multi-stage training made them very difficult to use in practice \cite{segnet}. SegNet \cite{segnet} introduced in 2015 differs from these architectures as it has a significantly lower number of parameters and the design od the encoder-decoder network allows it to be trained via standard method using backpropagation and SGD.
+
+\subsubsection{Upsampling with transfer convolution and unpooling}
 
 \subsection{SegNet}
 
-SegNet is a deep encoder-decoder architecture for multi-class semantic segmentation researched and developed by members of the Computer Vision and Robotics Group at the University of Cambridge, UK. [https://mi.eng.cam.ac.uk/projects/segnet/]
+SegNet is a deep encoder-decoder architecture for multi-class semantic segmentation researched and developed by members of the Computer Vision and Robotics Group at the University of Cambridge, UK. \cite{segnet_tut}
 
-The architecture consists of a sequence of encoders and a corresponding set of decoders followed by a pixel-wise Softmax classifier. Typically, each encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by max-pooling. SegNet uses max-pooling indices in the decoders to perform upsampling of low-resolution feature maps. The entire architecture can be trained end-to-end using stochastic gradient descent.  [https://mi.eng.cam.ac.uk/projects/segnet/]
+The architecture consists of a sequence of encoders and a corresponding set of decoders followed by a pixel-wise Softmax classifier. Typically, each encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by max-pooling. SegNet uses max-pooling indices in the decoders to perform upsampling of low-resolution activation maps. The entire architecture can be trained end-to-end using stochastic gradient descent. \cite{segnet_tut}
 
 \subsubsection{SegNet - Encoder}
 
-The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network [1]. Each encoder in the encoder network performs convolution with a filter bank to produce a set of feature maps. These are then batch normalized. Then an element-wise ReLU is applied. Following that, max-pooling with a 2×2 window and stride 2 is performed. Storing the max-pooling indices, i.e, the locations of the maximum feature value in each pooling window is memorized for each encoder feature map.
+The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. Each encoder in the encoder network performs convolution with a filter bank to produce a set of activation maps. These are then batch normalized. Then an element-wise ReLU is applied. Following that, max-pooling with a 2×2 window and stride 2 is performed. Storing the max-pooling indices, i.e, the locations of the maximum feature value in each pooling window is memorized for each encoder feature map.
 
 \subsubsection{SegNet - Decoder}
 
@@ -35,9 +46,9 @@ Bayesian SegNet is a probabilistic variant of SegNet. It can predict pixel-wise 
 
 \subsubsection{Monte Carlo Dropout}
 
-Monte Carlo dropout sampling allows to understand the model uncertainty of the result. As explained in Chapter XY, the standard weight averaging dropout proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. Monte Carlo dropout, on the other hand, samples the network with randomly dropped out units at test time. bayesian [13] [12]
+Monte Carlo Dropout (MCDO) sampling allows to understand the model uncertainty of the result. As explained in Chapter XY, the standard weight averaging dropout proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. MCDO, on the other hand, samples the network with randomly dropped out units at test time. bayesian [13] [12]
 
-It is important to highlight that the probability distribution from Monte Carlo sampling is significantly different from the ‘probabilities’ obtained from a softmax classifier. The softmax function approximates relative probabilities between the class labels, but not an overall measure of the model’s uncertainty. [ bayesian [13]].
+It is important to highlight that the probability distribution from MCDO sampling is significantly different from the ‘probabilities’ obtained from a softmax classifier. The softmax function approximates relative probabilities between the class labels, but not an overall measure of the model’s uncertainty. [ bayesian [13]].
 
 \subsubsection{Evaluating Segmentation Performance}
 

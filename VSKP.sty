@@ -278,10 +278,10 @@
 
 %https://tex.stackexchange.com/questions/270261/give-number-one-to-a-left-page-without-making-it-a-right-page
 \def\obsah{
-	\makeatletter
-	\renewcommand{\thepage}{\@arabic{\numexpr\value{page}-1}}
-	\makeatother	
-	\setcounter{page}{2}\tableofcontents\vfill\eject
+%	\makeatletter
+%	\renewcommand{\thepage}{\@arabic{\numexpr\value{page}-1}}
+%	\makeatother	
+	\setcounter{page}{1}\tableofcontents\vfill\eject
 }
 
 \makeatletter

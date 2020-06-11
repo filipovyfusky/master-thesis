@@ -33,7 +33,7 @@ base_lr: 0.061
 lr_policy: "fixed"	
 // Show loss and accuracy every 'display' iterations
 display: 130
-// Max number of iteration. One iteration = a pass of one mini-batch			
+// Max number of iteration. One iteration = a pass of one mini batch			
 max_iter: 3000	
 // Regularization technique called Weight decay		
 weight_decay: 0.0005
@@ -48,18 +48,18 @@ snapshot_prefix: "/path/to/snap"
 
 The \textit{train} file begins with the \textit{DenseImageData} layer. This layer specifies the size of the mini batch. The value is limited by the amount of memory the GPU offers. When a larger size of the mini batch is needed, one solution that Caffe offers is to specify the \textit{iter\_size} parameter in the \textit{solver} file. The total mini batch size in Caffe is always a result of $iter\_size \cdot batch\_size$. By default, the value of \textit{iter\_size} is set to 1.
 
-The \textit{shuffle} parameter in the \textit{DenseImageData} layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by bringing another stochasticity into the computation. The \textit{mirror} parameter applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the \textit{DenseImageData} layer with already processed images.
+The \textit{shuffle} parameter in the \textit{DenseImageData} layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by adding more stochasticity to the computation. The \textit{mirror} parameter applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the \textit{DenseImageData} layer with already processed images.
 
 \begin{lstlisting}
 // The first layer in the network
-name: "bayesian_segnet_train"
+name: "segnet_train"
 layer {
 name: "data"
 type: "DenseImageData"
 top: "data"
 top: "label"
 dense_image_data_param {
-	source: "/SegNet_navganti/data/custom/train_linux.txt"
+	source: "/path/to/train_image_paths.txt"
 	batch_size: 4   			    			
 	shuffle: true
 	mirror: true	
@@ -143,7 +143,7 @@ SegNet uses the cross-entropy loss as the loss function for training the network
 
 \subsubsection{Training Initialization}
 
-\noindent The training is initiated by entering these commands:
+\noindent Training the network from scratch is initiated by entering these commands:
 
 \begin{lstlisting}[language=bash]
 # Navigate to the caffe-segnet folder
@@ -160,6 +160,30 @@ The encoder and decoder weights are initialized using MSRA method by default. An
 $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_weights.caffemodel
 \end{lstlisting}
 
+There are multiple scenarios of tuning the pre-trained model when using transfer learning. For instance, one can experiment with the learning rate of the pre-trained weights: they can either stay unchanged (zero learning rate) or the learning rate applied to them is lower than the global value used in other layers. In encoder-decoder architecture, one usually applies transfer learning only to the encoder network as its only purpose is to extract general features from the image. The corresponding setting in the \textit{train} file are the lr\_mult parameters by which the learning rate for the layer is multiplied. An example of setting a Caffe layer to stay unchanged can be found in the snippet below.
+
+\begin{lstlisting}
+layer {
+	bottom: "data"
+	top: "conv1_1"
+	name: "conv1_1"
+	type: "Convolution"
+	# Learning rate factor - weights
+	param {
+		lr_mult: 0			# Remains unchanged during training
+		decay_mult: 0		# Remains unchanged during training
+	}
+	# Learning rate factor - thresholds
+	param {
+		lr_mult: 0			# Remains unchanged during training
+		decay_mult: 0		# Remains unchanged during training
+	}
+	.
+	.
+	.
+}
+\end{lstlisting}
+
  [https://arxiv.org/pdf/1411.4734.pdf]
 
 \subsection{Inference}
@@ -167,15 +191,15 @@ $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_w
 In this phase, the network is ready to be deployed. From this point, it's very convenient to use pycaffe for running the model, feeding it with input data and calculating the segmentation accuracy. To run the segmentation, several preparation steps must be taken first.
 
 \subsubsection{Calculating Statistics for Batch Normalisation}
-The Batch Normalisation layers [3] in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At inference time we must use the statistics for the entire dataset and obtain the final weights for the inference phase. We do this by calling the \textit{compute\_bn\_statistics.py} which is meant to be run from the command line and needs to get command-line parameters. In PyCharm, we need to switch to Virtual Environment (venv) by opening Terminal and call:
+The Batch Normalisation layers [3] in SegNet shift the input feature maps according to their mean and variance statistics for each mini batch during training. At inference time we must use the statistics for the entire dataset and obtain the final \textit{.caffemodel} for the inference phase. We do this by calling the \textit{compute\_bn\_statistics.py} which is meant to be run from the command line and needs to get command-line parameters. In PyCharm, we need to switch to Virtual Environment (venv) by opening Terminal and call:
 
 \begin{lstlisting}[language=bash]
 (venv) user@user:/path/to/Scripts$ python3 original_compute_bn_statistics.py /path/to/train.prototxt /path/to/snap_iter_XY.caffemodel /path/to/inference_folder
 \end{lstlisting}
 
-The script automatically edits the \textit{train} file and turns it into a new \textit{inference} file by removing the layers that are no longer needed. The network architecture is now in the \textit{inference} file and is the same as in the \textit{train} file, apart from the input and output layers and the settings of the Batch Normalisation layers. The snippet below shows how the output changes: the loss function is no longer computed and the only output we care about are the Softmax probabilities. The \textit{DenseImageData} layer is also skipped, because the data will be provided via pycaffe. Part of this is switching all Batch Normalisation layers to the INFERENCE mode.
+The network architecture for the inference is now in the \textit{inference} file and is the same as in the \textit{train} file, apart from the input and output layers and the settings of the Batch Normalisation layers. The snippet below shows how the output changes: the loss function is no longer computed and the only output we care about are the Softmax probabilities. The \textit{DenseImageData} layer is also skipped, because the data will be provided via pycaffe. Part of this is switching all Batch Normalisation layers to the INFERENCE mode.
 
-The script takes the desired \textit{.caffemodel} file specified in \textit{snap\_iter\_XY.caffemodel}, calculates new $ \gamma, \beta $ parameters for the Batch Normalisation layers and saves everything to \textit{final\_weights.caffemodel}. Both the \textit{inference} and \textit{.caffemodel} files are now stored in the specified \textit{inference\_folder}.
+The script takes the desired \textit{.caffemodel} file specified in \textit{snap\_iter\_XY.caffemodel}, calculates new $ \gamma, \beta $ parameters for the Batch Normalisation layers and saves everything to \textit{final\_weights.caffemodel}. The new \textit{.caffemodel} file is now stored in the specified \textit{inference\_folder}.
 
 \begin{lstlisting}
 // Inference, input layer
@@ -189,9 +213,9 @@ input_dim: 480
 
 \subsubsection{Running the Segmentation}
 
-For running the segmentation, we use the script \textit{segnet\_inference.py}. We must provide the network the images either by specifying a path to a video file or by specifying a sequence of image names to look for in a folder (this is a standard OpenCV [odkaz na to jakej to ma mit format] convention). In each step of the algorithm, we must subtract the per-channel mean from the input image being processed. This is done automatically in the script and one only needs to provide the BGR values used at train time.
+The script \textit{segnet\_inference.py} is used for running the segmentation. One must provide the network the images either by specifying a path to a video file or by specifying a sequence of image names to look for in the image folder (this is a standard OpenCV [odkaz na to jakej to ma mit format] convention). In each step of the algorithm, we must subtract the per-channel mean from the input image being processed. This is part of the script and one only needs to provide the BGR values used at train time.
 
-Once we have an appropriate test set of images, we run the segmentation by calling:
+Once an appropriate test set of images is ready, the segmentation is started by calling:
 
 \begin{lstlisting}[language=bash]
 (venv) user@user:/path/to/Scripts$ python3 segnet_inference.py /path/to/inference.prototxt /path/to/final_weights.caffemodel /path/to/videofile.avi 
@@ -199,12 +223,12 @@ Once we have an appropriate test set of images, we run the segmentation by calli
 
 \subsection{Testing}
 
-The \textit{test} file is used only for calculating the loss on the validation dataset. It needs to be created from the \textit{inference} file by manually putting back the input and output layers from the \textit{train} file: the \textit{DenseImageData} layer with specified path to the validation dataset, \textit{mirror} and \textit{shuffle} parameters set to false, \textit{batch\_size} to 1 and the \textit{SoftmaxWithLoss} followed by \textit{Accuracy} layers as the output. The subtraction of the per-channel mean is still present and the values are computed from the training dataset and are the same as in the training phase. 
+The \textit{test} file is used only for calculating the loss of the validation dataset. It's very similar to the \textit{train} file: it has \textit{DenseImageData} layer with the path to the validation dataset, \textit{mirror} and \textit{shuffle} parameters set to false, \textit{batch\_size} to 1 and the \textit{SoftmaxWithLoss} followed by \textit{Accuracy} layers as the output. The subtraction of the per-channel mean is still present and the values are computed from the training dataset and are the same as in the training phase. 
 
-For the testing, it is necessary to use the \textit{.caffemodel} file generated by \textit{compute\_bn\_statistics.py} to ensure proper function of the Batch Normalisation layers, which still remain in the INFERENCE mode and differ from the settings of the \textit{train} file.
+For the testing, it is necessary to use the \textit{.caffemodel} file generated by \textit{compute\_bn\_statistics.py} to ensure proper function of the Batch Normalisation layers, which must be in the INFERENCE mode and differ from the settings of the \textit{train} file.
 
 \begin{lstlisting}
-name: "bayesian_segnet_test"
+name: "segnet_test"
 layer {
 	name: "data"
 	type: "DenseImageData"
@@ -212,7 +236,7 @@ layer {
 	top: "label"
 	dense_image_data_param {
 		source: "/media/phil/SegNet/data/custom/val_linux.txt"	
-		batch_size: 1
+		batch_size: 1		# Always 1 for SegNet
 	}
 	# BGR order
 	transform_param {
@@ -220,6 +244,7 @@ layer {
 		mean_value: 126
 		mean_value: 126 
 	}  
+	
 \end{lstlisting}
 
 Testing is executed similarly as training using the command line:
@@ -233,19 +258,60 @@ $ ./caffe train -model /path/to/segnet_test.prototxt -weights /path/to/final_wei
 
 \subsection{Bayesian SegNet}
 
-Since Bayesian SegNet differs from SegNet only in terms of added dropout layers and slightly different method of performing network inference, the above-mentioned procedures for setting the solver and training are applicable in the same way. Therefore, one can start the training by using the commands from the previous section and only replace the paths of the \textit{train} and \textit{solver} files. The \textit{inference} file has only one major difference in the input layer: unlike in SegNet, the \textit{batch\_size} parameter in the \textit{DenseImageData} layer of the \textit{inference} file now represents the number of Monte Carlo Dropout samples used for output averaging, as described in Section XY (the number corresponds to the first \textit{input\_dim} parameter at the top of the \textit{inference} file and needs to be adjusted manually after its creation by \textit{compute\_bn\_statistics.py}).
+Since Bayesian SegNet differs from SegNet only in terms of added dropout layers and a different method of performing the inference, the above-mentioned procedures for setting the solver and training are applicable in the same way. Therefore, one can start the training by using the commands from the previous section and only replace the paths of the \textit{train} and \textit{solver} files. 
 
-After calling the script \textit{compute\_bn\_statistics.py} with the \textit{.caffemodel} file of a trained Bayesian SegNet, we can start the inference by executing:
+The input layer in the \textit{inference} file has one major difference: unlike in SegNet, the first \textit{input\_dim} parameter at the top of the \textit{inference} file represents the number of MCDO samples and can be adjusted. At inference time, the script passes the same image \textit{input\_dim} times and simply averages the output the network gives. For this reason, the dropout layers that are by default inactive when Caffe is performing inference (TEST, in Caffe terminology) must be set to active in this case. The corresponding parameter in the dropout layer is \textit{sample\_weights\_test: true}. 
+
+The Batch Normalisation layers are set to INFERENCE mode. The final \textit{.caffemodel} is obtained the same way as in SegNet by calling \textit{compute\_bn\_statistics.py}. Here, unlike at inference time, the network's output is computed using weight averaging technique instead of MCDO.
+
+\begin{lstlisting}
+layer {
+	bottom: "conv1_1"
+	top: "conv1_1"
+	name: "conv1_1_bn"
+	type: "BN"
+	bn_param {
+		bn_mode: INFERENCE			# Inference mode of BN
+		scale_filler {
+			type: "constant"
+			value: 1
+		}
+		shift_filler {
+			type: "constant"
+			value: 0.001
+		}
+	}
+}
+
+.
+.
+.
+
+layer {
+	name: "encdrop5"
+	type: "Dropout"
+	bottom: "pool5"
+	top: "pool5"
+	dropout_param {
+		dropout_ratio: 0.5
+		sample_weights_test: true	# For Monte Carlo Dropout
+	}
+}
+\end{lstlisting}
+
+The setting of the \textit{test} file remains the same as in SegNet: input is provided by the \textit{DenseImageData} layer, \textit{batch\_size} is set to 1 and the Batch Normalisation layers are in INFERENCE mode. The dropout layers can also be set as active here. This \textit{test} file still serves only for checking the validation loss.
+
+The inference is initiated by calling:
 
 \begin{lstlisting}[language=bash]
 (venv) user@user:/path/to/Scripts$ python3 bayesian_segnet_inference.py /path/to/inference.prototxt /path/to/final_weights.caffemodel /path/to/videofile.avi 
 \end{lstlisting}
 
-Here the scripts also visualizes the statistics of Monte Carlo sampling: the uncertainty and variance of the output segmentation.
+Here the scripts also visualizes the statistics of MCDO sampling: the uncertainty and variance of the output segmentation.
 
 \subsection{SegNet Basic and Bayesian SegNet Basic}
 
-These shallow versions of SegNet and BayesianSegNet are used in the same way as their full versions above. The same procedures apply to SegNet/SegNet Basic and Bayesian SegNet/Bayesian SegNet Basic.
+These shallow versions of SegNet and BayesianSegNet are used in the same way as their full versions above. The same procedures apply to SegNet+SegNet Basic and Bayesian SegNet+Bayesian SegNet Basic.
 
 \section{Optimization of Hyperparameters}
 

@@ -13,17 +13,26 @@ This scheme was applied to all SegNet variants. The difference observed is the t
 
 %https://stackoverflow.com/questions/50853538/caffe-why-dropout-layer-exists-also-in-deploy-testing
 
-bayesian takes longer to train
+Hyperparameters are, unlike the free parameters, parameters that have to be set before the training
+starts and are not affected by the training.
 
-TRAINING STRATEGIES
-
+Training Set
+Mostly taken about 60% of the original dataset, the training set is used to generate
+the prediction algorithm. The algorithm tunes and tweaks the weights according to
+this data. The generated model is tested with different algorithms to compare the
+performances during the cross-validation phase.
+15CHAPTER 3. THEORY
+Validation Set
+The validation set, sometimes known as the cross-validation set, is about 20% of
+the original data set. The algorithms are tested with each other to be able to select
+the best performing algorithm. A simultaneous training and validation can help in
+improving the results with every training loop.
+Test Set
+The test data should be taken as high as possible to comprehend the performance
+of the prediction algorithm on an unseen data on which it has not been trained on.
+Better performance on the untrained data will reflect whether or not the network
+will perform well at real-world unknown scenarios.
 --------------TRAINING CAFFE NOTES---------------
 
 We train the model with dropout and sample the posterior distribution over the weights at test time using dropout
-to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model
-uncertainty for each class. We take the mean of the per class
-variance measurements as an overall measure of model uncertainty. We also explored using the variation ratio as
-a measure of uncertainty (i.e. the percentage of samples
-which agree with the class prediction) however we found
-this to qualitatively produce a more binary measure of
-model uncertainty. Fig. 2 shows a schematic of the segmentation prediction and model uncertainty estimate process.
+to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model uncertainty for each class. We take the mean of the per class variance measurements as an overall measure of model uncertainty.
