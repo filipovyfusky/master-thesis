@@ -168,6 +168,7 @@
 \citation{mehlig}
 \@writefile{toc}{\contentsline {subsubsection}{Batch Normalisation}{21}{section*.31}}
 \@writefile{toc}{\contentsline {subsubsection}{Dropout}{21}{section*.32}}
+\newlabel{dropout_sec}{{3.2.3}{21}{Dropout}{section*.32}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces ANN without (left) and with dropout (right) \cite  {arvi}\relax }}{21}{figure.caption.33}}
 \newlabel{dropout}{{3.13}{21}{ANN without (left) and with dropout (right) \cite {arvi}\relax }{figure.caption.33}{}}
 \@writefile{toc}{\contentsline {subsubsection}{Data augmentation}{21}{section*.34}}
@@ -228,50 +229,82 @@
 \citation{segnet}
 \citation{segnet}
 \citation{segnet_tut}
+\@writefile{toc}{\contentsline {subsubsection}{Input upsampling}{27}{section*.46}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.19}{\ignorespaces Transposed convolution. ZDROJ THEANO\relax }}{27}{figure.caption.47}}
+\newlabel{transposed}{{3.19}{27}{Transposed convolution. ZDROJ THEANO\relax }{figure.caption.47}{}}
 \citation{segnet_tut}
-\@writefile{toc}{\contentsline {subsubsection}{Upsampling with transfer convolution and unpooling}{27}{section*.46}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}SegNet}{27}{subsection.3.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{SegNet - Encoder}{27}{section*.47}}
-\@writefile{toc}{\contentsline {subsubsection}{SegNet - Decoder}{27}{section*.48}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Bayesian SegNet}{28}{subsection.3.4.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Monte Carlo Dropout}{28}{section*.49}}
-\@writefile{toc}{\contentsline {subsubsection}{Evaluating Segmentation Performance}{28}{section*.50}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation and method}{29}{chapter.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}CPU vs. GPU for Training ANN}{29}{section.4.1}}
-\@writefile{toc}{\contentsline {subsubsection}{Tensor Cores}{29}{section*.51}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Libraries for ANN}{29}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Caffe}{30}{subsection.4.2.1}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Setting up Environment for Caffe}{30}{section.4.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Hardware Configuration}{30}{subsection.4.3.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Software Configuration}{30}{subsection.4.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Operating System}{30}{section*.52}}
-\@writefile{toc}{\contentsline {subsubsection}{Enabling NVIDIA Driver}{31}{section*.53}}
-\@writefile{toc}{\contentsline {subsubsection}{CUDA Installation}{31}{section*.54}}
-\@writefile{toc}{\contentsline {subsubsection}{Installation of cuDNN}{32}{section*.55}}
-\@writefile{toc}{\contentsline {subsubsection}{Setting up Python Editor}{32}{section*.56}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Building Caffe for SegNet}{33}{subsection.4.3.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Image Annotation}{34}{section.4.4}}
-\@writefile{toc}{\contentsline {subsubsection}{Labelbox}{34}{section*.57}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Setting up SegNet}{34}{section.4.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Solver Settings}{35}{subsection.4.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Training}{35}{subsection.4.5.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Input Layer and Input pre-processing}{35}{section*.58}}
-\@writefile{toc}{\contentsline {subsubsection}{Output Dimensions}{36}{section*.59}}
-\@writefile{toc}{\contentsline {subsubsection}{Softmax Classifier}{37}{section*.60}}
-\@writefile{toc}{\contentsline {subsubsection}{Training Initialization}{37}{section*.61}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Inference}{39}{subsection.4.5.3}}
-\@writefile{toc}{\contentsline {subsubsection}{Calculating Statistics for Batch Normalisation}{39}{section*.62}}
-\@writefile{toc}{\contentsline {subsubsection}{Running the Segmentation}{39}{section*.63}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}Testing}{40}{subsection.4.5.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.5}Bayesian SegNet}{40}{subsection.4.5.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.6}SegNet Basic and Bayesian SegNet Basic}{42}{subsection.4.5.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Optimization of Hyperparameters}{42}{section.4.6}}
-\@writefile{toc}{\contentsline {subsubsection}{Cross-validation Strategy}{42}{section*.64}}
-\@writefile{toc}{\contentsline {subsubsection}{Optimizer}{42}{section*.65}}
-\@writefile{toc}{\contentsline {subsubsection}{Learning Rate}{42}{section*.66}}
-\@writefile{toc}{\contentsline {subsubsection}{Regularisation}{43}{section*.67}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{44}{chapter.5}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Future Work}{45}{chapter.6}}
+\citation{segnet}
+\citation{segnet}
+\citation{bayesian}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.20}{\ignorespaces Max-unpooling. The locations of the maximum elements were saved during max-pooling. The remaining elements are set to zero.\relax }}{28}{figure.caption.48}}
+\newlabel{unpool}{{3.20}{28}{Max-unpooling. The locations of the maximum elements were saved during max-pooling. The remaining elements are set to zero.\relax }{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}SegNet}{28}{subsection.3.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{SegNet - encoder}{28}{section*.49}}
+\@writefile{toc}{\contentsline {subsubsection}{SegNet - decoder}{28}{section*.50}}
+\citation{bayesian}
+\citation{bayesian}
+\citation{iou}
+\citation{iou}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.3}Bayesian SegNet}{29}{subsection.3.4.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Monte Carlo Dropout}{29}{section*.51}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.4}Evaluating segmentation performance}{29}{subsection.3.4.4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.21}{\ignorespaces Intersection over union. \cite  {iou}\relax }}{29}{figure.caption.52}}
+\newlabel{iou}{{3.21}{29}{Intersection over union. \cite {iou}\relax }{figure.caption.52}{}}
+\citation{filip_github}
+\citation{nvidia}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Implementation and method}{30}{chapter.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}CPU vs. GPU for training ANN}{30}{section.4.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Tensor cores}{30}{section*.53}}
+\citation{caffe}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Libraries for ANN}{31}{section.4.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Caffe}{31}{subsection.4.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Setting up environment for Caffe}{31}{section.4.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Hardware configuration}{31}{subsection.4.3.1}}
+\citation{nvidia_dev}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Software configuration}{32}{subsection.4.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Operating system}{32}{section*.54}}
+\@writefile{toc}{\contentsline {subsubsection}{Enabling NVIDIA driver}{32}{section*.55}}
+\@writefile{toc}{\contentsline {subsubsection}{CUDA installation}{32}{section*.56}}
+\citation{nvidia_dev}
+\citation{nvidia_dev}
+\@writefile{toc}{\contentsline {subsubsection}{Installation of cuDNN}{33}{section*.57}}
+\citation{caffe}
+\@writefile{toc}{\contentsline {subsubsection}{Setting up Python editor}{34}{section*.58}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Building Caffe for SegNet}{34}{subsection.4.3.3}}
+\citation{filip_github_caffe}
+\citation{labelbox}
+\citation{filip_github}
+\citation{caffe}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Image annotation}{36}{section.4.4}}
+\@writefile{toc}{\contentsline {subsubsection}{Labelbox}{36}{section*.59}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Setting up SegNet}{36}{section.4.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Solver settings}{36}{subsection.4.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Training}{37}{subsection.4.5.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Input layer and input pre-processing}{37}{section*.60}}
+\citation{segnet}
+\@writefile{toc}{\contentsline {subsubsection}{Output dimensions}{38}{section*.61}}
+\@writefile{toc}{\contentsline {subsubsection}{Softmax classifier}{38}{section*.62}}
+\@writefile{toc}{\contentsline {subsubsection}{Training initialization}{39}{section*.63}}
+\citation{segnet_get_started}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Inference}{40}{subsection.4.5.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Calculating statistics for batch normalisation}{40}{section*.64}}
+\@writefile{toc}{\contentsline {subsubsection}{Running the Segmentation}{41}{section*.65}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.4}Testing}{41}{subsection.4.5.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.5}Bayesian SegNet}{42}{subsection.4.5.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.6}SegNet Basic and Bayesian SegNet Basic}{43}{subsection.4.5.6}}
+\citation{stanford-github}
+\citation{stanford-github}
+\citation{stanford-L7}
+\citation{stanford-L6}
+\citation{stanford-L6}
+\citation{stanford-L6}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Optimization of Hyperparameters}{44}{section.4.6}}
+\@writefile{toc}{\contentsline {subsubsection}{Cross-validation Strategy}{44}{section*.66}}
+\@writefile{toc}{\contentsline {subsubsection}{Optimizer}{44}{section*.67}}
+\@writefile{toc}{\contentsline {subsubsection}{Learning Rate}{44}{section*.68}}
+\@writefile{toc}{\contentsline {subsubsection}{Regularisation}{44}{section*.69}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{45}{chapter.5}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Discussion and Future Work}{46}{chapter.6}}
 \bibcite{mwiti}{1}
 \bibcite{sergios}{2}
 \bibcite{mehlig}{3}
@@ -285,7 +318,7 @@
 \bibcite{coors}{11}
 \bibcite{eniola}{12}
 \bibcite{bushaev}{13}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Bibliography}{46}{chapter.7}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Bibliography}{47}{chapter.7}}
 \bibcite{issue}{14}
 \bibcite{arvi}{15}
 \bibcite{krizhevsky}{16}
@@ -298,6 +331,14 @@
 \bibcite{segnet}{23}
 \bibcite{segnet_tut}{24}
 \bibcite{zeltner}{25}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Seznam použitých zkratek a symbolů}{49}{chapter.8}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Seznam příloh}{50}{chapter.9}}
-\gdef\pocetstran{50}
+\bibcite{segnet_get_started}{26}
+\bibcite{iou}{27}
+\bibcite{filip_github}{28}
+\bibcite{nvidia}{29}
+\bibcite{nvidia_dev}{30}
+\bibcite{caffe}{31}
+\bibcite{filip_github_caffe}{32}
+\bibcite{labelbox}{33}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Seznam použitých zkratek a symbolů}{50}{chapter.8}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Seznam příloh}{51}{chapter.9}}
+\gdef\pocetstran{51}

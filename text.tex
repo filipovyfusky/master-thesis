@@ -636,6 +636,7 @@ When the training is done, the values of $ \beta, \gamma $ for each layer are re
 Batch normalisation helps to combat the vanishing-gradient problem because it prevents local fields of hidden neurons to grow. This makes it possible to use sigmoid functions in deep networks, because the distribution of inputs remains normalised. It is an empirical fact that batch normalisation often speeds up the training. \cite{mehlig}
 
 \subsubsection{Dropout}
+\label{dropout_sec}
 
 Dropout is a very simple scheme that helps against overfitting. During training, a random portion of neurons in the network is ignored for each input pattern/mini-batch with the probability of $ p $. This can be thought of as making the network adapt to the sparsity of the remaining neurons and making their effect on the output spread equally over the network. Another interpretation is that we are training different net architectures at the same time. When the training is done, the output of each neuron is multiplied by the probability $ p $ of a neuron being dropped out during training (weight averaging). \cite{mehlig} \cite{stanford-L7}
 
