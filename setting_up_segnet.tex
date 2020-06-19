@@ -21,7 +21,7 @@ The files used in this section are available at \cite{filip_github}
 
 The \textit{solver} file contains the optimization parameters. The description of the parameters can be found in the original Caffe documentation \cite{caffe}. The example of the parameters used can be found in the snippet below. 
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Contents of \textit{solver.prototxt}},captionpos=b]
 // Training file
 net: "/path/to/train.prototxt"	
 // Caffe GPU version
@@ -51,7 +51,7 @@ The \textit{train} file begins with the \textit{DenseImageData} layer. This laye
 
 The \textit{shuffle} parameter in the \textit{DenseImageData} layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by adding more stochasticity to the computation. The \textit{mirror} parameter applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it's necessary to perform them separately and feed the \textit{DenseImageData} layer with already processed images.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Input layer in \textit{train.prototxt}},captionpos=b]
 // The first layer in the network
 name: "segnet_train"
 layer {
@@ -88,7 +88,7 @@ The method used for mean subtraction was the per-channel mean. The function per\
 
 In the original version, SegNet segments 11 classes. This corresponds to the pixel values in the \textit{.png} label files starting from zero: for instance, the segmentation mask for the class number 1 has a pixel value of 0 in the label file, etc. However, the goal of this thesis is to set the network to segment only two classes - \textit{path, background}. To change the size of the output classifier, it is necessary to change the output dimensions of the last \textit{conv} layer:
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Setting number of outputs in \textit{train.prototxt}},captionpos=b]
 
 // The last conv layer in the network
 layer {
@@ -110,12 +110,12 @@ layer {
 }
 \end{lstlisting}
 
+\newpage
 \subsubsection{Softmax classifier}
 
 \enquote{When there is a large variation in the number of pixels in each class in the training set (e.g road, sky and building pixels dominate the dataset) then there is a need to weight the loss differently based on the true class. This is called class balancing. The authors of SegNet use median frequency balancing where the weight assigned to a class in the loss function is the ratio of the median of class frequencies computed on the entire training set divided by the class frequency. This implies that larger classes in the training set have a weight smaller than 1 and the weights of the smallest classes are the highest.} \cite{segnet} When no re-weighting is applied, we talk about natural frequency balancing.
 
-\newpage
-\begin{lstlisting}
+\begin{lstlisting}[caption={Output layers of \textit{train.prototxt}},captionpos=b]
 // The Softmax classifier with cross-entropy loss
 layer {
 	name: "loss"
@@ -164,7 +164,7 @@ $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_w
 
 There are multiple scenarios of tuning the pre-trained model when using transfer learning. For instance, one can experiment with the learning rate of the pre-trained weights: they can either stay unchanged (zero learning rate) or the learning rate applied to them is lower than the global value used in other layers. In encoder-decoder architecture, one usually applies transfer learning only to the encoder network as its only purpose is to extract general features from the image. The corresponding setting in the \textit{train} file are the lr\_mult parameters by which the learning rate for the layer is multiplied. An example of setting a Caffe layer to stay unchanged can be found in the snippet below.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Setting up \textit{train.prototxt} for transfer learning},captionpos=b]
 layer {
 	bottom: "data"
 	top: "conv1_1"
@@ -188,6 +188,7 @@ layer {
 
 % [https://arxiv.org/pdf/1411.4734.pdf]
 
+\newpage
 \subsection{Inference}
 
 In this phase, the network is ready to be deployed. From this point, it's very convenient to use pycaffe for running the model, feeding it with input data and calculating the segmentation accuracy. To run the segmentation, several preparation steps must be taken first.
@@ -203,7 +204,7 @@ The network architecture for the inference is now in the \textit{inference} file
 
 The script takes the desired \textit{.caffemodel} file specified in \textit{snap\_iter\_XY.caffemodel}, calculates new $ \gamma, \beta $ parameters for the Batch Normalisation layers and saves everything to \textit{final\_weights.caffemodel}. The new \textit{.caffemodel} file is now stored in the specified \textit{inference\_folder}.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Replacing input layer type in \textit{inference.prototxt}},captionpos=b]
 // Inference, input layer
 name: "segnet_inference"
 input: "data"
@@ -229,7 +230,7 @@ The \textit{test} file is used only for calculating the loss of the validation d
 
 For the testing, it is necessary to use the \textit{.caffemodel} file generated by \textit{compute\_bn\_statistics.py} to ensure proper function of the Batch Normalisation layers, which must be in the INFERENCE mode and differ from the settings of the \textit{train} file.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Setting up the input layer of \textit{test.prototxt}},captionpos=b]
 name: "segnet_test"
 layer {
 	name: "data"
@@ -258,6 +259,7 @@ $ cd /path/to/caffe-segnet/build/tools/
 $ ./caffe train -model /path/to/segnet_test.prototxt -weights /path/to/final_weights.caffemodel
 \end{lstlisting}
 
+\newpage
 \subsection{Bayesian SegNet}
 
 Since Bayesian SegNet differs from SegNet only in terms of added dropout layers and a different method of performing the inference, the above-mentioned procedures for setting the solver and training are applicable in the same way. Therefore, one can start the training by using the commands from the previous section and only replace the paths of the \textit{train} and \textit{solver} files. 
@@ -266,7 +268,7 @@ The input layer in the \textit{inference} file has one major difference: unlike 
 
 The Batch Normalisation layers are set to INFERENCE mode. The final \textit{.caffemodel} is obtained the same way as in SegNet by calling \textit{compute\_bn\_statistics.py}. Here, unlike at inference time, the network's output is computed using weight averaging technique instead of MCDO.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption={Setting MCDO in \textit{inference.prototxt}},captionpos=b]
 layer {
 	bottom: "conv1_1"
 	top: "conv1_1"
@@ -274,21 +276,14 @@ layer {
 	type: "BN"
 	bn_param {
 		bn_mode: INFERENCE			# Inference mode of BN
-		scale_filler {
-			type: "constant"
-			value: 1
-		}
-		shift_filler {
-			type: "constant"
-			value: 0.001
-		}
+		.
+		.
+		.
 	}
 }
-
 .
 .
 .
-
 layer {
 	name: "encdrop5"
 	type: "Dropout"
@@ -301,6 +296,7 @@ layer {
 }
 \end{lstlisting}
 
+\newpage
 The setting of the \textit{test} file remains the same as in SegNet: input is provided by the \textit{DenseImageData} layer, \textit{batch\_size} is set to 1 and the Batch Normalisation layers are in INFERENCE mode. The dropout layers can also be set as active here. This \textit{test} file still serves only for checking the validation loss.
 
 The inference is initiated by calling:
@@ -333,8 +329,6 @@ Every training of a neural network starts with the choice of optimizer. As the m
 The parameter that has the biggest effect on training is the learning rate: it is the first parameter to begin with. It's recommended to start a coarse search first while observing the loss for both training and validation datasets for a few initial epochs. Then, after the training is done, choose a thinner interval of optimal learning rates and perform finer search. \cite{stanford-L6}
 
 As the learning rate has a multiplicative effect on the gradient accumulation during mini-batch training, it's logical to pick the values from logarithmic space. \cite{stanford-L6}
-
-LEARNING RATE FIGURE?
 
 \subsubsection{Regularisation}
 

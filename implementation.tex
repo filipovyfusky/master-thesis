@@ -29,15 +29,25 @@ Caffe is a deep learning library made with expression, speed, and modularity in 
 
 Caffe comes with bindings for Python (CPW - Caffe Python Wrapper, or pycaffe) and Matlab, which if very useful for the inference phase. The biggest downside of Caffe and CPW is that they are very poorly documented.
 
+\newpage
 \section{Setting up environment for Caffe}
 
 \subsection{Hardware configuration}
 
 The GPU used for the computations has been selected according to the most up-to-date benchmarks and recommendations found online. When choosing a GPU in general, one needs to decide between AMD and NVIDIA chips. For ANN however, NVIDIA is the default choice because it's way more 'ANN-friendly' as it offers more features specifically designed for ANN computations. 
 
-It's advisable to use a SSD in the training PC, because the data flow begins with reading the training data (images) from a storage, in this case from the computer's hard drive. Another possibility some libraries offer is moving the training data into RAM before the training is initiated. 
+It's advisable to use a SSD in the training PC, because the data flow begins with reading the training data (images) from a storage, in this case from the computer's hard drive. Another possibility some libraries offer is moving the training data into RAM before the training is initiated. Finally, Figure \ref{grafika} shows the GPU used for training SegNet.
 
-Table XY shows the complete PC specifications used for training SegNet. 
+\vspace{5mm}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics*[width=10cm, keepaspectratio]{obr/grafika.jpeg}
+	\end{center}
+	\vspace{4mm}
+	\caption{GIGABYTE GeForce RTX 2060 SUPER AORUS 8G. \cite{gigabyte}} 
+	\label{grafika}
+\end{figure}  
+
 
 \newpage
 \subsection{Software configuration} 

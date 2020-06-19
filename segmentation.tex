@@ -12,10 +12,10 @@ In the previous chapter, the CNN architectures designed for image classification
 \vspace{4mm}
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics*[width=13cm, keepaspectratio]{obr/encoder.png}
+		\includegraphics*[width=11cm, keepaspectratio]{obr/segnet.png}
 	\end{center}
 	\vspace{4mm}
-	\caption{Example of encoder-decoder CNN architecture. \cite{zeltner}} 
+	\caption{SegNet - an example of encoder-decoder CNN architecture. \cite{segnet}} 
 	\label{encoder}
 \end{figure}
 
@@ -36,7 +36,7 @@ Transposed convolution, as well as the standard convolution used in CNN, uses le
 		\includegraphics*[width=5cm, keepaspectratio]{obr/transposed.png}
 	\end{center}
 	\vspace{4mm}
-	\caption{Transposed convolution. ZDROJ THEANO} 
+	\caption{Transposed convolution. \cite{theano}} 
 	\label{transposed}
 \end{figure}
 
@@ -52,11 +52,12 @@ There are several ways to impelement unpooling. In an encoder-decoder architectu
 	\label{unpool}
 \end{figure}
 
+\newpage
 \subsection{SegNet}
 
-SegNet is a deep encoder-decoder architecture for multi-class semantic segmentation researched and developed by members of the Computer Vision and Robotics Group at the University of Cambridge, UK. \cite{segnet_tut}
+SegNet is a deep encoder-decoder architecture for multi-class semantic segmentation researched and developed by members of the Computer Vision and Robotics Group at the University of Cambridge. \cite{segnet_tut}
 
-The architecture consists of a sequence of encoders and a corresponding set of decoders followed by a pixel-wise Softmax classifier. Typically, each encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by max-pooling. SegNet uses max-pooling indices in the decoders to perform upsampling of low-resolution activation maps. The entire architecture can be trained using stochastic gradient descent. \cite{segnet_tut}
+The architecture consists of a sequence of encoders and a corresponding set of decoders followed by a pixel-wise Softmax classifier. Typically, each encoder consists of one or more convolutional layers with batch normalisation and a ReLU non-linearity, followed by max-pooling. SegNet uses max-pooling indices in the decoders to perform upsampling of low-resolution activation maps (Figure \ref{encoder}). The entire architecture can be trained using stochastic gradient descent. \cite{segnet_tut}
 
 \subsubsection{SegNet - encoder}
 

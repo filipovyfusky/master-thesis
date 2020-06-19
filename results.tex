@@ -1,13 +1,12 @@
 \chapter{Results}
 
-The segmentation networks introduced in the previous chapter, SegNet, Bayesian SegNet and their simpler versions (Basic) were trained using the described techniques and various hyperparameters. The solver used for optimization was AdaDelta in all cases.
-The default choice for CNN is usually Adam, but its implementation in Caffe takes much more memory than other algorithms. That is why the algorithm chosen for training is AdaDelta, which is used by many SegNet users [github implementace segnetu v tensorflow].
+The segmentation networks introduced in the previous chapter, SegNet, Bayesian SegNet and their simpler versions (Basic) were trained using the described techniques and various hyperparameters. The default optimizer choice for training CNN is usually Adam, but its implementation in Caffe takes much more memory than other algorithms. That is why the algorithm chosen for training is AdaDelta, which is used by many SegNet users \cite{aizawan_github}.
 
-As AdaDelta adapts the learning rate over the course of training, there's no longer a need to manually tune the learning rate decay scheme (which would be another hyperparameter). Therefore, the first hyperparameter to tune was the base learning rate. The search was initiated within a coarse interval of values: $ <10^{-3}, 10^{0}>  $. This interval was divided into three sub-regions to make the random choice more balanced. Then, the values within each interval were selected using Uniform random distribution. The training loss was observed for five epochs. Since the Caffe implementation of SegNet comes with custom scripts for calculating batch-normalisation statistics for inference, checking the validation loss periodically becomes extremely memory demanding and time inefficient. Therefore, the validation loss was computed only once at the end of the last training epoch to ensure that the values of losses had not diverged.  
+As AdaDelta adapts the learning rate over the course of training, there's no longer a need to manually tune the learning rate decay scheme (which would become another hyperparameter). Therefore, the first hyperparameter tuned was the base learning rate. The search was initiated within a coarse interval of values: $ <10^{-3}, 10^{0}>  $. This interval was divided into three sub-regions to make the random choice more balanced. Then, the values within each interval were selected using Uniform random distribution. Since the Caffe implementation of SegNet comes with custom scripts for calculating batch-normalisation statistics for inference, checking the validation loss periodically becomes extremely memory demanding and time inefficient. Therefore, the validation loss was computed only once at the end of the last training epoch to ensure that the values of losses had not diverged.  
 
 When a reasonable learning rate value range was found, the random search was limited to this interval and the training was executed until no further change in the loss function was observed. 
 
-In the original paper, authors use L2 regularization. This values stayed unchanged and remained the same as the SegNet authors suggest.  
+In the original paper \cite{segnet}, authors use L2 regularization. This values stayed unchanged and remained the same as the SegNet authors suggest.  
 
 This scheme was applied to all SegNet variants. The difference observed is the time it takes to achieve low loss values. This is influenced by the size of the network (Basic versions train faster) and the dropout settings (dropout slows down the training). 
 
@@ -16,23 +15,63 @@ This scheme was applied to all SegNet variants. The difference observed is the t
 Hyperparameters are, unlike the free parameters, parameters that have to be set before the training
 starts and are not affected by the training.
 
-Training Set
-Mostly taken about 60% of the original dataset, the training set is used to generate
-the prediction algorithm. The algorithm tunes and tweaks the weights according to
-this data. The generated model is tested with different algorithms to compare the
-performances during the cross-validation phase.
-15CHAPTER 3. THEORY
-Validation Set
-The validation set, sometimes known as the cross-validation set, is about 20% of
-the original data set. The algorithms are tested with each other to be able to select
-the best performing algorithm. A simultaneous training and validation can help in
-improving the results with every training loop.
-Test Set
-The test data should be taken as high as possible to comprehend the performance
-of the prediction algorithm on an unseen data on which it has not been trained on.
-Better performance on the untrained data will reflect whether or not the network
-will perform well at real-world unknown scenarios.
---------------TRAINING CAFFE NOTES---------------
+Figure XY shows an example of tuning of the learning rate (Bayseian SegNet). In most cases, larger values of learning rate tend to lead to better values of the loss function and accuracy on the \textit{test} set.  
 
-We train the model with dropout and sample the posterior distribution over the weights at test time using dropout
-to obtain the posterior distribution of softmax class probabilities. We take the mean of these samples for our segmentation prediction and use the variance to output model uncertainty for each class. We take the mean of the per class variance measurements as an overall measure of model uncertainty.
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics*[width=14cm, keepaspectratio]{obr/bayes_full_rough.png}
+	\end{center}
+	\vspace{5mm}
+	\caption{Coarse search of the \textit{learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the corresponding layers stayed \textbf{unchanged} during the training.} 
+	\label{}
+\end{figure}
+
+\vspace{5mm}
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics*[width=14cm, keepaspectratio]{obr/bayes_full_rough_2.png}
+	\end{center}
+	\vspace{5mm}
+	\caption{Coarse search of the \textit{learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the learning rate of the corresponding layers is \textbf{decreased} by the factor of 10 during the training.} 
+	\label{}
+\end{figure}
+
+
+\renewcommand{\arraystretch}{1.1}
+%\newcolumntype{C}{>{\centering\arraybackslash}p{3em}}
+\begin{table}
+\centering	
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\thead{Architecture} & \thead{base\_lr} & \thead{weight \\ decay} & \thead{batch \\ size} & \thead{MCDO \\ samples}\\		
+\hline
+SegNet & 0.95 & 0.0005 & 4 & - \\
+\hline
+\makecell{SegNet \\ Basic} & 0.75 & 0.0005 & 4 & - \\
+\hline
+\makecell{Bayesian \\ SegNet} & 0.5 & 0.0005 & 4 & 8 \\	
+\hline
+\makecell{Bayesian \\ SegNet Basic} & 0.85 & 0.0005 & 4 & 8 \\
+\hline
+& \thead{IOU \\ class 0} & \thead{IOU \\ class 1} & \thead{Inference \\ time [ms] } & \thead{Training \\ epoch [ms] }\\		
+\hline	
+SegNet & 0.965 & 0.971 & 42 & zdar \\	
+\hline	
+\makecell{SegNet \\ Basic} & 0.966 & 0.972 & 23 & zdar \\	
+\hline	
+\makecell{Bayesian \\ SegNet} & 0.974 & 0.979 & 305 & zdar \\	
+\hline	
+\makecell{Bayesian \\ SegNet Basic} & 0.967 & 0.972 & 177 & zdar \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics*[width=16cm, keepaspectratio]{obr/result.png}
+	\end{center}
+	\vspace{5mm}
+	\caption{Coarse search of the \textit{learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the learning rate of the corresponding layers is \textbf{decreased} by the factor of 10 during the training.} 
+	\label{}
+\end{figure}
