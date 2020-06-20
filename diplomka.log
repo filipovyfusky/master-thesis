@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  19 JUN 2020 22:07
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  20 JUN 2020 15:59
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.081 seconds
+luaotfload | main : initialization completed in 0.080 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1359,9 +1359,6 @@ LaTeX Warning: Label `pool' multiply defined.
 
 LaTeX Warning: Label `' multiply defined.
 
-
-LaTeX Warning: Label `' multiply defined.
-
 )
 \openout1 = diplomka.aux
 
@@ -1743,24 +1740,29 @@ Overfull \hbox (12.24086pt too wide) in paragraph at lines 231--232
 atis-
  []
 
-[43] [44] [45]) (./results.tex [46]
-<obr/bayes_full_rough.png, id=1115, 1062.21844pt x 651.18282pt>
+[43] [44] [45]) (./results.tex [46] [47]
+<obr/bayes_full_rough.png, id=1124, 1062.21844pt x 651.18282pt>
 File: obr/bayes_full_rough.png Graphic file (type png)
 <use obr/bayes_full_rough.png>
-Package luatex.def Info: obr/bayes_full_rough.png  used on input line 22.
+Package luatex.def Info: obr/bayes_full_rough.png  used on input line 21.
 (luatex.def)             Requested size: 398.33858pt x 244.2029pt.
-<obr/bayes_full_rough_2.png, id=1117, 1073.51062pt x 651.18282pt>
+<obr/bayes_full_rough_2.png, id=1126, 1073.51062pt x 651.18282pt>
 File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
-Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 32.
+Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
-<obr/result.png, id=1119, 2991.175pt x 2925.93124pt>
+<obr/result.png, id=1128, 2991.175pt x 2925.93124pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
-Package luatex.def Info: obr/result.png  used on input line 72.
+Package luatex.def Info: obr/result.png  used on input line 77.
 (luatex.def)             Requested size: 455.24408pt x 445.29979pt.
-) (./discussion.tex [47]) (./Literatura.tex
-[48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>] [49]
+ [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./discussion.tex [49] [50<./obr/result.png>]) (./Literatura.tex [51
+
+]
 Underfull \hbox (badness 5203) in paragraph at lines 17--18
 []\TU/lmr/m/n/12 Lec-ture 4|In-tro-duc-tion to Neu-ral Net-works \TU/lmr/m/it/1
 2 YouTube \TU/lmr/m/n/12 [on-line]. 11. Au-gust
@@ -1796,7 +1798,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--22
 h?v=_JB0AO7QxSA&list=
  []
 
-[50<./obr/result.png>]
+
 Underfull \hbox (badness 2229) in paragraph at lines 23--24
 \TU/lmr/m/it/12 ments with Deep Re-in-force-ment Learn-ing \TU/lmr/m/n/12 [on-l
 ine]. Stock-holm. Avail-able at:
@@ -1826,7 +1828,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--28
 dsdatascience.com/
  []
 
-
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
 []\TU/lmr/m/n/12 KRIZHEVSKY, Alex, Ilya SUTSKEVER and Ge-of-frey HIN-TON. 2017.
 
@@ -1856,7 +1858,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--34
 1&bdata=
  []
 
-[51]
+[53]
 Underfull \hbox (badness 3557) in paragraph at lines 53--54
 []\TU/lmr/m/n/12 ZELT-NER, Fe-lix. 2016. Au-tonomous Ter-rain Clas-si-fi-ca-tio
 n Through Un-su-
@@ -1874,14 +1876,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 oject.
  []
 
-[52]) (./SeznamZkratek.tex [53]) (./SeznamPriloh.tex [54]) [55]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 122.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
+) (./SeznamZkratek.tex [54]) (./SeznamPriloh.tex [55]) [56]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
  (./diplomka.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 122.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 120.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 120.
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: F8375D02BBA18635D974D398F5E0C923;7096.
+(rerunfilecheck)             Checksum: 50884C859CAE01C7FBDF939B79A3E80B;7096.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1892,14 +1894,14 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 48056 strings out of 494480
+ 48058 strings out of 494480
  100000,1373583 words of node,token memory allocated
  739 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 28 attribute, 60 glue_spec, 28 attr
 ibute_list, 1 write, 17 pdf_action nodes
-   avail lists: 1:3,2:4189,3:1568,4:257,5:1046,6:3265,7:2118,8:518,9:1691,10:21,
+   avail lists: 1:3,2:4189,3:1568,4:257,5:1046,6:2937,7:2118,8:518,9:1691,10:21,
 11:308
- 50071 multiletter control sequences out of 65536+600000
+ 50072 multiletter control sequences out of 65536+600000
  116 fonts using 12586927 bytes
  62i,20n,100p,1226b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono12-regular.otf></usr/share/texm
@@ -1923,10 +1925,10 @@ ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on diplomka.pdf (59 pages, 5149162 bytes).
+Output written on diplomka.pdf (60 pages, 5150073 bytes).
 
-PDF statistics: 1344 PDF objects out of 1440 (max. 8388607)
- 1144 compressed objects within 12 object streams
- 465 named destinations out of 1000 (max. 131072)
+PDF statistics: 1347 PDF objects out of 1440 (max. 8388607)
+ 1146 compressed objects within 12 object streams
+ 466 named destinations out of 1000 (max. 131072)
  559 words of extra memory for PDF output out of 10000 (max. 100000000)
 

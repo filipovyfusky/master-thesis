@@ -83,7 +83,7 @@
 \contentsline {subsubsection}{Learning Rate}{46}{section*.69}
 \contentsline {subsubsection}{Regularisation}{46}{section*.70}
 \contentsline {chapter}{\numberline {5}Results}{47}{chapter.5}
-\contentsline {chapter}{\numberline {6}Discussion and Future Work}{48}{chapter.6}
-\contentsline {chapter}{\numberline {7}Bibliography}{49}{chapter.7}
-\contentsline {chapter}{\numberline {8}Seznam použitých zkratek a symbolů}{54}{chapter.8}
-\contentsline {chapter}{\numberline {9}Seznam příloh}{55}{chapter.9}
+\contentsline {chapter}{\numberline {6}Conclusion and future work}{51}{chapter.6}
+\contentsline {chapter}{\numberline {7}Bibliography}{52}{chapter.7}
+\contentsline {chapter}{\numberline {8}Seznam použitých zkratek a symbolů}{55}{chapter.8}
+\contentsline {chapter}{\numberline {9}Seznam příloh}{56}{chapter.9}
