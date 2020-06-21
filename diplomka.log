@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  20 JUN 2020 15:59
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  21 JUN 2020 16:25
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.080 seconds
+luaotfload | main : initialization completed in 0.100 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1751,12 +1751,13 @@ File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
 Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
-<obr/result.png, id=1128, 2991.175pt x 2925.93124pt>
+ [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
+<obr/result.png, id=1135, 2243.38126pt x 2695.06876pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
-Package luatex.def Info: obr/result.png  used on input line 77.
-(luatex.def)             Requested size: 455.24408pt x 445.29979pt.
- [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
+Package luatex.def Info: obr/result.png  used on input line 76.
+(luatex.def)             Requested size: 455.24408pt x 546.8999pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1925,9 +1926,9 @@ ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on diplomka.pdf (60 pages, 5150073 bytes).
+Output written on diplomka.pdf (60 pages, 5612417 bytes).
 
-PDF statistics: 1347 PDF objects out of 1440 (max. 8388607)
+PDF statistics: 1348 PDF objects out of 1440 (max. 8388607)
  1146 compressed objects within 12 object streams
  466 named destinations out of 1000 (max. 131072)
  559 words of extra memory for PDF output out of 10000 (max. 100000000)

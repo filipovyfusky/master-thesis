@@ -1,2 +1,8 @@
 \clearpage
 \chapter{Conclusion and future work}
+
+This thesis presented some of the most recent ANN architectures used for image segmentation. In the implementation part, the extensive step-by-step procedure for setting up both the software and hardware environments for running the Caffe implementation of the networks was described and tested on a fresh installation of the operating system. Part of this was showing the benefits of using Debian based distributions of Linux for working with libraries for ANN where the procedure described by shell commands is very clear and can be easily repeated on a different machine.
+
+The Caffe implementation and auxiliary Python scripts for the presented networks were tuned for the purpose of this thesis which is performing segmentation on a custom dataset with two object classes. The dataset was created using the best currently available online annotation tool. In the training phase, the network architecture was adapted for various transfer learning strategies and showed the power of using pre-trained encoders when the dataset is small. 
+
+During the inference phase, the time performance of the architectures was observed and compared.  
