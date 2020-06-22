@@ -1,13 +1,13 @@
 \section{Convolutional neural networks}
 
-Convolutional Neural Networks (CNN) are specifically designed to classify images. The biggest advantage they have in comparison to perceptrons is that they have fewer parameters. The number of inputs to the network for RGB images requires very large number of weights between the inputs and other layers. Reducing the number of neurons also regularises the network and reduces the risk of overfitting \cite{mehlig}. CNN are trained with backpropagation as well as perceptrons. 
+Convolutional Neural Networks (CNNs) are specifically designed to classify images. The biggest advantage they have in comparison to perceptrons is that they have fewer parameters. The number of inputs to the network for RGB images requires very large number of weights between the inputs and other layers. Reducing the number of neurons also regularises the network and reduces the risk of overfitting \cite{mehlig}. CNNs are trained with backpropagation as well as perceptrons. 
 
 \subsection{CNN layer types}
-The fundamental blocks for learning regular ANN still apply here. CNN are composed of McCulloch-Pitts neurons with activation functions. CNN architectures make the explicit assumption that the inputs are images (usually of the size MxNx3 for RGB). Typical CNN architecture consists of layers that, in addition to the already presented principles, allow it to exploit the spatial and colour information encoded in the image. \cite{stanford-github} In CNN, it's common to divide up the operations the neuron performs into separate layers (for instance, applying activation function is implemented as an 'activation layer').
+The fundamental blocks for learning regular ANN still apply here. CNNs are composed of McCulloch-Pitts neurons with activation functions. CNN architectures make the explicit assumption that the inputs are images (usually of the size MxNx3 for RGB). Typical CNN architecture consists of layers that, in addition to the already presented principles, allow it to exploit the spatial and colour information encoded in the image. \cite{stanford-github} In CNNs, it's common to divide up the operations the neuron performs into separate layers (for instance, applying activation function is implemented as an 'activation layer').
 
 \subsubsection{Convolution layers}  
 
-The weights in CNN can be interpreted as learnable filters. Each of these filters is learnt to extract different features from the input image. Inputs of the convolutional layers in CNN are three-dimensional tensors. The result of the convolution operation (which is extended to the full depth of the input tensor) for a specific filter is an activation map: a two-dimensional representation of the locations of the specific feature in the image. Initially, in the very first layers of the network, the filters extract simple features such as corners, curves, edges of certain orientation, etc. When the input image is RGB, the filters in the first layer have the dimensions of MxMx3, where M is a small number (typically 3, 5, 7, etc.). As we go deeper into the network's layers, the filters are looking for more complex features. The number of filters per layer, the stride of the convolution operation and the size of the filters is subject to different network architectures. When all filters are applied to the input tensor of the convolutional layer, their activation maps are stacked onto each other and become the input tensor for other layers. \cite{stanford-github}
+The weights in CNNs can be interpreted as learnable filters. Each of these filters is learnt to extract different features from the input image. Inputs of the convolutional layers in CNN are three-dimensional tensors. The result of the convolution operation (which is extended to the full depth of the input tensor) for a specific filter is an activation map: a two-dimensional representation of the locations of the specific feature in the image. In the very first layers of the network, the filters extract simple features such as corners, curves, edges of certain orientation, etc. When the input image is RGB, the filters in the first layer have the dimensions of MxMx3, where M is a small number (typically 3, 5, 7, etc.). As we go deeper into the network's layers, the filters are looking for more complex features. The number of filters per layer, the stride of the convolution operation, and the size of the filters are subject to different network architectures. When all filters are applied to the input tensor of the convolutional layer, their activation maps are stacked onto each other and become the input tensor for other layers. \cite{stanford-github}
 
 \vspace{4mm}
 \begin{figure}[htb]
@@ -21,9 +21,9 @@ The weights in CNN can be interpreted as learnable filters. Each of these filter
 
 \subsubsection{Pooling layers}
 
-The function of pooling layers is to reduce the size of the layers in the network. Pooling operation performs downsampling of the data encoded in the layers while still keeping the spatial information about the locations of the detected features. Pooling can be interpreted as summarizing a small area of pixels to a single pixel based on certain criterion. The most commonly used criterion is replacing the small pixel group by the one with maximum value. This is referred to as max-pooling. Similarly to \textit{conv} layers, the size of the pooled sub-regions and the stride of the pooling operation are subject to the network architecture. \cite{mehlig}
+The function of pooling layers is to reduce the size of the layers in the network. Pooling operation performs downsampling of the data encoded in the layers while retaining the spatial information about the locations of the detected features. Pooling can be interpreted as summarizing a small area of pixels to a single pixel based on a certain criterion. The most commonly used criterion is replacing a small pixel group by one with a maximum value. This is referred to as max-pooling. Similarly to \textit{conv} layers, the size of the pooled sub-regions and the stride of the pooling operation are subject to the network architecture. \cite{mehlig}
 
-Max-pooling layers have no trainable parameters. Sometimes its necessary to keep track of the original locations of the maximum elements. 
+Max-pooling layers have no trainable parameters. Sometimes it is necessary to keep track of the original locations of the maximum elements. \cite{segnet}
 
 \vspace{4mm}
 \begin{figure}[htb]
@@ -37,7 +37,7 @@ Max-pooling layers have no trainable parameters. Sometimes its necessary to keep
 
 \subsubsection{Fully connected layers (FCN)}
 
-CNN were originally designed for image classification, where one classifies the entire image. The structure of these networks consists of series of \textit{conv} layers followed by \textit{pool} layers. When the input is downsampled (pooled) to a certain level, the output tensor is flattened and becomes an input to a multilayer perceptron (FCN - fully connected network). The role of the convolutional part here is to create a downsampled representation of the features in the image. The perceptron then learns to classify this feature vector into the desired number of classes. 
+CNNs were originally designed for image classification, where one classifies the entire image. The structure of these networks consists of a series of \textit{conv} layers followed by \textit{pool} layers. When the input is downsampled (pooled) to a certain level, the output tensor is flattened and becomes an input to a multilayer perceptron (FCN - fully connected network). The role of the convolutional part here is to create a downsampled representation of the features in the image. The perceptron then learns to classify this feature vector into the desired number of classes. \cite{stanford-github} \cite{notes}
 
 \vspace{4mm}
 \begin{figure}[htb]
@@ -51,16 +51,12 @@ CNN were originally designed for image classification, where one classifies the 
 
 \subsection{Examples of CNN architectures}
 
-Most CNN architectures were developed for image classification. This is achieved by combining the properties of CNN and FCN (perceptrons). We see that in the deepest stage, the output of the network is followed by a standard multilayer perceptron with softmax output. The role of CNN here is only to encode the significant features of a particular image into a lower-level representation. The FCN then takes this output, literarly flattens the output tensor and learns to classify it.
-
-There have been introduced various architectures, each of them having a different number of convolution layers, size of the filters, stride taken by the filters during convolution, etc. In practice, one rarely designs a CNN from scratch; instead, it is advisable to choose the currently best-performing network, usually one that performs best on the ImageNet challenge. \cite{stanford-github}
-
-Here is a summary of the milestone architectures presented in recent years:
+Various architectures have been introduced, each having a different number of convolution layers, size of the filters, strides taken by the filters during convolution, etc. In practice, one rarely designs a CNN from scratch; instead, it is advisable to choose the currently best-performing network; usually one that performs best on the ImageNet challenge. \cite{stanford-github} Here is a summary of milestone architectures presented in recent years:
 
 \begin{itemize}
 	\item \textbf{AlexNet}
 	
-	The first work that popularized CNN in Computer Vision was AlexNet \cite{krizhevsky}. The Network had very similar architecture to LeNet \cite{lecun}, but was deeper, bigger, and featured Convolutional Layers stacked on top of each other (previously it was common to only have a single \textit{conv} layer always immediately followed by a \textit{pool} layer). \cite{stanford-github}
+	The first work that popularized CNNs in Computer Vision was AlexNet \cite{krizhevsky}. The Network had very similar architecture to LeNet \cite{lecun}, but was deeper, bigger, and featured Convolutional Layers stacked on top of each other (previously it was common to only have a single \textit{conv} layer which was always immediately followed by a \textit{pool} layer). \cite{stanford-github}
 	
 	\item \textbf{GoogLeNet}
 	
@@ -72,7 +68,7 @@ Here is a summary of the milestone architectures presented in recent years:
 	
 	\item \textbf{ResNet}
 	
-  	Residual Network developed by Kaiming He et al. \cite{resnet} was the winner of ILSVRC 2015. It features special skip connections and heavy use of batch normalization. \cite{stanford-github}
+  	Residual Network developed by Kaiming He et al. \cite{resnet} was the winner of ILSVRC 2015. It features special skip connections and a heavy use of batch normalization. \cite{stanford-github}
 		 
 \end{itemize}
 

@@ -1,13 +1,13 @@
 \newpage
 \section{Semantic segmentation}
 
-In semantic segmentation, one assigns a class to each pixel of an input image, unlike in the classification task, where one classifies the entire image. This section presents the most successful methods involving neural networks and supervised learning. 
+This section presents the most successful methods involving neural networks and supervised learning. In semantic segmentation, one assigns a class to each pixel of an input image, unlike in the classification task, where one classifies the entire image. 
 
-Segmentation has always been one of the most fundamental areas of computer vision. The classical approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to ideal and where the robustness of the algorithm is not crucial. To give an example of classical methods, one can refer to thresholding, region growing and mean-shift segmentation \cite{coufal}. More advanced methods using machine learning classification have also been introduced, such as TextonBoost, TextonForest and Random Forest \cite{segnet} \cite{bayesian}. These algorithms have fallen out of favour due to the massive success of ANN.
+Segmentation has always been one of the most fundamental areas of computer vision. The classic approaches are mostly based on the standard signal processing theory and some of them can still be implemented and give satisfactory results. However, this applies only to a limited number of use cases, where the conditions are very close to ideal and where the robustness of the algorithm is not crucial. To give an example of classic methods, one can refer to thresholding, region growing and mean-shift segmentation \cite{coufal}. More advanced methods which use machine learning classification have also been introduced, such as TextonBoost, TextonForest and Random Forest \cite{segnet} \cite{bayesian}. These algorithms have fallen out of favour due to the massive success of ANN.
 
 \subsection{Encoder-decoder architecture}
 
-In the previous chapter, the CNN architectures designed for image classification were presented. The size of the output layer of these networks is determined by the number of categories of classification because the CNN transfers to a FCN in the end. In semantic segmentation, however, one needs to get an image of the same resolution as the input image containing the information about a class of every pixel. To do this, the common scheme is introduced: the first part of the network is left unchanged but now, instead of the transition to FCN, various methods are implemented to upsample the encoded image features from the deepest layer of the CNN. This scheme is referred to as the encoder-decoder architecture. 
+In the previous chapter, CNN architectures designed for image classification were presented. The size of the output layer of these networks is determined by the number of categories of classification because the CNN transfers to an FCN in the end. In semantic segmentation, however, one needs to get an image of the same resolution as the input image containing the information about a class of every pixel. To do this, the common scheme is introduced: the first part of the network is left unchanged but now, instead of the transition to FCN, various methods are implemented to upsample the encoded image features from the deepest layer of the CNN. This scheme is referred to as the encoder-decoder architecture. \cite{stanford-L11}
 
 \vspace{4mm}
 \begin{figure}[h]
@@ -19,16 +19,15 @@ In the previous chapter, the CNN architectures designed for image classification
 	\label{encoder}
 \end{figure}
 
-The purpose of the encoder is to downsample the input images while still representing the significant features. The decoder part of the algorithm then upsamples the output of the encoder to the original input image size. This is usually done by performing reverse operations to max-pooling and convolution. The last part of the decoder typically gives the final segmented image. \\
+The purpose of the encoder is to downsample the input images while still representing their significant features. The decoder part of the algorithm then upsamples the output of the encoder to the original input image size. This is usually done by performing reverse operations to max-pooling and convolution. The last part of the decoder typically gives the final segmented image. \\
 
-Shortly after the success of CNN in image classification challenges, there have been introduced several segmentation architectures using CNN as the encoder. Some of the state-of-the-art were, for instance, FCN, DeconvNet and U-Net \cite{segnet}. These networks share the idea of having CNN incorporated as the encoder but differ in the form
-of the decoder part. However, the problem of training such networks due to a large number of trainable parameters, the design of the decoder and hence the need of introducing the cumbersome multi-stage training made them very difficult to use in practice \cite{segnet}. SegNet \cite{segnet} introduced in 2015 differs from these architectures as it has a significantly lower number of parameters and the design od the encoder-decoder network allows it to be trained via standard method using backpropagation and SGD.
+Shortly after the success of CNN in image classification challenges, there have been several segmentation architectures introduced which use CNN as the encoder. Some of the state-of-the-art architectures were, for instance, FCN, DeconvNet and U-Net. These networks share the idea of having CNN incorporated as the encoder but differ in the form of the decoder part. However, the problem of training such networks due to a large number of trainable parameters, the design of the decoder and hence the need of introducing the cumbersome multi-stage training made them very difficult to use in practice. SegNet \cite{segnet}, introduced in 2015, differs from these architectures as it has a significantly lower number of parameters and the design of the encoder-decoder network allows it to be trained via standard method using backpropagation and SGD.  \cite{segnet}
 
 \subsubsection{Input upsampling}
 
 The upsampling in the decoding part of the network is done via two mechanisms: learnable transposed convolution and unpooling. 
 
-Transposed convolution, as well as the standard convolution used in CNN, uses learnable filters. The difference is that it takes a single input point instead of a region, uses it to multiply each element of the filter and creates its imprint in the output layer. This scheme is illustrated in Figure \ref{transposed} (left).
+Transposed convolution, just like the standard convolution used in CNNs, uses learnable filters. The difference is that it takes a single input point instead of a region, uses it to multiply each element of the filter and creates its imprint in the output layer. This scheme is illustrated in Figure \ref{transposed} (left). \cite{stanford-L11}
 
 \vspace{4mm}
 \begin{figure}[h]
@@ -40,7 +39,7 @@ Transposed convolution, as well as the standard convolution used in CNN, uses le
 	\label{transposed}
 \end{figure}
 
-There are several ways to impelement unpooling. In an encoder-decoder architecture, the corresponding layers in the encoder and decoder can for example share the original locations of the elements that were pooled in the encoding part. The decoder then uses these indices for upsampling, as shown in Figure \ref{transposed} (right). This reconstructs the original positions of the features in the original image. Unpooling operation does not have any learnable parameters. 
+There are several ways to impelement unpooling. In an encoder-decoder architecture, the corresponding layers in the encoder and decoder can, for example, share the original locations of the elements that were pooled in the encoding part. The decoder then uses these indices for upsampling, as shown in Figure \ref{transposed} (right). This reconstructs the original positions of the features in the original image. Unpooling operation does not have any learnable parameters. \cite{segnet} \cite{stanford-L11}
 
 \vspace{4mm}
 \begin{figure}[h]

@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  22 JUN 2020 18:25
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  22 JUN 2020 21:23
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.079 seconds
+luaotfload | main : initialization completed in 0.080 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1351,9 +1351,6 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
 
 (./diplomka.aux
 
-LaTeX Warning: Label `dropout' multiply defined.
-
-
 LaTeX Warning: Label `pool' multiply defined.
 
 )
@@ -1574,7 +1571,7 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 
 warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
 [2] (./Introduction.tex
-<obr/semseg.jpg, id=260, 903.375pt x 471.7625pt>
+<obr/semseg.jpg, id=261, 903.375pt x 471.7625pt>
 File: obr/semseg.jpg Graphic file (type jpg)
 <use obr/semseg.jpg>
 Package luatex.def Info: obr/semseg.jpg  used on input line 13.
@@ -1588,93 +1585,94 @@ exlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman5-regular.luc))
 (./text.tex
 warning  (pdf backend): ignoring duplicate destination with the name 'page.4'
 [4] [5] [6]
-<obr/neuron.png, id=319, 1252.68pt x 457.71pt>
+<obr/neuron.png, id=322, 1252.68pt x 457.71pt>
 File: obr/neuron.png Graphic file (type png)
 <use obr/neuron.png>
 Package luatex.def Info: obr/neuron.png  used on input line 65.
 (luatex.def)             Requested size: 369.88582pt x 135.14899pt.
  [7<./obr/neuron.png>](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/
 generic/fonts/otl/lmroman10-bold.luc) [8] [9] [10]
-<obr/perceptron.png, id=379, 409.53pt x 680.5425pt>
+<obr/perceptron.png, id=384, 409.53pt x 680.5425pt>
 File: obr/perceptron.png Graphic file (type png)
 <use obr/perceptron.png>
 Package luatex.def Info: obr/perceptron.png  used on input line 331.
 (luatex.def)             Requested size: 102.73218pt x 170.71652pt.
  [11<./obr/perceptron.png>]
-<obr/softmax.png, id=400, 514.92375pt x 498.86375pt>
+<obr/softmax.png, id=406, 514.92375pt x 498.86375pt>
 File: obr/softmax.png Graphic file (type png)
 <use obr/softmax.png>
-Package luatex.def Info: obr/softmax.png  used on input line 374.
+Package luatex.def Info: obr/softmax.png  used on input line 372.
 (luatex.def)             Requested size: 96.73918pt x 93.7194pt.
-<obr/separability.png, id=405, 1076.02pt x 353.32pt>
+<obr/separability.png, id=412, 1076.02pt x 353.32pt>
 File: obr/separability.png Graphic file (type png)
 <use obr/separability.png>
-Package luatex.def Info: obr/separability.png  used on input line 388.
+Package luatex.def Info: obr/separability.png  used on input line 386.
 (luatex.def)             Requested size: 312.9803pt x 102.76747pt.
  [12<./obr/softmax.png><./obr/separability.png>] [13] [14]
-<obr/backpropagation.png, id=447, 686.565pt x 694.595pt>
+<obr/backpropagation.png, id=458, 686.565pt x 694.595pt>
 File: obr/backpropagation.png Graphic file (type png)
 <use obr/backpropagation.png>
-Package luatex.def Info: obr/backpropagation.png  used on input line 442.
+Package luatex.def Info: obr/backpropagation.png  used on input line 440.
 (luatex.def)             Requested size: 119.50148pt x 120.89882pt.
  [15<./obr/backpropagation.png>]
-<obr/learning_rate.png, id=466, 1163.34625pt x 843.15pt>
+<obr/learning_rate.png, id=478, 1163.34625pt x 843.15pt>
 File: obr/learning_rate.png Graphic file (type png)
 <use obr/learning_rate.png>
-Package luatex.def Info: obr/learning_rate.png  used on input line 471.
+Package luatex.def Info: obr/learning_rate.png  used on input line 469.
 (luatex.def)             Requested size: 398.33858pt x 288.69994pt.
  [16<./obr/learning_rate.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
-ut line 516.
+ut line 514.
 
-Underfull \hbox (badness 10000) in paragraph at lines 527--528
+Underfull \hbox (badness 10000) in paragraph at lines 525--526
 
  []
 
 [17]
-<obr/momentum.png, id=515, 1277.77374pt x 583.17876pt>
+<obr/momentum.png, id=530, 1277.77374pt x 583.17876pt>
 File: obr/momentum.png Graphic file (type png)
 <use obr/momentum.png>
-Package luatex.def Info: obr/momentum.png  used on input line 562.
+Package luatex.def Info: obr/momentum.png  used on input line 558.
 (luatex.def)             Requested size: 341.43306pt x 155.83192pt.
  [18<./obr/momentum.png>]
-<obr/opt.png, id=535, 616.3025pt x 475.7775pt>
+<obr/opt.png, id=550, 616.3025pt x 475.7775pt>
 File: obr/opt.png Graphic file (type png)
 <use obr/opt.png>
-Package luatex.def Info: obr/opt.png  used on input line 592.
+Package luatex.def Info: obr/opt.png  used on input line 588.
 (luatex.def)             Requested size: 312.9803pt x 241.61967pt.
  [19<./obr/opt.png>] [20]
-<obr/dropou.png, id=569, 1468.48625pt x 385.44pt>
+<obr/dropou.png, id=584, 1468.48625pt x 385.44pt>
 File: obr/dropou.png Graphic file (type png)
 <use obr/dropou.png>
-Package luatex.def Info: obr/dropou.png  used on input line 646.
+Package luatex.def Info: obr/dropou.png  used on input line 637.
 (luatex.def)             Requested size: 312.9803pt x 82.14458pt.
- [21<./obr/dropou.png>]
-<obr/early.png, id=591, 1231.60126pt x 538.01pt>
+(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmro
+man10-bolditalic.luc)
+[21<./obr/dropou.png>]
+<obr/early.png, id=607, 1231.60126pt x 538.01pt>
 File: obr/early.png Graphic file (type png)
 <use obr/early.png>
-Package luatex.def Info: obr/early.png  used on input line 665.
+Package luatex.def Info: obr/early.png  used on input line 657.
 (luatex.def)             Requested size: 256.0748pt x 111.86075pt.
-)
-(./convolution.tex [22<./obr/early.png>]
-<obr/conv.png, id=616, 1371.1225pt x 635.37375pt>
+) (./convolution.tex [22<./obr/early.png>]
+<obr/conv.png, id=633, 1371.1225pt x 635.37375pt>
 File: obr/conv.png Graphic file (type png)
 <use obr/conv.png>
 Package luatex.def Info: obr/conv.png  used on input line 15.
 (luatex.def)             Requested size: 256.0748pt x 118.65723pt.
  [23<./obr/conv.png>]
-<obr/pool.png, id=630, 859.71187pt x 358.33875pt>
+<obr/pool.png, id=648, 859.71187pt x 358.33875pt>
 File: obr/pool.png Graphic file (type png)
 <use obr/pool.png>
 Package luatex.def Info: obr/pool.png  used on input line 31.
 (luatex.def)             Requested size: 312.9803pt x 130.45628pt.
-<obr/fully.png, id=634, 1324.95pt x 382.42876pt>
+<obr/fully.png, id=654, 1324.95pt x 382.42876pt>
 File: obr/fully.png Graphic file (type png)
 <use obr/fully.png>
 Package luatex.def Info: obr/fully.png  used on input line 45.
 (luatex.def)             Requested size: 341.43306pt x 98.54797pt.
  [24<./obr/pool.png><./obr/fully.png>]) (./segmentation.tex [25]
-<obr/segnet.png, id=674, 853.1875pt x 405.515pt>
+<obr/segnet.png, id=696, 853.1875pt x 405.515pt>
 File: obr/segnet.png Graphic file (type png)
 <use obr/segnet.png>
 Package luatex.def Info: obr/segnet.png  used on input line 15.
@@ -1685,29 +1683,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
  []
 
 [26<./obr/segnet.png>]
-<obr/transposed.png, id=693, 244.915pt x 259.97125pt>
+<obr/transposed.png, id=714, 244.915pt x 259.97125pt>
 File: obr/transposed.png Graphic file (type png)
 <use obr/transposed.png>
-Package luatex.def Info: obr/transposed.png  used on input line 36.
+Package luatex.def Info: obr/transposed.png  used on input line 35.
 (luatex.def)             Requested size: 142.26378pt x 151.0135pt.
-<obr/unpool.png, id=698, 859.71187pt x 358.33875pt>
+<obr/unpool.png, id=721, 859.71187pt x 358.33875pt>
 File: obr/unpool.png Graphic file (type png)
 <use obr/unpool.png>
-Package luatex.def Info: obr/unpool.png  used on input line 48.
+Package luatex.def Info: obr/unpool.png  used on input line 47.
 (luatex.def)             Requested size: 312.9803pt x 130.45628pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [27<./obr/transposed.png>] [28<./obr/unpool.png>]
-<obr/iou.png, id=732, 602.25pt x 469.755pt>
+<obr/iou.png, id=755, 602.25pt x 469.755pt>
 File: obr/iou.png Graphic file (type png)
 <use obr/iou.png>
-Package luatex.def Info: obr/iou.png  used on input line 87.
+Package luatex.def Info: obr/iou.png  used on input line 86.
 (luatex.def)             Requested size: 256.0748pt x 199.74716pt.
 ) (./implementation.tex
 [29<./obr/iou.png>] [30] [31]
-<obr/grafika.jpeg, id=764, 749.04843pt x 447.92343pt>
+<obr/grafika.jpeg, id=787, 749.04843pt x 447.92343pt>
 File: obr/grafika.jpeg Graphic file (type jpg)
 <use obr/grafika.jpeg>
 Package luatex.def Info: obr/grafika.jpeg  used on input line 44.
@@ -1738,18 +1736,18 @@ atis-
  []
 
 [43] [44] [45]) (./results.tex [46] [47]
-<obr/bayes_full_rough.png, id=1128, 1062.21844pt x 651.18282pt>
+<obr/bayes_full_rough.png, id=1151, 1062.21844pt x 651.18282pt>
 File: obr/bayes_full_rough.png Graphic file (type png)
 <use obr/bayes_full_rough.png>
 Package luatex.def Info: obr/bayes_full_rough.png  used on input line 21.
 (luatex.def)             Requested size: 398.33858pt x 244.2029pt.
-<obr/bayes_full_rough_2.png, id=1130, 1073.51062pt x 651.18282pt>
+<obr/bayes_full_rough_2.png, id=1153, 1073.51062pt x 651.18282pt>
 File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
 Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
  [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
-<obr/result.png, id=1140, 2243.38126pt x 2695.06876pt>
+<obr/result.png, id=1164, 2243.38126pt x 2695.06876pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
 Package luatex.def Info: obr/result.png  used on input line 76.
@@ -1761,120 +1759,114 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ) (./discussion.tex [49] [50<./obr/result.png>]) (./Literatura.tex [51
 
 ]
-Underfull \hbox (badness 5203) in paragraph at lines 17--18
-[]\TU/lmr/m/n/12 Lec-ture 4|In-tro-duc-tion to Neu-ral Net-works \TU/lmr/m/it/1
-2 YouTube \TU/lmr/m/n/12 [on-line]. 11. Au-gust
+Underfull \hbox (badness 4254) in paragraph at lines 17--18
+[]\TU/lmr/m/n/12 Lec-ture 4 | In-tro-duc-tion to Neu-ral Net-works \TU/lmr/m/it
+/12 YouTube \TU/lmr/m/n/12 [on-line]. 11. Au-
  []
 
 
-Underfull \hbox (badness 4699) in paragraph at lines 17--18
+Underfull \hbox (badness 6268) in paragraph at lines 19--20
+[]\TU/lmr/m/n/12 Lec-ture 6 | Train-ing Neu-ral Net-works I \TU/lmr/m/it/12 You
+Tube \TU/lmr/m/n/12 [on-line]. 11. Au-gust
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 19--20
 \TU/lmr/m/n/12 2018. Avail-able at: [][]$\TU/lmtt/m/n/12 https://www.youtube.co
-m/watch?v=d14TUNcbn1k&list=
+m/watch?v=wEoyxE0GP2M&list=
  []
 
 
-Underfull \hbox (badness 3019) in paragraph at lines 19--20
-[]\TU/lmr/m/n/12 Lec-ture 6|Train-ing Neu-ral Net-works I \TU/lmr/m/it/12 YouTu
-be \TU/lmr/m/n/12 [on-line]. 11. Au-gust 2018.
+Underfull \hbox (badness 5231) in paragraph at lines 21--22
+[]\TU/lmr/m/n/12 Lec-ture 7 | Train-ing Neu-ral Net-works II \TU/lmr/m/it/12 Yo
+uTube \TU/lmr/m/n/12 [on-line]. 11. Au-gust
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--20
-\TU/lmr/m/n/12 Avail-able at: [][]$\TU/lmtt/m/n/12 https://www.youtube.com/watc
-h?v=wEoyxE0GP2M&list=
+Underfull \hbox (badness 4699) in paragraph at lines 21--22
+\TU/lmr/m/n/12 2018. Avail-able at: [][]$\TU/lmtt/m/n/12 https://www.youtube.co
+m/watch?v=_JB0AO7QxSA&list=
  []
 
 
-Underfull \hbox (badness 2326) in paragraph at lines 21--22
-[]\TU/lmr/m/n/12 Lec-ture 7|Train-ing Neu-ral Net-works II \TU/lmr/m/it/12 YouT
-ube \TU/lmr/m/n/12 [on-line]. 11. Au-gust 2018.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-\TU/lmr/m/n/12 Avail-able at: [][]$\TU/lmtt/m/n/12 https://www.youtube.com/watc
-h?v=_JB0AO7QxSA&list=
- []
-
-
-Underfull \hbox (badness 2229) in paragraph at lines 23--24
+Underfull \hbox (badness 2229) in paragraph at lines 25--26
 \TU/lmr/m/it/12 ments with Deep Re-in-force-ment Learn-ing \TU/lmr/m/n/12 [on-l
 ine]. Stock-holm. Avail-able at:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
 [][]$\TU/lmtt/m/n/12 http://www.diva-[]portal.org/smash/record.jsf?pid=diva2%3A
 967644&dswid=
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
 []\TU/lmr/m/n/12 BUSHAEV, Vi-taly. 2018. Adam — lat-est trends in deep learn-
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
 \TU/lmr/m/n/12 ing op-ti-miza-tion. In: To-wards Data Sci-ence [on-line]. To-wa
 rds
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
 \TU/lmr/m/n/12 Data Sci-ence. Avail-able at: [][]$\TU/lmtt/m/n/12 https://towar
 dsdatascience.com/
  []
 
-[52]
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 []\TU/lmr/m/n/12 KRIZHEVSKY, Alex, Ilya SUTSKEVER and Ge-of-frey HIN-TON. 2017.
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 \TU/lmr/m/n/12 Im-a-geNet clas-si-fi-ca-tion with deep con-vo-lu-tional neu-ral
  net-works. \TU/lmr/m/it/12 Com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 \TU/lmr/m/it/12 mu-ni-ca-tions of the ACM \TU/lmr/m/n/12 [on-line]. ACM. Avail-
 able at: [][]$\TU/lmtt/m/n/12 http://web.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 \TU/lmtt/m/n/12 b.ebscohost.com.ezproxy.lib.vutbr.cz/ehost/detail/detail?vid=0&
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 \TU/lmtt/m/n/12 sid=dcac7028-[]11f2-[]41e4-[]ba7d-[]d517a5a51a6f%40sessionmgr10
 1&bdata=
  []
 
 [53]
-Underfull \hbox (badness 3557) in paragraph at lines 53--54
+Underfull \hbox (badness 3557) in paragraph at lines 55--56
 []\TU/lmr/m/n/12 ZELT-NER, Fe-lix. 2016. Au-tonomous Ter-rain Clas-si-fi-ca-tio
 n Through Un-su-
  []
 
 
-Underfull \hbox (badness 3260) in paragraph at lines 53--54
+Underfull \hbox (badness 3260) in paragraph at lines 55--56
 \TU/lmr/m/n/12 per-vised Learn-ing [on-line]. Luleå. Avail-able at: [][]$\TU/l
 mtt/m/n/12 http://ltu.diva-[]portal.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
 \TU/lmtt/m/n/12 org/smash/record.jsf?pid=diva2%3A1051763&dswid=-[]6301.Degreepr
 oject.
  []
 
-) (./SeznamZkratek.tex [54]) (./SeznamPriloh.tex [55]) [56]
+[54]) (./SeznamZkratek.tex [55]) (./SeznamPriloh.tex [56]) [57]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 120.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 120.
  (./diplomka.aux)
@@ -1892,41 +1884,42 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 48060 strings out of 494480
+ 48068 strings out of 494480
  100000,1373583 words of node,token memory allocated
  739 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 28 attribute, 60 glue_spec, 28 attr
 ibute_list, 1 write, 17 pdf_action nodes
-   avail lists: 1:3,2:4189,3:1568,4:257,5:1046,6:2937,7:2118,8:518,9:1691,10:21,
-11:308
- 50074 multiletter control sequences out of 65536+600000
- 116 fonts using 12586927 bytes
- 62i,20n,100p,1421b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
+   avail lists: 1:3,2:4197,3:1569,4:257,5:1046,6:3078,7:2118,8:518,9:1691,10:21,
+11:307
+ 50078 multiletter control sequences out of 65536+600000
+ 117 fonts using 12718615 bytes
+ 62i,20n,100p,1415b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono12-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
-/public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman
-10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman7-regular.otf><
-/usr/share/texmf/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/texmf
-/fonts/opentype/public/lm/lmromanslant12-regular.otf></usr/share/texmf/fonts/ope
-ntype/public/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/
-lmroman12-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.
-otf><./fonty/Vafle_VUT_Regular.otf></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb>
-Output written on diplomka.pdf (60 pages, 5617280 bytes).
+/public/lm/lmroman10-bolditalic.otf></usr/share/texmf/fonts/opentype/public/lm/l
+mroman10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman10-regular.o
+tf></usr/share/texmf/fonts/opentype/public/lm/lmroman7-regular.otf></usr/share/t
+exmf/fonts/opentype/public/lm/lmroman8-regular.otf></usr/share/texmf/fonts/opent
+ype/public/lm/lmromanslant12-regular.otf></usr/share/texmf/fonts/opentype/public
+/lm/lmroman12-italic.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-re
+gular.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman12-bold.otf><./fonty
+/Vafle_VUT_Regular.otf></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
+10.pfb>
+Output written on diplomka.pdf (61 pages, 5621584 bytes).
 
-PDF statistics: 1354 PDF objects out of 1440 (max. 8388607)
- 1152 compressed objects within 12 object streams
- 466 named destinations out of 1000 (max. 131072)
+PDF statistics: 1389 PDF objects out of 1440 (max. 8388607)
+ 1182 compressed objects within 12 object streams
+ 469 named destinations out of 1000 (max. 131072)
  559 words of extra memory for PDF output out of 10000 (max. 100000000)
 

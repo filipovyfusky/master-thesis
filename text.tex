@@ -1,12 +1,12 @@
 \chapter{Research and theory}
 \label{research}
-The first part of this chapter gives an introduction to artificial neural networks (ANN). It begins with a definition of fundamental terms that explain the core principles of ANN. Due to the fact that the research in this area is still ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent that will be relevant for the network architecture chosen at the end.
+The first part of this chapter gives an introduction to artificial neural networks (ANNs). It begins with a definition of fundamental terms that explain the core principles of ANN. Because the research in this area is still ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent that will be relevant for the network architecture chosen at the end.
 
-The second part presents some of the main approaches based on machine learning recently used by researchers to tackle the semantic segmentation problem. However, not all of them use CNN as the core algorithm. This part summarizes the key points of the corresponding papers that contributed to this topic by presenting novel architectures and principles. It concludes by a detailed description of a method that is eventually found to be the most promising and is thus selected for the final implementation.
+The second part presents some of the main approaches based on machine learning which were recently used by researchers to tackle the semantic segmentation problem. However, not all of them use CNN as the core algorithm. This part summarizes the key points of the corresponding papers that contributed to this topic by presenting novel architectures and principles. It concludes by a detailed description of a method that is eventually found to be the most promising and is thus selected for the final implementation.
 
 \section{Architecture of artificial neural networks}
 
-The inspiration for neural networks comes from their resemblance with biological neurons and the way they are connected. Neural networks can recognize features in a given training set of data and apply this knowledge to previously unseen data after the training. This strategy is called supervised learning. In supervised learning, one periodically feeds the network with input/output pairs of training data. The network learns by comparing the correct and computed output values for the given input. The network's trainable parameters are changed as the training continues to minimize the differences between network outputs and targets for \textbf{all} input patterns in the training set. \cite{mehlig}
+The inspiration for neural networks comes from their resemblance to biological neurons and the way they are connected. Neural networks can recognize features in a given training set of data and apply this knowledge to previously unseen data after the training. This strategy is called supervised learning. In supervised learning, one periodically feeds the network with input/output pairs of training data. The network learns by comparing the correct and computed output values for the given input. The network's trainable parameters are changed as the training continues to minimize the differences between network outputs and targets for \textbf{all} input patterns in the training set. \cite{mehlig}
 
 \subsection{Feed-forward networks}
 
@@ -32,9 +32,9 @@ f(x) = f^{(3)}(f^{(2)}(f^{(1)}(x)))
 
 These models are referred to as feed-forward because information flows from the deepest nested function $f^{(1)}$ which then takes $ x $ as its direct input to other functions in the chain and finally to the output $ y $. One can name the functions starting by $f^{(1)}$ as the first layer (input layer) of the network, $f^{(2)}$ as the second layer and so on. The final layer of the network is called the output layer. \cite{santiago}
 
-Remember that in supervised learning one needs a set of training data, in this case, a set of matching $ x, y $\footnote{Outputs $ y $ are often called labels in classification tasks}  pairs. The training samples specify what the output layer must do at each point $ x $; it must produce a value that is as close as possible to $ y $. The behaviour of the other layers is not specified by the training data which is why we call these layers 'hidden layers'.
+Remember that in supervised learning one needs a set of training data, in this case a set of matching $ x, y $\footnote{Outputs $ y $ are often called labels in classification tasks}  pairs. The training samples specify what the output layer must do at each point $ x $; it must produce a value that is as close as possible to $ y $. The behaviour of the other layers is not specified by the training data which is why we call these layers 'hidden layers'. \cite{santiago}
 
-A neural network can be seen as something capable of modelling practically any function we can think of (general approximation theorem, see \cite{goodfellow}). The power of this brings us to the definition of a classification task. In this task, the function which the network approximates has discrete states (true/false in the simplest case). 
+A neural network can be seen as something capable of modelling almost any function we can think of (general approximation theorem, see \cite{goodfellow}). The power of this brings us to the definition of a classification task. In this task, the function which the network approximates has discrete states (true/false in the simplest case). 
 
 \subsection{McCulloch-Pitts neurons}
 
@@ -70,19 +70,19 @@ As written, this computation is performed for all $ i $ neurons in parallel and 
 	\label{neuron}
 \end{figure}
 
-The incoming connections from other neurons have different strengths. This is determined by the parameters $ w_{ij} $ called weights . The first index $ i $ refers to the neuron whose output is being computed and $ j $ labels all neurons that connect
-to neuron $ i $. The argument of $ \theta_H $ of the neuron is often referred to as the local field: \cite{mehlig}
+Each incoming connection from other neurons has a different strength. This is determined by the parameters $ w_{ij} $ called weights . The first index $ i $ refers to the neuron whose output is being computed and $ j $ labels all neurons that connect
+to neuron $ i $. The argument of $ \theta_H $ of the neuron is often referred to as the local field \cite{mehlig}
 
 \begin{gather}
 \label{local_field}
 b_i = \sum\limits_{j}w_{ij}n_j(t) - \mu_i
 \end{gather}
 
-Equation \eqref{local_field} shows that the neuron performs a weighted linear average of the inputs $ n_j $ and applies an offset (threshold) which is denoted by $ \mu_i $. Finally, the function $ \theta_H $ is referred to as the activation function. \cite{mehlig}
+\noindent where $ b_i $ is a weighted linear average of the inputs $ n_j $ and $ \mu_i $ is an offset (threshold). Finally, the function $ \theta_H $ is referred to as the activation function. \cite{mehlig}
 
 \subsection{Activation functions}
 
-The general motivation for using activation functions is to bring non-linearity to the model. In the simplest case that has been discussed so far, the neurons can only have the states 0/1, which in terms of the activation function corresponds to the Heaviside function 
+The general motivation for using activation functions is to bring non-linearity to the model. In the simplest case that has been discussed so far, the neurons can only have the states 0/1, which in terms of the activation function corresponds to the Heaviside function \cite{mehlig}
 
 \begin{gather}
 	\theta_H(b) = 
@@ -92,7 +92,7 @@ The general motivation for using activation functions is to bring non-linearity 
 	\end{cases} 
 \end{gather}
 
-\noindent In practice, however, the simplest model must be generalized by allowing the neuron to respond continuously to its inputs. This is necessary for the optimization algorithms used in the training phase to operate smoothly. Therefore, the term $ \theta_H $ in Eq. \eqref{neuron_output} is replaced by a general continuous activation function $ g(b) $. \cite{mehlig}
+\noindent In practice, however, the simplest model must be generalized by allowing the neuron to respond continuously to its inputs. This is necessary for the optimization algorithms used in the training phase to operate smoothly \cite{groman}. Therefore, the term $ \theta_H $ in Eq. \eqref{neuron_output} is replaced by a general continuous activation function $ g(b) $. \cite{mehlig}
 
 \newpage
 
@@ -101,14 +101,14 @@ One can choose from several activation functions which all come with their pros 
 \begin{itemize}
 	
 \item \textbf{Nonlinearity}. As discussed above, non-linearity is a general ability of a neural network which allows it to model very complex functions.
-\item \textbf{Monotocity and nondecreasibility}. These allows certain optimization algorithms to perform with greater stability.
+\item \textbf{Monotocity and nondecreasibility}. These allow certain optimization algorithms to perform with greater stability.
 \item \textbf{Differentiability (or at least piecewise differentiability)}. This is useful not only in terms of stability of the optimization algorithms but also for the analytical derivation of the update rule for the network parameters during optimization. 
 		
 \end{itemize}
 
 There are activation functions designed specifically for the output layer. The reason for that comes from the definition of a classification task, where we would like to interpret the outputs of the network as relative probabilities of the input belonging to a certain class. For this, the commonly-used softmax activation function can be used. We say 'relative' because the network's decision is only based on the features of one particular pattern in comparison with other data we used during training. Hence, the probabilities computed by the softmax classifier are better thought of as confidences where the ordering of the scores is interpretable, but the absolute numbers are technically not. \cite{stanford-github}
 
-Another possibility for the output activation function is the sigmoid function, which is used for both input/hidden and output layers. Here are the most frequently used activation functions:
+Another possibility for the output activation function is the sigmoid function, which is used for both input/hidden and output layers. Here are the most frequently used activation functions: \cite{groman}
 
 \subsubsection{Sigmoid}
 \vspace{5mm}
@@ -152,7 +152,7 @@ Another possibility for the output activation function is the sigmoid function, 
 		\caption{$ g'(b)=g(b)(1-g(b)) $}  
 	\end{subfigure}
 	\vspace{10mm}
-	\caption{Sigmoid function and its derivative. Notice that the derivative goes to zero very soon.}
+	\caption{Sigmoid function and its derivative. Notice that the derivative goes to zero very quickly.}
 \end{figure}
 
 %\begin{minipage}{0.5\linewidth}
@@ -323,7 +323,7 @@ By modifying the previously introduced function one gets a version of ReLu inten
 
 \subsection{Multilayer perceptrons}
 
-Perceptron is a feed-forward network. It's divided into layers consisting of McCulloch-Pitts neurons. The left-most layer of the network shown in Figure \ref{perceptron} is called input layer. The input layer takes the values of the input data and passes it to the next layer. The right-most layer is the output layer where the output of the network is read out. The other neuron layers are called hidden layers; their states are not read out directly. \cite{mehlig}
+Perceptron is a feed-forward network. It is divided into layers consisting of McCulloch-Pitts neurons. The left-most layer of the network shown in Figure \ref{perceptron} is called input layer. The input layer takes the values of the input data and passes it to the next layer. The right-most layer is the output layer where the output of the network is read out. The other neuron layers are called hidden layers; their states are not read out directly. \cite{mehlig}
 
 \vspace{3mm}
 \begin{figure}[htb]
@@ -331,11 +331,11 @@ Perceptron is a feed-forward network. It's divided into layers consisting of McC
 		\includegraphics*[height=6cm, keepaspectratio]{obr/perceptron.png}
 	\end{center}
 	\vspace{3mm}
-	\caption{Perceptron with one hidden layer \cite{mehlig}} 
+	\caption{Perceptron with one hidden layer. \cite{mehlig}} 
 	\label{perceptron}
 \end{figure}
 
-\textquote{In perceptrons, all connections (called weights) $ w_{ij} $ are one-way. Every neuron (or input terminal) feeds only to neurons in the layer immediately to the right. There are no connections within layers, or back connections, or connections that jump over a layer. There are $ N $ input terminals.} \cite{mehlig} We denote the inputs coming to the input layer by \cite{mehlig}
+\textquote{\textit{In perceptrons, all connections (called weights) $ w_{ij} $ are one-way. Every neuron (or input terminal) feeds only to neurons in the layer immediately to the right. There are no connections within layers, or back connections, or connections that jump over a layer. There are $ N $ input terminals.}} \cite{mehlig} We denote the inputs coming to the input layer by \cite{mehlig}
 
 \begin{gather}
 	x(\mu)= 
@@ -347,16 +347,14 @@ Perceptron is a feed-forward network. It's divided into layers consisting of McC
 	\end{bmatrix}
 \end{gather}
 
-The index $ \mu $ labels different input patterns in the training set. The network shown in Figure \ref{neuron} performs these computations \cite{mehlig}
+The index $ \mu $ labels different input patterns in the training set. The perceptron in Figure \ref{neuron} calculates the output as follows: \cite{mehlig}
 
 \begin{gather}
 V_j^{(\mu)} = g(b_j^{(\mu)}) \quad \text{where} \quad b_j^{(\mu)} = \sum_{k} w_{jk} x_{k}^{(\mu)} - \theta_{j} \\
 O_i^{(\mu)} = g(B_i^{(\mu)}) \quad \text{where} \quad B_i^{(\mu)} = \sum_{j} W_{ij} V_{j}^{(\mu)} - \Theta_{i} 
 \end{gather}
 
-Here $ V_j^{(\mu)} $ denoted the output of hidden layer $ j $ based on the local field $ b_j^{(\mu)} $ and activation function $ g(b) $. The parameters $ w_{jk} $ and $ \theta_{j} $ denote weights and thresholds of the layer $ j $. The corresponding computations are made for the output layer whose parameters are denoted by capital letters. 
-
-A multilayer perceptron has generally $ N $ hidden layers. If it has more than two hidden layers, it usually begins to be called a deep network. 
+Here $ V_j^{(\mu)} $ denotes the output of hidden layer $ j $ based on the local field $ b_j^{(\mu)} $ and activation function $ g(b) $. The parameters $ w_{jk} $ and $ \theta_{j} $ denote weights and thresholds of the layer $ j $. Corresponding computations are made for the output layer whose parameters are denoted by capital letters. \cite{mehlig} A multilayer perceptron generally has $ N $ hidden layers. If it has more than two hidden layers, it usually begins to be called a deep network. 
 
 \subsubsection{Output classifier - softmax}
 
@@ -366,7 +364,7 @@ The softmax function is designed to be used in output layers. This so-called 'cl
 O_{i} = \frac{e^{\alpha b_i^{(L)}}}{\sum_{k=1}^{M} e^{\alpha b_k^{(L)}}}
 \end{gather}
 
-\enquote{Here $ b_{i}^{(L)} = \sum_{j}w_{ij}^{(L)} V_{j}^{(L-1)} - \theta _{j}^{(L)} $  are the local fields of the neurons in the output layer $ L $ with $ M $ outputs. The constant $\alpha$ is usually taken to be unity. Softmax has three important properties: first that $ 0 \geq O_i \geq 1 $. Second, the values of the outputs sum to one $ \sum_{i=1}^{M} O_i = 1 $. This means that the outputs of Softmax units can be interpreted as probabilities. Third, the outputs are monotonous: when $ b_i^{(L)} $ increases, then $ O_i $ increases but the values $ O_k $ of the other output neurons $ k \neq i $ decrease.} \cite{mehlig}
+\enquote{\textit{Here $ b_{i}^{(L)} = \sum_{j}w_{ij}^{(L)} V_{j}^{(L-1)} - \theta _{j}^{(L)} $  are the local fields of the neurons in the output layer $ L $. The constant $\alpha$ is usually taken to be unity. Softmax has three important properties: first that $ 0 \geq O_i \geq 1 $. Second, the values of the outputs sum to one $ \sum_{i=1}^{M} O_i = 1 $. This means that the outputs of Softmax units can be interpreted as probabilities. Third, the outputs are monotonous: when $ b_i^{(L)} $ increases, then $ O_i $ increases but the values $ O_k $ of the other output neurons $ k \neq i $ decrease.}} \cite{mehlig}
 
 \vspace{3mm}
 \begin{figure}[htb]
@@ -375,13 +373,13 @@ O_{i} = \frac{e^{\alpha b_i^{(L)}}}{\sum_{k=1}^{M} e^{\alpha b_k^{(L)}}}
 	\end{center}
 	\vspace{3mm}
 	\caption{Softmax classifier: the neurons in this layer are
-		not independent \cite{mehlig}} 
+		not independent. \cite{mehlig}} 
 	\label{softmax}
 \end{figure}
 
 \subsubsection{Linear separability}
 
-The reason we use hidden layers is to tackle not linearly separable classification problems. Linear separability is shown in Figure \ref{separability}, where the input to the network is two-dimensional and we classify the input data into two classes (marked as black and white points in the graph). 
+The reason we use hidden layers is to tackle classification problems that are not linearly separable. Linear separability is shown in Figure \ref{separability}, where the input to the network is two-dimensional. We classify the input data into two classes (marked as black and white points in the graph). \cite{mehlig}
 
 \begin{figure}[htb]
 	\begin{center}
@@ -392,7 +390,7 @@ The reason we use hidden layers is to tackle not linearly separable classificati
 	\label{separability}
 \end{figure}
 
-\enquote{A classification problem is linearly separable if one is able to draw a single line (a single plane in case of three inputs, etc.) to divide the input space into two distinct areas. The curve that separates the space of inputs is called the decision boundary. The position of the decision boundary is determined by the values of weights and thresholds of the neurons. These parameters are found by training the network. In the case shown in Figure \ref{separability} (left), the line dividing the 2D space of inputs corresponds to the simplest possible case which is a single neuron in the network. In a not linearly separable task (Figure \ref{separability}, right) we need to divide the input space into more than two regions to solve the classification. By doing this, we map the input space of size n = 2 to the hidden space of size m = 3 and use it as an input to other layers.} \cite{mehlig}
+A classification problem is linearly separable if one is able to draw a single line (a single plane in case of three inputs, etc.) to divide the input space into two distinct areas. The curve that separates the space of inputs is called the decision boundary. The position of the decision boundary is determined by the values of weights and thresholds of the neurons. These parameters are found by training the network. In the case shown in Figure \ref{separability} (left), the line dividing the 2D space of inputs corresponds to the simplest possible case which is a single neuron in the network. In a not linearly separable task (Figure \ref{separability}, right) we need to divide the input space into more than two regions to solve the classification. By doing this, we map the input space of size n = 2 to the hidden space of size m = 3 and use it as an input to other layers. \cite{mehlig}
 
 %-------------------TRAINING----------------------
 
@@ -400,11 +398,11 @@ The reason we use hidden layers is to tackle not linearly separable classificati
 
 \section{Training of artificial neural networks}
 
-Artificial neural networks are trained using iterative optimization algorithms. During training, one needs to choose the right loss function whose value goes to zero when the network produces the expected output. To achieve this, trainable paremeters are changed in each step of optimization. The effect each parameter has on the value of the loss function is determined by calculating the gradient of the loss function with respect to the particular parameter in the network. The way this information is used is then subject to the chosen algorithm. 
+Artificial neural networks are trained using iterative optimization algorithms. During training, one needs to choose the right loss function whose value goes to zero when the network produces the expected output. To achieve this, trainable paremeters are changed in each step of optimization. The effect each parameter has on the value of the loss function is determined by calculating the gradient of the loss function with respect to the particular parameter in the network. The way this information is used is then subject to the chosen algorithm. \cite{notes}
 
 \subsection{Loss function}
 
-Loss function is a metric of our satisfaction with the network's output. The choice depends on the nature of the task that the network is used for and on the activation function used in the output layer. During training, the loss function is the one whose value is being optimized. Here are the most commonly used functions:
+Loss function is a metric of our satisfaction with the network's output. The choice depends on the nature of the task that the network is used for and on the activation function used in the output layer. During training, the loss function is the one whose value is being optimized. Here are the most commonly used functions: \cite{mehlig}
 
 
 \subsubsection{Mean Squared Error (MSE)}
@@ -453,13 +451,13 @@ The optimization algorithm searches the most optimal value of the loss function 
 
 \subsubsection{Gradient descent}
 
-The general formula for the gradient descent algorithm goes as follows:
+The general formula for the gradient descent algorithm goes as follows: \cite{notes}
 
 \begin{gather}
 	\delta \phi = - \eta \frac{\partial L}{\partial \phi}
 \end{gather}
 
-\noindent where $ \phi $ is the parameter we care about (weights, thresholds, etc.) and $ L $ is the loss function. Parameter $ \eta $ is called the learning rate. This parameter determines the size of the step we take in the way of the steepest descent in the loss function's landscape (in case of two parameters). 
+\noindent where $ \phi $ is the parameter we care about (weights, thresholds, etc.) and $ L $ is the loss function. Parameter $ \eta $ is called the learning rate. This parameter determines the size of the step we take in the way of the steepest descent in the loss function's landscape (in the case of two parameters). \cite{notes}
 
 Figure \ref{learning_rate} shows that the choice of the learning rate value has a strong effect on the course of the optimization and the convergence of the algorithm. If the steps are too small, the training will be slow and the algorithm is prone to getting stuck in local minima. On the other hand, if the value of it is too big, the algorithm may even start to 'climb up the hill' and cause the loss function to grow. \cite{mehlig} 
 
@@ -471,7 +469,7 @@ Figure \ref{learning_rate} shows that the choice of the learning rate value has 
 		\includegraphics*[width=14cm, keepaspectratio]{obr/learning_rate.png}
 	\end{center}
 	\vspace{3mm}
-	\caption{Effect of the learning rate on optimization: the value must be chosen carefully for the algorithm to converge \cite{coors}} 
+	\caption{Effect of the learning rate on optimization: the value must be chosen carefully for the algorithm to converge. \cite{coors}} 
 	\label{learning_rate}
 \end{figure}
 
@@ -510,10 +508,10 @@ Given a multilayer perceptron with hidden layers and their parameters $ w_{mn}, 
 \delta W_{mn} = \eta \sum\limits_{\mu=1}^{p} \Delta_{m}^{(\mu)} V_{n}^{(\mu)}	
 \end{gather}
 
-\noindent Similarly, we get the update rule for thresholds (see \cite{mehlig}). In summary, the steps of backpropagation + gradient descent are following: \cite{mehlig}
+\noindent Similarly, we get the update rule for thresholds (see \cite{mehlig}). In summary, the steps of backpropagation + gradient descent are the following: \cite{mehlig}
 \vspace{5mm}
 \begin{algorithm}
-	\caption{Gradient descent}
+	\caption{Gradient descent \cite{mehlig}}
 	\begin{algorithmic}[1]
 		\item Pick input pattern $ \mu $ from the training set and perform forward pass
 		\item Compute errors $ \Delta_{m}^{(\mu)} $ for output layer
@@ -524,9 +522,9 @@ Given a multilayer perceptron with hidden layers and their parameters $ w_{mn}, 
 
 \subsubsection{Stochastic gradient descent}
 
-Gradient methods are in general prone to getting stuck in local minima of the optimized function. The way to adress this is to add a little bit of noise to the process. In stochastic gradient descent, this is achieved by summing over smaller portions of the training data rather than over the entire dataset. The portions of the data are called mini batches. \cite{mehlig} \\
+Gradient methods are generally prone to getting stuck in local minima of the optimized function. The way to adress this is to add a little bit of noise to the process. In stochastic gradient descent, this is achieved by summing over smaller portions of the training data rather than over the entire dataset. These portions of the data are called mini-batches. \cite{mehlig} \\
 
-\enquote{In Equations \ref{update_rule} we see that in each iteration one needs to sum overall training patterns in the set to obtain the value of the gradient. In stochastic gradient descent (SGD), one only sums over randomly chosen $ mb $ patterns from the training set and then immediately performs the weight update. The process is repeated until all training data have been used (this is called a training epoch). In mini-batches, samples appear only once per epoch and the entire training set is usually shuffled after each epoch.} \cite{mehlig} Applying the above, the Equations \ref{update_rule} slightly change to \cite{mehlig}
+In Equations \ref{update_rule} we see that in each iteration one needs to sum overall training patterns in the set to obtain the value of the gradient. In stochastic gradient descent (SGD), one only sums over randomly chosen $ mb $ patterns from the training set and then immediately performs the weight update. The process is repeated until all training data have been used (this is called a training epoch). In mini-batches, samples appear only once per epoch and the entire training set is usually shuffled after each epoch. \cite{mehlig} Applying the above, the Equations \ref{update_rule} slightly change to \cite{mehlig}
 
 \begin{gather}
 \delta w_{mn} = \eta \sum\limits_{\mu=1}^{mb} \delta_{m}^{(\mu)} x_{n}^{(\mu)}
@@ -536,13 +534,11 @@ Gradient methods are in general prone to getting stuck in local minima of the op
 
 \subsubsection{Vanishing and exploding gradient problems}
 
-When we compute the weight increments using MSE, the further from the output layer we go, the more the term $ g'(b) $ accumulates (with each next layer). The point is that MSE is often used with the sigmoid activation functions whose derivative drops to a small number in its area of saturation resulting in very small weight increments. This phenomenon is known as the vanishing gradient problem. Similarly, one can run into trouble when the values of the derivative of activation function are larger than one. Then the value of the gradients may start growing exponentially: this is called the exploding gradient problem. \cite{eniola}
-
- One of the ways to address these problems is using activation functions that do not saturate (ReLu, Leaky ReLu, etc.). \cite{mehlig} \cite{stanford-L4}
+When we compute the weight increments using MSE, the further from the output layer we go, the more the term $ g'(b) $ accumulates (with each next layer). The point is that MSE is often used with the sigmoid activation functions whose derivative drops to a small number in its area of saturation resulting in very small weight increments. This phenomenon is known as the vanishing gradient problem \cite{mehlig}. Similarly, one can run into trouble when the values of the derivative of activation function are larger than one. Then the value of the gradients may start growing exponentially: this is called the exploding gradient problem. \cite{eniola} One of the ways to address these problems is using activation functions that do not saturate (ReLu, Leaky ReLu, etc.). \cite{mehlig} \cite{stanford-L4}
 
 \subsubsection{Momentum}
 
-There are several ways to make the stochastic gradient descent algorithm perform better. The key is to prevent it from getting stuck in local minima. Gradient methods also tend to slow down in the areas of minima that are very shallow. The obvious solution to this is to take bigger steps by using a larger value of the learning rate, but this makes the algorithm oscillate in the minimum we would consider to be optimal. \cite{mehlig} One way to tackle this is to implement the mechanism fittingly called momentum. 
+There are several ways to make the stochastic gradient descent algorithm perform better. The key is to prevent it from getting stuck in local minima. Gradient methods also tend to slow down in the areas of minima that are very shallow. The obvious solution to this is to take bigger steps by using a larger value of the learning rate. This can, however, make the algorithm oscillate. \cite{mehlig} One way to tackle this is to implement the mechanism fittingly called momentum. 
 
 When using momentum, we can imagine that the SGD algorithm behaves like a ball that rolls downhill and develops speed over time \cite{stanford-L7}. The resulting move made by the algorithm in the landscape of the loss function is, therefore, a combination of the gradient vector and the velocity vector. The update rule for weights gets modified to \cite{mehlig}
 
@@ -552,7 +548,7 @@ When using momentum, we can imagine that the SGD algorithm behaves like a ball t
 
 \noindent where $ t=0,1,2,..,n $ is the iteration number and $ \delta w_{ij}^{(0)} = \partial L / \partial w_{ij}^{(0)} $ is the weight increment in the zeroth time step. The parameter $ \alpha > 0$ is the momentum constant. 
 
-There are other ways of implementing momentum, such as the commonly used Nesterov's accelerated gradient method (see \cite{mehlig} \cite{stanford-github} for details). This algorithm differs from the simple momentum by altering the steps the algorithm takes to do the final update: it first moves in the direction of the velocity, then evaluates the gradient at that point and corrects the previous step. It turns out that this method perform better in practice \cite{stanford-L7}.
+There are other ways of implementing momentum, such as the commonly used Nesterov's accelerated gradient method (see \cite{mehlig} \cite{stanford-github} for details). This algorithm differs from the simple momentum by altering the steps the algorithm takes to do the final update: it first moves in the direction of the velocity, then evaluates the gradient at that point and corrects the previous step. It turns out that this method performs better in practice \cite{stanford-L7}.
 
 %https://www.deeplearningbook.org/ Googfellow
 
@@ -562,14 +558,14 @@ There are other ways of implementing momentum, such as the commonly used Nestero
 		\includegraphics*[width=12cm, keepaspectratio]{obr/momentum.png}
 	\end{center}
 	\vspace{4mm}
-	\caption{Momentum (left) and Nesterov's Momentum (right) \cite{mehlig}} 
+	\caption{Momentum (left) and Nesterov's Momentum (right). \cite{mehlig}} 
 	\label{momentum}
 \end{figure}
 
 \newpage
 \subsubsection{Other optimization algorithms}
 
-The algorithms below extend the idea of stochastic gradient descent by bringing various strategies of learning rate adaptation during training. In most cases, using more advanced algorithms tends to speed up the training and usually helps to find more optimal parameters in terms of the loss value. 
+The algorithms below extend the idea of stochastic gradient descent by introducing various strategies of learning rate adaptation during training. In most cases, using more advanced algorithms tends to speed up the training and usually helps finding more optimal parameters in terms of the loss value. 
 
 \begin{itemize}
 	\item \textbf{AdaGrad}
@@ -578,11 +574,11 @@ The algorithms below extend the idea of stochastic gradient descent by bringing 
 	
 	\item \textbf{AdaDelta and RMSprop}
 	
-	These algorithms are an extension of AdaGrad and tackle its tendency to drop some of the learning rates to almost infinitely small values. They were published simultaneously but independently though. \cite{groman}
+	These algorithms are an extension of AdaGrad and tackle its tendency to drop some of the learning rates to almost infinitely small values. They were published simultaneously but independently of one another. \cite{groman}
 	
 	\item \textbf{Adam}
 	
-	Adam can be seen as a combination of RMSprop and Stochastic Gradient Descent with momentum. It uses the squared gradients to scale the learning rate like RMSprop and it takes advantage of momentum by using a moving average of the gradient instead of the gradient itself like SGD with momentum. \cite{bushaev} \cite{groman}
+	Adam can be seen as a combination of RMSprop and Stochastic Gradient Descent with momentum. It uses squared gradients to scale the learning rate like RMSprop and it takes advantage of momentum by using a moving average of the gradient instead of the gradient itself like SGD with momentum. \cite{bushaev} \cite{groman}
 
 \end{itemize}
 
@@ -592,7 +588,7 @@ The algorithms below extend the idea of stochastic gradient descent by bringing 
 		\includegraphics*[width=11cm, keepaspectratio]{obr/opt.png}
 	\end{center}
 	\vspace{4mm}
-	\caption{Comparison of different optimization algorithms \cite{groman}} 
+	\caption{Comparison of different optimization algorithms. \cite{groman}} 
 	\label{algorithms}
 \end{figure}
 
@@ -600,7 +596,7 @@ The algorithms below extend the idea of stochastic gradient descent by bringing 
 \subsection{Improving training performance}
 \subsubsection{Initialization of weights and thresholds}
 
-The standard approach is to initialise the weights to independent Gaussian random numbers with mean zero and unit variance and to set the thresholds to zero. But in networks that have large hidden layers with many neurons, this scheme may fail. \cite{mehlig} This is because the variance of weights is not taken care of, which leads to very large (or small) activation values, resulting in exploding (or vanishing) gradient problem during backpropagation. Here are some of the more advanced initialization methods:
+The standard approach is to initialise the weights to independent Gaussian random numbers with mean zero and unit variance and to set the thresholds to zero. But in networks that have large hidden layers with many neurons, this scheme may fail. This is because the variance of weights is not taken care of, which leads to very large (or small) activation values, resulting in exploding (or vanishing) gradient problem during backpropagation. \cite{mehlig} Here are some of the more advanced initialization methods:
 
 \begin{itemize}
 	\item \textbf{Xavier initialization}
@@ -615,25 +611,20 @@ The standard approach is to initialise the weights to independent Gaussian rando
 
 \subsubsection{Overfitting and regularization}
 
-\enquote{A network with more neurons may classify the training data better because it accurately represents all specific features of the data. But those specific properties could look quite different in new data and the network may fit too fine details that have no general meaning. As a consequence, we must look for a compromise between the accurate classification of the training set and the ability of the network to generalise. This problem is called overfitting.} \cite{mehlig}
-
-The terms below are referred to as the L1 and L2 regularizations. Adding these terms to the loss function prevents the weight from growing. When the value of the weights gets very high, the local fileds of the neurons become very large too. In that case, some activation functions, like the sigmoid function or \textit{tanh}, reach their maxima very quickly which causes the vanishing gradient problem. The formulas for L1 and L2 regularizations are: \cite{mehlig}
+\enquote{\textit{A network with more neurons may classify the training data better because it accurately represents all specific features of the data. But those specific properties could look quite different in new data. As a consequence, we must look for a compromise between the accurate classification of the training set and the ability of the network to generalise. This problem is called overfitting: the network fits too fine details that have no general meaning.}} \cite{mehlig} The terms below are referred to as the L1 and L2 regularizations. Adding these terms to the loss function prevents the weight from growing. When the value of the weights gets very high, the local fileds of the neurons become very large too. In that case, some activation functions, like the sigmoid function or \textit{tanh}, reach their maxima very quickly which causes the vanishing gradient problem. The formulas for L1 and L2 regularizations are: \cite{mehlig}
 
 \begin{gather}
 	R_{L2}(w) = \frac{\gamma}{2} \sum\limits_{ij} w_{ij}^{2} \quad \text{or} \quad R_{L1}(w) = \frac{\gamma}{2} \sum\limits_{ij} |w_{ij}|
 \end{gather}
 
-\enquote{These two regularization schemes tend to help against overfitting. They add a constraint to the problem of minimising the loss function. When the weights are small, then small changes in some of the patterns do not give a substantially different training result. In contrast, when the network has large weights, the differences are significant.} \cite{mehlig}
+\enquote{\textit{These two regularization schemes tend to help against overfitting. (...) Weight decay dds a constraint to the problem of minimising the energy function. When the weights are small, then small changes in some of the patterns do not give a substantially different training result. When the network	has large weights, by contrast, it may happen that small changes in the input give	significant differences in the training result that are difficult to generalise.}} \cite{mehlig}
 
 \subsubsection{Batch Normalisation}
 
 The idea of batch normalisation is to shift and normalise the input data for each
-hidden layer so the distribution of its inputs becomes Gaussian. This is done separately for
-each mini batch: the values of mean and variance are computed during each forward pass and then applied to each neuron in the layer. The mean and variance are multiplied by trainable factors, usually called $ \beta, \gamma $. \cite{stanford-L6} \cite{mehlig}
+hidden layer so that the distribution of its inputs becomes Gaussian. The values of mean and variance are computed during each forward pass (pass of a single mini-batch) and then applied to each neuron in the layer. The mean and variance are multiplied by trainable factors, usually called $ \beta, \gamma $. \cite{stanford-L6} \cite{mehlig} When the training is done, the values of $ \beta, \gamma $ for each layer are re-computed using the mean and variance of the entire training dataset and no longer change. \cite{issue}
 
-When the training is done, the values of $ \beta, \gamma $ for each layer are re-computed using the mean and variance of the entire training dataset and no longer change. \cite{issue}
-
-Batch normalisation helps to combat the vanishing-gradient problem because it prevents local fields of hidden neurons to grow. This makes it possible to use sigmoid functions in deep networks, because the distribution of inputs remains normalised. It is an empirical fact that batch normalisation often speeds up the training. \cite{mehlig}
+\enquote{\textit{Batch normalisation helps to combat the vanishing-gradient problem because it prevents local fields of hidden neurons to grow. This makes it possible to use sigmoid functions in deep networks, because the distribution of inputs remains normalised. (...) It is an empirical fact that batch normalisation often speeds up the training.}} \cite{mehlig}
 
 \subsubsection{Dropout}
 \label{dropout_sec}
@@ -646,7 +637,7 @@ Dropout is a very simple scheme that helps against overfitting. During training,
 		\includegraphics*[width=11cm, keepaspectratio]{obr/dropou.png}
 	\end{center}
 	\vspace{4mm}
-	\caption{ANN without (left) and with dropout (right) \cite{arvi}} 
+	\caption{ANN without (left) and with dropout (right). \cite{arvi}} 
 	\label{dropout}
 \end{figure}
 
@@ -655,7 +646,8 @@ Dropout is a very simple scheme that helps against overfitting. During training,
 The general rule is that the bigger the training dataset, the better the network generalises. However, expanding a dataset manually can be very expensive. This leads to the idea of expanding it artificially. In image classification tasks, this can be done by randomly cropping, scaling, shifting and mirroring the data. \cite{mehlig}
 
 \subsubsection{Early stopping}
-\enquote{One way to avoid overfitting is by using cross-validation and early stopping. The training data are split into two sets; the \textbf{training set} and the \textbf{validation set}. The network is trained on the training set. During training, one monitors not only the energy function for the training set but also the energy function evaluated on the validation data. As long as the network learns the input distribution's general features, both training and validation energies decrease. But when the network starts to learn specific features of the training set, then the validation energy may saturate or start to increase. At this point, the training should be stopped.} \cite{mehlig}
+
+\enquote{\textit{One way of avoiding overfitting is to use cross validation and early stopping. One splits the training data into two sets: a \textbf{training set} and a \textbf{validation set}. (...) The network is trained on the training set. During training, one monitors not only the energy function for the training set, but also the energy function evaluated on the validation data. As long as the network learns general features of the input distribution, both training and validation energies decrease. But when the network starts to learn specific features of the training set, then the validation energy saturates, or may start to increase. At this point the training should be stopped.}} \cite{mehlig}
 
 When the training is done, the performance is measured using a set of 'unseen' data: the \textbf{test set}. \cite{mehlig}
 
@@ -667,18 +659,16 @@ When the training is done, the performance is measured using a set of 'unseen' d
 	\vspace{4mm}
 	\caption{Progress of training and validation losses. The plot is schematic, and
 	the data is smoothed. The training is stopped when the validation energy begins to
-	increase \cite{mehlig}} 
-	\label{dropout}
+	increase. \cite{mehlig}} 
+	\label{}
 \end{figure}
 
 \subsubsection{Transfer Learning}
 
-To create a well-generalising neural network, one need to have access to a dataset of a sufficient size. Therefore in practice, it is unusual to train an entire CNN from scratch (with random initialization). Instead, it is common to pretrain a CNN on a very large dataset (e.g. ImageNet), and then use the CNN either as an initialization or a fixed feature extractor for the task of interest. \cite{stanford-L7}
+To create a well-generalising neural network, one need to have access to a dataset of a sufficient size. Therefore in practice, it is unusual to train an entire CNN from scratch (with random initialization). Instead, it is common to pretrain a CNN on a very large dataset (e.g. ImageNet) and then use the CNN either as an initialization or a fixed feature extractor for the task of interest. \cite{stanford-L7}
 
-One strategy here is to fine-tune the weights of the pretrained network by continuing the backpropagation. It’s possible to keep some of the earlier layers fixed and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a CNN contain more generic features (e.g. edge detectors) and the later layers become progressively more specific to the details. It’s common to use a smaller learning rate for CNN weights that are being fine-tuned, in comparison to the randomly-initialized weights. This is because we expect that the CNN weights already perform well and so we don’t want to distort them very much. \cite{stanford-L7} \cite{stanford-github}
+One strategy here is to fine-tune the weights of the pretrained network by continuing backpropagation. It is possible to keep some of the earlier layers fixed and only fine-tune some higher-level portion of the network. This is motivated by the observation that the earlier features of a CNN contain more generic features (e.g. edge detectors) and the later layers become progressively focused on the details. It is common to use a smaller learning rate for CNN weights that are being fine-tuned, in comparison to the randomly-initialized weights. This is because we expect that the CNN weights already perform well and hence distorting them is not desirable. \cite{stanford-L7} \cite{stanford-github}
 
 \subsubsection{Data pre-processing}
 
-For most cases, it is advisable to shift the data so it has a zero mean before the training begins. When classifying images, for example, there are two ways of doing this: first, by subtracting the mean image (image of size MxNx3 for RGB) from the entire dataset or, to subtract the so-called per-channel mean (three numbers in total). The motivation behind this is the following: if we think of adjusting the weights in the network as moving the decision boundary (Figure \ref{separability} (left)), it is intuitive that the data which is not distributed around the origin will cause the classification success to get very sensitive to weight changes.\footnote{Weights in Figure \ref{separability} are the parameters that determine the slope of the decision boundary}
-
-Sometimes it's also appropriate to scale the data so it has the same variance in all directions. See \cite{mehlig} for more details and other techniques.
+For most cases, it is advisable to shift the data so it has a zero mean before the training begins. When classifying images, for example, there are two ways of doing this: first, by subtracting the mean image (image of size MxNx3 for RGB) from the entire dataset or, to subtract the so-called per-channel mean (three numbers in total). The motivation behind this is the following: if we think of adjusting the weights in the network as moving the decision boundary (Figure \ref{separability} (left)), it is intuitive that the data which is not distributed around the origin will cause the classification success to get very sensitive to weight changes.\footnote{Weights in Figure \ref{separability} are the parameters that determine the slope of the decision boundary} \cite{stanford-L4} Sometimes it is also appropriate to scale the data so it has the same variance in all directions. See \cite{mehlig} for more details and other techniques.
