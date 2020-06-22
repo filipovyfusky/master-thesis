@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  21 JUN 2020 19:23
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  22 JUN 2020 18:25
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.080 seconds
+luaotfload | main : initialization completed in 0.079 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1356,9 +1356,6 @@ LaTeX Warning: Label `dropout' multiply defined.
 
 LaTeX Warning: Label `pool' multiply defined.
 
-
-LaTeX Warning: Label `' multiply defined.
-
 )
 \openout1 = diplomka.aux
 
@@ -1734,25 +1731,25 @@ et-cudnn5-master
 .texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-italic.luc)(load 
 luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-i
 talic.luc) [39] [40] [41] [42]
-Overfull \hbox (12.24086pt too wide) in paragraph at lines 231--232
+Overfull \hbox (12.24086pt too wide) in paragraph at lines 232--233
 []\TU/lmr/m/n/12 For the test-ing, it is nec-es-sary to use the \TU/lmr/m/it/12
  .caf-femodel \TU/lmr/m/n/12 file gen-er-ated by \TU/lmr/m/it/12 com-pute_bn_st
 atis-
  []
 
 [43] [44] [45]) (./results.tex [46] [47]
-<obr/bayes_full_rough.png, id=1124, 1062.21844pt x 651.18282pt>
+<obr/bayes_full_rough.png, id=1128, 1062.21844pt x 651.18282pt>
 File: obr/bayes_full_rough.png Graphic file (type png)
 <use obr/bayes_full_rough.png>
 Package luatex.def Info: obr/bayes_full_rough.png  used on input line 21.
 (luatex.def)             Requested size: 398.33858pt x 244.2029pt.
-<obr/bayes_full_rough_2.png, id=1126, 1073.51062pt x 651.18282pt>
+<obr/bayes_full_rough_2.png, id=1130, 1073.51062pt x 651.18282pt>
 File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
 Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
  [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
-<obr/result.png, id=1135, 2243.38126pt x 2695.06876pt>
+<obr/result.png, id=1140, 2243.38126pt x 2695.06876pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
 Package luatex.def Info: obr/result.png  used on input line 76.
@@ -1895,16 +1892,16 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 48058 strings out of 494480
+ 48060 strings out of 494480
  100000,1373583 words of node,token memory allocated
  739 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 28 attribute, 60 glue_spec, 28 attr
 ibute_list, 1 write, 17 pdf_action nodes
    avail lists: 1:3,2:4189,3:1568,4:257,5:1046,6:2937,7:2118,8:518,9:1691,10:21,
 11:308
- 50072 multiletter control sequences out of 65536+600000
+ 50074 multiletter control sequences out of 65536+600000
  116 fonts using 12586927 bytes
- 62i,20n,100p,1226b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 62i,20n,100p,1421b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono12-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
 /public/lm/lmroman10-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmroman
@@ -1926,10 +1923,10 @@ ist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
 public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on diplomka.pdf (60 pages, 5613136 bytes).
+Output written on diplomka.pdf (60 pages, 5617280 bytes).
 
-PDF statistics: 1348 PDF objects out of 1440 (max. 8388607)
- 1146 compressed objects within 12 object streams
+PDF statistics: 1354 PDF objects out of 1440 (max. 8388607)
+ 1152 compressed objects within 12 object streams
  466 named destinations out of 1000 (max. 131072)
  559 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -8,11 +8,11 @@ All network variants were trained using transfer learning where the encoder weig
 
 When a reasonable learning rate value was found, the random search was limited to the close interval around it. Then, the training was executed until no further change in the loss function was observed. In the original paper \cite{segnet}, the authors use L2 regularization. The value of the corresponding hyperparameter was left unchanged and remained as the SegNet authors suggest.  
 
-The difference observed across the network variants was the time it takes to achieve low loss values. This is influenced by the size of the network (Basic versions train faster) and the dropout settings (dropout slows down the training).
+The difference observed across the network variants was the time it took to achieve low loss values. This is influenced by the size of the network (Basic versions train faster) and the dropout settings (dropout slows down the training).
 
-Figure \ref{tuning1} shows an example of tuning of the learning rate (Bayesian SegNet). The network was trained using transfer learning. The figures below show the two procedures applied to the pre-trained encoder: in Figure XY, the encoder weights stay unchanged during the training. This apparently makes it harder for the decoder to adapt. Also, the training with learning rates that seem to be optimal makes the loss diverge from the optimal value in the last few epochs. In Figure XY on the other hand, the encoder weights are allowed to change but only with a decreased learning rate. This scheme tends to give more stable training results and speeds up the training. Therefore, this second scheme was applied to all network variants.  
+Figures \ref{tuning1} and \ref{tuning2} are examples of tuning of the learning rate (Bayesian SegNet). The network was trained using transfer learning. The figures below show the two procedures applied to the pre-trained encoder: in Figure \ref{tuning1}, the encoder weights stay unchanged during the training. This apparently makes it harder for the decoder to adapt. Also, the training with learning rates that seem to be optimal makes the loss diverge from the optimal value in the last few epochs. In Figure \ref{tuning2} on the other hand, the encoder weights are allowed to change but only with a decreased learning rate. This scheme tends to give more stable training results and speeds up the training. Therefore, this second scheme was applied to all network variants.  
 
-It turned out that larger values of learning rate tend to lead to better values of the loss function and accuracy on the \textit{test} set. 
+It turned out that larger values of learning rate tend to work better with AdaDelta and lead to better values of the loss function. 
 
 \newpage
 
@@ -32,14 +32,14 @@ It turned out that larger values of learning rate tend to lead to better values 
 	\end{center}
 	\vspace{5mm}
 	\caption{Coarse search of the \textit{learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the learning rate of the corresponding layers is \textbf{decreased} by the factor of 10 during the training.} 
-	\label{}
+	\label{tuning2}
 \end{figure}
 
-Table XY summarized the best training results obtained for all SegNet architectures. The metrics used for evaluation is IOU for each class: class 0 (background), class 1 (path). It also contains other useful information, such as the inference and training times. In terms of computational cost, it is evident that the best-performing architecture is SegNet Basic. Bayesian versions of SegNet repeat the inference based on the number of MCDO samples and hence take longer to evaluate. 
+Table \ref{tabulka} summarized the best training results obtained for all SegNet architectures. The metrics used for evaluation is IOU for each class: class 0 (background), class 1 (path). It also contains other useful information, such as the inference and training times. In terms of computational cost, it is evident that the best-performing architecture is SegNet Basic. Bayesian versions of SegNet repeat the inference based on the number of MCDO samples and hence take longer to evaluate. 
 
 \renewcommand{\arraystretch}{1.1}
 %\newcolumntype{C}{>{\centering\arraybackslash}p{3em}}
-\begin{figure}[h]
+\begin{table}[h]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
@@ -66,16 +66,16 @@ Table XY summarized the best training results obtained for all SegNet architectu
 	\end{tabular}
 	\vspace{10mm}
 	\caption{Coarse search of the \textit{learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the corresponding layers stayed \textbf{unchanged} during the training.} 
-	\label{zdarec}
-\end{figure}
+	\label{tabulka}
+\end{table}
 
-Figure XY shows the final segmentation results for several image scenes from the \textit{test} dataset. For Bayesian versions of SegNet, the segmentation comes with the uncertainty plot where light regions mean larger variance of MCDO samples during inference. The uncertainty is averaged over all segmentation classes. We see that the network is more uncertain in the regions that are close to the object boundaries. Also, the full versions of the architectures, SegNet and Bayesian SegNet tentd to give more precise results on the boundaries. They are primarily designed for more complex scenes with multiple classes and the encoder is more capable of extracting finer features as the model capacity is higher. In addition, the pre-trained encoder for the full versions was trained on more images compared to the one used for the initialization of the Basic versions. On the other hand, the Basic versions might offer much better performance for practical applications where the number of classes is small.
+Figure \ref{comparison} shows the final segmentation results for several image scenes from the \textit{test} dataset. For Bayesian versions of SegNet, the segmentation comes with the uncertainty plot where light regions mean larger variance of MCDO samples during inference. The uncertainty is averaged over all segmentation classes. We see that the network is more uncertain in the regions that are close to the object boundaries. Also, the full versions of the architectures, SegNet and Bayesian SegNet tentd to give more precise results on the boundaries. They are primarily designed for more complex scenes with multiple classes and the encoder is more capable of extracting finer features as the model capacity is higher. In addition, the pre-trained encoder for the full versions was trained on more images compared to the one used for the initialization of the Basic versions. On the other hand, the Basic versions might offer much better performance for practical applications where the number of classes is small.
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics*[width=16cm, keepaspectratio]{obr/result.png}
 	\end{center}
 	\vspace{5mm}
-	\caption{Comprasion of the segmentation performance of all SegNet variants. The Bayesian versions of the architecture give the estimate of the model uncertainty, where the lighter regions mean higher variance across the MCDO samples taken during inference.} 
-	\label{}
+	\caption{Comparison of the segmentation performance of all SegNet variants. The Bayesian versions of the architecture give the estimate of the model uncertainty, where the lighter regions mean higher variance across the MCDO samples taken during inference.} 
+	\label{comparison}
 \end{figure}
