@@ -56,32 +56,32 @@
 \contentsline {section}{\numberline {4.3}Setting up environment for Caffe}{32}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Hardware configuration}{32}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Software configuration}{33}{subsection.4.3.2}
-\contentsline {subsubsection}{Operating system}{33}{section*.55}
-\contentsline {subsubsection}{Enabling NVIDIA driver}{33}{section*.56}
-\contentsline {subsubsection}{CUDA installation}{33}{section*.57}
-\contentsline {subsubsection}{Installation of cuDNN}{34}{section*.58}
-\contentsline {subsubsection}{Setting up Python editor}{35}{section*.59}
+\contentsline {subsubsection}{Operating system}{33}{section*.56}
+\contentsline {subsubsection}{Enabling NVIDIA driver}{33}{section*.57}
+\contentsline {subsubsection}{CUDA installation}{33}{section*.58}
+\contentsline {subsubsection}{Installation of cuDNN}{34}{section*.59}
+\contentsline {subsubsection}{Setting up Python editor}{35}{section*.60}
 \contentsline {subsection}{\numberline {4.3.3}Building Caffe for SegNet}{35}{subsection.4.3.3}
 \contentsline {section}{\numberline {4.4}Image annotation}{37}{section.4.4}
-\contentsline {subsubsection}{Labelbox}{37}{section*.60}
+\contentsline {subsubsection}{Labelbox}{37}{section*.61}
 \contentsline {section}{\numberline {4.5}Setting up SegNet}{37}{section.4.5}
 \contentsline {subsection}{\numberline {4.5.1}Solver settings}{37}{subsection.4.5.1}
 \contentsline {subsection}{\numberline {4.5.2}Training}{38}{subsection.4.5.2}
-\contentsline {subsubsection}{Input layer and input pre-processing}{38}{section*.61}
-\contentsline {subsubsection}{Output dimensions}{39}{section*.62}
-\contentsline {subsubsection}{Softmax classifier}{40}{section*.63}
-\contentsline {subsubsection}{Training initialization}{40}{section*.64}
+\contentsline {subsubsection}{Input layer and input pre-processing}{38}{section*.62}
+\contentsline {subsubsection}{Output dimensions}{39}{section*.63}
+\contentsline {subsubsection}{Softmax classifier}{40}{section*.64}
+\contentsline {subsubsection}{Training initialization}{40}{section*.65}
 \contentsline {subsection}{\numberline {4.5.3}Inference}{42}{subsection.4.5.3}
-\contentsline {subsubsection}{Calculating statistics for batch normalisation}{42}{section*.65}
-\contentsline {subsubsection}{Running the Segmentation}{42}{section*.66}
+\contentsline {subsubsection}{Calculating statistics for batch normalisation}{42}{section*.66}
+\contentsline {subsubsection}{Running the Segmentation}{42}{section*.67}
 \contentsline {subsection}{\numberline {4.5.4}Testing}{43}{subsection.4.5.4}
 \contentsline {subsection}{\numberline {4.5.5}Bayesian SegNet}{44}{subsection.4.5.5}
 \contentsline {subsection}{\numberline {4.5.6}SegNet Basic and Bayesian SegNet Basic}{45}{subsection.4.5.6}
 \contentsline {section}{\numberline {4.6}Optimization of Hyperparameters}{46}{section.4.6}
-\contentsline {subsubsection}{Cross-validation Strategy}{46}{section*.67}
-\contentsline {subsubsection}{Optimizer}{46}{section*.68}
-\contentsline {subsubsection}{Learning Rate}{46}{section*.69}
-\contentsline {subsubsection}{Regularisation}{46}{section*.70}
+\contentsline {subsubsection}{Cross-validation Strategy}{46}{section*.68}
+\contentsline {subsubsection}{Optimizer}{46}{section*.69}
+\contentsline {subsubsection}{Learning Rate}{46}{section*.70}
+\contentsline {subsubsection}{Regularisation}{46}{section*.71}
 \contentsline {chapter}{\numberline {5}Results}{47}{chapter.5}
 \contentsline {chapter}{\numberline {6}Conclusion and future work}{51}{chapter.6}
 \contentsline {chapter}{\numberline {7}Bibliography}{52}{chapter.7}

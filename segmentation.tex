@@ -60,7 +60,7 @@ The architecture consists of a sequence of encoders and a corresponding set of d
 
 \subsubsection{SegNet - encoder}
 
-The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. Each encoder in the encoder network performs convolution with a filter bank to produce a set of activation maps. These are then batch normalized. Then an element-wise ReLU is applied. Following that, max-pooling with a 2×2 window and stride 2 is performed. Storing the max-pooling indices, i.e, the locations of the maximum feature value in each pooling window is memorized for each encoder feature map. \cite{segnet}
+The architecture of the encoder network is topologically identical to the 13 convolutional layers in the VGG16 network. Each encoder in the encoder network performs convolution with a filter bank to produce a set of activation maps. These are then batch normalized. Then an element-wise ReLU is applied. Following that, max-pooling (with a 2×2 window and stride 2) is performed. Storing the max-pooling indices, i.e, the locations of the maximum feature value in each pooling window is memorized for each encoder feature map. \cite{segnet}
 
 \subsubsection{SegNet - decoder}
 
@@ -72,13 +72,13 @@ Bayesian SegNet is a probabilistic variant of SegNet. It can predict pixel-wise 
 
 \subsubsection{Monte Carlo Dropout}
 
-Monte Carlo Dropout (MCDO) sampling allows to understand the model uncertainty of the result. As explained in Chapter \ref{dropout_sec}, the standard weight averaging dropout proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. MCDO, on the other hand, samples the network with randomly dropped out units at test time. \cite{bayesian}
+Monte Carlo Dropout (MCDO) sampling helps us understand the model uncertainty of the result. As explained in Chapter \ref{dropout_sec}, the standard weight averaging dropout proposes to remove dropout at test time and scale the weights proportionally to the dropout percentage. MCDO, on the other hand, samples the network with randomly dropped out units at test time. \cite{bayesian}
 
 It is important to highlight that the probability distribution from MCDO sampling is significantly different from the ‘probabilities’ obtained from a softmax classifier. The softmax function approximates relative probabilities between the class labels, but not an overall measure of the model’s uncertainty. \cite{bayesian}
 
 \subsection{Evaluating segmentation performance}
 
-The performance of semantic segmentation is often described by so called IoU (intercestion over union) metrics. IoU is the area of overlap between the predicted segmentation and the ground truth divided by the area of union between the predicted segmentation and the ground truth, as shown in the figure below. This metric ranges from 0–1 (0–100\%) with 0 signifying no overlap and 1 signifying perfectly overlapping segmentation.
+The performance of semantic segmentation is often described by so called IoU (intercestion over union) metrics. IoU is the area of overlap between the predicted segmentation and the ground truth divided by the area of union between the predicted segmentation and the ground truth, as shown in the figure below. This metric ranges from 0–1 (0–100\%) with 0 signifying no overlap and 1 signifying perfectly overlapping segmentation. \cite{iou}
 
 \vspace{4mm}
 \begin{figure}[h]
