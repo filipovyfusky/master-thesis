@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  22 JUN 2020 23:05
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  23 JUN 2020 12:08
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.087 seconds
+luaotfload | main : initialization completed in 0.080 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1734,26 +1734,20 @@ et-cudnn5-master
 /luatex-cache/generic/fonts/otl/lmmono12-regular.luc) [38](load luc: /home/phil/
 .texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-italic.luc)(load 
 luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-i
-talic.luc) [39] [40] [41] [42]
-Overfull \hbox (12.24086pt too wide) in paragraph at lines 241--242
-[]\TU/lmr/m/n/12 For the test-ing, it is nec-es-sary to use the \TU/lmr/m/it/12
- .caf-femodel \TU/lmr/m/n/12 file gen-er-ated by \TU/lmr/m/it/12 com-pute_bn_st
-atis-
- []
-
-[43] [44] [45]) (./results.tex [46] [47]
-<obr/bayes_full_rough.png, id=1191, 1062.21844pt x 651.18282pt>
+talic.luc) [39] [40] [41] [42] [43] [44] [45]) (./results.tex [46] [47]
+<obr/bayes_full_rough.png, id=1199, 1062.21844pt x 651.18282pt>
 File: obr/bayes_full_rough.png Graphic file (type png)
 <use obr/bayes_full_rough.png>
 Package luatex.def Info: obr/bayes_full_rough.png  used on input line 21.
 (luatex.def)             Requested size: 398.33858pt x 244.2029pt.
-<obr/bayes_full_rough_2.png, id=1193, 1073.51062pt x 651.18282pt>
+<obr/bayes_full_rough_2.png, id=1201, 1073.51062pt x 651.18282pt>
 File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
 Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
- [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
-<obr/result.png, id=1203, 2243.38126pt x 2695.06876pt>
+
+[48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
+<obr/result.png, id=1211, 2243.38126pt x 2695.06876pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
 Package luatex.def Info: obr/result.png  used on input line 76.
@@ -1934,10 +1928,10 @@ c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on diplomka.pdf (61 pages, 5670523 bytes).
+Output written on diplomka.pdf (61 pages, 5670918 bytes).
 
-PDF statistics: 1432 PDF objects out of 1440 (max. 8388607)
- 1214 compressed objects within 13 object streams
+PDF statistics: 1440 PDF objects out of 1440 (max. 8388607)
+ 1220 compressed objects within 13 object streams
  471 named destinations out of 1000 (max. 131072)
  568 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -78,9 +78,9 @@
 \contentsline {subsection}{\numberline {4.5.5}Bayesian SegNet}{44}{subsection.4.5.5}
 \contentsline {subsection}{\numberline {4.5.6}SegNet Basic and Bayesian SegNet Basic}{45}{subsection.4.5.6}
 \contentsline {section}{\numberline {4.6}Optimization of Hyperparameters}{46}{section.4.6}
-\contentsline {subsubsection}{Cross-validation Strategy}{46}{section*.68}
-\contentsline {subsubsection}{Optimizer}{46}{section*.69}
-\contentsline {subsubsection}{Learning Rate}{46}{section*.70}
+\contentsline {subsubsection}{Optimizer}{46}{section*.68}
+\contentsline {subsubsection}{Learning Rate}{46}{section*.69}
+\contentsline {subsubsection}{Cross-validation Strategy}{46}{section*.70}
 \contentsline {subsubsection}{Regularisation}{46}{section*.71}
 \contentsline {chapter}{\numberline {5}Results}{47}{chapter.5}
 \contentsline {chapter}{\numberline {6}Conclusion and future work}{51}{chapter.6}
