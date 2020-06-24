@@ -64,11 +64,11 @@ The architecture of the encoder network is topologically identical to the 13 con
 
 \subsubsection{SegNet - decoder}
 
-The decoders in the network upsample their input feature maps using the memorized max-pooling indices from the corresponding encoder feature maps. These feature maps are then convolved (using transposed convolution) with a trainable decoder filter bank to produce dense feature maps. A batch normalization step is then applied to each of these maps. The high dimensional feature representation at the output of the final decoder is fed to a trainable soft-max classifier. The predicted segmentation corresponds to the class with maximum probability at each pixel. \cite{segnet} The schematic of the SegNet architecture can be found in Attachment XY.
+The decoders in the network upsample their input feature maps using the memorized max-pooling indices from the corresponding encoder feature maps. These feature maps are then convolved (using transposed convolution) with a trainable decoder filter bank to produce dense feature maps. A batch normalization step is then applied to each of these maps. The high dimensional feature representation at the output of the final decoder is fed to a trainable soft-max classifier. The predicted segmentation corresponds to the class with maximum probability at each pixel. \cite{segnet} The schematic of the SegNet architecture can be found in Attachment 1.
 
 \subsection{Bayesian SegNet}
 
-Bayesian SegNet is a probabilistic variant of SegNet. It can predict pixel-wise class labels together with a measure of model uncertainty.  This is achieved by Monte Carlo sampling with dropout at test time. The authors of the paper show that modelling uncertainty improves segmentation performance by 2-3 \% compared to SegNet. The schematic of the Bayesian SegNet architecture can be found in Attachment XY. \cite{bayesian}
+Bayesian SegNet is a probabilistic variant of SegNet. It can predict pixel-wise class labels together with a measure of model uncertainty.  This is achieved by Monte Carlo sampling with dropout at test time. The authors of the paper show that modelling uncertainty improves segmentation performance by 2-3 \% compared to SegNet. The schematic of the Bayesian SegNet architecture can be found in Attachment 1. \cite{bayesian}
 
 \subsubsection{Monte Carlo Dropout}
 

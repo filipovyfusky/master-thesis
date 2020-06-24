@@ -1,0 +1,26 @@
+\chapter*{Rozšířený abstrakt}
+
+\section*{Úvod}
+
+Segmentace obrazu je spolu s rozpoznáním obrazu a detekcí objektů jednou ze základních součástí počítačového vidění a autonomních systémů. Cílem sémantické segmentace je přiřadit kategorii každému významnému objektu v obraze (osoba, zvíře, automobil, atd.) tak, že dojde k vykreslení jeho přesné hranice. Vybraný algoritmus musí pracovat s co největší přesností a robustností.
+
+Sémantická segmentace má několik různých využití, zejména v oblastech jako jsou řízení autonomních vozidel, interakce člověka s počítačem, robotika a různé softwarové nástroje. Nejnovější vývoj ukazuje rostoucí poptávku po spolehlivém rozpoznávání objektů pro samořiditelná vozidla, jelikož jejich řídící modely musí rozumět kontextu prostředí ve kterém operují. Tato práce se zaměřuje na zkoumání a implementaci jedné konkrétní segmentační metody, která využívá konvoluční neuronové sítě (KNS). KNS patří do skupiny algoritmů strojového učení a získaly pozornost zejména díky svému úspěchu v soutěžích v klasifikaci obrazu (ImageNet). Následně našly své využití v úlohách segmentace, kde jsou obvykle použity jako první stupeň algoritmu. 
+
+Zadání této práce se skládá z několika bodů. Za prvé, je potřeba najít a implementovat perspektivní metodu segmentace využívající KNS. Očekává se, že tato neuronová síť bude co nejjednodušší, a zároveň schopna zajistit uspokojivé výsledky pro konkrétní aplikaci (segmentace cesty pro samonavigujícího robota ve venkovním prostředí). Obrazová data pro trénování a testování sítě budou dodány vedoucím této práce. 
+
+\section*{Popis řešení}
+
+V praktické části práce je zprovozněna převzatá implementace neuronové sítě SegNet spolu s jejími dalšími variantami (SegNet, Bayesian SegNet, SegNet Basic a Bayesian SegNet Basic), přičemž celá síť je napsána pomocí knihovny Caffe a je vytvořena původními autory článku \cite{segnet}. Jedná se o sítě typu enkodér-dekodér využívající architekturu známé sítě VGG16 jako enkodéru. Enkodér sítě má za úkol vyextrahovat ze vstupních obrazových dat jejich významné znaky a vytvořit jejich zjednodušenou reprezentaci. Při tomto procesu dochází ke ztrátě rozlišení původního obrazu. Cílem segmentace je však na výstupu sítě získat obrázek (segmentační masku) se stejným rozlišením jako měl původně vstup. Úlohou dekodéru je tedy, za použití informací z předchozích operací v enkodéru, rekonstruovat původní umístění prvků v obraze a přiřadit jim příslušnost ke správné kategorii. Obě části sítě, enkodér a dekodér, mají trénovatelné parametry v podobě konvolučních jader (filtrů). 
+
+Bayesian SegNet je rozšířená varianta SegNetu. Jejich architektury jsou shodné, avšak díky použití techniky zvané Monte Carlo Dropout dovede na výstupu vizualizovat spolu se segmentační maskou i nejistotu modelu. Verze Basic obou těchto síti jsou poté pouze sítě s redukovaným počtem vrstev. 
+
+Pro správné nastavení softwaru a hardwaru je potřeba bezchybně provést několik kroků. Z tohoto důvodu práce obsahuje návod pro operační systém Ubuntu, jehož silnou stránkou je snadná instalace balíků přes příkazový řádek. Tento návod také zahrnuje kompilaci knihovny Caffe (v její speciálně upravené podobě pro účely SegNetu). Dále bylo potřeba vytvořit trénovací a testovací data. K tomuto účelu byl použit online nástroj Labelbox. Bylo vytvořeno celkem 2600 trénovacích ( + 90 validačních) a 179 testovacích obrázků.
+
+Všechny sítě jsou upraveny pro segmentaci dvou tříd objektů - pozadí + cesta. Jelikož použitá množina dat není příliš obsáhlá, parametry sítě v Caffe jsou dále lehce přizpůsobeny pro použití předtrénovaných parametrů. Během trénování sítě bylo použito několik různých hyperparametrů (parametry, které se nastavují před trénováním a dále se nemění) pro zajištění co nejlepších výsledků.
+
+Veškeré použité soubory (upravené zdrojové kódy knihovny Caffe, soubory všech architektur a obslužné Python skripty) jsou snadno dostupné online na úložišti GitHub (\cite{filip_github} a \cite{filip_github_caffe}) a tedy připravené pro další uživatele.
+
+\section*{Shrnutí a zhodnocení výsledků}
+
+Všechny varianty sítě SegNet byly úspěšně natrénovány a vykazují více než 90\% úspěšnost segmentace na testovacím datasetu. V závěru byly porovnány úspěšnosti různých strategií při použití předtrénovaných parametrů. Z pohledu výpočtové náročnosti si nejlépe vedou Basic verze obou architektur SegNetu. Jejich použití však v praxi může být limitováno počtem tříd a potřebnou mírou detailu segmentace.    
+

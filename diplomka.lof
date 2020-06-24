@@ -1,0 +1,28 @@
+\babel@toc {english}{}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Segmentation of an urban road scene \cite {sergios}\relax }}{3}{figure.caption.8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schematic diagram of a McCulloch-Pitts neuron. The strength of the connection from neuron $ j $ to neuron $ i $ is denoted by $ w_{ij} $ \cite {mehlig}\relax }}{7}{figure.caption.9}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sigmoid function and its derivative. Notice that the derivative goes to zero very quickly.\relax }}{8}{figure.caption.11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Hyperbolic tangent and its derivative.\relax }}{9}{figure.caption.13}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces ReLU and its derivative. ReLU does not saturate!\relax }}{9}{figure.caption.15}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Leaky ReLU and its derivative.\relax }}{10}{figure.caption.17}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Perceptron with one hidden layer. \cite {mehlig}\relax }}{11}{figure.caption.18}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Softmax classifier: the neurons in this layer are not independent. \cite {mehlig}\relax }}{12}{figure.caption.20}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Linearly separable (left) and not linearly separable problems (right). The decision boundary needs to be piece-wise linear for the not linearly separable problem \cite {mehlig}\relax }}{12}{figure.caption.22}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Backpropagation algorithm: the states of the neurons are updated forward (from left to right) while errors are updated backward (right to left) \cite {mehlig}\relax }}{15}{figure.caption.26}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Effect of the learning rate on optimization: the value must be chosen carefully for the algorithm to converge. \cite {coors}\relax }}{16}{figure.caption.28}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Momentum (left) and Nesterov's Momentum (right). \cite {mehlig}\relax }}{18}{figure.caption.32}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Comparison of different optimization algorithms. \cite {groman}\relax }}{19}{figure.caption.34}
+\contentsline {figure}{\numberline {3.13}{\ignorespaces ANN without (left) and with dropout (right). \cite {arvi}\relax }}{21}{figure.caption.39}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Progress of training and validation losses. The plot is schematic, and the data is smoothed. The training is stopped when the validation energy begins to increase. \cite {mehlig}\relax }}{22}{figure.caption.42}
+\contentsline {figure}{\numberline {3.15}{\ignorespaces The full-depth convolution operation in a convolutional layer. The input size corresponds to a small RGB image. The result of the series of convolutions is a tensor of stacked activation maps for the filters used in the layer. \cite {coors}\relax }}{23}{figure.caption.46}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Max-pooling of size 2x2 and stride 2. \cite {coors}\relax }}{24}{figure.caption.48}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Schematic of the standard CNN topology for image classification. \cite {mehlig}\relax }}{24}{figure.caption.50}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces SegNet - an example of encoder-decoder CNN architecture. \cite {segnet}\relax }}{26}{figure.caption.51}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces Transposed convolution. \cite {theano}\relax }}{27}{figure.caption.53}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces Max-unpooling. The locations of the maximum elements were saved during max-pooling. The remaining elements are set to zero.\relax }}{28}{figure.caption.54}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces Intersection over union. \cite {iou}\relax }}{29}{figure.caption.58}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Examples of the best deep learning frameworks. \cite {nvidia_dev}\relax }}{31}{figure.caption.60}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces GIGABYTE GeForce RTX 2060 SUPER AORUS 8G. \cite {gigabyte}\relax }}{32}{figure.caption.61}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Coarse search of the \textit {learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the corresponding layers stayed \textbf {unchanged} during the training.\relax }}{48}{figure.caption.78}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Coarse search of the \textit {learning\_rate} parameter, Bayesian SegNet. The training loss is observed for 30 epochs and the data is smoothed. The encoder was initialized using pre-trained VGG16 model and the learning rate of the corresponding layers is \textbf {decreased} by the factor of 10 during the training.\relax }}{48}{figure.caption.79}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison of the segmentation performance of all SegNet variants. The Bayesian versions of the architecture give the estimate of the model uncertainty, where the lighter regions mean higher variance across the MCDO samples taken during inference.\relax }}{50}{figure.caption.81}

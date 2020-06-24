@@ -25,6 +25,8 @@
 \usepackage{pgfplots}
 \usepackage{makecell}
 
+\usepackage{pdfpages}
+
 \usepackage{multirow}
 
 \renewcommand\theadalign{cc}
@@ -97,6 +99,7 @@
 \titul% vytiskne titul práce
 \abstrakty% vytiskne stránku s abstrakty
 
+\input{extended_summary}
 
 \prohlaseni{Prohlašuji, že jsem svou práci vypracoval samostatně a použil jsem pouze podklady (literaturu, software atd.) citované v práci a uvedené v přiloženém seznamu a postup při zpracování práce je v souladu se zákonem č. 121/2000\,Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon) v platném znění.}% prohlášení,
 
@@ -115,6 +118,13 @@
 
 \input{discussion}
 \input{Literatura}% nutné
+
 \input{SeznamZkratek}% nutné
 \input{SeznamPriloh}% není povinné
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures} 
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables} 
+
 \end{document}

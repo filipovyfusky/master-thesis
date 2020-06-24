@@ -2,11 +2,12 @@
 \section{Image annotation}
 
 In supervised learning, one needs to manually create the training data consisting of inputs and corresponding targets (called Ground Truths in segmentation). There's a variety of annotation tools available on the internet, both under commercial and free licenses. 
-The final train, validation and test datasets used contain 2600 + 90 + 179 images from an outdoor environment.
 
 \subsubsection{Labelbox}
 
-Labelbox \cite{labelbox} is a paid online annotation tool. The best feature of Labelbox is that it allows sharing the datasets with other users and therefore speeding up the labeling significantly. Labelbox offers free access to students to the full version. When the labeling is finished, one exports the image/label pairs to a \textit{.JSON} file. This file contains links to the annotated images that are stored online and it is necessary to download them separately (Labelbox is still in development, this is valid at the time of publishing). To automate this process, one can call the \textit{download() function} from the \textit{utilities.py} script (Attachment XY). 
+Labelbox \cite{labelbox} is a paid online annotation tool. The best feature of Labelbox is that it allows sharing the datasets with other users and therefore speeding up the labeling significantly. Labelbox offers free access to students to the full version. When the labeling is finished, one exports the image/label pairs to a \textit{.JSON} file. This file contains links to the annotated images that are stored online and it is necessary to download them separately (Labelbox is still in development, this is valid at the time of publishing). To automate this process, one can call the \textit{download()} function from \textit{utilities.py} which is available in \cite{filip_github}. \\
+
+The final train, validation and test datasets used contain 2600 + 90 + 179 images from an outdoor environment. The location where the images were taken is the same in all cases. However, the scenes differ in their weather conditions, daytime, type of path, etc. Their \textit{.JSON} files are available at \cite{filip_github}.
 
 %\section{Caffe Commands}
 
@@ -81,7 +82,7 @@ $$
 
 \noindent is entered as the \textit{source} parameter of the \textit{DenseImageData} layer. This file is generated using the \textit{make\_txt()} function from \textit{utilities.py}. The script will also make separate directories for training, testing and validation datasets by calling \textit{make\_dirs()}.
 
-The method used for the mean subtraction was the per-channel mean. The \textit{per\_channel\_mean} function in \textit{utilities.py} calculates the mean values for R, G and B components of the images in the training set. These three numbers are then placed into the \textit{DenseImageData} layer in BGR order (see Snippet XY).
+The method used for the mean subtraction was the per-channel mean. The \textit{per\_channel\_mean} function in \textit{utilities.py} calculates the mean values for R, G and B components of the images in the training set. These three numbers are then placed into the \textit{DenseImageData} layer in BGR order.
 
 \subsubsection{Output dimensions}
 
@@ -224,7 +225,7 @@ input_dim: 360
 input_dim: 480
 \end{lstlisting}
 
-\subsubsection{Running the Segmentation}
+\subsubsection{Running the segmentation}
 
 The script \textit{segnet\_inference.py} is used for running the segmentation. One must provide the network with images either by specifying a path to a video file or by specifying a sequence of image names to look for in the image folder (this is a standard OpenCV convention). In each step of the algorithm, we must subtract the per-channel mean from the input image that is being processed. This is part of the script and one only needs to provide the BGR values used at train time.
 
@@ -319,10 +320,10 @@ Here the scripts also visualizes the statistics of MCDO sampling: the variance o
 
 \subsection{SegNet Basic and Bayesian SegNet Basic}
 
-SegNet Basic and Bayesian SegNet Basic are networks provided by the SegNet authors and are similar to their full versions but have fewer layers (see Attachment XY). These shallow versions are used in the same way as their parent architectures. Therefore, the same training and inference procedures apply to SegNet+SegNet Basic and Bayesian SegNet+Bayesian SegNet Basic.
+SegNet Basic and Bayesian SegNet Basic are networks provided by the SegNet authors and are similar to their full versions but have fewer layers (see Attachment 1). These shallow versions are used in the same way as their parent architectures. Therefore, the same training and inference procedures apply to SegNet+SegNet Basic and Bayesian SegNet+Bayesian SegNet Basic.
 
 \newpage
-\section{Optimization of Hyperparameters}
+\section{Optimization of hyperparameters}
 
 Hyperparameters are parameters that are set before the training begins and do not change during the training. The choice of hyperparameters is a task in its own right and requires a sufficient amount of trial and error. There are some general approaches (mostly empirical) one can follow to find the right parameters. The goal is to ensure that the network reaches an optimal value of the loss function. \cite{stanford-github}
 
@@ -330,13 +331,13 @@ Hyperparameters are parameters that are set before the training begins and do no
 
 Every training of a neural network starts with the choice of an optimizer. As the most recent research suggests, Adam is the default choice for training CNNs. If the CNN is built from scratch, it is advisable to start from the simplest SGD optimizer and observe the values of the loss function to detect potential problems in the architecture or the code. \cite{stanford-L7}
 
-\subsubsection{Learning Rate}
+\subsubsection{Learning rate}
 
 The parameter that has the biggest effect on training is the learning rate: it is the first parameter one should set. It is recommended to start a coarse search first while observing the loss for both training and validation datasets for a few initial epochs. Then, after the training is done, choose a thinner interval of optimal learning rates and perform a finer search. \cite{stanford-L6}
 
 As the learning rate has a multiplicative effect on the gradient accumulation during mini-batch training, it is logical to pick the values from the logarithmic space. \cite{stanford-L6}
 
-\subsubsection{Cross-validation Strategy}
+\subsubsection{Cross-validation strategy}
 
 This strategy is also referred to as early stopping. The idea is that one observes both training and validation loss during training. When these losses go apart, the network tends to overfit to the training data. This is a crucial step when finding optimal hyperparameters and it must always be checked. \cite{stanford-github}
 

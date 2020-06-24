@@ -1,4 +1,4 @@
-\chapter{Implementation and method}
+\chapter{Implementation and Method}
 
 In this chapter, the original Caffe implementation of SegNet and Bayesian SegNet with their simplified versions SegNet Basic and Bayesian SegNet Basic will be tested on a custom dataset. Part of this will be evaluating the effect of various hyperparameters on training. This chapter will also give instructions on how to set up the software and hardware environments for running Caffe library for ANN. The entire network architecture and other code used in this section are available at \cite{filip_github} and \cite{filip_github_caffe}.
 
@@ -182,7 +182,7 @@ In addition, since the original \textit{caffe-segnet} supports just cuDNN v2, wh
 	\end{lstlisting}
 	
 	\item \textbf{Download Caffe (caffe-segnet-cudnn5) source code.} Go to \cite{filip_github_caffe} and clone/download it. 
-	\item \textbf{Set the build configuration file.} The build is done via the \textit{make} command, which needs the \textit{Makefile.config} file to be present in the parent directory (\textit{caffe-segnet-cudnn5-master}). This file contains the build options and needs to be configured properly. Fortunately, the correct form of \textit{Makefile.config} is part of this thesis and can be found in Attachment XY. 
+	\item \textbf{Set the build configuration file.} The build is done via the \textit{make} command, which needs the \textit{Makefile.config} file to be present in the parent directory (\textit{caffe-segnet-cudnn5-master}). This file contains the build options and needs to be configured properly. Fortunately, the correct form of \textit{Makefile.config} is part of this thesis and can be found in \cite{filip_github_caffe}. 
 	
 	\item \textbf{Install gcc/g++ compliers.} The CUDA/cuDNN libraries used during the build are compatible only with gcc/g++ compilers of version 5. To install these, run:
 	

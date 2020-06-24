@@ -1,4 +1,4 @@
-\chapter{Research and theory}
+\chapter{Research and Theory}
 \label{research}
 The first part of this chapter gives an introduction to artificial neural networks (ANNs). It begins with a definition of fundamental terms that explain the core principles of ANN. Because the research in this area is still ongoing, the more advanced techniques described here may soon be out of date or replaced by better-performing ones and therefore the theoretical background is limited only to the extent that will be relevant for the network architecture chosen at the end.
 
@@ -216,7 +216,7 @@ This function has a clear interpretation of neuron states - active/inactive is r
 
 Unlike the sigmoid function, the range of its output is in the interval <-1,1> and the output is therefore zero-centered. In practice, the tanh non-linearity is always preferred to the sigmoid non-linearity. \cite{stanford-github}
 
-\subsubsection{Rectified linear unit (ReLu)}
+\subsubsection{Rectified linear unit (ReLU)}
 \vspace{5mm}
 
 \begin{figure}[h]  
@@ -258,14 +258,14 @@ Unlike the sigmoid function, the range of its output is in the interval <-1,1> a
 		\caption{$ g'(b)= \theta_H (x) $}  
 	\end{subfigure}
 	\vspace{10mm}
-	\caption{ReLu and its derivative. ReLu does not saturate!}
+	\caption{ReLU and its derivative. ReLU does not saturate!}
 \end{figure}
 
 The authors of this function found the inspiration in real biological neurons: there is a threshold below which the response of the neuron is strictly zero, as shown in the figure above. The derivative of the ReLU function is discontinuous at $ x=0 $. A common convention is to set the derivative to zero at $ x=0 $. It is now the standard function to use in large networks for image recognition. \cite{mehlig}
 
 \newpage
 
-\subsubsection{Leaky ReLu}
+\subsubsection{Leaky ReLU}
 \vspace{3mm}
 \begin{figure}[h]  
 	\centering 
@@ -314,10 +314,10 @@ The authors of this function found the inspiration in real biological neurons: t
 			\end{cases}  $}  
 	\end{subfigure}
 	\vspace{10mm}
-	\caption{Leaky ReLu and its derivative.}
+	\caption{Leaky ReLU and its derivative.}
 \end{figure}
 
-By modifying the previously introduced function one gets a version of ReLu intended to address its biggest drawback, which is the fact that some neurons may become dead (their output will be always zero) and thus they do not contribute to the network's output. Unfortunately, there's generally no guarantee that using Leaky ReLu instead of ReLu will always yield better results. \cite{stanford-L4}
+By modifying the previously introduced function one gets a version of ReLU intended to address its biggest drawback, which is the fact that some neurons may become dead (their output will be always zero) and thus they do not contribute to the network's output. Unfortunately, there's generally no guarantee that using Leaky ReLU instead of ReLU will always yield better results. \cite{stanford-L4}
 
 \newpage
 
@@ -534,7 +534,7 @@ In Equations \ref{update_rule} we see that in each iteration one needs to sum ov
 
 \subsubsection{Vanishing and exploding gradient problems}
 
-When we compute the weight increments using MSE, the further from the output layer we go, the more the term $ g'(b) $ accumulates (with each next layer). The point is that MSE is often used with the sigmoid activation functions whose derivative drops to a small number in its area of saturation resulting in very small weight increments. This phenomenon is known as the vanishing gradient problem \cite{mehlig}. Similarly, one can run into trouble when the values of the derivative of activation function are larger than one. Then the value of the gradients may start growing exponentially: this is called the exploding gradient problem. \cite{eniola} One of the ways to address these problems is using activation functions that do not saturate (ReLu, Leaky ReLu, etc.). \cite{mehlig} \cite{stanford-L4}
+When we compute the weight increments using MSE, the further from the output layer we go, the more the term $ g'(b) $ accumulates (with each next layer). The point is that MSE is often used with the sigmoid activation functions whose derivative drops to a small number in its area of saturation resulting in very small weight increments. This phenomenon is known as the vanishing gradient problem \cite{mehlig}. Similarly, one can run into trouble when the values of the derivative of activation function are larger than one. Then the value of the gradients may start growing exponentially: this is called the exploding gradient problem. \cite{eniola} One of the ways to address these problems is using activation functions that do not saturate (ReLU, Leaky ReLU, etc.). \cite{mehlig} \cite{stanford-L4}
 
 \subsubsection{Momentum}
 
@@ -619,7 +619,7 @@ The standard approach is to initialise the weights to independent Gaussian rando
 
 \enquote{\textit{These two regularization schemes tend to help against overfitting. (...) Weight decay dds a constraint to the problem of minimising the energy function. When the weights are small, then small changes in some of the patterns do not give a substantially different training result. When the network	has large weights, by contrast, it may happen that small changes in the input give	significant differences in the training result that are difficult to generalise.}} \cite{mehlig}
 
-\subsubsection{Batch Normalisation}
+\subsubsection{Batch normalisation}
 
 The idea of batch normalisation is to shift and normalise the input data for each
 hidden layer so that the distribution of its inputs becomes Gaussian. The values of mean and variance are computed during each forward pass (pass of a single mini-batch) and then applied to each neuron in the layer. The mean and variance are multiplied by trainable factors, usually called $ \beta, \gamma $. \cite{stanford-L6} \cite{mehlig} When the training is done, the values of $ \beta, \gamma $ for each layer are re-computed using the mean and variance of the entire training dataset and no longer change. \cite{issue}
@@ -663,7 +663,7 @@ When the training is done, the performance is measured using a set of 'unseen' d
 	\label{}
 \end{figure}
 
-\subsubsection{Transfer Learning}
+\subsubsection{Transfer learning}
 
 To create a well-generalising neural network, one need to have access to a dataset of a sufficient size. Therefore in practice, it is unusual to train an entire CNN from scratch (with random initialization). Instead, it is common to pretrain a CNN on a very large dataset (e.g. ImageNet) and then use the CNN either as an initialization or a fixed feature extractor for the task of interest. \cite{stanford-L7}
 
