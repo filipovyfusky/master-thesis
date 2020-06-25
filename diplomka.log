@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  24 JUN 2020 15:23
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  25 JUN 2020 18:10
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.081 seconds
+luaotfload | main : initialization completed in 0.078 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1616,100 +1616,96 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.4'
 [4]
 warning  (pdf backend): ignoring duplicate destination with the name 'page.5'
 [5]
-
-LaTeX Warning: Citation `goodfellow' on page 6 undefined on input line 37.
-
-
 warning  (pdf backend): ignoring duplicate destination with the name 'page.6'
 [6]
-<obr/neuron.png, id=352, 1252.68pt x 457.71pt>
+<obr/neuron.png, id=354, 1252.68pt x 457.71pt>
 File: obr/neuron.png Graphic file (type png)
 <use obr/neuron.png>
 Package luatex.def Info: obr/neuron.png  used on input line 65.
 (luatex.def)             Requested size: 369.88582pt x 135.14899pt.
  [7<./obr/neuron.png>](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/
 generic/fonts/otl/lmroman10-bold.luc) [8] [9] [10]
-<obr/perceptron.png, id=412, 409.53pt x 680.5425pt>
+<obr/perceptron.png, id=414, 409.53pt x 680.5425pt>
 File: obr/perceptron.png Graphic file (type png)
 <use obr/perceptron.png>
 Package luatex.def Info: obr/perceptron.png  used on input line 331.
 (luatex.def)             Requested size: 102.73218pt x 170.71652pt.
  [11<./obr/perceptron.png>]
-<obr/softmax.png, id=434, 514.92375pt x 498.86375pt>
+<obr/softmax.png, id=436, 514.92375pt x 498.86375pt>
 File: obr/softmax.png Graphic file (type png)
 <use obr/softmax.png>
 Package luatex.def Info: obr/softmax.png  used on input line 372.
 (luatex.def)             Requested size: 96.73918pt x 93.7194pt.
-<obr/separability.png, id=440, 1076.02pt x 353.32pt>
+<obr/separability.png, id=442, 1076.02pt x 353.32pt>
 File: obr/separability.png Graphic file (type png)
 <use obr/separability.png>
 Package luatex.def Info: obr/separability.png  used on input line 386.
 (luatex.def)             Requested size: 312.9803pt x 102.76747pt.
  [12<./obr/softmax.png><./obr/separability.png>] [13] [14]
-<obr/backpropagation.png, id=486, 686.565pt x 694.595pt>
+<obr/backpropagation.png, id=488, 686.565pt x 694.595pt>
 File: obr/backpropagation.png Graphic file (type png)
 <use obr/backpropagation.png>
-Package luatex.def Info: obr/backpropagation.png  used on input line 440.
+Package luatex.def Info: obr/backpropagation.png  used on input line 439.
 (luatex.def)             Requested size: 119.50148pt x 120.89882pt.
  [15<./obr/backpropagation.png>]
-<obr/learning_rate.png, id=507, 1163.34625pt x 843.15pt>
+<obr/learning_rate.png, id=509, 1163.34625pt x 843.15pt>
 File: obr/learning_rate.png Graphic file (type png)
 <use obr/learning_rate.png>
-Package luatex.def Info: obr/learning_rate.png  used on input line 469.
+Package luatex.def Info: obr/learning_rate.png  used on input line 468.
 (luatex.def)             Requested size: 398.33858pt x 288.69994pt.
  [16<./obr/learning_rate.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
-ut line 514.
+ut line 513.
 
-Underfull \hbox (badness 10000) in paragraph at lines 525--526
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
 
  []
 
 [17]
-<obr/momentum.png, id=558, 1277.77374pt x 583.17876pt>
+<obr/momentum.png, id=561, 1277.77374pt x 583.17876pt>
 File: obr/momentum.png Graphic file (type png)
 <use obr/momentum.png>
-Package luatex.def Info: obr/momentum.png  used on input line 558.
+Package luatex.def Info: obr/momentum.png  used on input line 557.
 (luatex.def)             Requested size: 341.43306pt x 155.83192pt.
  [18<./obr/momentum.png>]
-<obr/opt.png, id=578, 616.3025pt x 475.7775pt>
+<obr/opt.png, id=581, 616.3025pt x 475.7775pt>
 File: obr/opt.png Graphic file (type png)
 <use obr/opt.png>
-Package luatex.def Info: obr/opt.png  used on input line 588.
+Package luatex.def Info: obr/opt.png  used on input line 587.
 (luatex.def)             Requested size: 312.9803pt x 241.61967pt.
  [19<./obr/opt.png>] [20]
-<obr/dropou.png, id=613, 1468.48625pt x 385.44pt>
+<obr/dropou.png, id=616, 1468.48625pt x 385.44pt>
 File: obr/dropou.png Graphic file (type png)
 <use obr/dropou.png>
-Package luatex.def Info: obr/dropou.png  used on input line 637.
+Package luatex.def Info: obr/dropou.png  used on input line 636.
 (luatex.def)             Requested size: 312.9803pt x 82.14458pt.
 (load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmro
 man10-bolditalic.luc)
 [21<./obr/dropou.png>]
-<obr/early.png, id=635, 1231.60126pt x 538.01pt>
+<obr/early.png, id=638, 1231.60126pt x 538.01pt>
 File: obr/early.png Graphic file (type png)
 <use obr/early.png>
-Package luatex.def Info: obr/early.png  used on input line 657.
+Package luatex.def Info: obr/early.png  used on input line 656.
 (luatex.def)             Requested size: 256.0748pt x 111.86075pt.
 ) (./convolution.tex [22<./obr/early.png>]
-<obr/conv.png, id=661, 1371.1225pt x 635.37375pt>
+<obr/conv.png, id=664, 1371.1225pt x 635.37375pt>
 File: obr/conv.png Graphic file (type png)
 <use obr/conv.png>
 Package luatex.def Info: obr/conv.png  used on input line 15.
 (luatex.def)             Requested size: 256.0748pt x 118.65723pt.
  [23<./obr/conv.png>]
-<obr/pool.png, id=676, 859.71187pt x 358.33875pt>
+<obr/pool.png, id=679, 859.71187pt x 358.33875pt>
 File: obr/pool.png Graphic file (type png)
 <use obr/pool.png>
 Package luatex.def Info: obr/pool.png  used on input line 31.
 (luatex.def)             Requested size: 312.9803pt x 130.45628pt.
-<obr/fully.png, id=682, 1324.95pt x 382.42876pt>
+<obr/fully.png, id=685, 1324.95pt x 382.42876pt>
 File: obr/fully.png Graphic file (type png)
 <use obr/fully.png>
 Package luatex.def Info: obr/fully.png  used on input line 45.
 (luatex.def)             Requested size: 341.43306pt x 98.54797pt.
  [24<./obr/pool.png><./obr/fully.png>]) (./segmentation.tex [25]
-<obr/segnet.png, id=724, 853.1875pt x 405.515pt>
+<obr/segnet.png, id=727, 853.1875pt x 405.515pt>
 File: obr/segnet.png Graphic file (type png)
 <use obr/segnet.png>
 Package luatex.def Info: obr/segnet.png  used on input line 15.
@@ -1720,12 +1716,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
  []
 
 [26<./obr/segnet.png>]
-<obr/transposed.png, id=743, 244.915pt x 259.97125pt>
+<obr/transposed.png, id=747, 244.915pt x 259.97125pt>
 File: obr/transposed.png Graphic file (type png)
 <use obr/transposed.png>
 Package luatex.def Info: obr/transposed.png  used on input line 35.
 (luatex.def)             Requested size: 142.26378pt x 151.0135pt.
-<obr/unpool.png, id=750, 859.71187pt x 358.33875pt>
+<obr/unpool.png, id=754, 859.71187pt x 358.33875pt>
 File: obr/unpool.png Graphic file (type png)
 <use obr/unpool.png>
 Package luatex.def Info: obr/unpool.png  used on input line 47.
@@ -1735,20 +1731,20 @@ Package luatex.def Info: obr/unpool.png  used on input line 47.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [27<./obr/transposed.png>] [28<./obr/unpool.png>]
-<obr/iou.png, id=783, 602.25pt x 469.755pt>
+<obr/iou.png, id=787, 602.25pt x 469.755pt>
 File: obr/iou.png Graphic file (type png)
 <use obr/iou.png>
 Package luatex.def Info: obr/iou.png  used on input line 86.
 (luatex.def)             Requested size: 256.0748pt x 199.74716pt.
 ) (./implementation.tex
 [29<./obr/iou.png>] [30]
-<obr/libraries.png, id=814, 781.92125pt x 228.855pt>
+<obr/libraries.png, id=818, 781.92125pt x 228.855pt>
 File: obr/libraries.png Graphic file (type png)
 <use obr/libraries.png>
 Package luatex.def Info: obr/libraries.png  used on input line 33.
 (luatex.def)             Requested size: 398.33858pt x 116.58878pt.
  [31<./obr/libraries.png>]
-<obr/grafika.jpeg, id=829, 749.04843pt x 447.92343pt>
+<obr/grafika.jpeg, id=833, 749.04843pt x 447.92343pt>
 File: obr/grafika.jpeg Graphic file (type jpg)
 <use obr/grafika.jpeg>
 Package luatex.def Info: obr/grafika.jpeg  used on input line 52.
@@ -1761,7 +1757,7 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )(load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmm
 ono10-regular.luc) [33] [34] [35]
-Overfull \hbox (27.42926pt too wide) in paragraph at lines 196--197
+Overfull \hbox (27.42926pt too wide) in paragraph at lines 197--198
 []\TU/lmr/bx/n/12 Ini-ti-ate the build. \TU/lmr/m/n/12 Once the \TU/lmr/m/it/12
  Make-file.con-fig \TU/lmr/m/n/12 is lo-cated in the \TU/lmr/m/it/12 caffe-segn
 et-cudnn5-master
@@ -1777,18 +1773,18 @@ lmmono12-regular.luc) [38](load luc: /home/phil/.texlive2017/texmf-var/luatex-ca
 che/generic/fonts/otl/lmroman8-italic.luc)(load luc: /home/phil/.texlive2017/tex
 mf-var/luatex-cache/generic/fonts/otl/lmroman7-italic.luc) [39] [40]
 [41] [42] [43] [44] [45]) (./results.tex [46] [47]
-<obr/bayes_full_rough.png, id=1227, 1062.21844pt x 651.18282pt>
+<obr/bayes_full_rough.png, id=1232, 1062.21844pt x 651.18282pt>
 File: obr/bayes_full_rough.png Graphic file (type png)
 <use obr/bayes_full_rough.png>
 Package luatex.def Info: obr/bayes_full_rough.png  used on input line 21.
 (luatex.def)             Requested size: 398.33858pt x 244.2029pt.
-<obr/bayes_full_rough_2.png, id=1229, 1073.51062pt x 651.18282pt>
+<obr/bayes_full_rough_2.png, id=1234, 1073.51062pt x 651.18282pt>
 File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
 Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
  [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
-<obr/result.png, id=1239, 2243.38126pt x 2695.06876pt>
+<obr/result.png, id=1244, 2243.38126pt x 2695.06876pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
 Package luatex.def Info: obr/result.png  used on input line 77.
@@ -1887,24 +1883,21 @@ Package rerunfilecheck Info: File `diplomka.out' has not changed.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: There were multiply-defined labels.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 48150 strings out of 494480
+ 48094 strings out of 494480
  100000,1373583 words of node,token memory allocated
  929 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 47 attribute, 60 glue_spec, 47 attr
 ibute_list, 1 write, 36 pdf_action nodes
-   avail lists: 1:2,2:4158,3:1569,4:265,5:1047,6:3072,7:2114,8:544,9:1729,10:20,
+   avail lists: 1:2,2:4158,3:1569,4:265,5:1210,6:3115,7:2126,8:638,9:2118,10:20,
 11:307
- 50089 multiletter control sequences out of 65536+600000
+ 50034 multiletter control sequences out of 65536+600000
  117 fonts using 12718615 bytes
- 62i,20n,100p,1406b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 62i,20n,100p,1407b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono12-regular.otf></usr/share/texm
 f/fonts/opentype/public/lm/lmmono10-regular.otf></usr/share/texmf/fonts/opentype
 /public/lm/lmroman10-bolditalic.otf></usr/share/texmf/fonts/opentype/public/lm/l
@@ -1927,10 +1920,10 @@ c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on diplomka.pdf (66 pages, 5688151 bytes).
+Output written on diplomka.pdf (66 pages, 5689661 bytes).
 
-PDF statistics: 1572 PDF objects out of 1728 (max. 8388607)
- 1346 compressed objects within 14 object streams
- 482 named destinations out of 1000 (max. 131072)
+PDF statistics: 1579 PDF objects out of 1728 (max. 8388607)
+ 1353 compressed objects within 14 object streams
+ 481 named destinations out of 1000 (max. 131072)
  584 words of extra memory for PDF output out of 10000 (max. 100000000)
 

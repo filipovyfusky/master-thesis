@@ -10,7 +10,7 @@ After a reasonable learning rate value was found, the random search was limited 
 
 The difference observed across the network variants was the time it took to achieve low loss values. This is influenced by the size of the network (Basic versions train faster) and the dropout settings (dropout slows down the training).
 
-Figures \ref{tuning1} and \ref{tuning2} are examples of the learning rate tuning (Bayesian SegNet). The network was trained using transfer learning. The figures below show two training schemes applied to the pre-trained encoder: in Figure \ref{tuning1}, the encoder weights stay unchanged during the training. This, apparently, makes it harder for the decoder to adapt. Also, training with learning rates that seem to work well initially makes the loss diverge from the optimal value in the last few epochs. In Figure \ref{tuning2}, on the other hand, the encoder weights are allowed to change but only with a decreased learning rate. This scheme tends to give more stable training results and faster training. Therefore, this second scheme was applied to all variants of SegNet.  
+Figures \ref{tuning1} and \ref{tuning2} are examples of the learning rate tuning (Bayesian SegNet). The network was trained using transfer learning. The figures below show two training schemes applied to the pre-trained encoder: in Figure \ref{tuning1}, the encoder weights stay unchanged during the training. This, apparently, makes it harder for the decoder to adapt. Also, training with learning rates that seem to work well initially makes the loss diverge from the optimal value in the last few epochs. In Figure \ref{tuning2}, on the other hand, the encoder weights are allowed to change but only with a decreased (by a factor of 10) learning rate. This scheme tends to give more stable training results and faster training. Therefore, this second scheme was applied to all variants of SegNet.  
 
 It turns out that larger values of the learning rate tend to work better with AdaDelta and lead to better values of the loss function. 
 
@@ -66,7 +66,7 @@ terms of computational cost is SegNet Basic. Bayesian versions of SegNet repeat 
 		\hline
 	\end{tabular}
 	\vspace{10mm}
-	\caption{Statistics for all SegNet variants on the \textit{test} dataset. The inference was ran on GPU.} 
+	\caption{Statistics for all SegNet variants on the \textit{test} dataset. The inference was ran on GPU. The learning rate of encoder layers was decreased by a factor of 10 during training.} 
 	\label{tabulka}
 \end{table}
 

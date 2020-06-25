@@ -15,9 +15,9 @@
 \contentsline {subsubsection}{Linear separability}{12}{section*.21}
 \contentsline {section}{\numberline {3.2}Training of artificial neural networks}{14}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Loss function}{14}{subsection.3.2.1}
-\contentsline {subsubsection}{Mean Squared Error (MSE)}{14}{section*.23}
-\contentsline {subsubsection}{Negative Log Likelihood}{14}{section*.24}
-\contentsline {subsubsection}{Cross Entropy Loss}{14}{section*.25}
+\contentsline {subsubsection}{Mean squared error (MSE)}{14}{section*.23}
+\contentsline {subsubsection}{Negative log likelihood}{14}{section*.24}
+\contentsline {subsubsection}{Cross entropy loss}{14}{section*.25}
 \contentsline {subsection}{\numberline {3.2.2}Gradient optimization and backpropagation}{15}{subsection.3.2.2}
 \contentsline {subsubsection}{Gradient descent}{15}{section*.27}
 \contentsline {subsubsection}{Stochastic gradient descent}{17}{section*.29}
@@ -26,7 +26,7 @@
 \contentsline {subsubsection}{Other optimization algorithms}{19}{section*.33}
 \contentsline {subsection}{\numberline {3.2.3}Improving training performance}{20}{subsection.3.2.3}
 \contentsline {subsubsection}{Initialization of weights and thresholds}{20}{section*.35}
-\contentsline {subsubsection}{Overfitting and regularization}{20}{section*.36}
+\contentsline {subsubsection}{Overfitting and regularisation}{20}{section*.36}
 \contentsline {subsubsection}{Batch normalisation}{21}{section*.37}
 \contentsline {subsubsection}{Dropout}{21}{section*.38}
 \contentsline {subsubsection}{Data augmentation}{21}{section*.40}

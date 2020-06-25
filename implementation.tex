@@ -4,7 +4,7 @@ In this chapter, the original Caffe implementation of SegNet and Bayesian SegNet
 
 \section{CPU vs. GPU for training ANN}
 
-Central Processing Unit (CPU) is the main computational unit of a computer and is designed to perform a wide variety of complex instructions. Current CPUs usually have 4 to 8 separate cores, which allow them to run several tasks in parallel. Graphics processing unit (GPU), on the other hand, was originally designed for rendering computer graphics only. CPU has a much lower number of cores, but these run at a high frequency and are very capable in terms of the instructions they perform. Therefore, CPUs are great for sequential tasks. GPU comprises of a large number of 'simple' cores which makes it more suitable for computing parallel tasks. \cite{stanford-L8}
+Central processing unit (CPU) is the main computational unit of a computer and is designed to perform a wide variety of complex instructions. Current CPUs usually have 4 to 8 separate cores, which allow them to run several tasks in parallel. Graphics processing unit (GPU), on the other hand, was originally designed for rendering computer graphics only. CPU has a much lower number of cores, but these run at a high frequency and are very capable in terms of the instructions they perform. Therefore, CPUs are great for sequential tasks. GPU comprises of a large number of 'simple' cores which makes it more suitable for computing parallel tasks. \cite{stanford-L8}
 
 The main part of the computations in ANN is matrix multiplication where GPU has the power of performing these operations by parts in parallel and speeds up the training significantly. \cite{stanford-L8}
 
@@ -14,7 +14,7 @@ A CPU does not have its own memory resources (apart from very small memory secti
 
 \subsubsection{Tensor cores}
 
-Tensor Core is a special GPU feature offered by NVIDIA cards. It enables mixed-precision computing by dynamically adapting calculations to accelerate throughput while preserving accuracy. The latest generation expands these speedups to a full range of workloads. From 10x speedups in AI training with Tensor Float 32 data type, to 2.5x boosts for high-performance computing with floating point 64 (double precision). \cite{nvidia}
+Tensor Core is a special GPU feature offered by NVIDIA cards. It enables mixed-precision computing by dynamically adapting calculations to accelerate throughput while preserving accuracy. The latest generation expands these speedups to a full range of workloads. From 10x speedups in AI training with float32 data type, to 2.5x boosts for high-performance computing with float64. \cite{nvidia}
 
 \newpage
 \section{Libraries for ANN}
@@ -23,9 +23,9 @@ As the architecture and training of ANN are getting more complex, it is very hel
 
 \subsection{Caffe}
 
-Caffe is a deep learning library made with expression, speed, and modularity in mind. It has been developed by Berkeley AI Research (BAIR) and by community contributors. \cite{caffe} The main difference between this and other libraries is that the user often does not need to write any code at all. The architecture of the network (the computational graph) is described in a \textit{.prototxt} file where one creates the layers of the network in the desired order. Also, rather than having an optimizer object (in Tensorflow for example), one creates another \textit{.prototxt} file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of these files are created, the user runs Caffe computation from the command line. The library is written in C++ and the pre-built binaries are executed when the computation is executed. \cite{stanford-L8}
+Caffe is a deep learning library made with expression, speed, and modularity in mind. It has been developed by Berkeley AI Research (BAIR) and by community contributors. \cite{caffe} The main difference between this and other libraries is that the user often does not need to write any code at all. The architecture of the network (the computational graph) is described in a \textit{.prototxt} file where one creates the layers of the network in the desired order. Also, rather than having an optimizer object (in Tensorflow for example), one creates another \textit{.prototxt} file that contains parameters such as the optimizer type (SGD, Adam, etc.), learning rate, momentum constant and others. After both of these files are created, the user runs Caffe computation from the command line. The library is written in C++ and the pre-built binaries are executed when the computation starts. \cite{stanford-L8}
 
-Caffe comes with bindings for Python (CPW - Caffe Python Wrapper, or pycaffe) and Matlab, which is very useful for the inference phase. The biggest downside of Caffe and CPW is that they are very poorly documented.
+Caffe comes with bindings for Python (CPW - Caffe Python wrapper, or pycaffe) and Matlab, which is very useful for the inference phase. The biggest downside of Caffe and CPW is that they are very poorly documented.
 
 \vspace{5mm}
 \begin{figure}[h]
@@ -86,8 +86,8 @@ CUDA version is determined by the version of cuDNN compatible with the used Caff
 	\item \textbf{Perform the runfile installation of CUDA.} Open the Ubuntu Terminal and run: \cite{nvidia_dev}
 	
 	\begin{lstlisting}[language=bash]
-	$ cd /path/to/cuda_8.0.61_375.26_linux.run # Navigates to folder with CUDA
-	$ sudo chmod a+x cuda*		# Makes the cuda*.run executable
+	$ cd /path/to/cuda_8.0.61_375.26_linux.run # Navigates to a folder with CUDA
+	$ sudo chmod a+x cuda*		# Makes cuda*.run executable
 	$ ./cuda*.run --tar mxvf 	# Unpacks the .runfile content
 	$ sudo cp InstallUtils.pm /usr/lib/x86_64-linux-gnu/perl-base  # Copy one of the extracted files to perl-base
 	$ sudo sh cuda_8.0.61_375.26_linux.run --override # Start the installation 
@@ -114,7 +114,7 @@ CUDA version is determined by the version of cuDNN compatible with the used Caff
 	$ sudo sh cuda_8.0.61.2_linux.run
 	\end{lstlisting}
 	
-	\item \textbf{Perform the post-installation actions.} The system needs to know the location of CUDA executables. The usual way is to set the "PATH" variables in the current session of the Ubuntu Terminal. However, it is useful to add these permanently to system's \textit{\textasciitilde{}/.bashrc} file:
+	\item \textbf{Perform the post-installation actions.} The system needs to know the location of CUDA executables. The usual way is to set the "PATH" variables in the current session of the Ubuntu Terminal. However, it is useful to add these permanently to system's \textit{\textasciitilde{}/.bashrc} file: \cite{nvidia_dev}
 		
 	\begin{lstlisting}[language=bash]
 	$ sudo gedit ~/.bashrc # Opens the .bashrc file in text editor
@@ -164,8 +164,9 @@ When the \textit{virtualenv} is configured properly, it will automatically activ
 
 Caffe is an open-source library. The authors of the SegNet created a slightly modified version of Caffe called \textit{caffe-segnet} that supports special SegNet layer types (\textit{upsample, bn, dense\_image\_data and softmax\_with\_loss} (with class weighting)).
 
-In addition, since the original \textit{caffe-segnet} supports just cuDNN v2, which is not supported by newer GPUs, there's another version of \textit{caffe-segnet} from \cite{filip_github_caffe} that supports cuDNN 5.1. The author claims that it decreases the inference time by 25 \% to 35 \%. Therefore, this version was selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to '\textit{caffe-segnet}' in the text.
+In addition, since the original \textit{caffe-segnet} supports just cuDNN v2, which is not supported by newer GPUs, there is another version of \textit{caffe-segnet} available at \cite{filip_github_caffe} that supports cuDNN 5.1. The original author claims that it decreases the inference time by 25 \% to 35 \%. Therefore, this version was selected for running SegNet. From this point on, the term 'Caffe' will be equivalent to '\textit{caffe-segnet}' in the text.
 
+\newpage
 \begin{itemize}
 		
 	\item \textbf{Install Caffe dependencies.} Caffe is available as a source code and needs to be compiled on the target platform. For this, several steps need to be taken to ensure that all libraries are available during the build: \cite{caffe}
@@ -193,7 +194,7 @@ In addition, since the original \textit{caffe-segnet} supports just cuDNN v2, wh
 	$ sudo ln -s /usr/bin/g++-5 /usr/local/cuda/bin/g++
 	\end{lstlisting}
 	
-	\item \textbf{Initiate the build.} Once the \textit{Makefile.config} is located in the \textit{caffe-segnet-cudnn5-master} directory, everything should be ready for the final step. Execute these commands to initiate and test the Caffe build (don't forget to build pycaffe (Caffe Python Wrapper)):
+	\item \textbf{Initiate the build.} Once the \textit{Makefile.config} is located in the \textit{caffe-segnet-cudnn5-master} directory, everything should be ready for the final step. Execute these commands to initiate and test the Caffe build (don't forget to build pycaffe (Caffe Python wrapper)):
 	
 	\begin{lstlisting}[language=bash]
 	make all -j4	# start build

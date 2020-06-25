@@ -1,6 +1,6 @@
 \babel@toc {english}{}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Segmentation of an urban road scene \cite {sergios}\relax }}{3}{figure.caption.8}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Schematic diagram of a McCulloch-Pitts neuron. The strength of the connection from neuron $ j $ to neuron $ i $ is denoted by $ w_{ij} $ \cite {mehlig}\relax }}{7}{figure.caption.9}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Segmentation of an urban road scene. \cite {sergios}\relax }}{3}{figure.caption.8}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schematic diagram of a McCulloch-Pitts neuron. The strength of the connection from neuron $ j $ to neuron $ i $ is denoted by $ w_{ij} $. \cite {mehlig}\relax }}{7}{figure.caption.9}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Sigmoid function and its derivative. Notice that the derivative goes to zero very quickly.\relax }}{8}{figure.caption.11}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Hyperbolic tangent and its derivative.\relax }}{9}{figure.caption.13}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces ReLU and its derivative. ReLU does not saturate!\relax }}{9}{figure.caption.15}
@@ -8,7 +8,7 @@
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Perceptron with one hidden layer. \cite {mehlig}\relax }}{11}{figure.caption.18}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Softmax classifier: the neurons in this layer are not independent. \cite {mehlig}\relax }}{12}{figure.caption.20}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Linearly separable (left) and not linearly separable problems (right). The decision boundary needs to be piece-wise linear for the not linearly separable problem \cite {mehlig}\relax }}{12}{figure.caption.22}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Backpropagation algorithm: the states of the neurons are updated forward (from left to right) while errors are updated backward (right to left) \cite {mehlig}\relax }}{15}{figure.caption.26}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Backpropagation algorithm: the states of the neurons are updated forward (from left to right) while errors are updated backward (right to left). \cite {mehlig}\relax }}{15}{figure.caption.26}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Effect of the learning rate on optimization: the value must be chosen carefully for the algorithm to converge. \cite {coors}\relax }}{16}{figure.caption.28}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Momentum (left) and Nesterov's Momentum (right). \cite {mehlig}\relax }}{18}{figure.caption.32}
 \contentsline {figure}{\numberline {3.12}{\ignorespaces Comparison of different optimization algorithms. \cite {groman}\relax }}{19}{figure.caption.34}

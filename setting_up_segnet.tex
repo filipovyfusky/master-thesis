@@ -1,13 +1,13 @@
 \newpage
 \section{Image annotation}
 
-In supervised learning, one needs to manually create the training data consisting of inputs and corresponding targets (called Ground Truths in segmentation). There's a variety of annotation tools available on the internet, both under commercial and free licenses. 
+In supervised learning, one needs to manually create the training data consisting of inputs and corresponding targets (called ground truths in segmentation). There's a variety of annotation tools available on the internet, both under commercial and free licenses. 
 
 \subsubsection{Labelbox}
 
 Labelbox \cite{labelbox} is a paid online annotation tool. The best feature of Labelbox is that it allows sharing the datasets with other users and therefore speeding up the labeling significantly. Labelbox offers free access to students to the full version. When the labeling is finished, one exports the image/label pairs to a \textit{.JSON} file. This file contains links to the annotated images that are stored online and it is necessary to download them separately (Labelbox is still in development, this is valid at the time of publishing). To automate this process, one can call the \textit{download()} function from \textit{utilities.py} which is available in \cite{filip_github}. \\
 
-The final train, validation and test datasets used contain 2600 + 90 + 179 images from an outdoor environment. The location where the images were taken is the same in all cases. However, the scenes differ in their weather conditions, daytime, type of path, etc. Their \textit{.JSON} files are available at \cite{filip_github}.
+The final train, validation and test datasets used contain 2600 + 90 + 179 images from an outdoor environment. The location where the images were taken is the same in all cases. However, the scenes differ in their weather conditions, daytime, type of path, etc. The corresponding \textit{.JSON} files are available at \cite{filip_github}.
 
 %\section{Caffe Commands}
 
@@ -36,7 +36,7 @@ lr_policy: "fixed"
 display: 130
 // Max number of iteration. One iteration = a pass of one mini batch			
 max_iter: 3000	
-// Regularization technique called Weight decay		
+// Weight decay factor		
 weight_decay: 0.0005
 // Saves the weights after 'snapshot' iterations
 snapshot: 1000000		
@@ -52,7 +52,6 @@ The \textit{train} file begins with the \textit{DenseImageData} layer. This laye
 The \textit{shuffle} parameter in the \textit{DenseImageData} layer determines whether the training dataset is shuffled after each epoch. This is usually desirable as it helps the optimization algorithm by adding more stochasticity to the computation. The \textit{mirror} parameter applies random mirrors to the input data and hence augments the dataset. If one needs to apply more complex data augmentation techniques, it is necessary to perform them separately and feed the \textit{DenseImageData} layer with already processed images. \cite{caffe}
 
 \begin{lstlisting}[caption={Input layer in \textit{train.prototxt} \cite{filip_github}},captionpos=b]
-// The first layer in the network
 name: "segnet_train"
 layer {
 name: "data"
@@ -65,16 +64,16 @@ dense_image_data_param {
 	shuffle: true
 	mirror: true	
 	}
-# Per-channel mean
+// Per-channel mean
 transform_param {
-	mean_value: 129		#B component
-	mean_value: 126		#G
-	mean_value: 126		#R
+	mean_value: 129		// B component
+	mean_value: 126		// G
+	mean_value: 126		// R
 	}
 }
 \end{lstlisting} 
 
-Images and labels are loaded as \textit{.jpg} and \textit{.png} files directly from the hard drive (there are more methods that Caffe offers). The path to the \textit{image\_paths.txt} file that contains the image/label paths in the following format
+Images and labels are loaded as \textit{.jpg} and \textit{.png} files directly from the hard drive (there are more methods that Caffe offers, see \cite{caffe}). The path to the \textit{image\_paths.txt} file that contains the image/label paths in the following format
 
 $$
 \text{\textit{/path/to/image.jpg /path/to/label.png}}
@@ -86,7 +85,7 @@ The method used for the mean subtraction was the per-channel mean. The \textit{p
 
 \subsubsection{Output dimensions}
 
-In the original version, SegNet segments 11 classes. This corresponds to the pixel values in the \textit{.png} label files starting from zero. For instance, the segmentation mask for the class number 1 has a pixel value of 0 in the label file, etc. However, the goal of this thesis is to set the network to segment only two classes - \textit{path, background}. To change the size of the output classifier, it is necessary to change the output dimensions of the last \textit{conv} layer:
+In the original version, SegNet has 11 segmentation classes. This corresponds to the pixel values in the \textit{.png} label files starting from zero. For instance, the segmentation mask for the class number 1 has a pixel value of 0 in the label file, etc. However, the goal of this thesis is to set the network to segment only two classes - \textit{path, background}. To change the size of the output classifier, it is necessary to change the output dimensions of the last \textit{conv} layer:
 
 \begin{lstlisting}[caption={Setting number of outputs in \textit{train.prototxt} \cite{filip_github}},captionpos=b]
 
@@ -127,7 +126,7 @@ layer {
 	equivalently using natural frequency balancing.}} \cite{segnet}
 
 \begin{lstlisting}[caption={Output layers of \textit{train.prototxt} \cite{filip_github}},captionpos=b]
-// The Softmax classifier with cross-entropy loss
+// The softmax classifier with cross-entropy loss
 layer {
 	name: "loss"
 	type: "SoftmaxWithLoss"
@@ -139,7 +138,6 @@ layer {
 		weight_by_label_freqs: false	     
 	}
 }
-// The last layer of the network
 layer {
 	name: "accuracy"
 	type: "Accuracy"
@@ -167,7 +165,7 @@ $ ./caffe train -solver /path/to/segnet_solver.prototxt
 $ ./caffe train -solver /path/to/segnet_solver.prototxt -snapshot /path/to/snapshot_iter_XY.solverstate
 \end{lstlisting}
 
-The encoder and decoder weights are initialized using the MSRA method by default. Another scenario is when we want to use transfer learning (Caffe library has a Model Zoo where people share their network weights). In this case, Caffe needs a path to the \textit{.caffemodel} file of the pre-trained network. The corresponding command would be:
+The encoder and decoder weights are initialized using the MSRA method by default. Another scenario is when we want to use transfer learning (see Caffe Model Zoo in \cite{caffe} where people share their weights and networks). In this case, Caffe needs a path to the \textit{.caffemodel} file of the pre-trained network. The corresponding command would be:
 
 \begin{lstlisting}[language=bash]
 $ ./caffe train -solver /path/to/solver.prototxt -weights /path/to/pre_trained_weights.caffemodel
@@ -181,15 +179,15 @@ layer {
 	top: "conv1_1"
 	name: "conv1_1"
 	type: "Convolution"
-	# Learning rate factor - weights
+	// Learning rate factor - weights
 	param {
-		lr_mult: 0			# Remains unchanged during training
-		decay_mult: 0		# Remains unchanged during training
+		lr_mult: 0			// Zero value corresponds to freezing this parameter
+		decay_mult: 0		// Zero value corresponds to freezing this parameter
 	}
-	# Learning rate factor - thresholds
+	// Learning rate factor - thresholds
 	param {
-		lr_mult: 0			# Remains unchanged during training
-		decay_mult: 0		# Remains unchanged during training
+		lr_mult: 0			// Zero value corresponds to freezing this parameter
+		decay_mult: 0		// Zero originally, remains unchanged
 	}
 	.
 	.
@@ -219,7 +217,7 @@ The script takes the desired \textit{.caffemodel} file specified in \textit{snap
 // Inference, input layer
 name: "segnet_inference"
 input: "data"
-input_dim: 1	# Always 1 for SegNet
+input_dim: 1	// Always 1 for SegNet
 input_dim: 3
 input_dim: 360
 input_dim: 480
@@ -250,9 +248,9 @@ layer {
 	top: "label"
 	dense_image_data_param {
 		source: "/media/phil/SegNet/data/custom/val_linux.txt"	
-		batch_size: 1		# Always 1 for SegNet
+		batch_size: 1		// Always 1 for SegNet
 	}
-	# BGR order
+	// Per-channel mean, BGR
 	transform_param {
 		mean_value: 129
 		mean_value: 126
@@ -286,7 +284,7 @@ layer {
 	name: "conv1_1_bn"
 	type: "BN"
 	bn_param {
-		bn_mode: INFERENCE			# Inference mode of BN
+		bn_mode: INFERENCE			// Inference mode of this batch norm. layer
 		.
 		.
 		.
@@ -302,7 +300,7 @@ layer {
 	top: "pool5"
 	dropout_param {
 		dropout_ratio: 0.5
-		sample_weights_test: true	# For Monte Carlo Dropout
+		sample_weights_test: true	// For Monte Carlo Dropout
 	}
 }
 \end{lstlisting}
