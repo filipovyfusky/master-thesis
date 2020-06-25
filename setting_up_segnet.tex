@@ -13,9 +13,20 @@ The final train, validation and test datasets used contain 2600 + 90 + 179 image
 
 %The documentation for Caffe is not one of the best and sometimes it might be quite %tricky to find reasonable answers. Therefore, this section will give a brief %summary of the most important terms and parameters in Caffe library.
 
+\newpage
 \section{Setting up SegNet}
 
 Caffe implementation of ANN typically consists of four \textit{.prototxt} files: \textit{train.prototxt}, \textit{solver.prototxt}, \textit{test.prototxt} and \textit{inference.prototxt}. The \textit{train}, \textit{test} and \textit{inference} files are almost identical except for a few differences in the very first/last layers of the network. The \textit{train} file is used together with the \textit{solver} file to train the network. The network architecture is determined by the \textit{train} file and the parameters for optimization reside in the \textit{solver} file. The \textit{test} file is used by Caffe when one needs to test the network periodically during training on a validation dataset. \cite{caffe} The \textit{inference} file is used for running the trained network. The files used in this section are available at \cite{filip_github}
+
+\vspace{4mm}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics*[width=14cm, keepaspectratio]{obr/caffe.png}
+	\end{center}
+	\vspace{4mm}
+	\caption{Using Caffe implementation of SegNet - schematic diagram.} 
+	\label{kafe}
+\end{figure}
 
 \subsection{Solver settings}
 

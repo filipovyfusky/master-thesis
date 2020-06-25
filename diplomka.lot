@@ -1,2 +1,2 @@
 \babel@toc {english}{}
-\contentsline {table}{\numberline {5.1}{\ignorespaces Statistics for all SegNet variants on the \textit {test} dataset. The inference was ran on GPU. The learning rate of encoder layers was decreased by a factor of 10 during training.\relax }}{49}{table.caption.80}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Statistics for all SegNet variants on the \textit {test} dataset. The inference was ran on GPU. The learning rate of encoder layers was decreased by a factor of 10 during training.\relax }}{50}{table.caption.81}

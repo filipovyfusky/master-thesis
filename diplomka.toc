@@ -64,28 +64,28 @@
 \contentsline {subsection}{\numberline {4.3.3}Building Caffe for SegNet}{35}{subsection.4.3.3}
 \contentsline {section}{\numberline {4.4}Image annotation}{37}{section.4.4}
 \contentsline {subsubsection}{Labelbox}{37}{section*.67}
-\contentsline {section}{\numberline {4.5}Setting up SegNet}{37}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Solver settings}{37}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Training}{38}{subsection.4.5.2}
-\contentsline {subsubsection}{Input layer and input pre-processing}{38}{section*.68}
-\contentsline {subsubsection}{Output dimensions}{39}{section*.69}
-\contentsline {subsubsection}{Softmax classifier}{40}{section*.70}
-\contentsline {subsubsection}{Training initialization}{40}{section*.71}
-\contentsline {subsection}{\numberline {4.5.3}Inference}{42}{subsection.4.5.3}
-\contentsline {subsubsection}{Calculating statistics for batch normalisation}{42}{section*.72}
-\contentsline {subsubsection}{Running the segmentation}{42}{section*.73}
-\contentsline {subsection}{\numberline {4.5.4}Testing}{43}{subsection.4.5.4}
-\contentsline {subsection}{\numberline {4.5.5}Bayesian SegNet}{44}{subsection.4.5.5}
-\contentsline {subsection}{\numberline {4.5.6}SegNet Basic and Bayesian SegNet Basic}{45}{subsection.4.5.6}
-\contentsline {section}{\numberline {4.6}Optimization of hyperparameters}{46}{section.4.6}
-\contentsline {subsubsection}{Optimizer}{46}{section*.74}
-\contentsline {subsubsection}{Learning rate}{46}{section*.75}
-\contentsline {subsubsection}{Cross-validation strategy}{46}{section*.76}
-\contentsline {subsubsection}{Regularisation}{46}{section*.77}
-\contentsline {chapter}{\numberline {5}Results}{47}{chapter.5}
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{51}{chapter.6}
-\contentsline {chapter}{\numberline {7}Bibliography}{52}{chapter.7}
-\contentsline {chapter}{List of Abbreviations}{56}{section*.82}
-\contentsline {chapter}{List of Attachments}{57}{section*.83}
-\contentsline {chapter}{List of Figures}{59}{section*.84}
-\contentsline {chapter}{List of Tables}{60}{section*.85}
+\contentsline {section}{\numberline {4.5}Setting up SegNet}{38}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Solver settings}{38}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Training}{39}{subsection.4.5.2}
+\contentsline {subsubsection}{Input layer and input pre-processing}{39}{section*.69}
+\contentsline {subsubsection}{Output dimensions}{40}{section*.70}
+\contentsline {subsubsection}{Softmax classifier}{41}{section*.71}
+\contentsline {subsubsection}{Training initialization}{41}{section*.72}
+\contentsline {subsection}{\numberline {4.5.3}Inference}{43}{subsection.4.5.3}
+\contentsline {subsubsection}{Calculating statistics for batch normalisation}{43}{section*.73}
+\contentsline {subsubsection}{Running the segmentation}{43}{section*.74}
+\contentsline {subsection}{\numberline {4.5.4}Testing}{44}{subsection.4.5.4}
+\contentsline {subsection}{\numberline {4.5.5}Bayesian SegNet}{45}{subsection.4.5.5}
+\contentsline {subsection}{\numberline {4.5.6}SegNet Basic and Bayesian SegNet Basic}{46}{subsection.4.5.6}
+\contentsline {section}{\numberline {4.6}Optimization of hyperparameters}{47}{section.4.6}
+\contentsline {subsubsection}{Optimizer}{47}{section*.75}
+\contentsline {subsubsection}{Learning rate}{47}{section*.76}
+\contentsline {subsubsection}{Cross-validation strategy}{47}{section*.77}
+\contentsline {subsubsection}{Regularisation}{47}{section*.78}
+\contentsline {chapter}{\numberline {5}Results}{48}{chapter.5}
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{52}{chapter.6}
+\contentsline {chapter}{\numberline {7}Bibliography}{53}{chapter.7}
+\contentsline {chapter}{List of Abbreviations}{57}{section*.83}
+\contentsline {chapter}{List of Attachments}{58}{section*.84}
+\contentsline {chapter}{List of Figures}{60}{section*.85}
+\contentsline {chapter}{List of Tables}{61}{section*.86}

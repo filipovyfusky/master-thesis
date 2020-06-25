@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  25 JUN 2020 18:10
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2020.5.21)  25 JUN 2020 22:15
  restricted system commands enabled.
 **diplomka.tex
 (./diplomka.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.078 seconds
+luaotfload | main : initialization completed in 0.077 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1768,23 +1768,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[37](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/
-lmmono12-regular.luc) [38](load luc: /home/phil/.texlive2017/texmf-var/luatex-ca
-che/generic/fonts/otl/lmroman8-italic.luc)(load luc: /home/phil/.texlive2017/tex
-mf-var/luatex-cache/generic/fonts/otl/lmroman7-italic.luc) [39] [40]
-[41] [42] [43] [44] [45]) (./results.tex [46] [47]
-<obr/bayes_full_rough.png, id=1232, 1062.21844pt x 651.18282pt>
+[37]
+<obr/caffe.png, id=952, 661.0296pt x 363.9999pt>
+File: obr/caffe.png Graphic file (type png)
+<use obr/caffe.png>
+Package luatex.def Info: obr/caffe.png  used on input line 24.
+(luatex.def)             Requested size: 398.33858pt x 219.35138pt.
+ [38<./obr/caffe.png>](load luc: /home/phil/.texlive2017/texmf-var/luatex-cache/
+generic/fonts/otl/lmmono12-regular.luc) [39](load luc: /home/phil/.texlive2017/t
+exmf-var/luatex-cache/generic/fonts/otl/lmroman8-italic.luc)(load luc: /home/phi
+l/.texlive2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-italic.luc) [4
+0] [41] [42] [43] [44] [45] [46]) (./results.tex [47] [48]
+<obr/bayes_full_rough.png, id=1241, 1062.21844pt x 651.18282pt>
 File: obr/bayes_full_rough.png Graphic file (type png)
 <use obr/bayes_full_rough.png>
 Package luatex.def Info: obr/bayes_full_rough.png  used on input line 21.
 (luatex.def)             Requested size: 398.33858pt x 244.2029pt.
-<obr/bayes_full_rough_2.png, id=1234, 1073.51062pt x 651.18282pt>
+<obr/bayes_full_rough_2.png, id=1243, 1073.51062pt x 651.18282pt>
 File: obr/bayes_full_rough_2.png Graphic file (type png)
 <use obr/bayes_full_rough_2.png>
 Package luatex.def Info: obr/bayes_full_rough_2.png  used on input line 31.
 (luatex.def)             Requested size: 398.33858pt x 241.62941pt.
- [48<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
-<obr/result.png, id=1244, 2243.38126pt x 2695.06876pt>
+ [49<./obr/bayes_full_rough.png><./obr/bayes_full_rough_2.png>]
+<obr/result.png, id=1253, 2243.38126pt x 2695.06876pt>
 File: obr/result.png Graphic file (type png)
 <use obr/result.png>
 Package luatex.def Info: obr/result.png  used on input line 77.
@@ -1793,7 +1799,7 @@ Package luatex.def Info: obr/result.png  used on input line 77.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./discussion.tex [49] [50<./obr/result.png>]) (./Literatura.tex [51
+) (./discussion.tex [50] [51<./obr/result.png>]) (./Literatura.tex [52
 
 ]
 Underfull \hbox (badness 3078) in paragraph at lines 23--24
@@ -1813,7 +1819,7 @@ Underfull \hbox (badness 2762) in paragraph at lines 27--28
 Stock-holm, 2016 [cit. 2020-06-
  []
 
-[52]
+[53]
 Underfull \hbox (badness 7649) in paragraph at lines 31--32
 []\TU/lmr/m/n/12 BUSHAEV, Vi-taly. Adam — lat-est trends in deep learn-ing op
 -ti-miza-
@@ -1837,7 +1843,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 c7c08.
  []
 
-[53]
+[54]
 Underfull \hbox (badness 10000) in paragraph at lines 55--56
 \TU/lmtt/m/n/12 org/smash/record.jsf?pid=diva2%3A1051763&dswid=-[]6301$[][]\TU/
 lmr/m/n/12 . De-gree project.
@@ -1861,23 +1867,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--60
 ch.com/2016/11/07/
  []
 
-[54]) (./SeznamZkratek.tex [55]) (./SeznamPriloh.tex [56]) [57] (./diplomka.lof
+[55]) (./SeznamZkratek.tex [56]) (./SeznamPriloh.tex [57]) [58] (./diplomka.lof
 )
 \tf@lof=\write6
 
 \openout6 = diplomka.lof
- [58] [59] (./diplomka.lot)
+ [59] [60] (./diplomka.lot)
 \tf@lot=\write7
 
 \openout7 = diplomka.lot
- [60]
+ [61]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (./diplomka.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
 Package rerunfilecheck Info: File `diplomka.out' has not changed.
-(rerunfilecheck)             Checksum: 9200D3FC34B9297AB24F623125AEDA12;7296.
+(rerunfilecheck)             Checksum: 1FBEE93B8683D7319E1D53777B28A50B;7296.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1888,14 +1894,14 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 48094 strings out of 494480
+ 48107 strings out of 494480
  100000,1373583 words of node,token memory allocated
  929 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 8 glue, 1 kern, 47 attribute, 60 glue_spec, 47 attr
 ibute_list, 1 write, 36 pdf_action nodes
-   avail lists: 1:2,2:4158,3:1569,4:265,5:1210,6:3115,7:2126,8:638,9:2118,10:20,
+   avail lists: 1:2,2:4158,3:1569,4:259,5:1210,6:3115,7:2126,8:638,9:2118,10:20,
 11:307
- 50034 multiletter control sequences out of 65536+600000
+ 50039 multiletter control sequences out of 65536+600000
  117 fonts using 12718615 bytes
  62i,20n,100p,1407b,2105s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/share/texmf/fonts/opentype/public/lm/lmmono12-regular.otf></usr/share/texm
@@ -1920,10 +1926,10 @@ c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on diplomka.pdf (66 pages, 5689661 bytes).
+Output written on diplomka.pdf (67 pages, 5880603 bytes).
 
-PDF statistics: 1579 PDF objects out of 1728 (max. 8388607)
- 1353 compressed objects within 14 object streams
- 481 named destinations out of 1000 (max. 131072)
- 584 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1589 PDF objects out of 1728 (max. 8388607)
+ 1360 compressed objects within 14 object streams
+ 483 named destinations out of 1000 (max. 131072)
+ 593 words of extra memory for PDF output out of 10000 (max. 100000000)
 
