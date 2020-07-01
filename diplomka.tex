@@ -1,5 +1,5 @@
-%\documentclass[a4paper,twoside, 12pt]{report}% dvoustranný tisk
-\documentclass[12pt]{report}% jednostranný tisk
+\documentclass[a4paper,twoside, 12pt]{report}% dvoustranný tisk
+%\documentclass[12pt]{report}% jednostranný tisk
 % všechny soubory jsou v utf-8
 	\usepackage{ucs}% pro kódování UTF-8
 	\PrerenderUnicode{ěščřžýáíéĚŠČŘŽÝÁÍÉďťňĎŤŇůúÚóÓ} % předkreslení diakritiky, možno přidat/ubrat znaky podle potřeby							                  
@@ -93,6 +93,8 @@
 % Pro vložení titulního listu staženého ze Studisu stačí jen vkládáni PDF
 \usepackage{pdfpages} % Pro vkladání PDF souborů (s titulním listem apod.)
 \DeclareGraphicsExtensions{.png,.pdf}
+
+\pagenumbering{gobble}
 
 \begin{document}
 
