@@ -1,26 +1,33 @@
-\frametitle{Code listings}
+\frametitle{Implementace SegNet v Caffe}
+\begin{columns}
+		\column{0.6\textwidth}
+		\begin{itemize}
+			\item Caffe je knihovna pro neuronové sítě
+			\item Abstrakce vrstev CNN - snadné vytvoření architektury
+			\item Nutné sestavit ze zdrojového kódu, nejlépe pod Linuxem
+		\end{itemize}
+		\vspace{5mm}
+		\begin{figure}[h]
+			\begin{center}
+				\includegraphics[width=4cm, keepaspectratio]{caffe-logo.png}
+			\end{center}
+			\caption{Caffe logo}
+		\end{figure}
 
-\begin{lstlisting}[language=C,title={Sample code in C}]
-void setup(void) {
-uart_init(UART_BAUD_SELECT(UART_BAUD_RATE, F_CPU));  // UART mode 8N1
-esp8266_init();  // Initialize ESP8266 Wi-Fi module
-}
-\end{lstlisting}
-\vfill
-
-\begin{lstlisting}[language=vhdl,title={Sample code in VHDL}]
----------------------------------------------------------------
--- Entity declaration for hexadecimal to seven-segment decoder
----------------------------------------------------------------
-entity hex_to_7seg is
-port (hex_i: in  std_logic_vector(4-1 downto 0);
-seg_o: out std_logic_vector(7-1 downto 0));
-end entity hex_to_7seg;
-\end{lstlisting}
-
-\begin{lstlisting}[language=Matlab,title={Sample code in Matlab}]
-x = 0:0.05:5;
-y = sin(x.^2);
-figure
-plot(x,y)  % The plot function creates simple line plots of x and y values
-\end{lstlisting}
+		\column{0.3\textwidth}
+\begin{lstlisting}
+	layer {
+	bottom: "conv1"
+	top: "conv1D"
+	name: "conv1D"
+	type: "Conv"
+	param {
+	lr_mult: 1
+	decay_mult: 1
+	}
+	param {
+	lr_mult: 2
+	decay_mult: 0
+	}
+	\end{lstlisting}
+	\end{columns}
