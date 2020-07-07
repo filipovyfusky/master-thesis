@@ -1,4 +1,4 @@
-\frametitle{Implementace SegNet v Caffe}
+\frametitle{Implementace variant SegNetu v Caffe}
 \begin{columns}
 		\column{0.6\textwidth}
 		\begin{itemize}

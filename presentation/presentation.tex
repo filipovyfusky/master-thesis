@@ -16,6 +16,14 @@
 \usepackage{color} % Colour control for LaTeX documents
 \usepackage{bm} % Colour control for LaTeX documents
 
+\usepackage{makecell}
+\usepackage{multirow}
+
+\renewcommand\theadalign{cc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
 %% Copy your favorite logo from "vut_logo_archive/" to root folder 
 % and rename file to "logo.png"
 
@@ -255,7 +263,7 @@
 	\begin{gather}
 	\delta \phi = - \eta \frac{\partial L}{\partial \phi}
 	\end{gather}	
-	\noindent kde $ \eta $ je rychlost učení. Další detaily záleží na konktétním algoritmu.
+	\noindent kde $ \eta $ je rychlost učení. Další detaily záleží na konkrétním algoritmu.
 
 \end{enumerate}
 
@@ -303,8 +311,24 @@
 \end{figure}
 \end{frame}
 % ----------------------------------------------------------------------
+\begin{frame}{Bayesian SegNet}
+\textbf{Bayesian SegNet}
+\begin{itemize}
+	\item Architektura téměř shodná se SegNetem 
+	\item Navíc dovede určit nejistotu segmentace
+	\item Parametry sítě se náhodně nulují = 'více architektur najednou'
+\end{itemize}
+\vspace{5mm}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=10cm, keepaspectratio]{bayesian.jpg}
+	\end{center}
+	\caption{Bayesian SegNet} 	
+\end{figure}
+\end{frame}
+% ----------------------------------------------------------------------
 % https://tex.stackexchange.com/questions/130109/cant-insert-code-in-my-beamer-slide
-\begin{frame}[fragile]{Implementace SegNet v Caffe}
+\begin{frame}[fragile]{Implementace variant SegNetu v Caffe}
 	\begin{columns}
 		\column{0.6\textwidth}	
 		\begin{itemize}	
@@ -339,25 +363,79 @@
 	\end{columns}
 \end{frame}
 % ----------------------------------------------------------------------
-% https://en.wikibooks.org/wiki/LaTeX/Tables
-\begin{frame}{Table}
+\begin{frame}{Výsledky trénování}
+\textbf{Volba rychlosti učení $ \eta $}
+\begin{itemize}
+	\item Ladění tohoto parametru probíhá čistě experimentálně
+	\item Použití předtrénovaného enkodéru - vždy
+	\item Kontrola přeučení = úspěšnost na trénovací vs. validační množině dat	
+\end{itemize}
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=9cm, keepaspectratio]{result.png}
+	\end{center}		
+\end{figure}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Výsledky trénování}
 \begin{center}
-\begin{table}
-\caption{Your caption}
-\begin{tabular}{l | c | c | c | r}
-\textbf{Function name} & \textbf{Duration} & \textbf{Complexity} & \textbf{Length} & \textbf{Score}\\
-\hline \hline
-Algo 1 & 0.0159 & 0.50 & 125 & 78 \\
-Algo 2 & 0.0453 & 0.65 & 854 & 88 \\
-Algo 3 & 0.8642 & 0.77 &  84 & 95 \\
-Algo 4 & 0.0020 & 0.24 & 638 & 76 \\
-\end{tabular}
-\end{table}
+	\includemedia[
+	width=0.9\linewidth,
+	height=0.4\linewidth,
+	addresource=project2.mp4,
+	activate=pagevisible,
+	passcontext, 
+	playbutton=none,
+	flashvars={				
+		source=project2.mp4
+		&autoPlay=true
+		&loop=true
+	}
+	]{}{VPlayer.swf}
 \end{center}
 \end{frame}
 % ----------------------------------------------------------------------
+\begin{frame}{Výsledky trénování}
+\centering
+\includemedia[
+width=0.55\linewidth,
+height=0.5599\linewidth,
+addresource=project1.mp4,
+activate=pagevisible,
+passcontext, 
+playbutton=none,
+flashvars={				
+	source=project1.mp4
+	&autoPlay=true
+	&loop=true
+}
+]{}{VPlayer.swf}
+\end{frame}
+% ----------------------------------------------------------------------
+% https://en.wikibooks.org/wiki/LaTeX/Tables
+\begin{frame}{Výsledky trénování}
+\renewcommand{\arraystretch}{1.5}
+%\newcolumntype{C}{>{\centering\arraybackslash}p{3em}}
+\begin{table}[h]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\thead{Architektura} & \thead{IoU \\ 'pozadí'} & \thead{IoU \\ 'cesta'} & \thead{Čas \\ inference [ms] } & \thead{Trénovací \\ epocha [s] }\\		
+		\hline	
+		SegNet & 0.965 & 0.971 & 42 & 368 \\	
+		\hline	
+		\makecell{SegNet \\ Basic} & 0.966 & 0.972 & \textbf{23} & \textbf{312} \\	
+		\hline	
+		\makecell{Bayesian \\ SegNet} & 0.974 & 0.979 & 305 & 432 \\	
+		\hline	
+		\makecell{Bayesian \\ SegNet Basic} & 0.967 & 0.972 & 177 & \textbf{313} \\
+		\hline
+	\end{tabular}
+\end{table}
+\end{frame}
+% ----------------------------------------------------------------------
 % It is a common practice you already have reviewer(s) comments/questions before your presentation. Sometimes, it is useful to prepare extra slides to answer those questions.
-\begin{frame}{Reviewer's questions}
+\begin{frame}{Otázky oponenta}
 \begin{columns}
 \column{0.45\textwidth}
 \begin{exampleblock}{Question 1}

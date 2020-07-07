@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.21)  5 JUL 2020 22:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.21)  7 JUL 2020 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1107,9 +1107,30 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 \symboldpureletters=\mathgroup10
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen195
+\extrarowheight=\dimen196
+\NC@list=\toks49
+\extratabsurround=\skip57
+\backup@length=\skip58
+)
+\rotheadsize=\dimen197
+\c@nlinenum=\count166
+\TeXr@lab=\toks50
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip59
+\multirow@cntb=\count167
+\multirow@dima=\skip60
+\bigstrutjot=\dimen198
 ) (./themevut.sty
 Package: themevut 2018/05/22 Brno University of Technology theme
-
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemeinfolines.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemewhale.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerinnerthemerounded.sty)
@@ -1124,129 +1145,129 @@ Package: expl3 2018/02/21 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 Package: expl3 2018/02/21 L3 programming layer (code)
-\c_max_int=\count166
-\l_tmpa_int=\count167
-\l_tmpb_int=\count168
-\g_tmpa_int=\count169
-\g_tmpb_int=\count170
-\g__intarray_font_int=\count171
-\g__prg_map_int=\count172
-\c_log_iow=\count173
-\l_iow_line_count_int=\count174
-\l__iow_line_target_int=\count175
-\l__iow_one_indent_int=\count176
-\l__iow_indent_int=\count177
-\c_zero_dim=\dimen195
-\c_max_dim=\dimen196
-\l_tmpa_dim=\dimen197
-\l_tmpb_dim=\dimen198
-\g_tmpa_dim=\dimen199
-\g_tmpb_dim=\dimen256
-\c_zero_skip=\skip57
-\c_max_skip=\skip58
-\l_tmpa_skip=\skip59
-\l_tmpb_skip=\skip60
-\g_tmpa_skip=\skip61
-\g_tmpb_skip=\skip62
+\c_max_int=\count168
+\l_tmpa_int=\count169
+\l_tmpb_int=\count170
+\g_tmpa_int=\count171
+\g_tmpb_int=\count172
+\g__intarray_font_int=\count173
+\g__prg_map_int=\count174
+\c_log_iow=\count175
+\l_iow_line_count_int=\count176
+\l__iow_line_target_int=\count177
+\l__iow_one_indent_int=\count178
+\l__iow_indent_int=\count179
+\c_zero_dim=\dimen199
+\c_max_dim=\dimen256
+\l_tmpa_dim=\dimen257
+\l_tmpb_dim=\dimen258
+\g_tmpa_dim=\dimen259
+\g_tmpb_dim=\dimen260
+\c_zero_skip=\skip61
+\c_max_skip=\skip62
+\l_tmpa_skip=\skip63
+\l_tmpb_skip=\skip64
+\g_tmpa_skip=\skip65
+\g_tmpb_skip=\skip66
 \c_zero_muskip=\muskip12
 \c_max_muskip=\muskip13
 \l_tmpa_muskip=\muskip14
 \l_tmpb_muskip=\muskip15
 \g_tmpa_muskip=\muskip16
 \g_tmpb_muskip=\muskip17
-\l_keys_choice_int=\count178
-\c__fp_leading_shift_int=\count179
-\c__fp_middle_shift_int=\count180
-\c__fp_trailing_shift_int=\count181
-\c__fp_big_leading_shift_int=\count182
-\c__fp_big_middle_shift_int=\count183
-\c__fp_big_trailing_shift_int=\count184
-\c__fp_Bigg_leading_shift_int=\count185
-\c__fp_Bigg_middle_shift_int=\count186
-\c__fp_Bigg_trailing_shift_int=\count187
-\c__fp_rand_size_int=\count188
-\c__fp_rand_four_int=\count189
-\c__fp_rand_eight_int=\count190
-\l__sort_length_int=\count191
-\l__sort_min_int=\count192
-\l__sort_top_int=\count193
-\l__sort_max_int=\count194
-\l__sort_true_max_int=\count195
-\l__sort_block_int=\count196
-\l__sort_begin_int=\count197
-\l__sort_end_int=\count198
-\l__sort_A_int=\count199
-\l__sort_B_int=\count266
-\l__sort_C_int=\count267
-\l__tl_build_start_index_int=\count268
-\l__tl_build_index_int=\count269
-\l__tl_analysis_normal_int=\count270
-\l__tl_analysis_index_int=\count271
-\l__tl_analysis_nesting_int=\count272
-\l__tl_analysis_type_int=\count273
-\l__regex_internal_a_int=\count274
-\l__regex_internal_b_int=\count275
-\l__regex_internal_c_int=\count276
-\l__regex_balance_int=\count277
-\l__regex_group_level_int=\count278
-\l__regex_mode_int=\count279
-\c__regex_cs_in_class_mode_int=\count280
-\c__regex_cs_mode_int=\count281
-\l__regex_catcodes_int=\count282
-\l__regex_default_catcodes_int=\count283
-\c__regex_catcode_D_int=\count284
-\c__regex_catcode_S_int=\count285
-\c__regex_catcode_L_int=\count286
-\c__regex_catcode_O_int=\count287
-\c__regex_catcode_A_int=\count288
-\c__regex_all_catcodes_int=\count289
-\l__regex_show_lines_int=\count290
-\l__regex_min_state_int=\count291
-\l__regex_max_state_int=\count292
-\l__regex_left_state_int=\count293
-\l__regex_right_state_int=\count294
-\l__regex_capturing_group_int=\count295
-\l__regex_min_pos_int=\count296
-\l__regex_max_pos_int=\count297
-\l__regex_curr_pos_int=\count298
-\l__regex_start_pos_int=\count299
-\l__regex_success_pos_int=\count300
-\l__regex_curr_char_int=\count301
-\l__regex_curr_catcode_int=\count302
-\l__regex_last_char_int=\count303
-\l__regex_case_changed_char_int=\count304
-\l__regex_curr_state_int=\count305
-\l__regex_step_int=\count306
-\l__regex_min_active_int=\count307
-\l__regex_max_active_int=\count308
-\l__regex_replacement_csnames_int=\count309
-\l__regex_match_count_int=\count310
-\l__regex_min_submatch_int=\count311
-\l__regex_submatch_int=\count312
-\l__regex_zeroth_submatch_int=\count313
-\g__regex_trace_regex_int=\count314
+\l_keys_choice_int=\count180
+\c__fp_leading_shift_int=\count181
+\c__fp_middle_shift_int=\count182
+\c__fp_trailing_shift_int=\count183
+\c__fp_big_leading_shift_int=\count184
+\c__fp_big_middle_shift_int=\count185
+\c__fp_big_trailing_shift_int=\count186
+\c__fp_Bigg_leading_shift_int=\count187
+\c__fp_Bigg_middle_shift_int=\count188
+\c__fp_Bigg_trailing_shift_int=\count189
+\c__fp_rand_size_int=\count190
+\c__fp_rand_four_int=\count191
+\c__fp_rand_eight_int=\count192
+\l__sort_length_int=\count193
+\l__sort_min_int=\count194
+\l__sort_top_int=\count195
+\l__sort_max_int=\count196
+\l__sort_true_max_int=\count197
+\l__sort_block_int=\count198
+\l__sort_begin_int=\count199
+\l__sort_end_int=\count266
+\l__sort_A_int=\count267
+\l__sort_B_int=\count268
+\l__sort_C_int=\count269
+\l__tl_build_start_index_int=\count270
+\l__tl_build_index_int=\count271
+\l__tl_analysis_normal_int=\count272
+\l__tl_analysis_index_int=\count273
+\l__tl_analysis_nesting_int=\count274
+\l__tl_analysis_type_int=\count275
+\l__regex_internal_a_int=\count276
+\l__regex_internal_b_int=\count277
+\l__regex_internal_c_int=\count278
+\l__regex_balance_int=\count279
+\l__regex_group_level_int=\count280
+\l__regex_mode_int=\count281
+\c__regex_cs_in_class_mode_int=\count282
+\c__regex_cs_mode_int=\count283
+\l__regex_catcodes_int=\count284
+\l__regex_default_catcodes_int=\count285
+\c__regex_catcode_D_int=\count286
+\c__regex_catcode_S_int=\count287
+\c__regex_catcode_L_int=\count288
+\c__regex_catcode_O_int=\count289
+\c__regex_catcode_A_int=\count290
+\c__regex_all_catcodes_int=\count291
+\l__regex_show_lines_int=\count292
+\l__regex_min_state_int=\count293
+\l__regex_max_state_int=\count294
+\l__regex_left_state_int=\count295
+\l__regex_right_state_int=\count296
+\l__regex_capturing_group_int=\count297
+\l__regex_min_pos_int=\count298
+\l__regex_max_pos_int=\count299
+\l__regex_curr_pos_int=\count300
+\l__regex_start_pos_int=\count301
+\l__regex_success_pos_int=\count302
+\l__regex_curr_char_int=\count303
+\l__regex_curr_catcode_int=\count304
+\l__regex_last_char_int=\count305
+\l__regex_case_changed_char_int=\count306
+\l__regex_curr_state_int=\count307
+\l__regex_step_int=\count308
+\l__regex_min_active_int=\count309
+\l__regex_max_active_int=\count310
+\l__regex_replacement_csnames_int=\count311
+\l__regex_match_count_int=\count312
+\l__regex_min_submatch_int=\count313
+\l__regex_submatch_int=\count314
+\l__regex_zeroth_submatch_int=\count315
+\g__regex_trace_regex_int=\count316
 \c_empty_box=\box55
 \l_tmpa_box=\box56
 \l_tmpb_box=\box57
 \g_tmpa_box=\box58
 \g_tmpb_box=\box59
-\l__box_top_dim=\dimen257
-\l__box_bottom_dim=\dimen258
-\l__box_left_dim=\dimen259
-\l__box_right_dim=\dimen260
-\l__box_top_new_dim=\dimen261
-\l__box_bottom_new_dim=\dimen262
-\l__box_left_new_dim=\dimen263
-\l__box_right_new_dim=\dimen264
+\l__box_top_dim=\dimen261
+\l__box_bottom_dim=\dimen262
+\l__box_left_dim=\dimen263
+\l__box_right_dim=\dimen264
+\l__box_top_new_dim=\dimen265
+\l__box_bottom_new_dim=\dimen266
+\l__box_left_new_dim=\dimen267
+\l__box_right_new_dim=\dimen268
 \l__box_internal_box=\box60
 \l__coffin_internal_box=\box61
-\l__coffin_internal_dim=\dimen265
-\l__coffin_offset_x_dim=\dimen266
-\l__coffin_offset_y_dim=\dimen267
-\l__coffin_x_dim=\dimen268
-\l__coffin_y_dim=\dimen269
-\l__coffin_x_prime_dim=\dimen270
-\l__coffin_y_prime_dim=\dimen271
+\l__coffin_internal_dim=\dimen269
+\l__coffin_offset_x_dim=\dimen270
+\l__coffin_offset_y_dim=\dimen271
+\l__coffin_x_dim=\dimen272
+\l__coffin_y_dim=\dimen273
+\l__coffin_x_prime_dim=\dimen274
+\l__coffin_y_prime_dim=\dimen275
 \c_empty_coffin=\box62
 \l__coffin_aligned_coffin=\box63
 \l__coffin_aligned_internal_coffin=\box64
@@ -1255,20 +1276,20 @@ Package: expl3 2018/02/21 L3 programming layer (code)
 \l__coffin_display_coffin=\box67
 \l__coffin_display_coord_coffin=\box68
 \l__coffin_display_pole_coffin=\box69
-\l__coffin_display_offset_dim=\dimen272
-\l__coffin_display_x_dim=\dimen273
-\l__coffin_display_y_dim=\dimen274
-\l__coffin_bounding_shift_dim=\dimen275
-\l__coffin_left_corner_dim=\dimen276
-\l__coffin_right_corner_dim=\dimen277
-\l__coffin_bottom_corner_dim=\dimen278
-\l__coffin_top_corner_dim=\dimen279
-\l__coffin_scaled_total_height_dim=\dimen280
-\l__coffin_scaled_width_dim=\dimen281
+\l__coffin_display_offset_dim=\dimen276
+\l__coffin_display_x_dim=\dimen277
+\l__coffin_display_y_dim=\dimen278
+\l__coffin_bounding_shift_dim=\dimen279
+\l__coffin_left_corner_dim=\dimen280
+\l__coffin_right_corner_dim=\dimen281
+\l__coffin_bottom_corner_dim=\dimen282
+\l__coffin_top_corner_dim=\dimen283
+\l__coffin_scaled_total_height_dim=\dimen284
+\l__coffin_scaled_width_dim=\dimen285
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
 File: l3pdfmode.def 2017/03/18 v L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count315
+\l__driver_color_stack_int=\count317
 \l__driver_tmp_box=\box70
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
@@ -1276,47 +1297,47 @@ Package: l3keys2e 2018/02/21 LaTeX2e option processing using LaTeX3 keys
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2018/02/21 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count316
-\g__xparse_grabber_int=\count317
-\l__xparse_m_args_int=\count318
-\l__xparse_mandatory_args_int=\count319
-\l__xparse_v_nesting_int=\count320
+\l__xparse_current_arg_int=\count318
+\g__xparse_grabber_int=\count319
+\l__xparse_m_args_int=\count320
+\l__xparse_mandatory_args_int=\count321
+\l__xparse_v_nesting_int=\count322
 )
 Package: media9 2018/02/28 v0.90 acrobat-9/X compatible media
-\g_mix_pkgresizeflag_int=\count321
+\g_mix_pkgresizeflag_int=\count323
 
 (/usr/share/texlive/texmf-dist/tex/latex/media9/pdfbase.sty
 Package: pdfbase 2018/02/28 v0.21 driver independent access to low-level PDF fe
 atures
-\g_pbs_page_int=\count322
-\g_pbs_oc_int=\count323
+\g_pbs_page_int=\count324
+\g_pbs_oc_int=\count325
 )
 (/usr/share/texlive/texmf-dist/tex/latex/ocgx2/ocgbase.sty
 Package: ocgbase 2017/09/29 v0.12 support package for ocgx2.sty
-\g_ocgbase_nd_int=\count324
+\g_ocgbase_nd_int=\count326
 )
 \l_mix_poster_box=\box71
-\g_mix_wd_dim=\dimen282
-\g_mix_ht_dim=\dimen283
-\g_mix_dp_dim=\dimen284
-\g_mix_rmcnt_int=\count325
-\l_mix_viewcnt_int=\count326
-\g@mix@page@int=\count327
-\g_mix_resizeflag_int=\count328
-\l_mix_lineno_int=\count329
+\g_mix_wd_dim=\dimen286
+\g_mix_ht_dim=\dimen287
+\g_mix_dp_dim=\dimen288
+\g_mix_rmcnt_int=\count327
+\l_mix_viewcnt_int=\count328
+\g@mix@page@int=\count329
+\g_mix_resizeflag_int=\count330
+\l_mix_lineno_int=\count331
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
 . Defining command \addmediapath with sig. 'm' on line 804.
 .................................................
 \l_mix_pbtn_box=\box72
-\mix@btn@dim=\dimen285
+\mix@btn@dim=\dimen289
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
 . Defining command \includemedia with sig. 'O{}mm' on line 1212.
 .................................................
-\g_mix_mbtncnt_int=\count330
+\g_mix_mbtncnt_int=\count332
 .................................................
 . LaTeX info: "xparse/define-command"
 . 
@@ -1338,31 +1359,31 @@ File: il2cmtt.fd 1997/08/20 CSLaTeX font definitions
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 71.
+(hyperref)                removing `\textasciicaron' on input line 79.
 
 (./presentation.aux)
 \openout1 = `presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 71.
-LaTeX Font Info:    Try loading font information for IL2+cmr on input line 71.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 79.
+LaTeX Font Info:    Try loading font information for IL2+cmr on input line 79.
  (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmr.fd
 File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 71.
+LaTeX Font Info:    ... okay on input line 79.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1399,17 +1420,17 @@ LaTeX Font Info:    ... okay on input line 71.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count331
-\scratchdimen=\dimen286
+\scratchcounter=\count333
+\scratchdimen=\dimen290
 \scratchbox=\box73
-\nofMPsegments=\count332
-\nofMParguments=\count333
-\everyMPshowfont=\toks49
-\MPscratchCnt=\count334
-\MPscratchDim=\dimen287
-\MPnumerator=\count335
-\makeMPintoPDFobject=\count336
-\everyMPtoPDFconversion=\toks50
+\nofMPsegments=\count334
+\nofMParguments=\count335
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count336
+\MPscratchDim=\dimen291
+\MPnumerator=\count337
+\makeMPintoPDFobject=\count338
+\everyMPtoPDFconversion=\toks52
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1429,7 +1450,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 71.
+Package hyperref Info: Link coloring OFF on input line 79.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1437,80 +1458,80 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count337
+\c@section@level=\count339
 )
-LaTeX Info: Redefining \ref on input line 71.
-LaTeX Info: Redefining \pageref on input line 71.
-LaTeX Info: Redefining \nameref on input line 71.
+LaTeX Info: Redefining \ref on input line 79.
+LaTeX Info: Redefining \pageref on input line 79.
+LaTeX Info: Redefining \nameref on input line 79.
 
 (./presentation.out) (./presentation.out)
 \@outlinefile=\write5
 \openout5 = `presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 71.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 79.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 71.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 79.
 \symnumbers=\mathgroup11
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 71.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 79.
 LaTeX Font Info:    Encoding `OT1' has changed to `IL2' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 71
+(Font)              `pureletters' in the math version `normal' on input line 79
 .
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/mathkerncmss/m/sl --> IL2/cmss/m/it on input line 7
-1.
+9.
 LaTeX Font Info:    Encoding `OT1' has changed to `IL2' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 71.
+(Font)              `pureletters' in the math version `bold' on input line 79.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/bx/sl --> IL2/cmss/m/it on input line 
-71.
+79.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> IL2/cmr/m/n on input line 71.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 71.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 71.
+(Font)                  OT1/cmss/m/n --> IL2/cmr/m/n on input line 79.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 79.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> IL2/cmss/m/n on input line 71.
+(Font)                  OT1/cmss/m/n --> IL2/cmss/m/n on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> IL2/cmss/m/n on input line 71.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 71.
+(Font)                  OT1/cmss/bx/n --> IL2/cmss/m/n on input line 79.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> IL2/cmss/m/it on input line 71.
+(Font)                  OT1/cmr/m/it --> IL2/cmss/m/it on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> IL2/cmss/m/it on input line 71.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 71.
+(Font)                  OT1/cmr/bx/it --> IL2/cmss/m/it on input line 79.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 71.
+(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 71.
+(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 79.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 71.
+(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 79.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 71.
+(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> IL2/cmr/bx/n on input line 71.
+(Font)                  OT1/cmss/bx/n --> IL2/cmr/bx/n on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  IL2/cmss/bx/n --> IL2/cmss/bx/n on input line 71.
+(Font)                  IL2/cmss/bx/n --> IL2/cmss/bx/n on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 71.
+(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 71.
+(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 79.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  IL2/cmtt/m/n --> IL2/cmtt/bx/n on input line 71.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 71.
+(Font)                  IL2/cmtt/m/n --> IL2/cmtt/bx/n on input line 79.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 79.
 LaTeX Font Info:    Encoding `IL2' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 71
+(Font)              `pureletters' in the math version `normal' on input line 79
 .
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  IL2/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 7
-1.
+9.
 LaTeX Font Info:    Encoding `IL2' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 71.
+(Font)              `pureletters' in the math version `bold' on input line 79.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  IL2/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-71.
+79.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 71.
+ut line 79.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1538,18 +1559,18 @@ Dictionary: translator-theorem-dictionary, Language: English
 ) (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
-\c@lstlisting=\count338
+\c@lstlisting=\count340
 
 (./presentation.nav)
 <logo4.png, id=13, 2965.0775pt x 602.25pt>
 File: logo4.png Graphic file (type png)
 <use logo4.png>
-Package pdftex.def Info: logo4.png  used on input line 80.
+Package pdftex.def Info: logo4.png  used on input line 88.
 (pdftex.def)             Requested size: 133.82991pt x 27.18774pt.
 
 
 LaTeX Font Warning: Font shape `IL2/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 80.
+(Font)              size <5> substituted on input line 88.
 
 [1
 
@@ -1557,22 +1578,22 @@ LaTeX Font Warning: Font shape `IL2/cmss/m/n' in size <4> not available
 <logo3.png, id=26, 2965.0775pt x 602.25pt>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 93.
+Package pdftex.def Info: logo3.png  used on input line 101.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [2
 
  <./logo3.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 123.
+LaTeX Font Info:    Try loading font information for U+msa on input line 131.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 123.
+LaTeX Font Info:    Try loading font information for U+msb on input line 131.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 123.
+line 131.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1582,21 +1603,21 @@ thkerncmss.
 <<VPlayer.swf>><<cut.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 123.
+Package pdftex.def Info: logo3.png  used on input line 131.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [3
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 139.
+Package pdftex.def Info: logo3.png  used on input line 147.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [4
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 151.
+Package pdftex.def Info: logo3.png  used on input line 159.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [5
 
@@ -1604,11 +1625,11 @@ Package pdftex.def Info: logo3.png  used on input line 151.
 <linsep.png, id=71, 655.69969pt x 607.51968pt>
 File: linsep.png Graphic file (type png)
 <use linsep.png>
-Package pdftex.def Info: linsep.png  used on input line 177.
+Package pdftex.def Info: linsep.png  used on input line 185.
 (pdftex.def)             Requested size: 142.26378pt x 131.81001pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 177.
+Package pdftex.def Info: logo3.png  used on input line 185.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [6
 
@@ -1616,11 +1637,11 @@ Package pdftex.def Info: logo3.png  used on input line 177.
 <maps2.png, id=80, 601.4972pt x 314.67563pt>
 File: maps2.png Graphic file (type png)
 <use maps2.png>
-Package pdftex.def Info: maps2.png  used on input line 186.
+Package pdftex.def Info: maps2.png  used on input line 194.
 (pdftex.def)             Requested size: 341.43306pt x 178.62752pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 186.
+Package pdftex.def Info: logo3.png  used on input line 194.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [7
 
@@ -1628,11 +1649,11 @@ Package pdftex.def Info: logo3.png  used on input line 186.
 <maps.png, id=89, 1027.58907pt x 720.44156pt>
 File: maps.png Graphic file (type png)
 <use maps.png>
-Package pdftex.def Info: maps.png  used on input line 195.
+Package pdftex.def Info: maps.png  used on input line 203.
 (pdftex.def)             Requested size: 284.52756pt x 199.47968pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 195.
+Package pdftex.def Info: logo3.png  used on input line 203.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 
 [8
@@ -1641,18 +1662,18 @@ Package pdftex.def Info: logo3.png  used on input line 195.
 <segnet.png, id=97, 968.11688pt x 338.01282pt>
 File: segnet.png Graphic file (type png)
 <use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 204.
+Package pdftex.def Info: segnet.png  used on input line 212.
 (pdftex.def)             Requested size: 426.79134pt x 149.01492pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 204.
+Package pdftex.def Info: logo3.png  used on input line 212.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [9
 
  <./segnet.png>]<<convo.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 230.
+Package pdftex.def Info: logo3.png  used on input line 238.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [10
 
@@ -1660,18 +1681,18 @@ Package pdftex.def Info: logo3.png  used on input line 230.
 <comp.png, id=120, 848.4197pt x 262.73157pt>
 File: comp.png Graphic file (type png)
 <use comp.png>
-Package pdftex.def Info: comp.png  used on input line 247.
+Package pdftex.def Info: comp.png  used on input line 255.
 (pdftex.def)             Requested size: 341.43306pt x 105.7322pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 247.
+Package pdftex.def Info: logo3.png  used on input line 255.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [11
 
  <./comp.png>]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 262.
+Package pdftex.def Info: logo3.png  used on input line 270.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 
 [12
@@ -1680,37 +1701,49 @@ Package pdftex.def Info: logo3.png  used on input line 262.
 <dataset.png, id=136, 487.06969pt x 249.18094pt>
 File: dataset.png Graphic file (type png)
 <use dataset.png>
-Package pdftex.def Info: dataset.png  used on input line 280.
+Package pdftex.def Info: dataset.png  used on input line 288.
 (pdftex.def)             Requested size: 170.71652pt x 87.33629pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 280.
+Package pdftex.def Info: logo3.png  used on input line 288.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [13
 
  <./dataset.png>]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 289.
+Package pdftex.def Info: logo3.png  used on input line 297.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [14
 
 ]
 File: segnet.png Graphic file (type png)
 <use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 304.
+Package pdftex.def Info: segnet.png  used on input line 312.
 (pdftex.def)             Requested size: 284.52756pt x 99.34155pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 304.
+Package pdftex.def Info: logo3.png  used on input line 312.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [15
 
 ]
+<bayesian.jpg, id=157, 963.6pt x 241.65282pt>
+File: bayesian.jpg Graphic file (type jpg)
+<use bayesian.jpg>
+Package pdftex.def Info: bayesian.jpg  used on input line 328.
+(pdftex.def)             Requested size: 284.52756pt x 71.35333pt.
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 328.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [16
+
+ <./bayesian.jpg>]
 \openout4 = `presentation.vrb'.
 
  (./presentation.vrb
-<caffe-logo.png, id=157, 611.28375pt x 211.79124pt>
+<caffe-logo.png, id=164, 611.28375pt x 211.79124pt>
 File: caffe-logo.png Graphic file (type png)
 <use caffe-logo.png>
 Package pdftex.def Info: caffe-logo.png  used on input line 12.
@@ -1718,23 +1751,54 @@ Package pdftex.def Info: caffe-logo.png  used on input line 12.
 )
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 340.
+Package pdftex.def Info: logo3.png  used on input line 364.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [16
+
+[17
 
  <./caffe-logo.png>]
+<result.png, id=173, 1073.51062pt x 651.18282pt>
+File: result.png Graphic file (type png)
+<use result.png>
+Package pdftex.def Info: result.png  used on input line 378.
+(pdftex.def)             Requested size: 256.0748pt x 155.33319pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 357.
+Package pdftex.def Info: logo3.png  used on input line 378.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [17
+ [18
+
+ <./result.png>]<<project2.mp4>>
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 396.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [19
+
+]<<project1.mp4>>
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 413.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+
+Overfull \vbox (2.96123pt too high) detected at line 413
+ []
+
+[20
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 372.
+Package pdftex.def Info: logo3.png  used on input line 435.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [18
+ [21
+
+]
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 450.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [22
 
 ]
 \tf@nav=\write6
@@ -1746,11 +1810,11 @@ Package pdftex.def Info: logo3.png  used on input line 372.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 454.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 454.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 454.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 454.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1760,13 +1824,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 29759 strings out of 494816
- 568832 string characters out of 6177863
- 652592 words of memory out of 5000000
- 32505 multiletter control sequences out of 15000+600000
+ 30037 strings out of 494816
+ 572215 string characters out of 6177863
+ 656582 words of memory out of 5000000
+ 32761 multiletter control sequences out of 15000+600000
  555510 words of font info for 93 fonts, out of 8000000 for 9000
  69 hyphenation exceptions out of 8191
- 56i,18n,63p,10354b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,17n,63p,10354b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
@@ -1779,10 +1843,10 @@ ic/cs/csss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss12.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss8.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/cs/csssbx10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/cs/cstt10.pfb>
-Output written on presentation.pdf (18 pages, 27275137 bytes).
+Output written on presentation.pdf (22 pages, 114520212 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 171 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 174 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 209 compressed objects within 3 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 240 words of extra memory for PDF output out of 10000 (max. 10000000)
 
