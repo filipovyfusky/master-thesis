@@ -86,20 +86,6 @@
 	% Print the title page as the first slide
 	\titlepage
 	\end{frame}
-
-% ----------------------------------------------------------------------
-% https://cs.overleaf.com/learn/latex/Lists
-
-\begin{frame}{Cíle práce}
-	\begin{enumerate}
-		\item Nastudování problematiky segmentace obrazu pomocí konvolučních neuronových sítí
-		\item Výběr perspektivní architektury sítě spolu s její implementací
-		\item Vytvoření vlastní trénovací množiny obrázků
-		\item Vytvoření segmentovaného obrazu
-		\item Vyhodnocení úspěšnosti segmentace
-	\end{enumerate}	
-\end{frame}
-
 % ----------------------------------------------------------------------
 
 \begin{frame}{Sémantická segmentace}
@@ -130,21 +116,18 @@
 	\end{center}
 \end{frame}
 % ----------------------------------------------------------------------
-% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-\begin{frame}{Neuronové sítě a učení s učitelem}
-	\textbf{Úloha neuronové sítě}
-	\begin{itemize}
-		\item Aproximace obecné funkce $y=f(x;\phi)$ funkcí $ y^* = f^*(x;\phi)	$ řešením:					
-		\begin{gather}
-		\phi \leftarrow \, \text{arg min} \, L(y, f^*(x;\phi))	
-		\end{gather} 
-		 		
-		\noindent kde $ \phi $ jsou trénovatelné parametry. \\~\\
-		Funkce $ L $ se nazývá \textbf{hodnotící funkce}. Parametry $ \phi $ jsou nalezeny učením sítě \\ tzv. \textbf{učením s učitelem}.
-		
-		VYSVETLIT, ZE NEURONY JSOU JEN SLOZENE FUNKCE
-	\end{itemize}
+% https://cs.overleaf.com/learn/latex/Lists
+
+\begin{frame}{Cíle práce}
+\begin{enumerate}
+	\item Nastudování problematiky segmentace obrazu pomocí konvolučních neuronových sítí
+	\item Výběr perspektivní architektury sítě spolu s její implementací
+	\item Vytvoření vlastní trénovací množiny obrázků
+	\item Vytvoření segmentovaného obrazu
+	\item Vyhodnocení úspěšnosti segmentace
+\end{enumerate}	
 \end{frame}
+
 % ----------------------------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
 \begin{frame}{Neuronové sítě a učení s učitelem}
@@ -156,6 +139,48 @@
 	\item Algoritmus je robustnější
 	
 \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\begin{frame}{Neuronové sítě a učení s učitelem}
+\textbf{Úloha neuronové sítě}
+\begin{itemize}
+\item Aproximace obecné funkce $y=f(x;\phi)$ funkcí $ y^* = f^*(x;\phi)	$ řešením:
+\vspace{3mm}					
+\begin{gather}
+\phi \leftarrow \, \text{arg min} \, L(y, f^*(x;\phi))	
+\end{gather} 
+
+Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výstupem). Parametry $ \phi $ jsou nalezeny trénováním sítě neboli optimalizací \textit{L}
+\item Jakmile trénování skončí, nastává \textbf{inference} = používání sítě s již pevnými parametry $ \phi $ a novými daty
+\end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování neuronové sítě}
+\textbf{Gradientní optimalizace hodnotící funkce - kroky}
+\begin{enumerate}
+	\item Derivace hodnotící $ L $ funkce podle daného parametru $ \phi $: $ \frac{\partial L}{\partial \phi} $
+	\item Změna parametru \textbf{proti} směru derivace (hledání minima)
+	\begin{gather}
+	\delta \phi = - \eta \frac{\partial L}{\partial \phi}
+	\end{gather}	
+	\noindent kde $ \eta $ je rychlost učení. Další detaily záleží na konkrétním algoritmu.	
+\end{enumerate}
+	\begin{center}		
+	\includemedia[
+	width=0.35\linewidth,
+	height=0.25\linewidth,
+	addresource=opti.mp4,
+	activate=pagevisible,
+	passcontext, 
+	playbutton=none,
+	flashvars={				
+		source=opti.mp4
+		&autoPlay=true
+		&loop=true
+	}
+	]{}{VPlayer.swf}			
+\end{center}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Úloha klasifikace}
@@ -180,23 +205,18 @@
 		\end{center}
 		\caption{Úloha klasifikace} 	
 	\end{figure}
-\end{columns}	
-
+\end{columns}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{}
+\centering
+{\Large Konvoluční neuronové sítě (CNN)}	
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{CNN - konvoluční neuronové sítě}
 	\begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=12cm, keepaspectratio]{maps2.png}
-	\end{center}
-	\caption{Mapy prvků v obraze} 	
-\end{figure}
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{CNN - konvoluční neuronové sítě}
-\begin{figure}[h]
-	\begin{center}
-		\includegraphics[width=10cm, keepaspectratio]{maps.png}
+		\includegraphics[width=9cm, keepaspectratio]{maps.png}
 	\end{center}
 	\caption{Mapy prvků v obraze} 	
 \end{figure}
@@ -211,8 +231,8 @@
 \end{figure}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-\textbf{Hlavní trénovatelné parametry CNN}
+\begin{frame}{Trénování architektur 'enkodér-dekodér'}
+\textbf{Hlavní trénovatelné parametry}
 
 \begin{itemize}
 	\item Hodnoty konvolučních jader (jednotlivých filtrů)
@@ -237,41 +257,10 @@
 
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-\textbf{Trénování = optimalizace parametrů CNN}
-
-\begin{itemize}
-	\item Iterativní porovnávání požadovaných a aproximovaných výstupů segmentace ($ y $, $ y^* $)
-	\item Minimalizace hodnotící funkce $ L = f(y,y^*) $ 
-\end{itemize}
-\vspace{5mm}
-\begin{figure}[h]
-	\begin{center}
-		\includegraphics[width=12cm, keepaspectratio]{comp.png}
-	\end{center}
-	\caption{Hodnocení úspěšnosti segmentace} 	
-\end{figure}
-
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-\textbf{Gradientní optimalizace hodnotící funkce - kroky}
-
-\begin{enumerate}
-	\item Derivace hodnotící $ L $ funkce podle daného parametru $ \phi $: $ \frac{\partial L}{\partial \phi} $
-	\item Změna parametru \textbf{proti} směru derivace (hledání minima)
-	\begin{gather}
-	\delta \phi = - \eta \frac{\partial L}{\partial \phi}
-	\end{gather}	
-	\noindent kde $ \eta $ je rychlost učení. Další detaily záleží na konkrétním algoritmu.
-
-\end{enumerate}
-
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
+\begin{frame}{Trénování architektur 'enkodér-dekodér'}
 \textbf{Data pro trénování}
 \begin{itemize}
+	\item V případě segmentace množina dvojic obrázků: \textbf{scéna + segmentační maska}
 	\item Cílem je zabránit přeučení sítě
 	\begin{itemize}
 		\item (trénovací + validační) + testovací data
@@ -282,18 +271,9 @@
 	\begin{center}
 		\includegraphics[width=6cm, keepaspectratio]{dataset.png}
 	\end{center}
-	\caption{Hodnocení úspěšnosti segmentace} 	
+	\caption{Rozdělení datové množiny} 	
 \end{figure}
 
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-\textbf{Předtrénovaná síť}
-\begin{itemize}
-	\item Cílem enkodéru je pouze detekovat obecné prvky v obraze
-	\item Možnost použít již natrénovaný enkodér pro \textbf{inicializaci} parametrů
-	\item V praxi se toto schéma používa skoro vždy!
-\end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{SegNet}
@@ -367,8 +347,6 @@
 \textbf{Volba rychlosti učení $ \eta $}
 \begin{itemize}
 	\item Ladění tohoto parametru probíhá čistě experimentálně
-	\item Použití předtrénovaného enkodéru - vždy
-	\item Kontrola přeučení = úspěšnost na trénovací vs. validační množině dat	
 \end{itemize}
 \begin{figure}[h]
 	\begin{center}
@@ -420,7 +398,7 @@ flashvars={
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		\thead{Architektura} & \thead{IoU \\ 'pozadí'} & \thead{IoU \\ 'cesta'} & \thead{Čas \\ inference [ms] } & \thead{Trénovací \\ epocha [s] }\\		
+		\thead{Architektura} & \thead{Úspěšnost \\ 'pozadí'} & \thead{Úspěšnost \\ 'cesta'} & \thead{Čas \\ inference [ms] } & \thead{Trénovací \\ epocha [s] }\\		
 		\hline	
 		SegNet & 0.965 & 0.971 & 42 & 368 \\	
 		\hline	
@@ -434,21 +412,34 @@ flashvars={
 \end{table}
 \end{frame}
 % ----------------------------------------------------------------------
+\begin{frame}{}
+	\centering
+	{\Large Děkuji za pozornost}	
+\end{frame}
+% ----------------------------------------------------------------------
 % It is a common practice you already have reviewer(s) comments/questions before your presentation. Sometimes, it is useful to prepare extra slides to answer those questions.
 \begin{frame}{Otázky oponenta}
 \begin{columns}
 \column{0.45\textwidth}
-\begin{exampleblock}{Question 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+\begin{exampleblock}{Dotaz č. 1}
+V práci je použita segmentace binární (cesta/necesta). Dala by se Vámi použitá metoda využít i pro segmentaci překážek na cestě? Pokud ano, jak velká datová množina pro trénování by musela být použita? Jak konkrétně by modifikace metody vypadala?
 \end{exampleblock}
 
 \column{0.45\textwidth}
-\begin{block}{Answer 1}
+\begin{block}{Odpověď}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
 \end{block}
 \end{columns}
 \end{frame}
-
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování architektur 'enkodér-dekodér'}
+\textbf{Předtrénovaná síť}
+\begin{itemize}
+	\item Cílem enkodéru je pouze detekovat obecné prvky v obraze
+	\item Možnost použít již natrénovaný enkodér pro \textbf{inicializaci} parametrů
+	\item V praxi se toto schéma používa skoro vždy!
+\end{itemize}
+\end{frame}
 % ----------------------------------------------------------------------
 
 \end{document}

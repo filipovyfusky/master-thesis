@@ -2,8 +2,8 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**presentation.tex
-(./presentation.tex
+**kecy.tex
+(./kecy.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
@@ -1361,8 +1361,8 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
 (hyperref)                removing `\textasciicaron' on input line 79.
 
-(./presentation.aux)
-\openout1 = `presentation.aux'.
+(./kecy.aux)
+\openout1 = `kecy.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
 LaTeX Font Info:    ... okay on input line 79.
@@ -1384,6 +1384,7 @@ LaTeX Font Info:    Try loading font information for IL2+cmr on input line 79.
 File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 79.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1464,9 +1465,9 @@ LaTeX Info: Redefining \ref on input line 79.
 LaTeX Info: Redefining \pageref on input line 79.
 LaTeX Info: Redefining \nameref on input line 79.
 
-(./presentation.out) (./presentation.out)
+(./kecy.out) (./kecy.out)
 \@outlinefile=\write5
-\openout5 = `presentation.out'.
+\openout5 = `kecy.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 79.
@@ -1561,7 +1562,7 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 \c@lstlisting=\count340
 
-(./presentation.nav)
+(./kecy.nav)
 <logo4.png, id=13, 2965.0775pt x 602.25pt>
 File: logo4.png Graphic file (type png)
 <use logo4.png>
@@ -1575,231 +1576,139 @@ LaTeX Font Warning: Font shape `IL2/cmss/m/n' in size <4> not available
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo4.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 117.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 117.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 117.
-
-(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
-File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
-thkerncmss.
-)
-\g__file_internal_ior=\read2
-<<VPlayer.swf>><<cut.mp4>>
-<logo3.png, id=39, 2965.0775pt x 602.25pt>
+<logo3.png, id=26, 2965.0775pt x 602.25pt>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 117.
+Package pdftex.def Info: logo3.png  used on input line 95.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [2
 
  <./logo3.png>]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 129.
+Package pdftex.def Info: logo3.png  used on input line 106.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [3
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 116.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 116.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
+line 116.
+
+(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
+File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
+thkerncmss.
+)
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 116.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+
+[4
+
+]
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 123.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [5
+
+]
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 129.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [6
+
+]
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 134.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [7
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
 Package pdftex.def Info: logo3.png  used on input line 142.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [4
+ [8
 
 ]
-
-LaTeX Font Warning: Font shape `IL2/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `IL2/cmss/m/sl' tried instead on input line 157.
-
-
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 157.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
-[5
-
-]<<opti.mp4>>
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 184.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [6
-
-]
-<linsep.png, id=89, 655.69969pt x 607.51968pt>
-File: linsep.png Graphic file (type png)
-<use linsep.png>
-Package pdftex.def Info: linsep.png  used on input line 209.
-(pdftex.def)             Requested size: 142.26378pt x 131.81001pt.
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 209.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [7
-
- <./linsep.png>] [8
-
-]
-<maps.png, id=105, 1027.58907pt x 720.44156pt>
-File: maps.png Graphic file (type png)
-<use maps.png>
-Package pdftex.def Info: maps.png  used on input line 223.
-(pdftex.def)             Requested size: 256.0748pt x 179.52731pt.
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 223.
+Package pdftex.def Info: logo3.png  used on input line 146.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [9
 
- <./maps.png>]
-<segnet.png, id=113, 968.11688pt x 338.01282pt>
-File: segnet.png Graphic file (type png)
-<use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 232.
-(pdftex.def)             Requested size: 426.79134pt x 149.01492pt.
+]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 232.
+Package pdftex.def Info: logo3.png  used on input line 150.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [10
 
- <./segnet.png>]<<convo.mp4>>
+]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 258.
+Package pdftex.def Info: logo3.png  used on input line 156.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [11
 
 ]
-<dataset.png, id=136, 487.06969pt x 249.18094pt>
-File: dataset.png Graphic file (type png)
-<use dataset.png>
-Package pdftex.def Info: dataset.png  used on input line 277.
-(pdftex.def)             Requested size: 170.71652pt x 87.33629pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 277.
+Package pdftex.def Info: logo3.png  used on input line 160.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [12
 
- <./dataset.png>]
-File: segnet.png Graphic file (type png)
-<use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 292.
-(pdftex.def)             Requested size: 284.52756pt x 99.34155pt.
+]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 292.
+Package pdftex.def Info: logo3.png  used on input line 164.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [13
 
 ]
-<bayesian.jpg, id=151, 963.6pt x 241.65282pt>
-File: bayesian.jpg Graphic file (type jpg)
-<use bayesian.jpg>
-Package pdftex.def Info: bayesian.jpg  used on input line 308.
-(pdftex.def)             Requested size: 284.52756pt x 71.35333pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 308.
+Package pdftex.def Info: logo3.png  used on input line 171.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [14
 
- <./bayesian.jpg>]
-\openout4 = `presentation.vrb'.
-
-
-(./presentation.vrb
-<caffe-logo.png, id=158, 611.28375pt x 211.79124pt>
-File: caffe-logo.png Graphic file (type png)
-<use caffe-logo.png>
-Package pdftex.def Info: caffe-logo.png  used on input line 12.
-(pdftex.def)             Requested size: 113.81102pt x 39.4296pt.
-)
+]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 344.
+Package pdftex.def Info: logo3.png  used on input line 175.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [15
 
- <./caffe-logo.png>]
-<result.png, id=167, 1073.51062pt x 651.18282pt>
-File: result.png Graphic file (type png)
-<use result.png>
-Package pdftex.def Info: result.png  used on input line 356.
-(pdftex.def)             Requested size: 256.0748pt x 155.33319pt.
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 356.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [16
-
- <./result.png>]<<project2.mp4>>
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 374.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [17
-
-]<<project1.mp4>>
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 391.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
-
-Overfull \vbox (2.96123pt too high) detected at line 391
- []
-
-[18
-
-]
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 413.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [19
-
-] [20
-
-]
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 433.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [21
-
-]
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 442.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [22
+] [16
 
 ]
 \tf@nav=\write6
-\openout6 = `presentation.nav'.
+\openout6 = `kecy.nav'.
 
 \tf@toc=\write7
-\openout7 = `presentation.toc'.
+\openout7 = `kecy.toc'.
 
 \tf@snm=\write8
-\openout8 = `presentation.snm'.
+\openout8 = `kecy.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 445.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 445.
- (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 445.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 445.
-Package rerunfilecheck Info: File `presentation.out' has not changed.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 183.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 183.
+ (./kecy.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 183.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 183.
+Package rerunfilecheck Info: File `kecy.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
@@ -1808,30 +1717,23 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 30035 strings out of 494816
- 572241 string characters out of 6177863
- 656582 words of memory out of 5000000
- 32759 multiletter control sequences out of 15000+600000
- 556108 words of font info for 94 fonts, out of 8000000 for 9000
+ 29409 strings out of 494816
+ 563622 string characters out of 6177863
+ 638542 words of memory out of 5000000
+ 32173 multiletter control sequences out of 15000+600000
+ 544876 words of font info for 63 fonts, out of 8000000 for 9000
  69 hyphenation exceptions out of 8191
- 56i,17n,63p,10354b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/cs/csss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss12.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss8.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/cs/csssbx10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/cs/csssi10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/cs/cstt10.pfb>
-Output written on presentation.pdf (22 pages, 113711040 bytes).
+ 56i,15n,60p,10346b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/cs/csss10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/cs/csss12.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/cs/csss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+cs/csssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/cstt10.pfb
+>
+Output written on kecy.pdf (16 pages, 182694 bytes).
 PDF statistics:
- 292 PDF objects out of 1000 (max. 8388607)
- 220 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 258 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 152 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
