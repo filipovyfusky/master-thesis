@@ -24,6 +24,8 @@
 \renewcommand\theadgape{\Gape[4pt]}
 \renewcommand\cellgape{\Gape[4pt]}
 
+\usepackage{setspace}
+
 %% Copy your favorite logo from "vut_logo_archive/" to root folder 
 % and rename file to "logo.png"
 
@@ -183,31 +185,6 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 \end{center}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Úloha klasifikace}
-\begin{columns}
-	\column{0.45\textwidth}
-	\textbf{Definice klasifikační úlohy}
-	\vspace{3mm}
-	\begin{itemize}
-		\item Aproximovaná funkce nabývá pouze určitých diskrétních hodnot
-	\end{itemize}
-	\begin{gather}
-	f(x_1,x_2;\phi) = 
-	\begin{cases}	
-	1\\
-	-1  
-	\end{cases} 
-	\end{gather}	
-	\column{0.45\textwidth}
-	\begin{figure}[h]
-		\begin{center}
-			\includegraphics[width=5cm, keepaspectratio]{linsep.png}
-		\end{center}
-		\caption{Úloha klasifikace} 	
-	\end{figure}
-\end{columns}
-\end{frame}
-% ----------------------------------------------------------------------
 \begin{frame}{}
 \centering
 {\Large Konvoluční neuronové sítě (CNN)}	
@@ -257,23 +234,9 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Trénování architektur 'enkodér-dekodér'}
-\textbf{Data pro trénování}
-\begin{itemize}
-	\item V případě segmentace množina dvojic obrázků: \textbf{scéna + segmentační maska}
-	\item Cílem je zabránit přeučení sítě
-	\begin{itemize}
-		\item (trénovací + validační) + testovací data
-	\end{itemize}
-	\item Čím více, tím lépe (co největší definiční obor aprox. funkce)
-\end{itemize}
-\begin{figure}[h]
-	\begin{center}
-		\includegraphics[width=6cm, keepaspectratio]{dataset.png}
-	\end{center}
-	\caption{Rozdělení datové množiny} 	
-\end{figure}
-
+\begin{frame}{}
+\centering
+{\Large Praktická část práce}	
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{SegNet}
@@ -311,11 +274,13 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 \begin{frame}[fragile]{Implementace variant SegNetu v Caffe}
 	\begin{columns}
 		\column{0.6\textwidth}	
-		\begin{itemize}	
-			\item Caffe je knihovna pro neuronové sítě		
-			\item Abstrakce vrstev CNN - snadné vytvoření architektury
-			\item Nutné sestavit ze zdrojového kódu, nejlépe pod Linuxem		
-		\end{itemize}
+		{\setstretch{1.25}
+			\begin{itemize}	
+				\item Caffe je knihovna pro neuronové sítě		
+				\item Abstrakce vrstev CNN - snadné vytvoření architektury
+				\item Nutné sestavit ze zdrojového kódu, nejlépe pod Linuxem		
+			\end{itemize}
+		}
 		\vspace{5mm}
 		\begin{figure}[h]
 			\begin{center}
@@ -343,16 +308,68 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 	\end{columns}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Výsledky trénování}
-\textbf{Volba rychlosti učení $ \eta $}
+\begin{frame}{Nastavení prostředí pro Caffe}
+	\begin{columns}[T]
+	\column{0.6\textwidth}
+    {\setstretch{1.5} 		
+		\textbf{Hlavní přípravné kroky}
+		\begin{enumerate}
+			\item Volba hardwaru pro trénování - grafická karta, SSD
+			\item Nastavení Linuxu (Ubuntu) pro kompilaci Caffe
+			\begin{itemize}
+				\item Knihovna CUDA pro paralelizaci výpočtů
+				\item Všechny potřebné balíky ve správné verzi
+			\end{itemize}
+			\item Kompilace a testování Caffe					
+		\end{enumerate}
+	}
+	\column{0.3\textwidth}
+	\begin{figure}[h]
+		\centering
+			\includegraphics[width=4cm, keepaspectratio]{ubuntu.jpg}			
+	\end{figure}
+	\end{columns}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování SegNetu + Bayesian SegNetu}
+\textbf{Vybraná úloha pro segmentaci}
+	\begin{itemize}
+		\item Rozpoznávání cesty na snímcích z městského parku
+		\item Nutné vytvořit vlastní dataset (celkem 2600 snímků)
+	\end{itemize}
+	\vspace{5mm}
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm, keepaspectratio]{result.png}			
+	\end{figure}	
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování SegNetu + Bayesian SegNetu}
+\textbf{Data pro trénování}
 \begin{itemize}
-	\item Ladění tohoto parametru probíhá čistě experimentálně
+	\item V případě segmentace množina dvojic obrázků: \textbf{scéna + segmentační maska}
+	\item Cílem je zabránit přeučení sítě
+	\begin{itemize}
+		\item (trénovací + validační) + testovací data
+	\end{itemize}
+	\item Čím více, tím lépe (co největší definiční obor aprox. funkce)
 \end{itemize}
 \begin{figure}[h]
 	\begin{center}
-		\includegraphics[width=9cm, keepaspectratio]{result.png}
-	\end{center}		
+		\includegraphics[width=6cm, keepaspectratio]{dataset.png}
+	\end{center}
+	\caption{Rozdělení datové množiny} 	
 \end{figure}
+
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování SegNetu + Bayesian SegNetu}
+\textbf{Přenastavení implementace variant SegNetu}
+	\begin{itemize}
+		\item Změna počtu tříd klasifikace (pro třídy \textbf{'pozadí'} + \textbf{'cesta'})
+		\item Experimentální volba parametrů (rychlost učení, optimalizační algoritmus)
+		\item Stejné pro SegNet + Bayesian SegNet
+	\end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Výsledky trénování}
@@ -391,7 +408,7 @@ flashvars={
 \end{frame}
 % ----------------------------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Tables
-\begin{frame}{Výsledky trénování}
+\begin{frame}{Výsledky trénování v číslech}
 \renewcommand{\arraystretch}{1.5}
 %\newcolumntype{C}{>{\centering\arraybackslash}p{3em}}
 \begin{table}[h]
@@ -427,7 +444,9 @@ V práci je použita segmentace binární (cesta/necesta). Dala by se Vámi pou�
 
 \column{0.45\textwidth}
 \begin{block}{Odpověď}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+SegNet je možné přenastavit na segmentaci libovolného počtu tříd. Velikost množiny: čím větší, tím lepší. Důležitý je \textbf{vyvážený výskyt všech tříd} segmentace v trénovacích datech. \\~\\
+
+V tomto případě není nutné rozlišovat mezi ruznými druhy překážek, SegNet je všechny vyhodnotí jako 'necesta'.
 \end{block}
 \end{columns}
 \end{frame}

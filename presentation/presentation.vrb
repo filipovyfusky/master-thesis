@@ -1,11 +1,13 @@
 \frametitle{Implementace variant SegNetu v Caffe}
 \begin{columns}
 		\column{0.6\textwidth}
-		\begin{itemize}
-			\item Caffe je knihovna pro neuronové sítě
-			\item Abstrakce vrstev CNN - snadné vytvoření architektury
-			\item Nutné sestavit ze zdrojového kódu, nejlépe pod Linuxem
-		\end{itemize}
+		{\setstretch{1.25}
+			\begin{itemize}
+				\item Caffe je knihovna pro neuronové sítě
+				\item Abstrakce vrstev CNN - snadné vytvoření architektury
+				\item Nutné sestavit ze zdrojového kódu, nejlépe pod Linuxem
+			\end{itemize}
+		}
 		\vspace{5mm}
 		\begin{figure}[h]
 			\begin{center}

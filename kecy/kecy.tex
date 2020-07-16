@@ -91,11 +91,11 @@
 \begin{frame}{Cíle práce}
 Vážený pane, předsedo, vážená komise, rád bych vám představil svoji diplomovou práci s názvem Sémantická segmentace obrazu pomocí konvolučních neuronových sítí. 
 
-\textbf{Úvodem bych rád definoval pojem sémantická segmentace} Cílem segmentace je přiřadit každému pixelu v obrázku právě jednu třídu objektu (například člověk, auto, cesta, jak vidíte na videu dole). Důležité přitom je provést segmentaci co nejpřesněji, tedy s přesným vykreslením hranice každého objektu a zajistit, aby algoritmus uměl generalizovat, tedy aby správně klasifikoval objekty bez ohledu na světelné podminky, ruzné nedokonalosti atp.
+\textbf{Cílem sémantické segmentace} je přiřadit každému pixelu v obrázku právě jednu třídu objektu (například člověk, auto, cesta, jak vidíte na videu dole). Důležité přitom je segmentovat co nejpřesněji, tedy s přesným vykreslením hranice každého objektu. Dále je nutné zajistit, aby algoritmus uměl generalizovat, tedy aby správně klasifikoval objekty bez ohledu na světelné podminky, ruzné nedokonalosti atp.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Sémantická segmentace}
-Přesné cíle této práce tedy jsou
+Přesnými cíly této práce bylo především
 \begin{enumerate}
 	\item Nastudování problematiky segmentace obrazu pomocí konvolučních neuronových sítí
 	\item Výběr perspektivní architektury sítě spolu s její implementací
@@ -107,67 +107,68 @@ Přesné cíle této práce tedy jsou
 % ----------------------------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
 \begin{frame}{Neuronové sítě a učení s učitelem 1}
-	\textbf{Proč pro segmentaci místo klasického zpracování obrazu použít neuronovou síť?} No tak důvodů je hned několik, především neuronoví síť
+	\textbf{Proč pro segmentaci místo klasického zpracování obrazu použít neuronovou síť?} No tak důvodů je hned několik, především neuronová síť
 	\begin{itemize}
-		\item Dovede velmi dobře aproximovat silně nelineární funkce, kterými je v případě této úlohy jednoduše funkce, která na základě všech pixelových hodnot vstupního obrázku přiřadí každému z nich pravděpodobnost do které třídy objektu patří
-		\item Dále potřebuje jen mírně předzpracovaná data, tedy obrázek vstupuje do sítě bez jakýchkoliv velkých úprav,
-		\item A v neposlední řadě neuronová síť detekuje obecné vzory v datech tedy dovede lépe generalizovat a algoritmus je robustnější	
+		\item Dovede velmi dobře aproximovat silně nelineární funkce. V případě segmentace se jedná o funkci, která na základě pixelů vstupního obrázku přiřadí každému z nich pravděpodobnost do, které třídy objektu patří: vstupem jsou pixely, výstupem je obrázek s pravděpodobnostmi.
+		\item Dále neuronová síť potřebuje jen mírně předzpracovaná data, obrázek tedy vstupuje do sítě bez jakýchkoliv velkých úprav,
+		\item A v neposlední řadě neuronová síť detekuje obecné vzory v datech a tedy dovede lépe generalizovat	
 	\end{itemize}
 \end{frame}	
 % ----------------------------------------------------------------------
 % https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
 \begin{frame}{Neuronové sítě a učení s učitelem 2}
-\textbf{Nyní v krátkosti} jaká je obecná úloha neuronové sítě: tak je to vždy aproximace obecně více-rozměrné ideální funkce f funkcí f* a to řešením optimalizačního problému, který je naznačen uprostřed. Přesná podoba funkce f* se nazývá architektura neuronové sítě. Tato funkce má obecně více-rozměrné vektory výstupů y a vstupů x, přičemž fí jsou parametry této neuronové sítě (těch maji větší neuronové síťě obvykle velmi mnoho, v řádu miliónů). 
+\textbf{Jaká je obecná úloha neuronové sítě}? Tak je to vždy aproximace obecně více-rozměrné ideální funkce f funkcí f* a to řešením optimalizačního problému, který je naznačen uprostřed. Přesná podoba funkce f* se nazývá architektura neuronové sítě. Tato funkce má obecně více-rozměrné vektory výstupů y a vstupů x, přičemž fí jsou parametry této neuronové sítě.
 
-Cílem trénovaní sítě je nalézt takové hodnoty parametrů fí, pro které bude hodnota naší metriky spokojenosti s výstupy sítě y* co nejlepší: tento požadavek je zde reprezentován hodnotou chybové funkce L a hledáním jejího mimina. Tato strategie se nazývá učení s učitelem, jelikož pro trénování sítě používá předem danou sadu vstupních hodnot a k nim odpovídající sadu správných výstupů.
+Cílem trénovaní sítě je nalézt takové hodnoty parametrů, pro které bude hodnota naší metriky spokojenosti s výstupy sítě co nejlepší: tento požadavek je zde reprezentován hodnotou chybové funkce L a hledáním jejího mimina. Tato strategie se nazývá učení s učitelem, jelikož pro trénování sítě používá předem danou sadu vstupních hodnot a k nim odpovídající sadu správných výstupů.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Neuronové sítě a učení s učitelem 3}
 \textbf{Gradientní optimalizace hodnotící funkce - kroky}
 
-Jak přesně probíhá optimalizace chybové funkce L? U neronových sítí jsou to obecně gradientní algoritmy: v tomto případě se v každém kroku spočítá derivace chybové funkce podle každého prametru jehož hodnota se na základě tohoto změní proti směru derivace - což odpovídá hledání minima. Parametr eta je tak zvaná rychlost učení, tedy velikost kroku, kterým se hodnota parametru vydá po směru gradientu.
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Úloha klasifikace}
-\textbf{Definice klasifikační úlohy}
-Zde bych se krátce zmínil o tom co to znamená klasifikační úloha. Jednodušše řečeno je to případ, kdy funkce kterou neuronová síť aproximuje má pouze konečný počet diskrétních výstupů. Konktrétně na obrázku vpravo vidíme, že se jedná o funkci dvou proměnných x1 a x2, to jsou vstupy do sítě, a jednoho výstupu y který nabývá pouze dvou hodnot. Toto schéma reprezentuje jakési rozdělení vstupních dat do dvou tříd: všechna data nad rozhodovací červenou linii jsou zařazena do kategorie reprezentované číslem 1, pod červenou linií do kategorie reprezentované -1. Cílem učení této jednoduché neuronové sítě by bylo najít sklon a posun červené přímky aby správně klasifikovala vstupy x1 a x2.	
+Jak přesně probíhá optimalizace chybové funkce L? U neronových sítí jsou to obecně gradientní algoritmy: v tomto případě se v každém kroku spočítá derivace chybové funkce podle každého prametru jehož hodnota se na základě tohoto změní proti směru derivace. Toto odpovídá hledání minima funkce L. 
+
+Parametr eta se nazývá rychlost učení a je to velikost kroku, kterým se hodnota parametru vydá proti směru gradientu.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{CNN - konvoluční neuronové sítě}
-Nyní bych se zaměřil na skupinu neuronových sítí zvanou konvoluční neuronové sítě. 
+Nyní bych se v krátkosti zaměřil na skupinu neuronových sítí zvanou konvoluční neuronové sítě. 
 
-Jedná se o sítě speciálně určené pro klasifikaci obrazových dat, kdy vstupem do sítě je v nejjednodušším případě jednokanálový dvourozměrný obraz a výstupem je pravděpodobnost s jakou daný obraz (v tomto případě obraz jako celek) patří do některé z předem daných katergorií.
+Jedná se o sítě speciálně určené pro klasifikaci obrazových dat, kdy vstupem do sítě je v nejjednodušším případě jednokanálový dvourozměrný obraz a výstupem je pravděpodobnost s jakou daný obraz (v tomto případě obraz jako celek) patří do některé z předem daných kategorií. Tyto sítě provádí sérii 2D konvolucí pomocí kterých hledá v obraze určité charakteristické prvky a vytvoří tak jednodušší reprezentací obrazu s výrazně nižsím rozlišením. Konvoluční sítě mají několik konvolučních jader (neboli filtrů), které jsou hierarchicky řazeny do vrstev. 
 
-Tyto sítě se skladájí z dvou oddělěných částí. První část provádí sérii 2D konvolucí pomocí kterých hledá v obraze určité charakteristické prvky. Smyslem této první části je nahradit pixelovou reprezentaci obrazu jednodušší reprezentací s výrazně nižsím rozlišením. Konvoluční sítě mají několik konvolučních jader (neboli filtrů), které jsou hierarchicky řazeny do vrstev. První fitry v obraze nejdříve hledají jednoduché prvky, například hrany, rohy apod. Postupně jsou filtry čím dál více komplexní a výsledkem je série obrazů, ve kterých jsou pro každý významný prvek v obraze označeny jeho výskyty. Tím se vytvoří zjednodušená reprezentace významných prvků v obraze. Druhá část sítě provádí klasifikaci této zákódované reprezentace obrazu, výsledkem čehož je informace o třídě obrázku jako celku - v tomto případě, kdyby síť klasifikovala zvířata, by to byla kočka.
+Tady na obrázku vidíte jak konvoluční neuronová síť postupně zjednodušuje obrázek do jakýchsi map s označením výskytů nejvýznamnějších prvků v obrázku.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Segmentace - architektura enkodér-dekodér}
-Zde bych rád vysvětlil jak se KNS používají pro segmentaci obrazu. Rozdíl oproti předchozímu případu je pouze v druhé části neuronové sítě. Výstupem v tomto případě není informace o třídě obrázku jako celku, ale o významové třídě každého pixelu. Pro tyto účely se používá architektura zvaná enkodér-dekodér. Enkodérem je tady již zmíněná první část konvoluční neuronové síťe, jejímž výstupem je soubor tzv. map s lokacemi významných prvků. Druhá část má za úkol vytvořit obraz se stejným rozlišením jako měl vstupní obraz a vytvořit tak přesnou segmentační masku. 
+Zde bych rád vysvětlil jak se konvoluční sítě používají pro segmentaci obrazu. Výstupem v tomto případě není informace o třídě obrázku jako celku, ale o významové třídě každého pixelu. Pro tyto účely se používá architektura zvaná enkodér-dekodér. Enkodérem je tady ta část konvoluční síťe, která se stará o zjednodušení obrázku. Druhá část má za úkol vytvořit obraz se stejným rozlišením jako měl vstupní obraz a vytvořit tak přesnou segmentační masku. 
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování CNN}
-Jak se taková architektura učí? Nebo spíš, co jsou její trénovatelné parametry fí? Jednoduče řečeno jsou to hodnoty koeficientů všech konvolučních filtrů v sítí, kterými jsou jednak filtry v enkodéru provádějící konvoluci a poté filtry v dekodéru, které provádějí tak zvanou transponovanou konvoluci (tato operace je svým způsobem opačná k té první). Tady na obrázku vidíme jak filtr o veliksoti 3x3 provádí 2D kovoluci.
+Jak se taková architektura učí? Nebo spíš, co jsou její trénovatelné parametry? Jednoduče řečeno jsou to hodnoty koeficientů všech konvolučních filtrů v sítí. To jsou jednak filtry v enkodéru provádějící konvoluci a poté filtry v dekodéru, které provádějí tak zvanou transponovanou konvoluci. Tady na obrázku vidíme jak filtr o veliksoti 3x3 provádí klasickou 2D kovoluci. Jeho koeficinety by se v průběhu učení sítě měnily.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{SegNet}
+Teď něco krátce ke konkrétní architekturě kterou jsem vybral pro svou práci. Tato neuronová sít typu enkodér-dekodér se nazývá SegNet a její výhodou je, že její implementace je dostupná online přímo od autorů článku. Autoři vytvořili celkem dvě varianty této sítě spolu s jejich zjednodušenými verzemi.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Bayesian SegNet}
+Tato síť je druhou variantou SegNetu a liší se tím, že kromě segmentační masky dokáže vizualizovat nejistotu s jakou síť segmentuje. To je stručně řečeno dosaženo technikou zvanou dropout, při které se parametry sítě při tréninku i po něm náhodně nulují. To v podstatě odpovídá používání více architektur najednou. Výsledná segmentační maska je pak zprůměrována z více průchodů a rozptyl těchto výsledků segmentace slouží pro určení nejistoty - to je ten obrázek úplně vpravo.
+\end{frame}
+% ----------------------------------------------------------------------
+% https://tex.stackexchange.com/questions/130109/cant-insert-code-in-my-beamer-slide
+\begin{frame}{Implementace variant SegNetu v Caffe}	
+Implementace obou těchto sítí je napsána pomocí knihovny Caffe. Ta umožňuje vytvořit síť jednodušše, téměř bez psaní klasického kódu. Vpravo je nastíněno jak vypadá zápis pro vytvoření jedné konvoluční vrstvy - jedná se zde o poměrně vysokou míru abstrakce, není to klasické programování. 
+
+Caffe a obecně softwarové a hadrwarové nástroje pro trénink konvolučních sítí je vhodné provozovat pod Linuxem. Veškerá nastavení a postupy instalace jsou velkou součástí praktické části této práce.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování CNN}
+Nazdar = prakticka cast
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování CNN}
 Co se týče dat pro trénování tak v případě sémenatické segmentace se jedná o množinu dvojic obrázek + segmentační maska, samozřejmě vytvořená ručně. Typicky je potřeba mít k dispozici tzv trénovací množinu, ze které se část dat odloží stranou. Tím vznikne tzv validační množina a ta slouží pro kontrolu overfittingu, ke kterému obecně v neuronových sítích dochází. Jedná se o to že parametry sítě se během tréninku příliš přizpůsobí detailům ve vstupních datech a síť ztratí schopnost generalizovat. 
 
 Po natrénování sítě se její výkon ověří na tzv testovacích datech, která nebyla použita při trénování.  
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{SegNet}
-Teď něco krátce ke konkrétní architekturě kterou jsem vybral pro svou práci. Tato neuronová sít typu enkodér-dekodér se nazývá SegNet a její výhodou je, že její implementace je dostupná online přímo od autorů článku. Autoři vytvořili celkem dvě varianty této sítě plus jejich zjednodušené verze.
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Bayesian SegNet}
-Tato síť je onou druhou variantou SegNetu a liší se tím, že kromě segmentační masky dokáže vizualizovat nejistotu s jakou síť segmentuje. To je stručně řečeno dosaženo technikou zvanou dropout, při které se parametry sítě při tréninku i po něm náhodně nulují, což v podstatě odpovídá používání více architektur najednou. Výsledná segmentační maska je pak zprůměrována z více výsledků a rozptyl v segmentaci slouží pro určení nejistoty - to je ten obrázek vpravo.
-\end{frame}
-% ----------------------------------------------------------------------
-% https://tex.stackexchange.com/questions/130109/cant-insert-code-in-my-beamer-slide
-\begin{frame}{Implementace variant SegNetu v Caffe}	
-Implementace obou těchto sítí je napsána pomocí knihovny Caffe, která umožňuje vytvořit síť jednodušše, téměř bez psaní klasického kódu. Vpravo je nastíněno jak vypadá zápis pro vytvoření jedné konvoluční vrstvy - jedná se zde o poměrně vysokou míru abstrakce. 
-
-Caffe a obecně softwarové a hadrwarové nástroje pro trénink konvolučních sítí je vhodné provozovat pod Linuxem. Veškerá nastavení a postupy instalace jsou velkou součástí praktické části této práce.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Výsledky trénování}
