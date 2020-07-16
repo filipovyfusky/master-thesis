@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.21)  16 JUL 2020 14:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.21)  16 JUL 2020 16:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1356,37 +1356,34 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-(/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmtt.fd
-File: il2cmtt.fd 1997/08/20 CSLaTeX font definitions
-)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 81.
+(hyperref)                removing `\textasciicaron' on input line 80.
 
 (./presentation.aux)
 \openout1 = `presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for IL2+cmr on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 80.
+LaTeX Font Info:    ... okay on input line 80.
+LaTeX Font Info:    Checking defaults for IL2/cmr/m/n on input line 80.
+LaTeX Font Info:    Try loading font information for IL2+cmr on input line 80.
  (/usr/share/texlive/texmf-dist/tex/cslatex/base/il2cmr.fd
 File: il2cmr.fd 1997/02/06 CSLaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    ... okay on input line 80.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -1453,7 +1450,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 81.
+Package hyperref Info: Link coloring OFF on input line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1463,78 +1460,78 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count339
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 80.
+LaTeX Info: Redefining \pageref on input line 80.
+LaTeX Info: Redefining \nameref on input line 80.
 
 (./presentation.out) (./presentation.out)
 \@outlinefile=\write5
 \openout5 = `presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 81.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 80.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 81.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 80.
 \symnumbers=\mathgroup11
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 81.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 80.
 LaTeX Font Info:    Encoding `OT1' has changed to `IL2' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 81
+(Font)              `pureletters' in the math version `normal' on input line 80
 .
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/mathkerncmss/m/sl --> IL2/cmss/m/it on input line 8
-1.
+0.
 LaTeX Font Info:    Encoding `OT1' has changed to `IL2' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 81.
+(Font)              `pureletters' in the math version `bold' on input line 80.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/bx/sl --> IL2/cmss/m/it on input line 
-81.
+80.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> IL2/cmr/m/n on input line 81.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 81.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 81.
+(Font)                  OT1/cmss/m/n --> IL2/cmr/m/n on input line 80.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 80.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> IL2/cmss/m/n on input line 81.
+(Font)                  OT1/cmss/m/n --> IL2/cmss/m/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> IL2/cmss/m/n on input line 81.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 81.
+(Font)                  OT1/cmss/bx/n --> IL2/cmss/m/n on input line 80.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> IL2/cmss/m/it on input line 81.
+(Font)                  OT1/cmr/m/it --> IL2/cmss/m/it on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> IL2/cmss/m/it on input line 81.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 81.
+(Font)                  OT1/cmr/bx/it --> IL2/cmss/m/it on input line 80.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 81.
+(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 81.
+(Font)                  OT1/cmtt/m/n --> IL2/cmtt/m/n on input line 80.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 81.
+(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 80.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 81.
+(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> IL2/cmr/bx/n on input line 81.
+(Font)                  OT1/cmss/bx/n --> IL2/cmr/bx/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  IL2/cmss/bx/n --> IL2/cmss/bx/n on input line 81.
+(Font)                  IL2/cmss/bx/n --> IL2/cmss/bx/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 81.
+(Font)                  IL2/cmss/m/n --> IL2/cmss/bx/n on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 81.
+(Font)                  IL2/cmss/m/it --> IL2/cmss/bx/it on input line 80.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  IL2/cmtt/m/n --> IL2/cmtt/bx/n on input line 81.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 81.
+(Font)                  IL2/cmtt/m/n --> IL2/cmtt/bx/n on input line 80.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 80.
 LaTeX Font Info:    Encoding `IL2' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 81
+(Font)              `pureletters' in the math version `normal' on input line 80
 .
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  IL2/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 8
-1.
+0.
 LaTeX Font Info:    Encoding `IL2' has changed to `OT1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 81.
+(Font)              `pureletters' in the math version `bold' on input line 80.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  IL2/cmss/bx/it --> OT1/mathkerncmss/m/sl on input line 
-81.
+80.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 81.
+ut line 80.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1568,28 +1565,28 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 <logo4.png, id=13, 2965.0775pt x 602.25pt>
 File: logo4.png Graphic file (type png)
 <use logo4.png>
-Package pdftex.def Info: logo4.png  used on input line 90.
+Package pdftex.def Info: logo4.png  used on input line 89.
 (pdftex.def)             Requested size: 133.82991pt x 27.18774pt.
 
 
 LaTeX Font Warning: Font shape `IL2/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 90.
+(Font)              size <5> substituted on input line 89.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo4.png>]
-LaTeX Font Info:    Try loading font information for U+msa on input line 119.
+LaTeX Font Info:    Try loading font information for U+msa on input line 118.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 119.
+LaTeX Font Info:    Try loading font information for U+msb on input line 118.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
-line 119.
+line 118.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
@@ -1597,216 +1594,186 @@ thkerncmss.
 )
 \g__file_internal_ior=\read2
 <<VPlayer.swf>><<cut.mp4>>
-<logo3.png, id=39, 2965.0775pt x 602.25pt>
+<logo3.png, id=38, 2965.0775pt x 602.25pt>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 119.
+Package pdftex.def Info: logo3.png  used on input line 118.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [2
 
  <./logo3.png>]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 131.
+Package pdftex.def Info: logo3.png  used on input line 130.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [3
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 144.
+Package pdftex.def Info: logo3.png  used on input line 143.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [4
 
 ]
 
 LaTeX Font Warning: Font shape `IL2/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `IL2/cmss/m/sl' tried instead on input line 159.
+(Font)              Font shape `IL2/cmss/m/sl' tried instead on input line 157.
 
 
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 159.
+Package pdftex.def Info: logo3.png  used on input line 157.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 [5
 
 ]<<opti.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 186.
+Package pdftex.def Info: logo3.png  used on input line 184.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [6
 
 ] [7
 
 ]
-<maps.png, id=96, 1027.58907pt x 720.44156pt>
+<maps.png, id=95, 1027.58907pt x 720.44156pt>
 File: maps.png Graphic file (type png)
 <use maps.png>
-Package pdftex.def Info: maps.png  used on input line 200.
+Package pdftex.def Info: maps.png  used on input line 198.
 (pdftex.def)             Requested size: 256.0748pt x 179.52731pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 200.
+Package pdftex.def Info: logo3.png  used on input line 198.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [8
 
  <./maps.png>]
-<segnet.png, id=104, 968.11688pt x 338.01282pt>
+<segnet.png, id=103, 968.11688pt x 338.01282pt>
 File: segnet.png Graphic file (type png)
 <use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 209.
+Package pdftex.def Info: segnet.png  used on input line 207.
 (pdftex.def)             Requested size: 426.79134pt x 149.01492pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 209.
+Package pdftex.def Info: logo3.png  used on input line 207.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [9
 
- <./segnet.png>]<<convo.mp4>>
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 235.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
-
-[10
-
-] [11
+ <./segnet.png>] [10
 
 ]
 File: segnet.png Graphic file (type png)
 <use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 255.
+Package pdftex.def Info: segnet.png  used on input line 227.
 (pdftex.def)             Requested size: 284.52756pt x 99.34155pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 255.
+Package pdftex.def Info: logo3.png  used on input line 227.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [11
+
+]
+<bayesian.jpg, id=123, 963.6pt x 241.65282pt>
+File: bayesian.jpg Graphic file (type jpg)
+<use bayesian.jpg>
+Package pdftex.def Info: bayesian.jpg  used on input line 243.
+(pdftex.def)             Requested size: 284.52756pt x 71.35333pt.
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 243.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [12
 
-]
-<bayesian.jpg, id=139, 963.6pt x 241.65282pt>
-File: bayesian.jpg Graphic file (type jpg)
-<use bayesian.jpg>
-Package pdftex.def Info: bayesian.jpg  used on input line 271.
-(pdftex.def)             Requested size: 284.52756pt x 71.35333pt.
+ <./bayesian.jpg>]
+<caffe-logo.png, id=130, 611.28375pt x 211.79124pt>
+File: caffe-logo.png Graphic file (type png)
+<use caffe-logo.png>
+Package pdftex.def Info: caffe-logo.png  used on input line 271.
+(pdftex.def)             Requested size: 113.81102pt x 39.4296pt.
+<ubuntu.jpg, id=131, 770.88pt x 578.16pt>
+File: ubuntu.jpg Graphic file (type jpg)
+<use ubuntu.jpg>
+Package pdftex.def Info: ubuntu.jpg  used on input line 271.
+(pdftex.def)             Requested size: 113.81102pt x 85.35284pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
 Package pdftex.def Info: logo3.png  used on input line 271.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [13
 
- <./bayesian.jpg>]
-\openout4 = `presentation.vrb'.
-
- (./presentation.vrb
-<caffe-logo.png, id=147, 611.28375pt x 211.79124pt>
-File: caffe-logo.png Graphic file (type png)
-<use caffe-logo.png>
-Package pdftex.def Info: caffe-logo.png  used on input line 14.
-(pdftex.def)             Requested size: 113.81102pt x 39.4296pt.
-)
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 309.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [14
-
- <./caffe-logo.png>]
-<ubuntu.jpg, id=155, 770.88pt x 578.16pt>
-File: ubuntu.jpg Graphic file (type jpg)
-<use ubuntu.jpg>
-Package pdftex.def Info: ubuntu.jpg  used on input line 332.
-(pdftex.def)             Requested size: 113.81102pt x 85.35284pt.
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 332.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [15
-
- <./ubuntu.jpg>]
-<result.png, id=163, 2240.37pt x 566.115pt>
+ <./caffe-logo.png> <./ubuntu.jpg>]
+<result.png, id=140, 2240.37pt x 566.115pt>
 File: result.png Graphic file (type png)
 <use result.png>
-Package pdftex.def Info: result.png  used on input line 345.
+Package pdftex.def Info: result.png  used on input line 284.
 (pdftex.def)             Requested size: 369.88582pt x 93.46541pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 345.
+Package pdftex.def Info: logo3.png  used on input line 284.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [16
+ [14
 
  <./result.png>]
-<dataset.png, id=171, 487.06969pt x 249.18094pt>
-File: dataset.png Graphic file (type png)
-<use dataset.png>
-Package pdftex.def Info: dataset.png  used on input line 364.
-(pdftex.def)             Requested size: 170.71652pt x 87.33629pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 364.
+Package pdftex.def Info: logo3.png  used on input line 293.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [17
 
- <./dataset.png>]
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 373.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [18
+[15
 
 ]<<project2.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 391.
+Package pdftex.def Info: logo3.png  used on input line 311.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [19
+ [16
 
 ]<<project1.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 408.
+Package pdftex.def Info: logo3.png  used on input line 328.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 
-Overfull \vbox (2.96123pt too high) detected at line 408
+Overfull \vbox (2.96123pt too high) detected at line 328
  []
 
-[20
+[17
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 430.
+Package pdftex.def Info: logo3.png  used on input line 350.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [18
+
+]
+<github.png, id=191, 1375.38844pt x 712.91344pt>
+File: github.png Graphic file (type png)
+<use github.png>
+Package pdftex.def Info: github.png  used on input line 358.
+(pdftex.def)             Requested size: 426.79134pt x 221.21844pt.
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 358.
+(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
+ [19
+
+ <./github.png>] [20
+
+]
+File: logo3.png Graphic file (type png)
+<use logo3.png>
+Package pdftex.def Info: logo3.png  used on input line 380.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [21
 
 ]
-<github.png, id=222, 1382.16376pt x 715.17188pt>
-File: github.png Graphic file (type png)
-<use github.png>
-Package pdftex.def Info: github.png  used on input line 438.
-(pdftex.def)             Requested size: 426.79134pt x 220.82797pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 438.
+Package pdftex.def Info: logo3.png  used on input line 389.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [22
-
- <./github.png>] [23
-
-]
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 460.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [24
-
-]
-File: logo3.png Graphic file (type png)
-<use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 469.
-(pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
- [25
 
 ]
 \tf@nav=\write6
@@ -1818,11 +1785,11 @@ Package pdftex.def Info: logo3.png  used on input line 469.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 472.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 472.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 392.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 472.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 472.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 392.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 392.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1832,13 +1799,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 30085 strings out of 494816
- 573001 string characters out of 6177863
- 656950 words of memory out of 5000000
- 32798 multiletter control sequences out of 15000+600000
- 556108 words of font info for 94 fonts, out of 8000000 for 9000
+ 29664 strings out of 494816
+ 568934 string characters out of 6177863
+ 639950 words of memory out of 5000000
+ 32392 multiletter control sequences out of 15000+600000
+ 555516 words of font info for 92 fonts, out of 8000000 for 9000
  69 hyphenation exceptions out of 8191
- 56i,15n,63p,10354b,1559s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,15n,63p,10354b,838s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texli
@@ -1849,12 +1816,11 @@ ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/public/cs/csss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/css
 s12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss8.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/cs/csssbx10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/cs/csssi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/cs/cstt10.pfb>
-Output written on presentation.pdf (25 pages, 116263979 bytes).
+exmf-dist/fonts/type1/public/cs/csssi10.pfb>
+Output written on presentation.pdf (22 pages, 116189117 bytes).
 PDF statistics:
- 310 PDF objects out of 1000 (max. 8388607)
- 234 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
- 263 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 275 PDF objects out of 1000 (max. 8388607)
+ 206 compressed objects within 3 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 230 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -136,27 +136,20 @@ Nyní bych se v krátkosti zaměřil na skupinu neuronových sítí zvanou konvo
 Jedná se o sítě speciálně určené pro klasifikaci obrazových dat, kdy vstupem do sítě je v nejjednodušším případě jednokanálový dvourozměrný obraz a výstupem je pravděpodobnost s jakou daný obraz (v tomto případě obraz jako celek) patří do některé z předem daných kategorií. Tyto sítě provádí sérii 2D konvolucí pomocí kterých hledá v obraze určité charakteristické prvky a vytvoří tak jednodušší reprezentací obrazu s výrazně nižsím rozlišením. Konvoluční sítě mají několik konvolučních jader (neboli filtrů), které jsou hierarchicky řazeny do vrstev. 
 
 Tady na obrázku vidíte jak konvoluční neuronová síť postupně zjednodušuje obrázek do jakýchsi map s označením výskytů nejvýznamnějších prvků v obrázku.
+
+Jak se taková architektura učí? Nebo spíš, co jsou její trénovatelné parametry? Jednoduše řečeno jsou to hodnoty koeficientů všech konvolučních filtrů v sítí.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Segmentace - architektura enkodér-dekodér}
 Zde bych rád vysvětlil jak se konvoluční sítě používají pro segmentaci obrazu. Výstupem v tomto případě není informace o třídě obrázku jako celku, ale o významové třídě každého pixelu. Pro tyto účely se používá architektura zvaná enkodér-dekodér. Enkodérem je tady ta část konvoluční síťe, která se stará o zjednodušení obrázku. Druhá část má za úkol vytvořit obraz se stejným rozlišením jako měl vstupní obraz a vytvořit tak přesnou segmentační masku. 
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-Jak se taková architektura učí? Nebo spíš, co jsou její trénovatelné parametry? Jednoduče řečeno jsou to hodnoty koeficientů všech konvolučních filtrů v sítí. To jsou jednak filtry v enkodéru provádějící konvoluci a poté filtry v dekodéru, které provádějí tak zvanou transponovanou konvoluci. Tady na obrázku vidíme jak filtr o veliksoti 3x3 provádí klasickou 2D kovoluci. Jeho koeficinety by se v průběhu učení sítě měnily.
-\end{frame}
-% ----------------------------------------------------------------------
 \begin{frame}{SegNet}
-Teď něco krátce ke konkrétní architekturě kterou jsem vybral pro svou práci. Tato neuronová sít typu enkodér-dekodér se nazývá SegNet a její výhodou je, že její implementace je dostupná online přímo od autorů článku. Autoři vytvořili celkem dvě varianty této sítě spolu s jejich zjednodušenými verzemi.
+Teď něco krátce ke konkrétní architekturě kterou jsem vybral pro svou práci. Tato neuronová sít typu enkodér-dekodér se nazývá SegNet a její výhodou je, že její implementace je dostupná online přímo od autorů článku. Tato implementace napsána v knihovně pro neuronové sítě zvané Caffe. Autoři vytvořili celkem dvě varianty této sítě spolu s jejich zjednodušenými verzemi.
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Bayesian SegNet}
 Tato síť je druhou variantou SegNetu a liší se tím, že kromě segmentační masky dokáže vizualizovat nejistotu s jakou síť segmentuje. To je stručně řečeno dosaženo technikou zvanou dropout, při které se parametry sítě při tréninku i po něm náhodně nulují. To v podstatě odpovídá používání více architektur najednou. Výsledná segmentační maska je pak zprůměrována z více průchodů a rozptyl těchto výsledků segmentace slouží pro určení nejistoty - to je ten obrázek úplně vpravo.
-\end{frame}
-% ----------------------------------------------------------------------
-% https://tex.stackexchange.com/questions/130109/cant-insert-code-in-my-beamer-slide
-\begin{frame}{Implementace variant SegNetu v Caffe}	
-Implementace obou těchto sítí je napsána pomocí knihovny Caffe. Ta umožňuje vytvořit síť jednodušše, téměř bez psaní klasického kódu. Vpravo je nastíněno jak vypadá zápis pro vytvoření jedné konvoluční vrstvy - jedná se zde o poměrně vysokou míru abstrakce, není to klasické programování. 
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Nastavení prostředí pro Caffe}
@@ -165,12 +158,6 @@ Caffe a obecně softwarové a hadrwarové nástroje pro trénink konvolučních 
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování SegNetu + Bayesian SegNetu}
 Pro vlastní trénování bylo nutné vytvořit vlastní dataset. Zde je ukázka úlohy která byla pro segmentaci vybrána: jedná se o segmentaci cesty pro mobilního robota v prostředí městsého parku. Celkem se mi podařilo vytvořit 2600 takovýchto dvojic: vždy scéna a k ní přislusná segmentační maska.  
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-Jinak bych ještě poznamenal že je potřeba mít k dispozici celkem tři množiny dat. Ta největší se používá pro trénování, to je trénovací množina. Z této množiny se kus dat odloží stranou. Tím vznikne tzv validační množina a ta slouží pro kontrolu overfittingu, ke kterému obecně v neuronových sítích dochází. Jedná se o to že parametry sítě se během tréninku příliš přizpůsobí detailům ve vstupních datech a síť ztratí schopnost generalizovat. 
-
-Po natrénování sítě se její výkon ověří na tzv testovacích datech, která nebyla použita při trénování.  
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování CNN}

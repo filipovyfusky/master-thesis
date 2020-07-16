@@ -63,8 +63,7 @@
 
 % Your name
 \author[Bc. Filip Špila]
-{Bc. Filip Špila \\
-	\texttt{filipspila@gmail.com}}
+{Bc. Filip Špila}
 
 % Your institution
 \institute
@@ -154,14 +153,13 @@
 \end{gather} 
 
 Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výstupem). Parametry $ \phi $ jsou nalezeny trénováním sítě neboli optimalizací \textit{L}
-\item Jakmile trénování skončí, nastává \textbf{inference} = používání sítě s již pevnými parametry $ \phi $ a novými daty
 \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování neuronové sítě}
 \textbf{Gradientní optimalizace hodnotící funkce - kroky}
 \begin{enumerate}
-	\item Derivace hodnotící $ L $ funkce podle daného parametru $ \phi $: $ \frac{\partial L}{\partial \phi} $
+	\item Derivace hodnotící funkce $ L $ podle daného parametru $ \phi $: $ \frac{\partial L}{\partial \phi} $
 	\item Změna parametru \textbf{proti} směru derivace (hledání minima)
 	\begin{gather}
 	\delta \phi = - \eta \frac{\partial L}{\partial \phi}
@@ -208,32 +206,6 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 \end{figure}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Trénování architektur 'enkodér-dekodér'}
-\textbf{Hlavní trénovatelné parametry}
-
-\begin{itemize}
-	\item Hodnoty konvolučních jader (jednotlivých filtrů)
-	% vahy vazeneho prumeru
-	\vspace{5mm}		
-	\begin{center}		
-	\includemedia[
-	width=0.4\linewidth,
-	height=0.3\linewidth,
-	addresource=convo.mp4,
-	activate=pagevisible,
-	passcontext, 
-	playbutton=none,
-	flashvars={				
-		source=convo.mp4
-		&autoPlay=true
-		&loop=true
-	}
-	]{}{VPlayer.swf}			
-	\end{center}	
-\end{itemize}
-
-\end{frame}
-% ----------------------------------------------------------------------
 \begin{frame}{}
 \centering
 {\Large Praktická část práce}	
@@ -243,7 +215,7 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 \textbf{SegNet = segmentační CNN typu enkodér-dekodér}
 \begin{itemize}
 	\item Vytvořeno na univerzitě v Cambridge
-	\item Originální implementace dostupná online	
+	\item Originální implementace v knihovně \textbf{Caffe} dostupná online	
 	\item Existuje i zjednodušená verze (méně vrstev sítě)
 \end{itemize}
 \begin{figure}[h]
@@ -270,44 +242,6 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 \end{figure}
 \end{frame}
 % ----------------------------------------------------------------------
-% https://tex.stackexchange.com/questions/130109/cant-insert-code-in-my-beamer-slide
-\begin{frame}[fragile]{Implementace variant SegNetu v Caffe}
-	\begin{columns}
-		\column{0.6\textwidth}	
-		{\setstretch{1.25}
-			\begin{itemize}	
-				\item Caffe je knihovna pro neuronové sítě		
-				\item Abstrakce vrstev CNN - snadné vytvoření architektury
-				\item Nutné sestavit ze zdrojového kódu, nejlépe pod Linuxem		
-			\end{itemize}
-		}
-		\vspace{5mm}
-		\begin{figure}[h]
-			\begin{center}
-				\includegraphics[width=4cm, keepaspectratio]{caffe-logo.png}
-			\end{center}	
-			\caption{Caffe logo} 	
-		\end{figure}
-	
-		\column{0.3\textwidth}		
-\begin{lstlisting}
-	layer {
-	bottom: "conv1"
-	top: "conv1D"
-	name: "conv1D"
-	type: "Conv"
-	param {
-	lr_mult: 1
-	decay_mult: 1
-	}
-	param {
-	lr_mult: 2
-	decay_mult: 0
-	}			
-	\end{lstlisting}		
-	\end{columns}
-\end{frame}
-% ----------------------------------------------------------------------
 \begin{frame}{Nastavení prostředí pro Caffe}
 	\begin{columns}[T]
 	\column{0.6\textwidth}
@@ -325,8 +259,13 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 	}
 	\column{0.3\textwidth}
 	\begin{figure}[h]
-		\centering
-			\includegraphics[width=4cm, keepaspectratio]{ubuntu.jpg}			
+	\centering
+	\includegraphics[width=4cm, keepaspectratio]{caffe-logo.png}			
+	\end{figure}
+	\vspace{6mm}
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=4cm, keepaspectratio]{ubuntu.jpg}			
 	\end{figure}
 	\end{columns}
 \end{frame}
@@ -342,25 +281,6 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 	\centering
 	\includegraphics[width=13cm, keepaspectratio]{result.png}			
 	\end{figure}	
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Trénování SegNetu + Bayesian SegNetu}
-\textbf{Data pro trénování}
-\begin{itemize}
-	\item V případě segmentace množina dvojic obrázků: \textbf{scéna + segmentační maska}
-	\item Cílem je zabránit přeučení sítě
-	\begin{itemize}
-		\item (trénovací + validační) + testovací data
-	\end{itemize}
-	\item Čím více, tím lépe (co největší definiční obor aprox. funkce)
-\end{itemize}
-\begin{figure}[h]
-	\begin{center}
-		\includegraphics[width=6cm, keepaspectratio]{dataset.png}
-	\end{center}
-	\caption{Rozdělení datové množiny} 	
-\end{figure}
-
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování SegNetu + Bayesian SegNetu}
@@ -415,7 +335,7 @@ flashvars={
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		\thead{Architektura} & \thead{Úspěšnost \\ 'pozadí'} & \thead{Úspěšnost \\ 'cesta'} & \thead{Čas \\ inference [ms] } & \thead{Trénovací \\ epocha [s] }\\		
+		\thead{Architektura} & \thead{Úspěšnost \\ 'pozadí'} & \thead{Úspěšnost \\ 'cesta'} & \thead{Doba \\ segmentace [ms] } & \thead{Trénovací \\ epocha [s] }\\		
 		\hline	
 		SegNet & 0.965 & 0.971 & 42 & 368 \\	
 		\hline	
