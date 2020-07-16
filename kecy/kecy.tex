@@ -157,23 +157,26 @@ Tato síť je druhou variantou SegNetu a liší se tím, že kromě segmentačn�
 % https://tex.stackexchange.com/questions/130109/cant-insert-code-in-my-beamer-slide
 \begin{frame}{Implementace variant SegNetu v Caffe}	
 Implementace obou těchto sítí je napsána pomocí knihovny Caffe. Ta umožňuje vytvořit síť jednodušše, téměř bez psaní klasického kódu. Vpravo je nastíněno jak vypadá zápis pro vytvoření jedné konvoluční vrstvy - jedná se zde o poměrně vysokou míru abstrakce, není to klasické programování. 
-
-Caffe a obecně softwarové a hadrwarové nástroje pro trénink konvolučních sítí je vhodné provozovat pod Linuxem. Veškerá nastavení a postupy instalace jsou velkou součástí praktické části této práce.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Nastavení prostředí pro Caffe}
+Caffe a obecně softwarové a hadrwarové nástroje pro trénink konvolučních sítí je vhodné provozovat pod Linuxem. Součástí praktické čáasti práce je přesný popis kroků nutných pro kompletní zprovoznění trénování. Jedná se hlavně o výběr vhodného hardwaru, instalace správných balíků pro kompilaci knihovny Caffe a následně samotnou kompilaci.
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Trénování SegNetu + Bayesian SegNetu}
+Pro vlastní trénování bylo nutné vytvořit vlastní dataset. Zde je ukázka úlohy která byla pro segmentaci vybrána: jedná se o segmentaci cesty pro mobilního robota v prostředí městsého parku. Celkem se mi podařilo vytvořit 2600 takovýchto dvojic: vždy scéna a k ní přislusná segmentační maska.  
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{Trénování CNN}
-Nazdar = prakticka cast
-\end{frame}
-% ----------------------------------------------------------------------
-\begin{frame}{Trénování CNN}
-Co se týče dat pro trénování tak v případě sémenatické segmentace se jedná o množinu dvojic obrázek + segmentační maska, samozřejmě vytvořená ručně. Typicky je potřeba mít k dispozici tzv trénovací množinu, ze které se část dat odloží stranou. Tím vznikne tzv validační množina a ta slouží pro kontrolu overfittingu, ke kterému obecně v neuronových sítích dochází. Jedná se o to že parametry sítě se během tréninku příliš přizpůsobí detailům ve vstupních datech a síť ztratí schopnost generalizovat. 
+Jinak bych ještě poznamenal že je potřeba mít k dispozici celkem tři množiny dat. Ta největší se používá pro trénování, to je trénovací množina. Z této množiny se kus dat odloží stranou. Tím vznikne tzv validační množina a ta slouží pro kontrolu overfittingu, ke kterému obecně v neuronových sítích dochází. Jedná se o to že parametry sítě se během tréninku příliš přizpůsobí detailům ve vstupních datech a síť ztratí schopnost generalizovat. 
 
 Po natrénování sítě se její výkon ověří na tzv testovacích datech, která nebyla použita při trénování.  
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Výsledky trénování}
-Tady je v rychlosti graf vývoje hodnoty hodnotící funkce při trénování (menší hodnota znamená lepší výsledek) pro různé volby rychlosti učení. Tento parametr se ladí experimentálně
+\begin{frame}{Trénování CNN}
+Před trénováním je ještě potřeba změnit několik věcí v architekturě SegNetu, jako například počet segmentačnícj tříd, v tomto případě jsou dvě, cesta a pozadí. Součástí tohoto je výběr parametrů optimalizace, jako například přesný typ optimalizačního algoritmu a rychlost učení, tyto parametry se vybírají experimentálně.  
 \end{frame}
+% ----------------------------------------------------------------------
 % ----------------------------------------------------------------------
 \begin{frame}{}
 	\centering
