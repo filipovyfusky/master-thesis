@@ -92,7 +92,7 @@
 \begin{frame}{Sémantická segmentace}
 	\textbf{Cíle sémantické segmentace}
 	\begin{itemize}
-	\item Přiřadit každému pixelu v obrázku právě jednu třídu objektu (auto, člověk, zvíře, ...)
+	\item Přiřadit každému pixelu v obrázku právě jednu třídu objektu (auto, člověk, budova, ...)
 	% Narozdil od klasifikace obrazu jako celku
 	\item Provádět segmentaci co nejpřesněji
 	% Tedy s presnym vykreslenim hranice kazdeho objektu
@@ -102,7 +102,7 @@
 	\vspace{5mm}		
 	\begin{center}	
 		\includemedia[
-		width=0.4\linewidth,
+		width=0.5\linewidth,
 		height=0.2\linewidth,
 		addresource=cut.mp4,
 		activate=pagevisible,
@@ -166,21 +166,11 @@ Funkce $ L $ se nazývá \textbf{hodnotící funkce} (míra spokojenosti s výst
 	\end{gather}	
 	\noindent kde $ \eta $ je rychlost učení. Další detaily záleží na konkrétním algoritmu.	
 \end{enumerate}
-	\begin{center}		
-	\includemedia[
-	width=0.35\linewidth,
-	height=0.25\linewidth,
-	addresource=opti.mp4,
-	activate=pagevisible,
-	passcontext, 
-	playbutton=none,
-	flashvars={				
-		source=opti.mp4
-		&autoPlay=true
-		&loop=true
-	}
-	]{}{VPlayer.swf}			
-\end{center}
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[width=4cm, keepaspectratio]{opt3.jpg}
+		\end{center}			
+	\end{figure}
 \end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}{}
@@ -335,15 +325,15 @@ flashvars={
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		\thead{Architektura} & \thead{Úspěšnost \\ 'pozadí'} & \thead{Úspěšnost \\ 'cesta'} & \thead{Doba \\ segmentace [ms] } & \thead{Trénovací \\ epocha [s] }\\		
+		\thead{Architektura} & \thead{Úspěšnost \\ 'pozadí' [\%]} & \thead{Úspěšnost \\ 'cesta' [\%]} & \thead{Doba \\ segmentace [ms] } & \thead{Trénovací \\ epocha [s] }\\		
 		\hline	
-		SegNet & 0.965 & 0.971 & 42 & 368 \\	
+		SegNet & 96.5 & 97.1 & 42 & 368 \\	
 		\hline	
-		\makecell{SegNet \\ Basic} & 0.966 & 0.972 & \textbf{23} & \textbf{312} \\	
+		\makecell{SegNet \\ Basic} & 96.6 & 97.2 & \textbf{23} & \textbf{312} \\	
 		\hline	
-		\makecell{Bayesian \\ SegNet} & 0.974 & 0.979 & 305 & 432 \\	
+		\makecell{Bayesian \\ SegNet} & 97.4 & 97.9 & 305 & 432 \\	
 		\hline	
-		\makecell{Bayesian \\ SegNet Basic} & 0.967 & 0.972 & 177 & \textbf{313} \\
+		\makecell{Bayesian \\ SegNet Basic} & 96.7 & 97.2 & 177 & \textbf{313} \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -379,8 +369,8 @@ V tomto případě není nutné rozlišovat mezi ruznými druhy překážek, Seg
 \end{columns}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{Trénování architektur 'enkodér-dekodér'}
-\textbf{Předtrénovaná síť}
+\begin{frame}{Otázky oponenta}
+\textbf{Málo dat pro trénování $ => $ předtrénovaná síť}
 \begin{itemize}
 	\item Cílem enkodéru je pouze detekovat obecné prvky v obraze
 	\item Možnost použít již natrénovaný enkodér pro \textbf{inicializaci} parametrů
@@ -388,5 +378,4 @@ V tomto případě není nutné rozlišovat mezi ruznými druhy překážek, Seg
 \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
-
 \end{document}

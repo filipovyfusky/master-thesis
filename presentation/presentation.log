@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.21)  16 JUL 2020 16:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.5.21)  21 JUL 2020 09:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1627,36 +1627,41 @@ Package pdftex.def Info: logo3.png  used on input line 157.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 [5
 
-]<<opti.mp4>>
+]
+<opt3.jpg, id=71, 1209.51875pt x 980.66376pt>
+File: opt3.jpg Graphic file (type jpg)
+<use opt3.jpg>
+Package pdftex.def Info: opt3.jpg  used on input line 174.
+(pdftex.def)             Requested size: 113.81102pt x 92.26619pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 184.
+Package pdftex.def Info: logo3.png  used on input line 174.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [6
 
-] [7
+ <./opt3.jpg>] [7
 
 ]
-<maps.png, id=95, 1027.58907pt x 720.44156pt>
+<maps.png, id=87, 1027.58907pt x 720.44156pt>
 File: maps.png Graphic file (type png)
 <use maps.png>
-Package pdftex.def Info: maps.png  used on input line 198.
+Package pdftex.def Info: maps.png  used on input line 188.
 (pdftex.def)             Requested size: 256.0748pt x 179.52731pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 198.
+Package pdftex.def Info: logo3.png  used on input line 188.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [8
 
  <./maps.png>]
-<segnet.png, id=103, 968.11688pt x 338.01282pt>
+<segnet.png, id=95, 968.11688pt x 338.01282pt>
 File: segnet.png Graphic file (type png)
 <use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 207.
+Package pdftex.def Info: segnet.png  used on input line 197.
 (pdftex.def)             Requested size: 426.79134pt x 149.01492pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 207.
+Package pdftex.def Info: logo3.png  used on input line 197.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [9
 
@@ -1665,59 +1670,59 @@ Package pdftex.def Info: logo3.png  used on input line 207.
 ]
 File: segnet.png Graphic file (type png)
 <use segnet.png>
-Package pdftex.def Info: segnet.png  used on input line 227.
+Package pdftex.def Info: segnet.png  used on input line 217.
 (pdftex.def)             Requested size: 284.52756pt x 99.34155pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 227.
+Package pdftex.def Info: logo3.png  used on input line 217.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [11
 
 ]
-<bayesian.jpg, id=123, 963.6pt x 241.65282pt>
+<bayesian.jpg, id=115, 963.6pt x 241.65282pt>
 File: bayesian.jpg Graphic file (type jpg)
 <use bayesian.jpg>
-Package pdftex.def Info: bayesian.jpg  used on input line 243.
+Package pdftex.def Info: bayesian.jpg  used on input line 233.
 (pdftex.def)             Requested size: 284.52756pt x 71.35333pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 243.
+Package pdftex.def Info: logo3.png  used on input line 233.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [12
 
  <./bayesian.jpg>]
-<caffe-logo.png, id=130, 611.28375pt x 211.79124pt>
+<caffe-logo.png, id=122, 611.28375pt x 211.79124pt>
 File: caffe-logo.png Graphic file (type png)
 <use caffe-logo.png>
-Package pdftex.def Info: caffe-logo.png  used on input line 271.
+Package pdftex.def Info: caffe-logo.png  used on input line 261.
 (pdftex.def)             Requested size: 113.81102pt x 39.4296pt.
-<ubuntu.jpg, id=131, 770.88pt x 578.16pt>
+<ubuntu.jpg, id=123, 770.88pt x 578.16pt>
 File: ubuntu.jpg Graphic file (type jpg)
 <use ubuntu.jpg>
-Package pdftex.def Info: ubuntu.jpg  used on input line 271.
+Package pdftex.def Info: ubuntu.jpg  used on input line 261.
 (pdftex.def)             Requested size: 113.81102pt x 85.35284pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 271.
+Package pdftex.def Info: logo3.png  used on input line 261.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [13
 
  <./caffe-logo.png> <./ubuntu.jpg>]
-<result.png, id=140, 2240.37pt x 566.115pt>
+<result.png, id=132, 2240.37pt x 566.115pt>
 File: result.png Graphic file (type png)
 <use result.png>
-Package pdftex.def Info: result.png  used on input line 284.
+Package pdftex.def Info: result.png  used on input line 274.
 (pdftex.def)             Requested size: 369.88582pt x 93.46541pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 284.
+Package pdftex.def Info: logo3.png  used on input line 274.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [14
 
  <./result.png>]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 293.
+Package pdftex.def Info: logo3.png  used on input line 283.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 
 [15
@@ -1725,17 +1730,17 @@ Package pdftex.def Info: logo3.png  used on input line 293.
 ]<<project2.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 311.
+Package pdftex.def Info: logo3.png  used on input line 301.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [16
 
 ]<<project1.mp4>>
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 328.
+Package pdftex.def Info: logo3.png  used on input line 318.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
 
-Overfull \vbox (2.96123pt too high) detected at line 328
+Overfull \vbox (2.96123pt too high) detected at line 318
  []
 
 [17
@@ -1743,19 +1748,19 @@ Overfull \vbox (2.96123pt too high) detected at line 328
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 350.
+Package pdftex.def Info: logo3.png  used on input line 340.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [18
 
 ]
-<github.png, id=191, 1375.38844pt x 712.91344pt>
+<github.png, id=183, 1375.38844pt x 712.91344pt>
 File: github.png Graphic file (type png)
 <use github.png>
-Package pdftex.def Info: github.png  used on input line 358.
+Package pdftex.def Info: github.png  used on input line 348.
 (pdftex.def)             Requested size: 426.79134pt x 221.21844pt.
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 358.
+Package pdftex.def Info: logo3.png  used on input line 348.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [19
 
@@ -1764,14 +1769,14 @@ Package pdftex.def Info: logo3.png  used on input line 358.
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 380.
+Package pdftex.def Info: logo3.png  used on input line 370.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [21
 
 ]
 File: logo3.png Graphic file (type png)
 <use logo3.png>
-Package pdftex.def Info: logo3.png  used on input line 389.
+Package pdftex.def Info: logo3.png  used on input line 379.
 (pdftex.def)             Requested size: 115.55159pt x 23.47343pt.
  [22
 
@@ -1785,11 +1790,11 @@ Package pdftex.def Info: logo3.png  used on input line 389.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 392.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 381.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 381.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 392.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 392.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 381.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 381.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1800,7 +1805,7 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  29664 strings out of 494816
- 568934 string characters out of 6177863
+ 568889 string characters out of 6177863
  639950 words of memory out of 5000000
  32392 multiletter control sequences out of 15000+600000
  555516 words of font info for 92 fonts, out of 8000000 for 9000
@@ -1817,10 +1822,10 @@ ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
 s12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cs/csss8.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/cs/csssbx10.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/cs/csssi10.pfb>
-Output written on presentation.pdf (22 pages, 116189117 bytes).
+Output written on presentation.pdf (22 pages, 116456482 bytes).
 PDF statistics:
- 275 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
+ 266 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
  45 named destinations out of 1000 (max. 500000)
- 230 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 207 words of extra memory for PDF output out of 10000 (max. 10000000)
 
